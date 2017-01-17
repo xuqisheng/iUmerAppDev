@@ -1,0 +1,46 @@
+<!--pages/quickAppoint/choosePersonnel.wxml-->
+<view class="container">
+    <view id="top-menu">
+        <view class="top-menu-back" bindtap="back"></view>
+        <view class="top-menu-title">选择优美师</view>
+        <view class="top-menu-placeholder"></view>
+    </view>
+    <swiper>    
+        <swiper-item>
+            <scroll-view scroll-y style="width: 100%; height: 100%;" bindscrolltolower="loadMore" bindscrolltoupper="refresh">
+                <block wx:for="{{ projectPersonnels }}" wx:key="id">
+                    <view class="people-item" data-personnelId="{{ item.id }}" bindtap="clickPersonnelItem" >
+                        <view class="people-item-left">
+                            <view class="people-item-img">
+                                <image class="lazy" src="https://www.iumer.cn{{ item.header || '/umer/css/image/default.jpg' }}" />
+                            </view>
+                            <view class="people-item-rate">
+                                <view class="star" data-score='{{ item.level || 0 }}'>
+                                    <block wx:for="{{ [ 0,1,2,3,4 ] }}" wx:for-item="itm" wx:key="*this">
+                                        <view wx:if="{{ index < item.level}}">
+                                            <image src="https://www.iumer.cn/umer/js/raty/img/star-on.png"></image>
+                                        </view>
+                                        <view wx:if="{{ index >= item.level}}">
+                                            <image src="https://www.iumer.cn/umer/js/raty/img/star-off.png"></image>
+                                        </view>
+                                    </block>
+                                </view>
+                            </view>
+                        </view>
+                        <view class="people-item-right">
+                            <view class="people-item-name">{{ item.name || "" }}</view>
+                            <text class="people-item-place">{{ item.shopName || "优美店" }}</text>
+                            <view class="people-item-dot-line"></view>
+                            <view class="people-item-info">
+                                <view class="people-item-info-board-comment">
+                                    <view class="people-item-info-board"><image src="https://www.iumer.cn/umer/css/image/wechat/order-count@2x.png" /> {{ item.orderCount || 0 }}</view>
+                                    <view class="people-item-info-comment"><image src="https://www.iumer.cn/umer/css/image/wechat/comments@2x.png" />{{ item.commentCount || 0 }}</view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </block>
+            </scroll-view>
+        </swiper-item>
+    </swiper>
+</view>

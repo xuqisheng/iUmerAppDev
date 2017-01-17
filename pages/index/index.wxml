@@ -1,0 +1,139 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="weui-mask"></view>
+	<view class="top-menu-active">
+		<view class="top-menu-area" bindtap="changeLocation">
+		<image src="https://www.iumer.cn/umer/css/image/wechat/pin-white@3x.png" style="height: 30rpx; width: 24rpx; margin-left: 0; margin-right: 10rpx;"></image>
+		<text class="cityName" style="margin-right: 10rpx;">{{ cityName }}</text>
+		<image src="https://www.iumer.cn/umer/css/image/wechat/more@3x.png"></image>
+		</view>
+		<view class="top-menu-search"><view class="search-icon"></view>
+		<input placeholder="搜索美容服务/优美师/门店等" type="text" /></view>
+		<navigator class="top-menu-alert" url="messageCenter"></navigator>
+	</view>
+	<view id="top-menu-2" class="top-menu-2">
+		<view class="top-menu-search-bar top-menu-search-bar-project">
+			<view class="dropdown">
+				<button class="dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">
+					<text class="selected">优美师</text>
+					<text class="caret"></text>
+				</button>
+				<view class="arrow"></view>
+				<ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+					<li role="presentation">
+						<view class="menu-item-icon menu-item-icon-personnel"></view>
+						<a role="menuitem" tabindex="-1" href="javascript:;">优美师</a>
+					</li>   
+					<li role="presentation" class="viewider"></li>
+					<li role="presentation">
+						<view class="menu-item-icon menu-item-icon-shop"></view>
+						<a role="menuitem" tabindex="-1" href="javascript:;">店铺</a>
+					</li>   
+					<li role="presentation" class="viewider"></li>
+					<li role="presentation">
+						<view class="menu-item-icon menu-item-icon-project"></view>
+						<a role="menuitem" tabindex="-1" href="javascript:;">项目</a>
+					</li>
+				</ul>
+			</view>
+			<view class="span">|</view>
+			<form name="searchFrm"><input placeholder="张小小" type="text" /></form>
+		</view>
+
+		<view class="top-menu-search-cancel" onclick="cancelSearch();">取消</view>
+	</view>
+	<swiper style="height: 420rpx;" indicator-dots autoplay circular>
+		<block wx:for="{{ banners }}" wx:key="id">
+			<swiper-item>
+			<image src="https://www.iumer.cn/{{ item.filePath }}" class="slide-image" style="width: 750rpx; height: 420rpx;"/>
+			</swiper-item>
+		</block>
+	</swiper>
+	<view id="nav">
+		<view class="nav-item" bindtap="jumpToSearchProject" data-nav-id="0">
+			<view class="nav-item-img "><image src="https://www.iumer.cn/umer/css/image/wechat/index/facial@2x.png"></image></view>
+			<view class="nav-item-txt ">面部美容</view>	
+		</view>
+		<view class="nav-item" bindtap="jumpToSearchProject" data-nav-id="1">
+			<view class="nav-item-img "><image src="https://www.iumer.cn/umer/css/image/wechat/index/massage@2x.png"></image></view>
+			<view class="nav-item-txt ">经络养生</view>	
+		</view>
+		<view class="nav-item" bindtap="jumpToSearchProject" data-nav-id="2">
+			<view class="nav-item-img "><image src="https://www.iumer.cn/umer/css/image/wechat/index/body@2x.png"></image></view>
+			<view class="nav-item-txt ">身体护理</view>	
+		</view>
+		<view class="nav-item" bindtap="jumpToSearchProject" data-nav-id="3">
+			<view class="nav-item-img "><image src="https://www.iumer.cn/umer/css/image/wechat/index/other@2x.png"></image></view>
+			<view class="nav-item-txt ">其他特色</view>	
+		</view>
+	</view>
+	<view id="hot">
+		<view class="index-header">
+			<image src="https://www.iumer.cn/umer/css/image/wechat/index/index-hot-project.png"></image>
+		</view>
+		<view id="hot-area">
+			<block wx:for="{{ hotProjects }}" wx:key="id">
+				<view class="hot-item" data-projectId="{{ item.id }}" bindtap="clickProjectItem">
+					<text class="hot-item-label-text">{{ item.duration || 0 }}分钟</text>
+					<image class="hot-item-label" src="https://www.iumer.cn/umer/css/image/wechat/index/label@2x.png"></image>
+					<view class="hot-item-img">
+						<image src="https://www.iumer.cn/{{ item.filePath || 'umer/css/image/default.jpg'}}"></image>
+					</view>
+					<view class="hot-item-content">
+						<view class="hot-item-title">{{ item.projectName || "" }}</view>
+						<view class="hot-item-place">{{ item.shopName || ""}}</view>
+						<view class="hot-item-info">
+							<view class="hot-item-info-distance">{{ item.distance || '0km' }}</view>
+							<view class="hot-item-info-price">￥{{ item.unitPrice || 0}}</view>
+						</view>
+					</view>
+				</view>
+			</block>
+		</view>
+	</view>
+	<view id="people">
+		<view class="index-header index-header-personnel">
+			<view></view>
+			<view>
+				<image src="https://www.iumer.cn/umer/css/image/wechat/index/index-hot-personnel.png"></image>
+			</view>
+			<navigator url="../logs/logs" class="index-header-personnel-more">更多<image src="https://www.iumer.cn/umer/css/image/wechat/more@2x.png"></image></navigator>
+		</view>
+		<view id="people-area">
+			<block wx:for="{{ hotPersonnel }}" wx:key="id">
+				<view class="people-item" data-personnelId="{{ item.id }}" bindtap="clickPersonnelItem" >
+					<view class="people-item-left">
+						<view class="people-item-img">
+							<image class="lazy" src="https://www.iumer.cn{{ item.header || '/umer/css/image/default.jpg' }}" />
+						</view>
+						<view class="people-item-rate">
+							<view class="star" data-score='{{ item.level || 0 }}'>
+								<block wx:for="{{ [ 0,1,2,3,4 ] }}" wx:for-item="itm" wx:key="*this">
+									<view wx:if="{{ index < item.level}}">
+										<image src="https://www.iumer.cn/umer/js/raty/img/star-on.png"></image>
+									</view>
+									<view wx:if="{{ index >= item.level}}">
+										<image src="https://www.iumer.cn/umer/js/raty/img/star-off.png"></image>
+									</view>
+								</block>
+							</view>
+						</view>
+					</view>
+					<view class="people-item-right">
+						<view class="people-item-name">{{ item.name || "" }}</view>
+						<view class="people-item-place">{{ item.shopName || "" }}</view>
+						<view class="people-item-dot-line"></view>
+						<view class="people-item-info">
+							<view class="people-item-info-distance">
+								<image src="https://www.iumer.cn/umer/css/image/wechat/pin@3x.png" />距离{{ item.distance || "0米" }}左右</view>
+							<view class="people-item-info-board-comment">
+								<view class="people-item-info-board"><image src="https://www.iumer.cn/umer/css/image/wechat/order-count@2x.png" /> {{ item.orderCount || 0 }}</view>
+								<view class="people-item-info-comment"><image src="https://www.iumer.cn/umer/css/image/wechat/comments@2x.png" />{{ item.commentCount || 0 }}</view>
+							</view>
+						</view>
+					</view>
+				</view>
+			</block>
+		</view>
+	</view>
+</view>

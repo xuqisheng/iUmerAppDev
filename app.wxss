@@ -1,0 +1,49 @@
+/**app.wxss**/
+.clear {
+  clear:both;
+}
+.text-center {
+	text-align: center;
+}
+.container{
+	font-size: 30rpx;
+	background-color: #F7F7F7;
+	font-family: SimHei;
+}
+#top-menu {
+  display: flex;
+	padding: 0 20rpx;
+	background-color: #E84057;
+	color: white;
+	justify-content: space-between;
+	align-items: center;
+	height: 96rpx;
+}	
+.top-menu-back {
+	background-image: url('../../images/reply@3x.png');
+	background-Size: 50rpx 50rpx;
+	background-repeat: no-repeat;
+	height: 50rpx;
+	width: 50rpx;
+}
+.top-menu-title {
+	height: 40rpx;
+  display: flex;
+	align-items: center;
+}
+.top-menu-alert {
+	background-image: url('../../images/msg@3x.png');
+	background-Size: 40rpx 40rpx;
+	background-repeat: no-repeat;
+	height: 40rpx;
+	width: 40rpx;
+}
+.weui-mask {
+	background:rgba(0,0,0,.6);
+	position:fixed;
+	z-index:1000;
+	top: 96rpx;
+	right:0;
+	left:0;
+	bottom:0;
+}

@@ -1,0 +1,99 @@
+<!--pages/quickAppoint/appointPersonnel.wxml-->
+<view class="container">
+    <view id="top-menu">
+        <view class="top-menu-back" bindtap="back"></view>
+        <view class="top-menu-title">预约</view>
+        <view class="top-menu-placeholder"></view>
+    </view>
+    <loading hidden="{{ loadingHidden }}">
+        加载中...
+    </loading>
+    <view class="project-item">
+        <view class="project-item-left">
+            <view class="project-item-img"><image src="https://www.iumer.cn{{ projectFilePath }}" /></view>
+        </view>
+        <view class="project-item-right">
+            <view class="project-item-name">{{ projectTitle }}</view>
+            <view class="project-item-place">{{ shopTitle }}</view>
+            <view class="project-item-price">{{ priceType == 0? projectUnitPrice + '元/次': projectCoursePrice + '元/疗程' }}</view>
+            <view class="clear"></view>
+            <view class="project-item-dot-line"></view>
+            <view class="project-item-info">
+                <span class="project-item-info-distance"><image src="https://www.iumer.cn/umer/css/image/wechat/pin@3x.png" />{{ shopAddress }}</span>
+                <span class="project-item-info-duration"><image src="https://www.iumer.cn/umer/css/image/wechat/history-red@2x.png" />{{ projectDuration }}分钟</span>
+            </view>
+        </view>
+    </view>
+    <view class="selection-area">
+        <view class="selection-cell {{ priceDropdownHidden? 'selection-cell_access': '' }}" bindtap="togglePriceType">
+            <view class="selection-cell__bd">
+                <text>项目价格</text>
+            </view>
+            <view class="selection-cell__ft cell-project-price">
+                <view class="dropdown">
+                    <view class="dropdown-toggle">
+                        <text class="selected-price" data-price-type="0">{{ priceType == 0? '次数：'+ projectUnitPrice + '元/次': projectCoursePrice + '元/疗程' }}</text>
+                    </view>
+                    <view class="dropdown-menu" hidden="{{ priceDropdownHidden }}">
+                        <view style="padding: 20rpx 0;" data-pricetype="0" bindtap="changePriceType">
+                            <text class="price-item-icon price-item-icon-unit">次数：<text>{{ projectUnitPrice }}</text>元/次</text>
+                        </view>   
+                        <view class="divider"></view>
+                        <view style="padding: 20rpx 0;" data-pricetype="1" bindtap="changePriceType">
+                            <text class="price-item-icon price-item-icon-course">疗程：<text>{{ projectCoursePrice }}</text>元/疗程（<text>{{ projectCourseRemark }}次</text>）</text>
+                        </view>   
+                    </view>
+                </view>
+            </view>
+            <view class="{{ priceDropdownHidden? '': 'arrow-down' }}"></view>
+        </view>
+        <view class="selection-cell selection-cell_access" href="javascript:;" bindtap="choosePersonnel">
+            <view class="selection-cell__bd">
+            <text>美容师</text>
+            </view>
+            <view class="selection-cell__ft chosen-personnel">
+            {{ personnelName || "请选择优美师" }}<image hidden="{{ !personnelHeader }}" src="{{ personnelHeader? ('https://www.iumer.cn'+personnelHeader): '' }}"></image>
+            </view>
+        </view>
+        <view class="selection-cell">
+            <view class="selection-cell__bd">
+                <p>预约时间</p>
+            </view>
+            <view class="selection-cell__ft cell-appoint-time">{{ selectedTime }}</view>
+        </view>
+        <view class="selection-cell">	
+            <view class="selection-cell__bd">
+                <view class="date-select">
+                    <view class="text-center swiper-slide" data-time="{{ item.dateTime }}" wx:for="{{ weekdays }}" bindtap="loadTimeslots"><text>{{ item.week + "\n" + item.dateTime }}</text></view>
+                </view>
+            </view>
+        </view>
+        <view class="timeslots">
+            <block wx:for="{{ timeslots }}">
+                <button data-on-select="0" data-index="{{ index }}" class="timeslot text-center {{ ((item.ifEnd == 1) || (item.ifReserve == 1))? 'btnDisabled': '' }} {{ selectedIndex[index]?'timeslot-selected':'' }}" disabled='{{ (item.ifEnd == 1) || (item.ifReserve == 1) }}' bindtap="{{ ((item.ifEnd == 1) || (item.ifReserve == 1))? '': 'chooseTime' }}">
+                {{ item.time }} <view class="{{ (item.ifReserve == 1)? 'reserved': ''}}"></view>
+                </button>
+            </block>
+        </view>
+    </view>
+    <view class="input-area">
+        <view class="input-cells input-cells_form">
+            <view class="input-cell">
+                <view class="input-cell__hd">预约人：</view>
+                <input class="reserve-name" placeholder="请输入姓名"/>
+            </view>
+            <view class="input-cell">
+                <view class="input-cell__hd">
+                    <view class="input-label">预约手机号：</view>
+                </view>
+                <view class="input-cell__bd">
+                    <input class="reserve-phone" type="number" maxlength="11" placeholder="请输入手机号" />
+                </view>
+            </view>
+        </view>	
+    </view>
+    <view class="btn-area">
+        <view class="btn-item" bindtap="back">取消预约</view>
+        <view class="btn-item" onclick="submitOrder">确认预约</view>
+    </view>
+</view>

@@ -1,0 +1,30 @@
+<!--pages/login/login.wxml-->
+<view class="container">
+	<view id="top-menu">
+		<view class="top-menu-back-no"></view>
+		<view class="top-menu-title">登录</view>
+		<view class="top-menu-placeholder"></view>
+	</view>
+	<view id="logo-area" class="text-center">
+		<view class="logo-area-img"></view>
+		<view class="logo-area-txt">优美东方</view>
+	</view>
+	<view id="frm-area">
+		<view class="frm-area-input frm-area-input-account">
+			<view class="frm-area-input-icon frm-area-input-icon-account"></view>
+			<input type="number" placeholder="phone/username" name="account" maxlength="11" bindinput="accountInput"/>
+		</view>
+		<view class="frm-area-input frm-area-input-pwd">
+			<view class="frm-area-input-icon frm-area-input-icon-pwd"></view>
+			<input password placeholder="***************" name="password" bindinput="pwdInput"/>
+		</view>
+		<view class="frm-area-input-opt">
+			<view class="frm-area-input-opt-remember"><checkbox checked="{{ remember }}" color="#e84057" />记住密码</view>
+			<view class="frm-area-input-opt-forget" onclick="forgetPwd();">忘记密码?</view>
+		</view>
+	</view>
+	<view id="btn-area">
+		<view class="btn-area-btn btn-area-login text-center" bindtap="login">登录</view>
+		<view class="btn-area-btn btn-area-register text-center" bindtap="register">注册</view>
+	</view>
+</view>

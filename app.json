@@ -1,0 +1,45 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/index/location",
+    "pages/index/messageCenter",
+    "pages/index/projectDetail",
+    "pages/login/login",
+    "pages/orders/orders",
+    "pages/quickAppoint/quickAppoint",
+    "pages/quickAppoint/appointPersonnel",
+    "pages/quickAppoint/choosePersonnel",
+    "pages/my/my",
+    "pages/logs/logs"
+  ],
+  "window":{
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#000",
+    "navigationBarTitleText": "iUmer",
+    "navigationBarTextStyle":"white"
+  },
+  "tabBar": {
+    "selectedColor": "#E84057",
+    "list": [{
+      "pagePath": "pages/index/index",
+      "text": "首页",
+      "iconPath": "images/home@3x.png",
+      "selectedIconPath": "images/tab1@2x.png"
+    }, {
+      "pagePath": "pages/orders/orders",
+      "text": "订单",
+      "iconPath": "images/manage@3x(2).png",
+      "selectedIconPath": "images/tab2@2x.png"
+    }, {
+      "pagePath": "pages/quickAppoint/quickAppoint",
+      "text": "快速预约",
+      "iconPath": "images/clock@3x.png",
+      "selectedIconPath": "images/tab3@2x.png"
+    }, {
+      "pagePath": "pages/my/my",
+      "text": "我的",
+      "iconPath": "images/my@3x.png",
+      "selectedIconPath": "images/tab4@2x.png"
+    }]
+  }
+}
