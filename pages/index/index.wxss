@@ -51,8 +51,8 @@
 }
 #people {
 	background-color: white;
-	padding: 8px;
-	margin-top: 5px;
+	padding: 16rpx;
+	margin-top: 10rpx;
 }
 .people-item-info-distance {
 	color: #686868;
@@ -255,8 +255,9 @@
 	width: 100%;
 }
 .hot-item-img image {
-	width: 100%;
+	width: 225rpx;
 	height: 225rpx;
+	object-fit: cover;
 }
 .hot-item .hot-item-label {
 	position: absolute;
@@ -264,9 +265,6 @@
 	top: 0;
 	width: 100rpx;
 	height: 100rpx;
-}
-.hot-item-image image {
-	width: 100%;
 }
 .hot-item-content {
 	padding: 4rpx 10rpx;

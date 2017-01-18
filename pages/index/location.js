@@ -10,7 +10,8 @@ Page({
     var that = this;
     console.log("onload");
     this.setData({
-      cityList: cities.data
+      cityList: cities.data,
+      currentCity: wx.getStorageSync('cityName') || ""
     });
     wx.getLocation({
       type: 'wgs84',
@@ -114,5 +115,19 @@ Page({
       selectedLetter: letter
     });
     console.log(letter);
+  },
+  back: function(){
+    wx.switchTab({
+      url: 'index',
+      success: function(res){
+        // success
+      },
+      fail: function() {
+        // fail
+      },
+      complete: function() {
+        // complete
+      }
+    })
   }
 })

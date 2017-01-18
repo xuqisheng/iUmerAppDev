@@ -9,8 +9,7 @@
     "pages/quickAppoint/quickAppoint",
     "pages/quickAppoint/appointPersonnel",
     "pages/quickAppoint/choosePersonnel",
-    "pages/my/my",
-    "pages/logs/logs"
+    "pages/my/my"
   ],
   "window":{
     "backgroundTextStyle": "light",

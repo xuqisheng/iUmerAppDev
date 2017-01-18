@@ -5,10 +5,10 @@
             <view class="search-icon"></view>
             <input placeholder="输入城市名搜索" type="text" />
         </view>
-        <view class="top-menu-search-cancel" onclick="cancelLocate();">取消</view>
+        <view class="top-menu-search-cancel" bindtap="back">取消</view>
     </view>
     <view id="city-area">
-        <view class="current-city">当前城市：<text></text></view>
+        <view class="current-city">当前城市：{{ currentCity }}<text></text></view>
         <view class="baidu-city" bindtap="setLocation" data-code="{{ baiduCityCode }}" data-name="{{ baiduCity }}">定位城市：<text>{{ baiduCity }}</text></view>
     </view>
     <view class="city-nav" catchtouchmove="moveNav">
