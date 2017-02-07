@@ -3,18 +3,35 @@
     <view id="top-menu">
         <view class="top-menu-search">
             <view class="search-icon"></view>
-            <input placeholder="输入城市名搜索" type="text" />
+            <input placeholder="输入城市名搜索" type="text" bindtap="searchCity"/>
         </view>
         <view class="top-menu-search-cancel" bindtap="back">取消</view>
     </view>
     <view id="city-area">
         <view class="current-city">当前城市：{{ currentCity }}<text></text></view>
         <view class="baidu-city" bindtap="setLocation" data-code="{{ baiduCityCode }}" data-name="{{ baiduCity }}">定位城市：<text>{{ baiduCity }}</text></view>
+        <view class="hot-city-area">
+            <view class="hot-cities-title">热门城市</view>
+            <view class="hot-cities">
+                <view class="hot-city" bindtap="setLocation" data-code="110000" data-name="北京市">北京市</view>
+                <view class="hot-city" bindtap="setLocation" data-code="510100" data-name="成都市">成都市</view>
+                <view class="hot-city" bindtap="setLocation" data-code="500000" data-name="重庆市">重庆市</view>
+                <view class="hot-city" bindtap="setLocation" data-code="440100" data-name="广州市">广州市</view>
+                <view class="hot-city" bindtap="setLocation" data-code="330100" data-name="杭州市">杭州市</view>
+                <view class="hot-city" bindtap="setLocation" data-code="320100" data-name="南京市">南京市</view>
+                <view class="hot-city" bindtap="setLocation" data-code="310000" data-name="上海市">上海市</view>
+                <view class="hot-city" bindtap="setLocation" data-code="440300" data-name="深圳市">深圳市</view>
+                <view class="hot-city" bindtap="setLocation" data-code="320500" data-name="苏州市">苏州市</view>
+                <view class="hot-city" bindtap="setLocation" data-code="120000" data-name="天津市">天津市</view>
+                <view class="hot-city" bindtap="setLocation" data-code="420100" data-name="武汉市">武汉市</view>
+                <view class="hot-city" bindtap="setLocation" data-code="610100" data-name="西安市">西安市</view>
+            </view>
+        </view>
     </view>
     <view class="city-nav" catchtouchmove="moveNav">
         <view wx:for="{{ letterIndex }}" wx:key="*this">{{ item }}</view>
     </view>
-    <scroll-view scroll-into-view="{{ selectedLetter }}" scroll-y style="height: calc(100% - 204rpx);">
+    <scroll-view class="cities-scroll" scroll-into-view="{{ selectedLetter }}" scroll-y style="height: calc(100% - 204rpx);">
         <view wx:for="{{ cityList }}" wx:key="name" id="{{ item.name }}">
             <view class="city-index" >{{ item.name }}</view>
             <view class="city" data-name="{{city.name}}" data-code="{{ city.code }}" wx:for="{{ item.list }}" wx:for-item="city" wx:key="code" bindtap="setLocation">

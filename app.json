@@ -1,7 +1,9 @@
 {
   "pages":[
     "pages/index/index",
+    "pages/index/indexSearch",
     "pages/index/location",
+    "pages/index/locationSearch",
     "pages/index/messageCenter",
     "pages/index/projectDetail",
     "pages/login/login",

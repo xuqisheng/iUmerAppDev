@@ -109,16 +109,30 @@ Page({
   },
   moveNav: function(e) {
     var letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    var letterIndex = (e.changedTouches["0"].clientY - e.currentTarget.offsetTop) / 378 * 26;
-    var letter = letters.charAt(letterIndex);
+    var letterIndex = (e.changedTouches["0"].clientY - e.currentTarget.offsetTop) / 378 * this.data.letterIndex.length;
+    var letter = this.data.letterIndex[parseInt(letterIndex)];
     this.setData({
       selectedLetter: letter
     });
-    console.log(letter);
+    console.log(parseInt(letterIndex));
   },
   back: function(){
     wx.switchTab({
       url: 'index',
+      success: function(res){
+        // success
+      },
+      fail: function() {
+        // fail
+      },
+      complete: function() {
+        // complete
+      }
+    })
+  },
+  searchCity: function(e) {
+    wx.redirectTo({
+      url: 'locationSearch',
       success: function(res){
         // success
       },

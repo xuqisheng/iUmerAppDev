@@ -27,8 +27,8 @@ Page({
     // 页面关闭
   },
   back: function(){
-    wx.navigateBack({
-      delta: 1, // 回退前 delta(默认为1) 页面
+    wx.redirectTo({
+      url: 'appointPersonnel?personnelId=' + personnelId + '&projectId=' + projectId + "&priceType=" + priceType,
       success: function(res){
         // success
       },
@@ -99,7 +99,7 @@ Page({
     var personnelId = e.currentTarget.dataset.personnelid;
     var projectId = this.data.projectId;
     var priceType = this.data.priceType;
-    wx.navigateTo({
+    wx.redirectTo({
       url: 'appointPersonnel?personnelId=' + personnelId + '&projectId=' + projectId + "&priceType=" + priceType,
       success: function(res){
         // success

@@ -1,0 +1,48 @@
+page {
+    height: 100%;
+    background-color: white;
+}
+.container {
+    font-size: 30rpx;
+    height: 100%;
+    background-color: white;
+}
+#top-menu {
+    display: flex;
+    padding: 0 20rpx;
+    background-color: #f1f1f1;
+    color: black;
+    justify-content: space-between;
+    align-items: center;
+    height: 96rpx;
+}
+.top-menu-search {
+	position: relative;
+    background: white;
+    width: 80%;
+}
+.top-menu-search form {
+	height: 100%;
+}
+.top-menu-search .search-icon {
+	position: absolute;
+    left: 16rpx;
+    top: 12rpx;
+    background-image: url(../../images/search@3x.png);
+    background-repeat: no-repeat;
+    background-size: 32rpx 32rpx;
+    width: 32rpx;
+    height: 32rpx;
+}
+.top-menu-search input {
+    width: 80%;
+    height: 100%;
+    border: none;
+    color: black;
+    margin-left: 60rpx;
+    line-height: normal;
+    font-size: 25rpx;
+}
+#city-area {
+    padding: 10rpx;
+}

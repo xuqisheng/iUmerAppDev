@@ -1,16 +1,18 @@
 /* pages/index/location.wxss */
 page {
     height: 100%;
+    background-color: white;
 }
 .container {
     font-size: 30rpx;
     height: 100%;
+    background-color: white;
 }
 #top-menu {
     display: flex;
-    padding: 0 10px;
-    background-color: #E84057;
-    color: white;
+    padding: 0 20rpx;
+    background-color: #f1f1f1;
+    color: black;
     justify-content: space-between;
     align-items: center;
     height: 96rpx;
@@ -18,7 +20,6 @@ page {
 .top-menu-search {
 	position: relative;
     background: white;
-    border-radius: 30rpx;
     width: 80%;
 }
 .top-menu-search form {
@@ -53,12 +54,31 @@ page {
 	color: #414141;
     font-size: 30rpx;
 }
+.hot-city-area {
+    background-color: #f1f1f1;
+}
+.hot-cities-title {
+    padding: 10rpx;
+}
+.hot-cities {
+    display: flex;
+    flex-wrap: wrap;	
+}
+.hot-city {
+    background-color: white;
+    padding: 10rpx 50rpx;
+    text-align: center;
+    margin: 10rpx 25rpx;
+}
 .city-index {
 	color: #ED175D;
 	background-color: #f1f1f1;
 	width: 100%;
 	padding: 10rpx;
     font-size: 35rpx;
+}
+.cities-scroll {
+    padding: 10rpx;
 }
 .city {
 	color: #414141;
@@ -70,11 +90,11 @@ page {
 }
 .city-nav {
 	position: fixed;
-	right: 0;
+	right: 20rpx;
 	top: 100rpx;
     display: flex;
     flex-direction:column;
-    background-color: #e84057;
+    background-color: #FD8CA3;
     padding: 4rpx 10rpx;
     border-radius: 20rpx;
     color: white;

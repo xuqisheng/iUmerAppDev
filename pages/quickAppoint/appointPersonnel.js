@@ -31,7 +31,8 @@ Page({
     // 页面初始化 options为页面跳转所带来的参数
     this.setData({
       projectId: options.projectId,
-      personnelId: options.personnelId
+      personnelId: options.personnelId,
+      priceType: options.priceType
     });
     this.loadProject();
     this.loadWeekdays();
@@ -260,8 +261,9 @@ Page({
   },
   choosePersonnel: function(){
     var that = this;
-    wx.navigateTo({
-      url: 'choosePersonnel?projectId=' + that.data.projectId + "&priceType" + that.data.priceType,
+    console.log(that.data)
+    wx.redirectTo({
+      url: 'choosePersonnel?projectId=' + that.data.projectId + "&priceType=" + that.data.priceType,
       success: function(res){
         // success
       },
@@ -283,7 +285,8 @@ Page({
     if (timeIdx + durationNum - 1> data.length - 1) {
       chosenHours = [];
       this.setData({
-        selectedTime: ""
+        selectedTime: "",
+        selectedIndex: {}
       });
       return false;
     }
@@ -292,7 +295,8 @@ Page({
       if (timeslots[idx].ifEnd == 1 || timeslots[idx].ifReserve == 1) {
           chosenHours = [];
           this.setData({
-            selectedTime: ""
+            selectedTime: "",
+            selectedIndex: {}
           });
         return false;
       }

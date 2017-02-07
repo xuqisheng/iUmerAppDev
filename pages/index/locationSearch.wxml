@@ -1,0 +1,15 @@
+<!--pages/index/location.wxml-->
+<view class="container">
+    <view id="top-menu">
+        <view class="top-menu-search">
+            <view class="search-icon"></view>
+            <input placeholder="输入城市名搜索" type="text" bindinput="searchCity" value="{{ city }}"/>
+        </view>
+        <view class="top-menu-search-cancel" bindtap="back">取消</view>
+    </view>
+    <view id="city-area">
+        <block wx:for="{{ resultList }}" wx:key="code">
+            <view data-code="{{ item.code }}" data-name="{{ item.name }}" bindtap="setLocation">{{ item.name }}</view>
+        </block>
+    </view>   
+</view>
