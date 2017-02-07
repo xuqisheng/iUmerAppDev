@@ -7,7 +7,7 @@
     <view id="project-area">
         <view class="result-title">项目</view>
         <block wx:for="{{ projectList }}" wx:key="id">
-            <view class="hot-item" data-personnelId="{{ item.id }}" bindtap="clickProjectItem" >
+            <view class="hot-item" data-projectId="{{ item.id }}" bindtap="clickProjectItem" >
                 <view class="hot-item-left">
                     <view class="hot-item-img">
                         <image class="lazy" src="https://www.iumer.cn{{ item.filePath || '/umer/css/image/default.jpg' }}" />
@@ -27,7 +27,7 @@
                 </view>
             </view>
         </block>
-        <view class="more">查看更多</view>
+        <view class="more" bindtap="moreProjects">查看更多</view>
     </view>
     <view id="personnel-area">
         <view class="result-title">优美师</view>
@@ -63,7 +63,7 @@
                 </view>
             </view>
         </block>
-        <view class="more">查看更多</view>
+        <view class="more" bindtap="morePersonnels">查看更多</view>
     </view>
     <view id="shop-area">
         <view class="result-title">优美店</view>
@@ -83,6 +83,6 @@
                 </view> 
             </view>
         </block>
-        <view class="more">查看更多</view>
+        <view class="more" bindtap="moreShops">查看更多</view>
     </view>
 </view>

@@ -36,7 +36,7 @@ Page({
     })
   },
   indexSearch: function(e) {
-    var txt = e.detail.value;
+    var txt = e.detail.value.trim();
     this.searchProject(txt);
     this.searchPersonnel(txt);
     this.searchShop(txt);
@@ -122,5 +122,95 @@ Page({
           console.log("indexSearch - searchShop complete")
         }
     });
+  },
+  clickProjectItem: function(event){
+    var projectId = event.currentTarget.dataset.projectid;
+    // console.log(projectId)
+    wx.navigateTo({
+      url: 'projectDetail?projectId=' + projectId,
+      success: function(res){
+        // success
+      },
+      fail: function() {
+        // fail
+      },
+      complete: function() {
+        // complete
+      }
+    });
+  },
+  clickPersonnelItem: function(e){
+    var personnelId = e.currentTarget.dataset.personnelid;
+    // console.log(projectId)
+    wx.navigateTo({
+      url: 'personnelDetail?personnelId=' + personnelId,
+      success: function(res){
+        // success
+      },
+      fail: function() {
+        // fail
+      },
+      complete: function() {
+        // complete
+      }
+    });
+  },
+  clickShopItem: function(e) {
+    var shopId = e.currentTarget.dataset.shopid;
+    // console.log(projectId)
+    wx.navigateTo({
+      url: 'shopDetail?shopId=' + shopId,
+      success: function(res){
+        // success
+      },
+      fail: function() {
+        // fail
+      },
+      complete: function() {
+        // complete
+      }
+    });
+  },
+  moreProjects: function() {
+    wx.redirectTo({
+      url: 'searchProjects',
+      success: function(res){
+        // success
+      },
+      fail: function() {
+        // fail
+      },
+      complete: function() {
+        // complete
+      }
+    })
+  },
+  morePersonnels: function() {
+    wx.redirectTo({
+      url: 'searchPersonnels',
+      success: function(res){
+        // success
+      },
+      fail: function() {
+        // fail
+      },
+      complete: function() {
+        // complete
+      }
+    })
+  },
+  moreShops: function() {
+    wx.redirectTo({
+      url: 'searchShops',
+      success: function(res){
+        // success
+      },
+      fail: function() {
+        // fail
+      },
+      complete: function() {
+        // complete
+      }
+    })
   }
 })

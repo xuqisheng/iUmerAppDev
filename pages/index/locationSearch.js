@@ -36,8 +36,14 @@ Page({
     })
   },
   searchCity: function(e) {
-    var txt = e.detail.value;
-    console.log(this.data.resultList)
+    this.setData({
+      resultList: []
+    });
+    var txt = e.detail.value.trim();
+    if (!txt) {
+      return false;
+    }
+    console.log(txt)
     for (var i = 0; i < cities.data.length; i++) {
       var el = cities.data[i];
       var index = el.name;

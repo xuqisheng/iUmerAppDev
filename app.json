@@ -5,6 +5,8 @@
     "pages/index/location",
     "pages/index/locationSearch",
     "pages/index/projectDetail",
+    "pages/index/personnelDetail",
+    "pages/index/shopDetail",
     "pages/login/login",
     "pages/orders/orders",
     "pages/quickAppoint/quickAppoint",

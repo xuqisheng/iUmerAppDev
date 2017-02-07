@@ -206,6 +206,7 @@ page {
     display: flex;
 	justify-content: space-between;
 	font-family: SimHei;
+	border-top: solid 2rpx #F7F7F7;
 }
 .shop-item {
 	margin: 20rpx 0;
