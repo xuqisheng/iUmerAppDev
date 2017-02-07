@@ -26,7 +26,7 @@ Page({
       that.setData({
         "cityName": city 
       });
-      this.getPPT();
+      // this.getPPT();
       this.getHotProject();
       this.getHotPersonnel();
     } else {
@@ -129,7 +129,8 @@ Page({
         data: {
           cityId: wx.getStorageSync("cityCode"),
           longitude: wx.getStorageSync("longitude"),
-          latitude: wx.getStorageSync("latitude")
+          latitude: wx.getStorageSync("latitude"),
+          pageSize: 3
         },
         method: "POST",
         dataType: "json",
@@ -157,7 +158,8 @@ Page({
         data: {
           cityId: wx.getStorageSync("cityCode"),
           longitude: wx.getStorageSync("longitude"),
-          latitude: wx.getStorageSync("latitude")
+          latitude: wx.getStorageSync("latitude"),
+          pageSize: 3
         },
         method: "POST",
         dataType: "json",
@@ -176,6 +178,20 @@ Page({
           console.log("complete")
         }
     });
+  },
+  indexSearch: function(e) {
+    wx.redirectTo({
+      url: 'indexSearch',
+      success: function(res){
+        // success
+      },
+      fail: function() {
+        // fail
+      },
+      complete: function() {
+        // complete
+      }
+    })
   },
   clickProjectItem: function(event){
     var projectId = event.currentTarget.dataset.projectid;

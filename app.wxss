@@ -31,13 +31,6 @@
   display: flex;
 	align-items: center;
 }
-.top-menu-alert {
-	background-image: url('../../images/msg@3x.png');
-	background-Size: 40rpx 40rpx;
-	background-repeat: no-repeat;
-	height: 40rpx;
-	width: 40rpx;
-}
 .weui-mask {
 	background:rgba(0,0,0,.6);
 	position:fixed;

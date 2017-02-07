@@ -4,7 +4,6 @@
     "pages/index/indexSearch",
     "pages/index/location",
     "pages/index/locationSearch",
-    "pages/index/messageCenter",
     "pages/index/projectDetail",
     "pages/login/login",
     "pages/orders/orders",
@@ -36,11 +35,6 @@
       "text": "快速预约",
       "iconPath": "images/clock@3x.png",
       "selectedIconPath": "images/tab3@2x.png"
-    }, {
-      "pagePath": "pages/my/my",
-      "text": "我的",
-      "iconPath": "images/my@3x.png",
-      "selectedIconPath": "images/tab4@2x.png"
     }]
   }
 }
