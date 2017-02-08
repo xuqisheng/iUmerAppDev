@@ -29,14 +29,7 @@
                 <view class="description-cell" href="javascript:;">
                     <view class="description-cell__hd"></view>
                     <view class="description-cell__bd">
-                        <text>项目价格 {{ projectCoursePrice }}元/疗程</text>
-                    </view>
-                    <view class="description-cell__ft"></view>
-                </view>
-                <view class="description-cell" href="javascript:;">
-                    <view class="description-cell__hd"></view>
-                    <view class="description-cell__bd">
-                        <text>疗程说明 {{ projectCourseRemark }}次/疗程</text>
+                        <text>项目价格 {{ projectCoursePrice }}元/{{ projectCourseRemark }}次</text>
                     </view>
                     <view class="description-cell__ft"></view>
                 </view>

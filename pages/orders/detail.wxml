@@ -1,0 +1,75 @@
+<view class="container">
+    <view id="order-area">
+<!-- 			    <view class="weui-cell" href="javascript:;"> -->
+<!-- 			        <view class="weui-cell__bd shop-name"> -->
+<!-- 			            <p>悦诗风吟美容院</p> -->
+<!-- 			        </view> -->
+<!-- 			        <view class="weui-cell__ft"></view> -->
+<!-- 			    </view> -->
+        <view class="project-detail">
+            <view class="order-img"><image alt="" src="https://www.iumer.cn/umer/css/image/default.jpg" /></view>
+            <view class="order-content">
+                <view class="order-content-row order-content-first-row">
+                    <view class="order-content-first-row-title">{{ orderInfo.projectName }}</view>
+                    <!--<view class="order-content-first-row-price">￥{{ orderInfo.priceType == 0? ( orderInfo.unitPrice + '元/次'): (orderInfo.coursePrice + '元/疗程(' + orderInfo.courseRemark + '次)')  }}</view>-->
+                </view>
+                <view class="dot-line"></view>
+                <view class="order-content-row order-content-second-row">
+                    <view class="order-content-second-row-shop">{{ orderInfo.shopName }}</view>
+                    <view class="order-content-second-row-collect">￥{{ orderInfo.priceType == 0? ( orderInfo.unitPrice + '元/次'): (orderInfo.coursePrice + '元/疗程(' + orderInfo.courseRemark + '次)')  }}</view>
+        <!--    			            		<view class="order-content-second-row-count">123</view> -->
+        <!--    			            		<view class="order-content-second-row-comment">待评价</view> -->
+                </view>
+            </view>
+        </view>
+<!-- 			    <view class="weui-cell" href="javascript:;"> -->
+<!-- 			        <view class="weui-cell__bd"> -->
+<!-- 			            <p>优惠券</p> -->
+<!-- 			        </view> -->
+<!-- 			        <view class="weui-cell__ft red">-￥99元</view> -->
+<!-- 			    </view> -->
+        <view class="order-pay">
+            <view class="order-cell">
+                <view class="order-cell__hd">
+                    <p>实付金额</p>
+                </view>
+                <view class="orange">￥{{ orderInfo.orderPrice }}元</view>
+            </view>
+            <view class="order-cell" href="javascript:;">
+                <view class="order-cell__hd">
+                    <p>预约详情</p>
+                </view>
+                <view class="order-cell__ft qr-code" bindtap="showQRCode">查看支付码<image src="https://www.iumer.cn/umer/css/image/wechat/orders/qr.png"></image></view>
+            </view>
+            <view class="order-cell personnel-info">
+                <view class="order-cell__hd">
+                    <view>优美师：{{ orderInfo.personnelName }}</view>
+                    <view>优美师电话：{{ orderInfo.personnelPhone }}</view>
+                </view>
+                <view class="order-cell__ft call-personnel">
+                    <image src="https://www.iumer.cn/umer/css/image/wechat/login/call@2x.png"></image>
+                </view>
+            </view>
+        </view>
+        <view class="order-detail">
+            <view class="order-detail-title">订单信息</view>
+            <view class="order-cell">
+                <view class="order-cell__bd order-detail-info">
+                    <!--<view>预约人：<span class="reserve-name"></span></view>
+                    <view>预约电话：<span class="reserve-phone"></span></view>-->
+                    <view>支付方式：{{ orderInfo.modeName || "" }}</view>
+                    <view>预约时间：{{ orderInfo.makeTime || "" }}</view>
+                    <view>下单时间：{{ orderInfo.orderTime || "" }}</view>
+                    <view>订单号：{{ orderInfo.orderNo }}</view>
+                </view>
+                <view class="order-cell__ft"></view>
+            </view>
+        </view>
+    </view>
+    <view id="btn-area">
+        <view class="btn-area-cancel text-center">取消订单</view>
+        <view class="btn-area-pay text-center">付款
+            <view  wx:if="{{ showTimer }}" class="timer">{{ min + "分" + sec + '秒' }}</view>
+        </view>
+    </view>
+</view>
