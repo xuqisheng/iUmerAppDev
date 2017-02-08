@@ -107,12 +107,12 @@
                         </view>
                         <view class="comment-item-right">
                             <view class="comment-item-hd-info-name">{{ item.customerName || "匿名用户"}}</view>
-                            <view class="star" data-score='{{ item.level || 0 }}'>
+                            <view class="star" data-score='{{ item.starLevel || 0 }}'>
 								<block wx:for="{{ [ 0,1,2,3,4 ] }}" wx:for-item="itm" wx:key="*this">
-									<view wx:if="{{ itm < (item.level || 0) }}">
+									<view wx:if="{{ itm < (item.starLevel || 0) }}">
 										<image src="https://www.iumer.cn/umer/js/raty/img/star-on.png"></image>
 									</view>
-									<view wx:if="{{ itm >= (item.level || 0) }}">
+									<view wx:if="{{ itm >= (item.starLevel || 0) }}">
 										<image src="https://www.iumer.cn/umer/js/raty/img/star-off.png"></image>
 									</view>
 								</block>
