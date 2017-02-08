@@ -89,6 +89,9 @@ page {
 	display: flex;
 	justify-content: space-between;
 }
+.hot-item-price {
+	color: orange;
+}
 .hot-item-place {
 	color: #414141;
 }

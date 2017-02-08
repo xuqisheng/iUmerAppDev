@@ -8,40 +8,42 @@ page {
 swiper {
 	height:calc(100% - 96rpx);
 }
+#people {
+	margin-top: 10rpx;
+	height: 100%;
+}
 .people-item {
 	background-color: white;
-    display: flex;
+	display: flex;
 	justify-content: space-between;
 	font-family: SimHei;
-	border-top: solid 1px #F7F7F7;
-	margin-top: 5px;
+	padding: 16rpx;
 }
-.people-item:last-child {
-	border-bottom: solid 1px #F7F7F7;
+.people-item:not(:first-child) {
+	margin-top: 10rpx;
 }
 .people-item-left {
-	width: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction:column;
+	width: 100rpx;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction:column;
+	margin-right: 20rpx;
 }
 .people-item-left .people-item-img image {
-	width: 50px;
-	height: 50px;
-	border-radius: 100%;
-	margin-bottom: 5px;
-}
-.people-item-left .star {
-    display: flex;
-}
-.people-item-left .star image {
-	width: 16px;
-	height: 16px;
+	width: 100rpx;
+	height: 100rpx;
+	margin-bottom: 10rpx;
 }
 .people-item-right {
 	width: 100%;
-	padding: 10px;
+}
+.people-item-right .star {
+	display: flex;
+}
+.people-item-right .star image {
+	width: 32rpx;
+	height: 32rpx;
 }
 .people-item-name {
 	color: #414141;
@@ -49,30 +51,27 @@ swiper {
 .people-item-place {
 	color: #414141;
 }
-.people-item-dot-line {
- 	margin-right: 20px;
-	background-image: url('https://www.iumer.cn/umer/css/image/wechat/dotted-line@2x.png');
-	width: 100%;
-	height: 1px;
-	background-size: 100% 100%;
-	background-repeat: no-repeat;
+.people-item-info {
+	display: flex;
+	justify-content: flex-end;
+}
+.people-item-info-board-comment {
+	display: flex;
 }
 .people-item-info-comment {
-	float: right;
 	color: #686868;
-    display: flex;
-    align-items: center;
+	display: flex;
+	align-items: center;
 }
 .people-item-info-comment image {
-	width: 20px;
-	height: 20px;
-    margin: 5px;
+	width: 40rpx;
+	height: 40rpx;
+	margin: 10rpx;
 }
 .people-item-info-board {
-	float: right;
 	color: #686868;
-    display: flex;
-    align-items: center;
+	display: flex;
+	align-items: center;
 }
 .people-item-info-board image {
 	width: 20px;

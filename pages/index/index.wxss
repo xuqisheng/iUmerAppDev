@@ -94,6 +94,9 @@
 .hot-item-place {
 	color: #414141;
 }
+.hot-item-price {
+	color: orange;
+}
 .hot-item-info {
 	display: flex;
 	justify-content: space-between;
