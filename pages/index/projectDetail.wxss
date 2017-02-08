@@ -68,7 +68,7 @@ page {
 	background-color: white;
 }
 .description-cell {
-	padding: 10rpx;
+	padding: 20rpx;
 }
 .description-cell:not(:last-child) {
 	border-bottom: solid 1px #F7F7F7;
@@ -91,11 +91,7 @@ page {
 	width: 80%;
 }
 .shop-info-area-txt-title {
-	padding-left: 10px;
-	display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
+	padding-left: 20rpx;
     display: flex;
     justify-content: space-between;
     -webkit-justify-content: space-between;
@@ -122,7 +118,7 @@ page {
 	background-color: white;
 }
 .other-cell {
-	padding: 10rpx;
+	padding: 20rpx;
 }
 .other-cell:not(:last-child) {
 	border-bottom: solid 1px #F7F7F7;
