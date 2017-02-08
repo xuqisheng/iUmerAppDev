@@ -4,6 +4,7 @@ Page({
   data:{
     currTab: 0,
     currTab2: 0,
+    totalCommentNum: 0,
     goodReputation: 0,
     middleReputation: 0,
     badReputation: 0,
@@ -25,7 +26,7 @@ Page({
       projectId: options.projectId
     });
     this.loadProject();
-    this.loadComments(0, ""); 
+    this.loadComments(); 
     this.updateCommentNum();
   },
   onReady:function(){
@@ -58,49 +59,6 @@ Page({
       }
     })
   },
-  switchNav: function(e) {   
-    var that = this;
-    // console.log(this) 
-    if (this.data.currTab == e.target.dataset.current ) {  
-      return false;  
-    } else {  
-      that.setData( {  
-        currTab: e.target.dataset.current  
-      }) ; 
-    } 
-  },
-  switchSwiper: function(e) {
-    var that = this;
-    if (this.data.currTab == e.detail.current ) {  
-      return false;  
-    } else {  
-      that.setData( {  
-        currTab: e.detail.current  
-      }) ; 
-    } 
-  },
-  switchNav2: function(e) {   
-    var that = this; 
-    if (this.data.currTab2 == e.target.dataset.current) { 
-      return false;  
-    } else {  
-      that.setData( {  
-        currTab2: e.target.dataset.current  
-      });
-    } 
-  },
-  switchSwiper2: function(e) {
-    var that = this;
-    this.updateCommentNum();
-    this.loadComments(e.detail.current, ""); 
-    if (this.data.currTab2 == e.detail.current) {  
-      return false;  
-    } else {  
-      that.setData( {  
-        currTab2: e.detail.current  
-      });
-    } 
-  },
   updateCommentNum: function(){
     var that = this;
     // console.log(this.data.projectId)
@@ -116,6 +74,7 @@ Page({
         },
         success: function(res) {
           that.setData({
+            totalCommentNum: res.data.data.totalReputation,
             goodReputation: res.data.data.goodReputation,
             middleReputation: res.data.data.middleReputation,
             badputation: res.data.data.badReputation            
@@ -129,28 +88,15 @@ Page({
         }
     });
   },
-  loadComments: function(level, opType) {
+  loadComments: function() {
     this.setData({
       loadingHidden: false
     });
     // console.log("loadComments: " + this)
     var data = {};
     data["projectId"] = this.data.projectId;
-    if (level == 0) {
-      data["commentLevel"] = 3;
-    } else if (level == 1) {
-      data["commentLevel"] = 2;
-    } else if (level == 2) {
-      data["commentLevel"] = 1;
-    }
-    data["pageSize"] = 10;
-    if (opType) {
-      data["operationType"] = opType;
-      switch(opType) {
-      case "up": data["timestamp"] = level == 0? this.data.goodTimestampLast: level == 1? this.data.middleTimestampLast: this.data.badTimestampLast; break;
-      case "down": data["timestamp"] = level == 0? this.data.goodTimestampFirst: level == 1? this.data.middleTimestampFirst: this.data.badTimestampFirst; break;
-      }
-    }
+    data["commentLevel"] = 3;
+    data["pageSize"] = 3;
     // console.log(data)
     var that = this;
     wx.request({
@@ -166,28 +112,9 @@ Page({
           if (res.data.data.length == 0) {
             return false;
           }
-          if (level == 0) {
-            var goodList = opType == "down"? res.data.data.concat(that.data.goodList): opType == "up"? that.data.goodList.concat(res.data.data): res.data.data;
-            that.setData({
-              goodList: goodList.concat(goodList).concat(goodList).concat(goodList).concat(goodList).concat(goodList).concat(goodList),
-              goodTimestampFirst: goodList[0].createDate,
-              goodTimestampLast: goodList[goodList.length - 1].createDate
-            });
-          } else if (level == 1) {
-             var middleList = opType == "down"? res.data.data.concat(that.data.middleList): opType == "up"? that.data.middleList.concat(res.data.data): res.data.data;
-            that.setData({
-              middleList: middleList,
-              middleTimestampFirst: middleList[0].createDate,
-              middleTimestampLast: middleList[middleList.length - 1].createDate
-            });
-          } else if (level == 2) {
-             var badList = opType == "down"? res.data.data.concat(that.data.badList): opType == "up"? that.data.badList.concat(res.data.data): res.data.data;
-            that.setData({
-              badList: badList,
-              badTimestampFirst: badList[0].createDate,
-              badTimestampLast: badList[badList.length - 1].createDate
-            });
-          }
+          that.setData({
+            commentList: res.data.data,
+          });
         },
         fail: function(res) {
           console.log("loadComments fail");
@@ -295,65 +222,9 @@ Page({
         }
     });
   },
-  collect: function(e){
-    var that = this;
-    wx.request({
-        url: app.globalData.server_url + 'webService/customer/sys/user/collectProject', 
-        data: {
-          id: that.data.projectId,
-          customerId: wx.getStorageSync('id') || 30
-        },
-        method: "POST",
-        dataType: "json",
-        header: {
-           'Content-Type': 'application/json;charset=UTF-8;',
-           "X-Token": wx.getStorageSync('X-TOKEN'),
-           "X-Type": 3
-        },
-        data : JSON.stringify({
-          "customerId": wx.getStorageSync('id') || 30,
-          "projectId": that.data.projectId,
-          "ifCollect": that.data.ifCollect // 1是取消收藏，0是添加收藏
-        }),
-        success: function(res) {
-          var res = res.data;
-          if(res.code == "1"){
-            var collected = that.data.ifCollect
-            that.setData({
-              ifCollect: collected == 1? 0: 1
-            })
-          } else if (res.code == "-4") {
-            console.log("TOKEN失效！")
-            wx.navigateTo({
-              url: '../login/login',
-              success: function(res){
-                // success
-              },
-              fail: function() {
-                // fail
-              },
-              complete: function() {
-                // complete
-              }
-            })
-          } else {
-            console.log(res.desc);    
-          }          
-        },
-        fail: function(){
-          console.log("collectProject failed");   
-        },
-        complete: function(){
-          console.log("collectProject complete");
-          that.setData({
-            loadingHidden: true
-          });
-        }
-    });
-  },
   appoint: function(){
     var that = this;
-    wx.navigateTo({
+    wx.redirectTo({
       url: '../quickAppoint/appointPersonnel?projectId=' + that.data.projectId,
       success: function(res){
         // success

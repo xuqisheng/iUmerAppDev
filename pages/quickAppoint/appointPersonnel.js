@@ -53,8 +53,8 @@ Page({
     // 页面关闭
   },
   back: function(){
-    wx.navigateBack({
-      delta: 1, // 回退前 delta(默认为1) 页面
+    wx.redirectTo({
+      url: "../index/projectDetail?projectId=" + this.data.projectId, // 回退前 delta(默认为1) 页面
       success: function(res){
         // success
       },

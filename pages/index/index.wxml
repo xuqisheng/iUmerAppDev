@@ -38,7 +38,7 @@
 		</view>
 		<view id="hot-area">
 			<block wx:for="{{ hotProjects }}" wx:key="id">
-				<view class="hot-item" data-personnelId="{{ item.id }}" bindtap="clickProjectItem" >
+				<view class="hot-item" data-projectId="{{ item.id }}" bindtap="clickProjectItem" >
 					<view class="hot-item-left">
 						<view class="hot-item-img">
 							<image class="lazy" src="https://www.iumer.cn{{ item.filePath || '/umer/css/image/default.jpg' }}" />
@@ -77,10 +77,10 @@
 						<view class="people-item-rate">
 							<view class="star" data-score='{{ item.level || 0 }}'>
 								<block wx:for="{{ [ 0,1,2,3,4 ] }}" wx:for-item="itm" wx:key="*this">
-									<view wx:if="{{ index < item.level}}">
+									<view wx:if="{{ itm < (item.level || 0) }}">
 										<image src="https://www.iumer.cn/umer/js/raty/img/star-on.png"></image>
 									</view>
-									<view wx:if="{{ index >= item.level}}">
+									<view wx:if="{{ itm >= (item.level || 0) }}">
 										<image src="https://www.iumer.cn/umer/js/raty/img/star-off.png"></image>
 									</view>
 								</block>
