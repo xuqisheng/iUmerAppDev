@@ -10,6 +10,7 @@
     "pages/index/shopDetail",
     "pages/login/login",
     "pages/orders/orders",
+    "pages/orders/pay",
     "pages/quickAppoint/quickAppoint",
     "pages/quickAppoint/appointPersonnel",
     "pages/quickAppoint/choosePersonnel",

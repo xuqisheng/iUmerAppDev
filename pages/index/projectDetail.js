@@ -236,5 +236,20 @@ Page({
         // complete
       }
     })
+  },
+  showComments: function() {
+    var that = this;
+    wx.navigateTo({
+      url: '../index/projectComments?projectId=' + that.data.projectId,
+      success: function(res){
+        // success
+      },
+      fail: function() {
+        // fail
+      },
+      complete: function() {
+        // complete
+      }
+    })
   }
 })

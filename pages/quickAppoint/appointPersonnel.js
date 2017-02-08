@@ -32,13 +32,14 @@ Page({
     this.setData({
       projectId: options.projectId,
       personnelId: options.personnelId,
-      priceType: options.priceType
+      priceType: options.priceType || 0
     });
     this.loadProject();
     this.loadWeekdays();
     if (options.personnelId) {
       this.loadPersonnel();
     }
+    console.log(this.data.priceType)
   },
   onReady:function(){
     // 页面渲染完成
@@ -306,8 +307,10 @@ Page({
       chosenHours.push(timeslots[idx].time);
       selectedIndex[idx] = true;
     }
+    chosenHours.sort();
     this.setData({
-      selectedIndex: selectedIndex
+      selectedIndex: selectedIndex,
+      chosenHours: chosenHours
     });
     if (chosenHours.length == 0) {
       this.setData({
@@ -318,22 +321,104 @@ Page({
         selectedTime: this.data.chosenDate + " " + chosenHours[0]
       });
     } else {
-      chosenHours.sort();
+      // chosenHours.sort();
       this.setData({
         selectedTime: this.data.chosenDate + " " + chosenHours[0]
       });
     }
   },
-  togglePriceType: function(){
+  togglePriceType: function() {
     var hidden = this.data.priceDropdownHidden;
     this.setData({
       priceDropdownHidden: !hidden
     })
   },
-  changePriceType: function(e){
+  changePriceType: function(e) {
     var priceType = e.currentTarget.dataset.pricetype;
     this.setData({
       priceType: priceType
+    });
+  },
+  submitOrder: function(e) {
+    var that = this;
+    var startDateStr = that.data.chosenDate + " " + that.data.chosenHours[0];
+		var startDate = new Date(startDateStr.replace(new RegExp(/-/g),'/'));
+		var endDateStr = that.data.chosenDate + " " + that.data.chosenHours[that.data.chosenHours.length - 1];
+		var endDate = new Date(endDateStr.replace(new RegExp(/-/g),'/'));
+    wx.request({
+      url: app.globalData.server_url + 'webService/customer/biz/reserve/orderSave', 
+        data: {
+          "projectId": that.data.projectId,
+	        "personnelId": that.data.personnelId,
+	        "customerId": wx.getStorageSync('id'),
+	        "makeStartDate": startDate.getTime(),
+	        "makeEndDate": endDate.getTime(),
+	        "reserveName" : that.data.reserveName,
+	        "reservePhone": that.data.reservePhone,
+	        "priceType": that.data.priceType
+        },
+        method: "POST",
+        dataType: "json",
+        header: {
+          'Content-Type': 'application/json;charset=UTF-8;',
+          'X-Token': wx.getStorageSync('X-TOKEN'),
+          'X-Type': 3
+        },
+        success: function(res) {
+          // console.log(res.data)
+          var d = res.data;
+          if (d.code == 1) {
+            wx.showToast({
+              title: '订单提交成功!',
+              icon: 'success',
+              duration: 5000
+            });
+            wx.navigateTo({
+              url: '../orders/pay?orderNo=' + d.data,
+              success: function(res){
+                // success
+              },
+              fail: function() {
+                // fail
+              },
+              complete: function() {
+                // complete
+              }
+            }); 
+          } else if (d.code == -4) {
+            wx.navigateTo({
+              url: '../login/login',
+              success: function(res){
+                // success
+              },
+              fail: function() {
+                // fail
+              },
+              complete: function() {
+                // complete
+              }
+            }); 
+          }
+        },
+        fail: function(res) {
+          console.log("submitOrder fail");
+        },
+        complete: function(res) {
+          console.log("submitOrder complete");
+          that.setData({
+            loadingHidden: true
+          });
+        }
+    });
+  },
+  inputReserveName: function(e) {
+    this.setData({
+      reserveName: e.detail.value
+    });
+  },
+  inputReservePhone: function(e) {
+    this.setData({
+      reservePhone: e.detail.value
     });
   }
 })

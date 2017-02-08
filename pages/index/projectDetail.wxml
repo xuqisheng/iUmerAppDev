@@ -97,7 +97,7 @@
                 </view>
             </view>
             <view id="comments-area">
-                <view class="comments-area-title">网友评价</view>
+                <view class="comments-area-title">网友评价({{ totalCommentNum || 0 }})</view>
                 <block wx:for="{{ commentList }}" wx:key="id">
                     <view class="comment-item">
                         <view class="comment-item-left">
@@ -126,7 +126,7 @@
                         </view>
                     </view>
                 </block>
-                <view class="more-comment text-center">查看全部<text>{{ totalCommentNum || 0 }}</text>条评论</view>
+                <view class="more-comment text-center" bindtap="showComments">查看全部<text>{{ totalCommentNum || 0 }}</text>条评论</view>
             </view>
             <view id="btn-area">
                 <view class="btn-area-btn text-center" bindtap="appoint">预约</view>

@@ -119,5 +119,5 @@ Page({
   refresh: function(e){
     console.log("refresh");
     this.loadPersonnels("down");
-  },
+  }
 })

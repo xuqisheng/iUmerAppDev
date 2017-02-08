@@ -80,20 +80,20 @@
         <view class="input-cells input-cells_form">
             <view class="input-cell">
                 <view class="input-cell__hd">预约人：</view>
-                <input class="reserve-name" placeholder="请输入姓名"/>
+                <input class="reserve-name" placeholder="请输入姓名" bindinput="inputReserveName"/>
             </view>
             <view class="input-cell">
                 <view class="input-cell__hd">
                     <view class="input-label">预约手机号：</view>
                 </view>
                 <view class="input-cell__bd">
-                    <input class="reserve-phone" type="number" maxlength="11" placeholder="请输入手机号" />
+                    <input class="reserve-phone" type="number" maxlength="11" placeholder="请输入手机号" bindinput="inputReservePhone"/>
                 </view>
             </view>
         </view>	
     </view>
     <view class="btn-area">
         <view class="btn-item" bindtap="back">取消预约</view>
-        <view class="btn-item" onclick="submitOrder">确认预约</view>
+        <view class="btn-item" bindtap="submitOrder">确认预约</view>
     </view>
 </view>
