@@ -8,61 +8,97 @@
     </view>
     <swiper class="swiper2" current="{{ currTab2 }}" duration="300" bindchange="switchSwiper2">
         <swiper-item>    
-            <scroll-view data-level="0" scroll-y="true" style="width: 100%; height: calc(100% - 96rpx);" bindscrolltolower="loadMore" bindscrolltoupper="refresh">
+            <scroll-view data-level="0" scroll-y="true" style="width: 100%; height: calc(100%);" bindscrolltolower="loadMore" bindscrolltoupper="refresh">
                 <block wx:for="{{ goodList }}" wx:key="id">
                     <view class="comment-item">
-                        <view class="comment-item-hd">
+                        <view class="comment-item-left">
                             <view class="comment-item-hd-img">
                                 <image src="https://www.iumer.cn{{ item.customerHeader || '/umer/css/image/default.jpg' }}" />
                             </view>
-                            <view class="comment-item-hd-info">
-                                <view class="comment-item-hd-info-name">{{ item.customerName || "匿名用户" }}</view>
+                        </view>
+                        <view class="comment-item-right">
+                            <view class="comment-item-hd-info-name">{{ item.customerName || "匿名用户"}}</view>
+                            <view class="star" data-score='{{ item.level || 0 }}'>
+								<block wx:for="{{ [ 0,1,2,3,4 ] }}" wx:for-item="itm" wx:key="*this">
+									<view wx:if="{{ itm < (item.level || 0) }}">
+										<image src="https://www.iumer.cn/umer/js/raty/img/star-on.png"></image>
+									</view>
+									<view wx:if="{{ itm >= (item.level || 0) }}">
+										<image src="https://www.iumer.cn/umer/js/raty/img/star-off.png"></image>
+									</view>
+								</block>
+							</view>
+                            <view class="comment-item-bd">{{ item.content || "无内容" }}</view>
+                            <view class="comment-item-time">
                                 <view class="comment-item-hd-info-time">
                                     <image alt="" src="https://www.iumer.cn/umer/css/image/wechat/history@3x.png" />{{ item.commentTime || "" }}
                                 </view>
                             </view>
                         </view>
-                        <view class="comment-item-bd">{{ item.content || "无内容" }}</view>
                     </view>
                 </block>
             </scroll-view>
         </swiper-item>  
         <swiper-item>  
-            <scroll-view data-level="1" scroll-y="true" style="width: 100%; height: calc(100% - 96rpx);" bindscrolltolower="loadMore" bindscrolltoupper="refresh">
+            <scroll-view data-level="1" scroll-y="true" style="width: 100%; height: calc(100%);" bindscrolltolower="loadMore" bindscrolltoupper="refresh">
                 <block wx:for="{{ middleList }}" wx:key="id">
                     <view class="comment-item">
-                        <view class="comment-item-hd">
+                        <view class="comment-item-left">
                             <view class="comment-item-hd-img">
                                 <image src="https://www.iumer.cn{{ item.customerHeader || '/umer/css/image/default.jpg' }}" />
                             </view>
-                            <view class="comment-item-hd-info">
-                                <view class="comment-item-hd-info-name">{{ item.customerName || ""}}</view>
+                        </view>
+                        <view class="comment-item-right">
+                            <view class="comment-item-hd-info-name">{{ item.customerName || "匿名用户"}}</view>
+                            <view class="star" data-score='{{ item.level || 0 }}'>
+								<block wx:for="{{ [ 0,1,2,3,4 ] }}" wx:for-item="itm" wx:key="*this">
+									<view wx:if="{{ itm < (item.level || 0) }}">
+										<image src="https://www.iumer.cn/umer/js/raty/img/star-on.png"></image>
+									</view>
+									<view wx:if="{{ itm >= (item.level || 0) }}">
+										<image src="https://www.iumer.cn/umer/js/raty/img/star-off.png"></image>
+									</view>
+								</block>
+							</view>
+                            <view class="comment-item-bd">{{ item.content || "无内容" }}</view>
+                            <view class="comment-item-time">
                                 <view class="comment-item-hd-info-time">
                                     <image alt="" src="https://www.iumer.cn/umer/css/image/wechat/history@3x.png" />{{ item.commentTime || "" }}
                                 </view>
                             </view>
                         </view>
-                        <view class="comment-item-bd">{{ item.content || "" }}</view>
                     </view>
                 </block>
             </scroll-view>
         </swiper-item>  
         <swiper-item>  
-            <scroll-view data-level="2" scroll-y="true" style="width: 100%; height: calc(100% - 96rpx);" bindscrolltolower="loadMore" bindscrolltoupper="refresh">
+            <scroll-view data-level="2" scroll-y="true" style="width: 100%; height: calc(100%);" bindscrolltolower="loadMore" bindscrolltoupper="refresh">
                 <block wx:for="{{ badList }}" wx:key="id">
                     <view class="comment-item">
-                        <view class="comment-item-hd">
+                        <view class="comment-item-left">
                             <view class="comment-item-hd-img">
                                 <image src="https://www.iumer.cn{{ item.customerHeader || '/umer/css/image/default.jpg' }}" />
                             </view>
-                            <view class="comment-item-hd-info">
-                                <view class="comment-item-hd-info-name">{{ item.customerName || ""}}</view>
+                        </view>
+                        <view class="comment-item-right">
+                            <view class="comment-item-hd-info-name">{{ item.customerName || "匿名用户"}}</view>
+                            <view class="star" data-score='{{ item.level || 0 }}'>
+								<block wx:for="{{ [ 0,1,2,3,4 ] }}" wx:for-item="itm" wx:key="*this">
+									<view wx:if="{{ itm < (item.level || 0) }}">
+										<image src="https://www.iumer.cn/umer/js/raty/img/star-on.png"></image>
+									</view>
+									<view wx:if="{{ itm >= (item.level || 0) }}">
+										<image src="https://www.iumer.cn/umer/js/raty/img/star-off.png"></image>
+									</view>
+								</block>
+							</view>
+                            <view class="comment-item-bd">{{ item.content || "无内容" }}</view>
+                            <view class="comment-item-time">
                                 <view class="comment-item-hd-info-time">
                                     <image alt="" src="https://www.iumer.cn/umer/css/image/wechat/history@3x.png" />{{ item.commentTime || "" }}
                                 </view>
                             </view>
                         </view>
-                        <view class="comment-item-bd">{{ item.content || "" }}</view>
                     </view>
                 </block>
             </scroll-view> 

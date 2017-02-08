@@ -24,7 +24,6 @@ Page({
     this.setData({
       projectId: options.projectId
     });
-    this.loadProject();
     this.loadComments(0, ""); 
     this.updateCommentNum();
   },
@@ -118,7 +117,7 @@ Page({
           that.setData({
             goodReputation: res.data.data.goodReputation,
             middleReputation: res.data.data.middleReputation,
-            badputation: res.data.data.badReputation            
+            badReputation: res.data.data.badReputation            
           })
         },
         fail: function(res) {
@@ -169,7 +168,7 @@ Page({
           if (level == 0) {
             var goodList = opType == "down"? res.data.data.concat(that.data.goodList): opType == "up"? that.data.goodList.concat(res.data.data): res.data.data;
             that.setData({
-              goodList: goodList.concat(goodList).concat(goodList).concat(goodList).concat(goodList).concat(goodList).concat(goodList),
+              goodList: goodList,
               goodTimestampFirst: goodList[0].createDate,
               goodTimestampLast: goodList[goodList.length - 1].createDate
             });
