@@ -1,10 +1,5 @@
 <!--pages/quickAppoint/appointPersonnel.wxml-->
 <view class="container">
-    <view id="top-menu">
-        <view class="top-menu-back" bindtap="back"></view>
-        <view class="top-menu-title">预约</view>
-        <view class="top-menu-placeholder"></view>
-    </view>
     <loading hidden="{{ loadingHidden }}">
         加载中...
     </loading>
@@ -93,7 +88,6 @@
         </view>	
     </view>
     <view class="btn-area">
-        <view class="btn-item" bindtap="back">取消预约</view>
         <view class="btn-item" bindtap="submitOrder">确认预约</view>
     </view>
 </view>

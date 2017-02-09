@@ -172,13 +172,7 @@ button {
 	padding:0 40rpx;	
 }
 .timeslots {
-	display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
     display: flex;
-	-ms-flex-wrap: wrap;
-	-webkit-flex-wrap: wrap;
 	flex-wrap: wrap;	
     justify-content: flex-start;
    	margin-top: -10px;
@@ -207,7 +201,7 @@ button {
 	background-color: #EEEEEE;
 }
 .timeslot-selected {
-    background-color: #E84057;
+    background-color: #FD8CA3;
     color: white;
 }
 .input-area {
@@ -227,14 +221,12 @@ button {
 	margin-top: 50px;
     display: flex;
 	justify-content: center;
-    -webkit-justify-content: center;
 }
 .btn-item {
-    background-color: #E84057;
+    background-color: #FD8CA3;
     padding: 10px 0;
     color: white;
     font-family: SimHei;
-    margin: 2px;
-    width: 50%;
+    width: 100%;
     text-align: center;
 }

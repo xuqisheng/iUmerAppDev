@@ -20,7 +20,7 @@
 	height: 96rpx;
 }	
 .top-menu-back {
-	background-image: url('../../images/reply@3x.png');
+	background-image: url('https://www.iumer.cn/umer/css/image/wechat/reply@3x.png');
 	background-Size: 50rpx 50rpx;
 	background-repeat: no-repeat;
 	height: 50rpx;

@@ -224,7 +224,7 @@ Page({
   },
   appoint: function(){
     var that = this;
-    wx.redirectTo({
+    wx.navigateTo({
       url: '../quickAppoint/appointPersonnel?projectId=' + that.data.projectId,
       success: function(res){
         // success

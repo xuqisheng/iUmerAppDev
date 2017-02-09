@@ -1,6 +1,6 @@
 {
   "pages":[
-        "pages/orders/detail",
+        
     "pages/index/index",
     "pages/index/indexSearch",
     "pages/index/location",
@@ -12,7 +12,7 @@
     "pages/login/login",
     "pages/orders/orders",
     "pages/orders/pay",
-
+    "pages/orders/detail",
     "pages/quickAppoint/quickAppoint",
     "pages/quickAppoint/appointPersonnel",
     "pages/quickAppoint/choosePersonnel",
