@@ -5,12 +5,13 @@ Page({
   data:{
     min: 0,
     sec: 0,
-    showTimer: false
+    showTimer: false,
+    showModal: false
   },
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
     this.setData({
-      orderNo: options.orderNo || 'DD5836271871488530'
+      orderNo: options.orderNo || 'DD5835963228129030'
     });
     this.loadOrder();
   },
@@ -138,14 +139,56 @@ Page({
     });
   },
   showQRCode: function() {
-    wx.showModal({
-      title: '提示',
-      content: '<view>这是一个模态弹窗</view>',
-      success: function(res) {
-        if (res.confirm) {
-          console.log('用户点击确定')
+    this.setData({
+      showModal: true
+    });
+    var that = this;
+    wx.request({
+        url: app.globalData.server_url + 'webService/customer/biz/order/payQRDetail', 
+        data: {
+          orderNo: that.data.orderNo,
+          customerId: wx.getStorageSync('id')
+        },
+        method: "POST",
+        dataType: "json",
+        header: {
+           'Content-Type': 'application/json;charset=UTF-8;',
+           'X-Token': wx.getStorageSync('X-TOKEN'),
+           'X-Type': 3
+        },
+        success: function(res) {
+          if (res.data.code == 1) {
+            var data = res.data.data;
+            that.setData({
+              qrImg: data.qrPath,
+              qrTxt: data.payCode
+            });
+          } else if (res.data.code == -4) {
+            wx.navigateTo({
+              url: '../login/login',
+              success: function(res){
+                // success
+              },
+              fail: function() {
+                // fail
+              },
+              complete: function() {
+                // complete
+              }
+            })
+          }
+        },
+        fail: function(res) {
+          console.log("orderDetail - loadQr fail")
+        },
+        complete: function(res) {
+          console.log("orderDetail - loadQr complete")
         }
-      }
+    });
+  },
+  hideQRCode: function() {
+    this.setData({
+      showModal: false
     })
   }
 })

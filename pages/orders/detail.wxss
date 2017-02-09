@@ -4,6 +4,17 @@ page {
 .orange {
 	color: orange;
 }
+.modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 990;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+}
 #order-area {
 }
 .project-detail {
@@ -59,8 +70,29 @@ page {
     align-items: center;
 }
 .qr-code image {
-    width: 40rpx;
-    height: 40rpx;
+    width: 35rpx;
+    height: 35rpx;
+}
+.qr-layer {
+    margin: 0 auto;
+    height: calc(750rpx * 0.8);
+    width: 80%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.qr-title {
+    font-size: 150%;
+}
+.qr-img {
+    width: 400rpx;
+    height: 400rpx;
+    margin: 0 auto;
+}
+.qr-txt {
+
 }
 .personnel-info {
     display: flex;

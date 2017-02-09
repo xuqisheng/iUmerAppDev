@@ -72,4 +72,11 @@
             <view  wx:if="{{ showTimer }}" class="timer">{{ min + "分" + sec + '秒' }}</view>
         </view>
     </view>
+    <view wx:if="{{ showModal }}" class="modal" bindtap="hideQRCode">
+        <view class="qr-layer">
+            <text class="qr-title text-center">扫码确认</text> 
+            <image class="qr-img text-center" src="https://www.iumer.cn{{ qrImg }}"/>
+            <text class="qr-txt text-center">{{ qrTxt }}</text>
+        </view>
+    </view>
 </view>
