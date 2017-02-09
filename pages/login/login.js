@@ -37,7 +37,7 @@ Page({
     });
   },
   login: function(){
-    if (!this.data.account) {
+    if (!this.data.account && !this.data.rememberAccount ) {
       wx.showToast({
         title: '请输入手机号',
         icon: 'success',
@@ -45,7 +45,7 @@ Page({
       });
       return false;
     }
-    if (!this.data.pwd) {
+    if (!this.data.pwd && !this.data.rememberPwd) {
       wx.showToast({
         title: '请输入密码',
         icon: 'success',
@@ -57,8 +57,8 @@ Page({
     wx.request({
       url: app.globalData.server_url + 'webService/customer/sys/user/login', 
       data: {
-        "phone": that.data.account,
-        "password": that.data.pwd
+        "phone": that.data.account || that.data.rememberAccount,
+        "password": that.data.pwd || that.data.rememberPwd
       },
       method: "POST",
       dataType: "json",
@@ -70,7 +70,11 @@ Page({
         if (that.data.remember) {
           wx.setStorageSync('remember', true);
           wx.setStorageSync('rememberAccount', that.data.account);
-          wx.setStorageSync('remembberPwd', that.data.pwd);
+          wx.setStorageSync('rememberPwd', that.data.pwd);
+        } else {
+          wx.removeStorageSync('remember');
+          wx.removeStorageSync('rememberAccount');
+          wx.removeStorageSync('rememberPwd');
         }
         wx.setStorageSync('id', data.id || "");
         wx.setStorageSync("name", data.name || "");
@@ -102,5 +106,10 @@ Page({
         console.log("login complete")
       }
     });
+  },
+  rememberPwd: function(e) {
+    this.setData({
+      remember: e.detail.value == 'rem'
+    })
   }
 });

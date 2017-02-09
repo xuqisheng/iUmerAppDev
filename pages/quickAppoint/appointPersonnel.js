@@ -25,7 +25,9 @@ Page({
     durationNum: 0,
     selectedTime: "",
     priceDropdownHidden: true,
-    priceType: 0
+    priceType: 0,
+    reservePhone: wx.getStorageSync('phone'),
+    reserveName: wx.getStorageSync('name')
   },
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
@@ -417,8 +419,14 @@ Page({
     });
   },
   inputReservePhone: function(e) {
+    var value = e.detail.value;
+    var last = value.charAt(value.length - 1);
+    if (last > '9' || last < '0') {
+      value = value.slice(0, value.length - 1);
+    }
     this.setData({
-      reservePhone: e.detail.value
+      reservePhone: value
     });
+    return value;
   }
 })
