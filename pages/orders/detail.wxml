@@ -46,7 +46,7 @@
                     <view>优美师：{{ orderInfo.personnelName }}</view>
                     <view>优美师电话：{{ orderInfo.personnelPhone }}</view>
                 </view>
-                <view class="order-cell__ft call-personnel">
+                <view class="order-cell__ft call-personnel" bindtap="callPersonnel" data-phone="{{ orderInfo.personnelPhone }}">
                     <image src="https://www.iumer.cn/umer/css/image/wechat/login/call@2x.png"></image>
                 </view>
             </view>

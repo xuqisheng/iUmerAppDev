@@ -190,5 +190,11 @@ Page({
     this.setData({
       showModal: false
     })
+  },
+  callPersonnel: function (e){
+    var phone = e.currentTarget.dataset.phone;
+    wx.makePhoneCall({
+      phoneNumber: phone
+    })
   }
 })
