@@ -85,6 +85,7 @@
 }
 .hot-item-name {
 	color: #414141;
+	margin-bottom: 10rpx;
 }
 .hot-item-place-and-price {
 	display: flex;
