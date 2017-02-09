@@ -23,20 +23,23 @@ swiper {
 	margin-top: 10rpx;
 }
 .people-item-left {
-	width: 100rpx;
+	width: 150rpx;
 	display: flex;
-	justify-content: center;
+	justify-content: flex-start;
 	align-items: center;
 	flex-direction:column;
 	margin-right: 20rpx;
 }
 .people-item-left .people-item-img image {
-	width: 100rpx;
-	height: 100rpx;
+	width: 130rpx;
+	height: 130rpx;
 	margin-bottom: 10rpx;
 }
 .people-item-right {
 	width: 100%;
+}
+.people-item-rate {
+	margin-top: 10rpx;
 }
 .people-item-right .star {
 	display: flex;

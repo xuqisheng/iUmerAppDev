@@ -82,7 +82,7 @@
 }
 .hot-item-right {
 	width: 100%;
-	padding: 20rpx 0;
+	padding: 20rpx 0 10rpx 0;
 }
 .hot-item-name {
 	color: #414141;
@@ -154,10 +154,11 @@
 }
 .people-item-right {
 	width: 100%;
-	padding: 20rpx 0;
+	padding: 20rpx 0 10rpx 0;
 }
 .people-item-right .star {
 	display: flex;
+	margin-top: 10rpx;
 }
 .people-item-right .star image {
 	width: 32rpx;
