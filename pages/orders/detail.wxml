@@ -39,7 +39,7 @@
                 <view class="order-cell__hd">
                     <p>预约详情</p>
                 </view>
-                <view class="order-cell__ft qr-code" bindtap="showQRCode">查看支付码<image src="https://www.iumer.cn/umer/css/image/wechat/orders/qr.png"></image></view>
+                <view wx:if="{{ orderInfo.approveStatus == 1 }}" class="order-cell__ft qr-code" bindtap="showQRCode">查看支付码<image src="https://www.iumer.cn/umer/css/image/wechat/orders/qr.png"></image></view>
             </view>
             <view class="order-cell personnel-info">
                 <view class="order-cell__hd">
@@ -67,10 +67,34 @@
         </view>
     </view>
     <view id="btn-area">
-        <view class="btn-area-cancel text-center">取消订单</view>
-        <view class="btn-area-pay text-center">付款
-            <view  wx:if="{{ showTimer }}" class="timer">{{ min + "分" + sec + '秒' }}</view>
-        </view>
+        <!-- 待付款 -->
+        <block wx:if="{{ orderInfo.approveStatus == 0 }}">
+            <view class="btn-area-cancel text-center" bindtap="cancelOrder">取消订单</view>
+            <view class="btn-area-pay text-center">付款
+                <view  wx:if="{{ showTimer }}" class="timer">{{ min + "分" + sec + '秒' }}</view>
+            </view>
+        </block>
+        <!-- 进行中 -->
+        <block wx:if="{{ orderInfo.approveStatus == 1 }}">
+            <view class="btn-area-apply-cancel text-center" bindtap="applyCancelOrder">申请取消订单</view>
+            <view class="btn-area-done text-center" bindtap="orderDone">确认订单完成</view>
+        </block>
+        <!-- 待评价 -->
+        <block wx:if="{{ orderInfo.approveStatus == 2 }}">
+            <view class="btn-area-order-again text-center" bindtap="orderAgain">再次预约</view>
+        </block>
+        <!-- 已评价 -->
+        <block wx:if="{{ orderInfo.approveStatus == 3 }}">
+            <view class="btn-area-order-again text-center" bindtap="orderAgain">再次预约</view>
+        </block>
+        <!-- 已取消 -->
+        <block wx:if="{{ orderInfo.approveStatus == 4 || orderInfo.approveStatus == 6 }}">
+            
+        </block>
+        <!-- 取消中 -->
+        <block wx:if="{{ orderInfo.approveStatus == 5 }}">
+            
+        </block>
     </view>
     <view wx:if="{{ showModal }}" class="modal" bindtap="hideQRCode">
         <view class="qr-layer">

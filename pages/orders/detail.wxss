@@ -147,10 +147,19 @@ page {
 	background-color: #FD8CA3;
     margin-right: 2rpx;
 }
-.btn-area-done, .btn-area-apply-cancel {
-	padding: 20rpx;
-	margin: 0 10rpx;
-	width: 50%;
+.btn-area-apply-cancel, .btn-area-done {
+    padding: 30rpx 0;
+	width: calc(50% - 1rpx);
+	color: white;
+	font-weight: bold;
+	background-color: #FD8CA3;
+}
+.btn-area-apply-cancel {
+    margin-right: 2rpx;
+}
+.btn-area-order-again {
+    padding: 30rpx 0;
+	width: 100%;
 	color: white;
 	font-weight: bold;
 	background-color: #FD8CA3;
