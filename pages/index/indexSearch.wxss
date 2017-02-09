@@ -66,7 +66,7 @@ page {
 	margin-top: 10rpx;
 }
 .hot-item-left {
-	width: 100rpx;
+	width: 150rpx;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -74,9 +74,8 @@ page {
     margin-right: 20rpx;
 }
 .hot-item-left .hot-item-img image {
-	width: 100rpx;
-	height: 100rpx;
-	margin-bottom: 10rpx;
+	width: 130rpx;
+	height: 130rpx;
 }
 .hot-item-right {
 	width: 100%;
@@ -130,7 +129,7 @@ page {
 	margin-top: 10rpx;
 }
 .people-item-left {
-	width: 100rpx;
+	width: 150rpx;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -138,9 +137,8 @@ page {
 	margin-right: 20rpx;
 }
 .people-item-left .people-item-img image {
-	width: 100rpx;
-	height: 100rpx;
-	margin-bottom: 10rpx;
+	width: 130rpx;
+	height: 130rpx;
 }
 .people-item-right {
 	width: 100%;
@@ -148,6 +146,7 @@ page {
 }
 .people-item-right .star {
 	display: flex;
+	margin-top: 10rpx;
 }
 .people-item-right .star image {
 	width: 32rpx;
@@ -212,7 +211,7 @@ page {
 	border-top: solid 2rpx #F7F7F7;
 }
 .shop-item-left {
-	width: 100rpx;
+	width: 150rpx;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -220,8 +219,8 @@ page {
 	margin-right: 20rpx;
 }
 .shop-item-left image {
-	width: 100rpx;
-	height: 100rpx;
+	width: 130rpx;
+	height: 130rpx;
 }
 .shop-item-right {
 /* 	border: solid 1px green; */
