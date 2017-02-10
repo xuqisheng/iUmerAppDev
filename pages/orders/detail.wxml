@@ -7,7 +7,7 @@
 <!-- 			        <view class="weui-cell__ft"></view> -->
 <!-- 			    </view> -->
         <view class="project-detail">
-            <view class="order-img"><image alt="" src="https://www.iumer.cn/umer/css/image/default.jpg" /></view>
+            <view class="order-img"><image alt="" src="https://www.iumer.cn/{{ (orderInfo.filePath || 'umer/css/image/default.jpg')}}" /></view>
             <view class="order-content">
                 <view class="order-content-row order-content-first-row">
                     <view class="order-content-first-row-title">{{ orderInfo.projectName }}</view>

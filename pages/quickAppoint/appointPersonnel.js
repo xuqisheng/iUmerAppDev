@@ -1,24 +1,5 @@
 // pages/quickAppoint/appointPersonnel.js
 var app = getApp();
-Date.prototype.Format = function(fmt)   
-{ //author: meizz   
-  var o = {   
-    "M+" : this.getMonth()+1,                 //月份   
-    "d+" : this.getDate(),                    //日   
-    "h+" : this.getHours(),                   //小时   
-    "m+" : this.getMinutes(),                 //分   
-    "s+" : this.getSeconds(),                 //秒   
-    "q+" : Math.floor((this.getMonth()+3)/3), //季度   
-    "S"  : this.getMilliseconds()             //毫秒   
-  };   
-  if(/(y+)/.test(fmt))   
-    fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length));   
-  for(var k in o)   
-    if(new RegExp("("+ k +")").test(fmt))   
-  fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));   
-  return fmt;   
-}  
-
 Page({
   data:{
     loadingHidden: true,
@@ -343,6 +324,73 @@ Page({
   },
   submitOrder: function(e) {
     var that = this;
+    
+    if (!that.data.projectId) {
+      wx.showModal({
+        title: '提示',
+        showCancel: false,
+        content: '请选择项目！',
+        success: function(res) {
+
+        }
+      });
+      return false;
+    }
+    if (!that.data.personnelId) {
+      wx.showModal({
+        title: '提示',
+        showCancel: false,
+        content: '请选择优美师！',
+        success: function(res) {
+
+        }
+      });
+      return false;
+    }
+    if (!that.data.chosenDate || !that.data.chosenHours || that.data.chosenHours.length == 0) {
+      wx.showModal({
+        title: '提示',
+        showCancel: false,
+        content: '请选择预约时间！',
+        success: function(res) {
+
+        }
+      });
+      return false;
+    }
+    if (!that.data.reserveName) {
+      wx.showModal({
+        title: '提示',
+        showCancel: false,
+        content: '请输入预约人姓名！',
+        success: function(res) {
+
+        }
+      });
+      return false;
+    }
+    if (!that.data.reservePhone) {
+      wx.showModal({
+        title: '提示',
+        showCancel: false,
+        content: '请输入预约手机号！',
+        success: function(res) {
+
+        }
+      });
+      return false;
+    }
+    if (that.data.priceType == "") {
+      wx.showModal({
+        title: '提示',
+        showCancel: false,
+        content: '请选择价格类型！',
+        success: function(res) {
+
+        }
+      });
+      return false;
+    }
     var startDateStr = that.data.chosenDate + " " + that.data.chosenHours[0];
 		var startDate = new Date(startDateStr.replace(new RegExp(/-/g),'/'));
 		var endDateStr = that.data.chosenDate + " " + that.data.chosenHours[that.data.chosenHours.length - 1];

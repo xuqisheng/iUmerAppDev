@@ -161,7 +161,7 @@ page {
 }
 .people-item-dot-line {
 	margin-right: 40rpx;
-	background-image: url('../../images/dotted-line@2x.png');
+	background-image: url('https://www.iumer.cn/umer/css/image/wechat/dotted-line@2x.png');
 	width: 100%;
 	height: 2rpx;
 	background-size: 100% 100%;
