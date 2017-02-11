@@ -67,32 +67,32 @@ Page({
            'Content-Type': 'application/json;charset=UTF-8;'
         },
         success: function(res) {
-          // console.log(res.data)
-          var d = res.data.data;
-          if (!d.picList || d.picList.length == 0) {
-            var filePath = (d.header || "https://www.iumer.cn/umer/css/image/wechat/2.jpg"); 
+          if (res.data.code == 1) {
+            var d = res.data.data;
+            if (!d.picList || d.picList.length == 0) {
+              var filePath = (d.header || "https://www.iumer.cn/umer/css/image/wechat/2.jpg"); 
+              that.setData({
+                projectPics: [{ id: 0, filePath: filePath }]
+              });
+            } else {
+              that.setData({
+                projectPics: d.picList
+              });
+            }
             that.setData({
-              projectPics: [{ id: 0, filePath: filePath }]
+              projectFilePath: d.header || "css/image/wechat/2.jpg",
+              projectUnitPrice: d.unitPrice || 0,
+              projectCoursePrice: d.coursePrice || 0,
+              projectCourseRemark: d.courseRemark || 0,
+              projectTitle: d.projectName || "",
+              projectDuration: d.duration || 0,
+              shopAddress: d.shopAddress || "",
+              projectDescription: d.description || "",
+              ifCollect: d.ifCollect || 0,
+              shopTitle: d.shopName || "",
+              durationNum: d.durationNum || 0
             });
-          } else {
-            that.setData({
-              projectPics: d.picList
-            });
-          }
-          that.setData({
-            projectFilePath: d.header || "css/image/wechat/2.jpg",
-            projectUnitPrice: d.unitPrice || 0,
-            projectCoursePrice: d.coursePrice || 0,
-            projectCourseRemark: d.courseRemark || 0,
-            projectTitle: d.projectName || "",
-            projectDuration: d.duration || 0,
-            shopAddress: d.shopAddress || "",
-            projectDescription: d.description || "",
-            ifCollect: d.ifCollect || 0,
-            shopTitle: d.shopName || "",
-            durationNum: d.durationNum || 0
-          });
-           wx.request({
+            wx.request({
               url: app.globalData.server_url + 'webService/customer/biz/index/shopDetail', 
               data: {
                 id: d.shopId
@@ -103,15 +103,18 @@ Page({
                 'Content-Type': 'application/json;charset=UTF-8;'
               },
               success: function(res2) {
-                // console.log(res.data)
-                var d2 = res2.data.data;
-                that.setData({
-                  shopHeader: (d2.header + "big.jpg") || "/umer/css/image/default.jpg",
-                  shopTitle: d2.shopName || "",
-                  shopDescription: d2.description || "",
-                  projectCount: d2.projectCount || 0,
-                  personnelCount: d2.personnelCount || 0
-                });
+                if (res2.data.code == 1) {
+                  var d2 = res2.data.data;
+                  that.setData({
+                    shopHeader: (d2.header + "big.jpg") || "/umer/css/image/default.jpg",
+                    shopTitle: d2.shopName || "",
+                    shopDescription: d2.description || "",
+                    projectCount: d2.projectCount || 0,
+                    personnelCount: d2.personnelCount || 0
+                  });
+                } else {
+
+                }
               },
               fail: function(res) {
                 console.log("loadProject fail");
@@ -122,7 +125,10 @@ Page({
                   loadingHidden: true
                 });
               }
-          });
+            });
+          } else {
+            
+          }
         },
         fail: function(res) {
           console.log("loadProject fail");
@@ -151,11 +157,14 @@ Page({
           'Content-Type': 'application/json;charset=UTF-8;'
         },
         success: function(res) {
-          // console.log(res.data)
-          var d = res.data.data;
-          that.setData({
-            weekdays: d
-          });
+          if (res.data.code == 1) {
+            var d = res.data.data;
+            that.setData({
+              weekdays: d
+            });
+          } else {
+
+          }
         },
         fail: function(res) {
           console.log("loadWeekdays fail");
@@ -181,6 +190,8 @@ Page({
     var that = this;
     this.setData({
       chosenDate: date,
+      chosenHours: [],
+      selectedTime: "",
       selectedIndex: {}
     })
     wx.request({
@@ -195,11 +206,14 @@ Page({
           'Content-Type': 'application/json;charset=UTF-8;'
         },
         success: function(res) {
-          // console.log(res.data)
-          var data = res.data.data;
-          that.setData({
-            timeslots: data
-          })
+          if (res.data.code == 1) {
+            var data = res.data.data;
+            that.setData({
+              timeslots: data
+            })
+          } else {
+
+          }
         },
         fail: function(res) {
           console.log("loadTimeslots fail");
@@ -225,12 +239,15 @@ Page({
           'Content-Type': 'application/json;charset=UTF-8;'
         },
         success: function(res) {
-          // console.log(res.data)
-          var d = res.data.data;
-          that.setData({
-            personnelHeader: d.header || "/css/image/default.jpg",
-            personnelName: d.name || ""
-          });
+          if (res.data.code == 1) {
+            var d = res.data.data;
+            that.setData({
+              personnelHeader: d.header || "/css/image/default.jpg",
+              personnelName: d.name || ""
+            });
+          } else {
+
+          }
         },
         fail: function(res) {
           console.log("loadPersonnel fail");

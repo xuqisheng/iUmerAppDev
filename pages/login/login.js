@@ -66,38 +66,42 @@ Page({
         'Content-Type': 'application/json;charset=UTF-8;'
       },
       success: function(res) {
-        var data = res.data.data;
-        if (that.data.remember) {
-          wx.setStorageSync('remember', true);
-          wx.setStorageSync('rememberAccount', that.data.account);
-          wx.setStorageSync('rememberPwd', that.data.pwd);
-        } else {
-          wx.removeStorageSync('remember');
-          wx.removeStorageSync('rememberAccount');
-          wx.removeStorageSync('rememberPwd');
-        }
-        wx.setStorageSync('id', data.id || "");
-        wx.setStorageSync("name", data.name || "");
-        wx.setStorageSync("phone", data.phone || "");
-        wx.setStorageSync("password", data.password || "");
-        wx.setStorageSync("header", data.header || "");
-				wx.setStorageSync("sex", data.sex == 0? 0: data.sex == 1? 1: "");
-				wx.setStorageSync("birthday", data.birthday || "");
-        wx.setStorageSync("X-TOKEN", data.token || "");
-        wx.setStorageSync("alias", data.alias || "");
-				wx.setStorageSync("authCode", data.authCode || "");
-        wx.navigateBack({
-          delta: 1, // 回退前 delta(默认为1) 页面
-          success: function(res){
-            // success
-          },
-          fail: function() {
-            // fail
-          },
-          complete: function() {
-            // complete
+        if (res.data.code == 1) {
+          var data = res.data.data;
+          if (that.data.remember) {
+            wx.setStorageSync('remember', true);
+            wx.setStorageSync('rememberAccount', that.data.account);
+            wx.setStorageSync('rememberPwd', that.data.pwd);
+          } else {
+            wx.removeStorageSync('remember');
+            wx.removeStorageSync('rememberAccount');
+            wx.removeStorageSync('rememberPwd');
           }
-        })
+          wx.setStorageSync('id', data.id || "");
+          wx.setStorageSync("name", data.name || "");
+          wx.setStorageSync("phone", data.phone || "");
+          wx.setStorageSync("password", data.password || "");
+          wx.setStorageSync("header", data.header || "");
+          wx.setStorageSync("sex", data.sex == 0? 0: data.sex == 1? 1: "");
+          wx.setStorageSync("birthday", data.birthday || "");
+          wx.setStorageSync("X-TOKEN", data.token || "");
+          wx.setStorageSync("alias", data.alias || "");
+          wx.setStorageSync("authCode", data.authCode || "");
+          wx.navigateBack({
+            delta: 1, // 回退前 delta(默认为1) 页面
+            success: function(res){
+              // success
+            },
+            fail: function() {
+              // fail
+            },
+            complete: function() {
+              // complete
+            }
+          });
+        } else {
+          
+        }
       },
       fail: function(res) {
         console.log("login fail")

@@ -33,50 +33,54 @@ Page({
       wx.getLocation({
         type: 'wgs84',
         success: function(res) {
-          var latitude = res.latitude
-          var longitude = res.longitude
-          wx.setStorageSync('latitude', latitude);
-          wx.setStorageSync('longitude', longitude);
-          var letterIndex = [];
-          var url = "http://api.map.baidu.com/geocoder/v2/?ak=2IBKO6GVxbYZvaR2mf0GWgZE&output=json&pois=0&location=" + latitude + "," + longitude;
-          wx.request({
-            url: url, //仅为示例，并非真实的接口地址
-            data: {
-              
-            },
-            header: {
-              
-            },
-            success: function(baiduRes) {
-              var find = false;
-              var city = baiduRes.data.result.addressComponent.city;
-              // console.log(cities.data.length)
-              for (var i = 0; i < cities.data.length; i++) {
-                // console.log(i)
-                var el = cities.data[i];
-                // console.log(el)
-                var list = el.list;
-                for (var j = 0; j < list.length; j++) {
-                  var ele = list[j];
-                  var cityName = ele.name;
-                  var cityCode = ele.code;
-                  // console.log(ele)
-                  if (cityName == city) {
-                    that.setData({
-                      baiduCity: cityName,
-                      baiduCityCode: cityCode
-                    });
-                    console.log("定位到的城市是：" + city);
-                    find = true;
-                    return false;
-                  }
+          if (res.data.code == 1) {
+            var latitude = res.latitude
+            var longitude = res.longitude
+            wx.setStorageSync('latitude', latitude);
+            wx.setStorageSync('longitude', longitude);
+            var letterIndex = [];
+            var url = "http://api.map.baidu.com/geocoder/v2/?ak=2IBKO6GVxbYZvaR2mf0GWgZE&output=json&pois=0&location=" + latitude + "," + longitude;
+            wx.request({
+              url: url, //仅为示例，并非真实的接口地址
+              data: {
+                
+              },
+              header: {
+                
+              },
+              success: function(baiduRes) {
+                var find = false;
+                var city = baiduRes.data.result.addressComponent.city;
+                // console.log(cities.data.length)
+                for (var i = 0; i < cities.data.length; i++) {
+                  // console.log(i)
+                  var el = cities.data[i];
+                  // console.log(el)
+                  var list = el.list;
+                  for (var j = 0; j < list.length; j++) {
+                    var ele = list[j];
+                    var cityName = ele.name;
+                    var cityCode = ele.code;
+                    // console.log(ele)
+                    if (cityName == city) {
+                      that.setData({
+                        baiduCity: cityName,
+                        baiduCityCode: cityCode
+                      });
+                      console.log("定位到的城市是：" + city);
+                      find = true;
+                      return false;
+                    }
+                  };
                 };
-              };
-              if (!find) {
-                that.changeLocation();
+                if (!find) {
+                  that.changeLocation();
+                }
               }
-            }
-          });
+            });
+          } else {
+
+          }
         }
       });
     }
@@ -110,9 +114,11 @@ Page({
         'Content-Type': 'application/json;charset=UTF-8;'
       },
       success: function(res) {
-        that.setData({
-          banners: res.data.data
-        });
+        if (res.data.code == 1) {
+          that.setData({
+            banners: res.data.data
+          });
+        }
       },
         fail: function(res) {
           console.log("getPPT fail")
@@ -138,10 +144,11 @@ Page({
            'Content-Type': 'application/json;charset=UTF-8;'
        },
         success: function(res) {
-          // console.log(res.data.data)
-          that.setData({
-            hotProjects: res.data.data
-          });
+          if (res.data.code == 1) {
+            that.setData({
+              hotProjects: res.data.data
+            });
+          }
         },
         fail: function(res) {
           console.log("getHotProject fail")
@@ -167,9 +174,11 @@ Page({
            'Content-Type': 'application/json;charset=UTF-8;'
        },
         success: function(res) {
-          that.setData({
-            hotPersonnel: res.data.data
-          })
+          if (res.data.code == 1) {
+            that.setData({
+              hotPersonnel: res.data.data
+            });
+          }
         },
         fail: function(res) {
           console.log("getHotProject fail")

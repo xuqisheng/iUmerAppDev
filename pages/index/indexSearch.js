@@ -57,9 +57,11 @@ Page({
            'Content-Type': 'application/json;charset=UTF-8;'
         },
         success: function(res) {
-          that.setData({
-            projectList: res.data.data
-          });
+          if (res.data.code == 1) {
+            that.setData({
+              projectList: res.data.data
+            });
+          }
         },
         fail: function(res) {
           console.log("indexSearch - searchProject fail")
@@ -84,9 +86,11 @@ Page({
            'Content-Type': 'application/json;charset=UTF-8;'
         },
         success: function(res) {
-          that.setData({
-            personnelList: res.data.data
-          });
+          if (res.data.code == 1) {
+            that.setData({
+              personnelList: res.data.data
+            });
+          }
         },
         fail: function(res) {
           console.log("indexSearch - searchPersonnel fail")
@@ -111,9 +115,11 @@ Page({
            'Content-Type': 'application/json;charset=UTF-8;'
         },
         success: function(res) {
-          that.setData({
-            shopList: res.data.data
-          });
+          if (res.data.code == 1) {
+            that.setData({
+              shopList: res.data.data
+            });
+          }
         },
         fail: function(res) {
           console.log("indexSearch - searchShop fail")

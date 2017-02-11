@@ -114,11 +114,13 @@ Page({
            'Content-Type': 'application/json;charset=UTF-8;'
         },
         success: function(res) {
-          that.setData({
-            goodReputation: res.data.data.goodReputation,
-            middleReputation: res.data.data.middleReputation,
-            badReputation: res.data.data.badReputation            
-          })
+          if (res.data.code == 1) {
+            that.setData({
+              goodReputation: res.data.data.goodReputation,
+              middleReputation: res.data.data.middleReputation,
+              badReputation: res.data.data.badReputation            
+            });
+          }
         },
         fail: function(res) {
           console.log("updateCommentNum fail")
