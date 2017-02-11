@@ -6,14 +6,14 @@
     <scroll-view scroll-y="true" style="height: calc(100% - 80rpx);">
         <view id="project-detail">
             <view id="avatar-area">
-                <swiper style="height: 420rpx;" class="swiper3" indicator-dots autoplay circular>
+                <swiper style="height: 750rpx;" class="swiper3" indicator-dots autoplay circular>
                     <view class='swiper-description'>
                         <view class='swiper-description-project-title'>{{ projectTitle }}</view>
                         <view class='swiper-description-project-duration'>{{ projectDuration }}分钟</view>
                     </view>
                     <block wx:for="{{ projectPics }}" wx:key="id">
                         <swiper-item>
-                        <image src="https://www.iumer.cn/{{ item.filePath }}" style="height: 420rpx; width: 100%;" />
+                        <image src="https://www.iumer.cn/{{ item.filePath }}" style="height: 750rpx; width: 100%;" />
                         </swiper-item>
                     </block>
                 </swiper>

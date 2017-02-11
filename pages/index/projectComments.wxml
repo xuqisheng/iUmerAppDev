@@ -1,4 +1,7 @@
 <view class="container">
+    <loading hidden="{{ loadingHidden }}">
+        加载中...
+    </loading>
     <view id="top-tabs-2">
         <view class="tab-outer">
             <view class="tab-inner {{ currTab2 == 0? 'tab-inner-on-2':'' }} good-reputation" data-current="0" bindtap="switchNav2">好评(<text>{{ goodReputation }}</text>)</view>

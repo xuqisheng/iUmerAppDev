@@ -80,6 +80,8 @@ Page({
   },
   switchNav2: function(e) {   
     var that = this; 
+    // this.updateCommentNum();
+    // this.loadComments(e.detail.current, ""); 
     if (this.data.currTab2 == e.target.dataset.current) { 
       return false;  
     } else {  
@@ -92,13 +94,9 @@ Page({
     var that = this;
     this.updateCommentNum();
     this.loadComments(e.detail.current, ""); 
-    if (this.data.currTab2 == e.detail.current) {  
-      return false;  
-    } else {  
-      that.setData( {  
-        currTab2: e.detail.current  
-      });
-    } 
+    that.setData({  
+      currTab2: e.detail.current  
+    });
   },
   updateCommentNum: function(){
     var that = this;
@@ -162,30 +160,32 @@ Page({
         },
         success: function(res) {
           // console.log(res.data)
-          if (res.data.data.length == 0) {
-            return false;
-          }
-          if (level == 0) {
-            var goodList = opType == "down"? res.data.data.concat(that.data.goodList): opType == "up"? that.data.goodList.concat(res.data.data): res.data.data;
-            that.setData({
-              goodList: goodList,
-              goodTimestampFirst: goodList[0].createDate,
-              goodTimestampLast: goodList[goodList.length - 1].createDate
-            });
-          } else if (level == 1) {
-             var middleList = opType == "down"? res.data.data.concat(that.data.middleList): opType == "up"? that.data.middleList.concat(res.data.data): res.data.data;
-            that.setData({
-              middleList: middleList,
-              middleTimestampFirst: middleList[0].createDate,
-              middleTimestampLast: middleList[middleList.length - 1].createDate
-            });
-          } else if (level == 2) {
-             var badList = opType == "down"? res.data.data.concat(that.data.badList): opType == "up"? that.data.badList.concat(res.data.data): res.data.data;
-            that.setData({
-              badList: badList,
-              badTimestampFirst: badList[0].createDate,
-              badTimestampLast: badList[badList.length - 1].createDate
-            });
+          if (res.data.code == 1) {
+            if (res.data.data.length == 0) {
+              return false;
+            }
+            if (level == 0) {
+              var goodList = opType == "down"? res.data.data.concat(that.data.goodList): opType == "up"? that.data.goodList.concat(res.data.data): res.data.data;
+              that.setData({
+                goodList: goodList,
+                goodTimestampFirst: goodList[0].createDate,
+                goodTimestampLast: goodList[goodList.length - 1].createDate
+              });
+            } else if (level == 1) {
+              var middleList = opType == "down"? res.data.data.concat(that.data.middleList): opType == "up"? that.data.middleList.concat(res.data.data): res.data.data;
+              that.setData({
+                middleList: middleList,
+                middleTimestampFirst: middleList[0].createDate,
+                middleTimestampLast: middleList[middleList.length - 1].createDate
+              });
+            } else if (level == 2) {
+              var badList = opType == "down"? res.data.data.concat(that.data.badList): opType == "up"? that.data.badList.concat(res.data.data): res.data.data;
+              that.setData({
+                badList: badList,
+                badTimestampFirst: badList[0].createDate,
+                badTimestampLast: badList[badList.length - 1].createDate
+              });
+            }
           }
         },
         fail: function(res) {
