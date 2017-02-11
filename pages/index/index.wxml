@@ -33,7 +33,7 @@
 		</view>
 	</view>
 	<view id="hot">
-		<view class="index-header">
+		<view class="index-header" style="{{ hotProjects.length == 0? 'padding-bottom: 20rpx;':'' }}">
 			热门项目
 		</view>
 		<view id="hot-area">
@@ -61,7 +61,7 @@
 		</view>
 	</view>
 	<view id="people">
-		<view class="index-header">
+		<view class="index-header" style="{{ hotPersonnel.length == 0? 'padding-bottom: 20rpx;':'' }}">
 			优美师
 		</view>
 		<view id="people-area">
