@@ -73,12 +73,14 @@ Page({
            'Content-Type': 'application/json;charset=UTF-8;'
         },
         success: function(res) {
-          that.setData({
-            totalCommentNum: res.data.data.totalReputation,
-            goodReputation: res.data.data.goodReputation,
-            middleReputation: res.data.data.middleReputation,
-            badputation: res.data.data.badReputation            
-          })
+          if (res.data.code == 1){
+            that.setData({
+              totalCommentNum: res.data.data.totalReputation,
+              goodReputation: res.data.data.goodReputation,
+              middleReputation: res.data.data.middleReputation,
+              badputation: res.data.data.badReputation            
+            });
+          }
         },
         fail: function(res) {
           console.log("updateCommentNum fail")
@@ -108,13 +110,14 @@ Page({
            'Content-Type': 'application/json;charset=UTF-8;'
         },
         success: function(res) {
-          // console.log(res.data)
-          if (res.data.data.length == 0) {
-            return false;
+          if (res.data.code == 1){
+            if (res.data.data.length == 0) {
+              return false;
+            }
+            that.setData({
+              commentList: res.data.data,
+            });
           }
-          that.setData({
-            commentList: res.data.data,
-          });
         },
         fail: function(res) {
           console.log("loadComments fail");
@@ -154,32 +157,32 @@ Page({
            'Content-Type': 'application/json;charset=UTF-8;'
         },
         success: function(res) {
-          // console.log(res.data)
-          var d = res.data.data;
-          if (!d.picList || d.picList.length == 0) {
-            var filePath = (d.header || "umer/css/image/wechat/2.jpg"); 
+          if (res.data.code == 1){
+            var d = res.data.data;
+            if (!d.picList || d.picList.length == 0) {
+              var filePath = (d.header || "umer/css/image/wechat/2.jpg"); 
+              that.setData({
+                projectPics: [{ id: 0, filePath: filePath }]
+              });
+            } else {
+              that.setData({
+                projectPics: d.picList
+              });
+            }
             that.setData({
-              projectPics: [{ id: 0, filePath: filePath }]
+              projectUnitPrice: d.unitPrice || 0,
+              projectCoursePrice: d.coursePrice || 0,
+              projectCourseRemark: d.courseRemark || 0,
+              projectTitle: d.projectName || "",
+              projectDuration: d.duration || 0,
+              projectBrand: d.brand || "",
+              projectMatters: d.noticeMatters || "",
+              projectApply: d.noticeMatters || "",
+              shopAddress: d.shopAddress || "",
+              projectDescription: d.description || "",
+              ifCollect: d.ifCollect || 0,
             });
-          } else {
-            that.setData({
-              projectPics: d.picList
-            });
-          }
-          that.setData({
-            projectUnitPrice: d.unitPrice || 0,
-            projectCoursePrice: d.coursePrice || 0,
-            projectCourseRemark: d.courseRemark || 0,
-            projectTitle: d.projectName || "",
-            projectDuration: d.duration || 0,
-            projectBrand: d.brand || "",
-            projectMatters: d.noticeMatters || "",
-            projectApply: d.noticeMatters || "",
-            shopAddress: d.shopAddress || "",
-            projectDescription: d.description || "",
-            ifCollect: d.ifCollect || 0,
-          });
-           wx.request({
+            wx.request({
               url: app.globalData.server_url + 'webService/customer/biz/index/shopDetail', 
               data: {
                 id: d.shopId
@@ -209,7 +212,8 @@ Page({
                   loadingHidden: true
                 });
               }
-          });
+            });
+          }
         },
         fail: function(res) {
           console.log("loadProject fail");

@@ -1,8 +1,16 @@
 // pages/index/personnelDetail.js
+var app = getApp();
 Page({
   data:{},
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
+    this.setData({
+      personnelId: options.personnelId
+    });
+    this.loadPersonnel();
+    this.loadPersonnelProjects();
+    this.loadComments(); 
+    this.updateCommentNum();
   },
   onReady:function(){
     // 页面渲染完成
@@ -15,5 +23,147 @@ Page({
   },
   onUnload:function(){
     // 页面关闭
+  },
+  loadPersonnel: function() {
+    var that = this;
+    wx.request({
+        url: app.globalData.server_url + 'webService/customer/biz/index/personnelDetail', 
+        data: {
+          id: that.data.personnelId,
+          customerId: wx.getStorageSync('id')
+        },
+        method: "POST",
+        dataType: "json",
+        header: {
+           'Content-Type': 'application/json;charset=UTF-8;'
+        },
+        success: function(res) {
+          if (res.data.code == 1) {
+            that.setData({
+              personnelInfo: res.data.data          
+            });
+          }
+        },
+        fail: function(res) {
+          console.log("loadPersonnel fail")
+        },
+        complete: function(res) {
+          console.log("loadPersonnel complete")
+        }
+    });
+  },
+  loadPersonnelProjects: function() {
+    var that = this;
+    wx.request({
+        url: app.globalData.server_url + 'webService/customer/biz/reserve/personnelProjectList', 
+        data: {
+          personnelId: that.data.personnelId,
+          pageSize: 3
+        },
+        method: "POST",
+        dataType: "json",
+        header: {
+           'Content-Type': 'application/json;charset=UTF-8;'
+        },
+        success: function(res) {
+          if (res.data.code == 1) {
+            that.setData({
+              projectList: res.data.data.concat(res.data.data)          
+            });
+          }
+        },
+        fail: function(res) {
+          console.log("loadPersonnelProjects fail")
+        },
+        complete: function(res) {
+          console.log("loadPersonnelProjects complete")
+        }
+    });
+  },
+  updateCommentNum: function(){
+    var that = this;
+    // console.log(this.data.projectId)
+    wx.request({
+        url: app.globalData.server_url + 'webService/customer/biz/index/projectCommentGroupNum', 
+        data: {
+          personnelId: that.data.personnelId
+        },
+        method: "POST",
+        dataType: "json",
+        header: {
+           'Content-Type': 'application/json;charset=UTF-8;'
+        },
+        success: function(res) {
+          if (res.data.code == 1) {
+            that.setData({
+              totalCommentNum: res.data.data.totalReputation,
+              goodReputation: res.data.data.goodReputation,
+              middleReputation: res.data.data.middleReputation,
+              badputation: res.data.data.badReputation            
+            });
+          }
+        },
+        fail: function(res) {
+          console.log("updateCommentNum fail")
+        },
+        complete: function(res) {
+          console.log("updateCommentNum complete")
+        }
+    });
+  },
+  loadComments: function() {
+    this.setData({
+      loadingHidden: false
+    });
+    // console.log("loadComments: " + this)
+    var data = {};
+    data["personnelId"] = this.data.personnelId;
+    data["commentLevel"] = 3;
+    data["pageSize"] = 3;
+    // console.log(data)
+    var that = this;
+    wx.request({
+        url: app.globalData.server_url + 'webService/customer/biz/index/projectCommentList', 
+        data: data,
+        method: "POST",
+        dataType: "json",
+        header: {
+           'Content-Type': 'application/json;charset=UTF-8;'
+        },
+        success: function(res) {
+          if (res.data.code == 1) {
+            if (res.data.data.length == 0) {
+              return false;
+            }
+            that.setData({
+              commentList: res.data.data,
+            });
+          }
+        },
+        fail: function(res) {
+          console.log("loadComments fail");
+        },
+        complete: function(res) {
+          console.log("loadComments complete");
+          that.setData({
+            loadingHidden: true
+          });
+        }
+    });
+  },
+  showComments: function() {
+    var that = this;
+    wx.navigateTo({
+      url: '../index/projectComments?personnelId=' + that.data.personnelId,
+      success: function(res){
+        // success
+      },
+      fail: function() {
+        // fail
+      },
+      complete: function() {
+        // complete
+      }
+    })
   }
 })

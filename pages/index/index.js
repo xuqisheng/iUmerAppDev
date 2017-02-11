@@ -209,7 +209,20 @@ Page({
       }
     });
   },
-  clickPersonnelItem: function(){
-
+  clickPersonnelItem: function(event) {
+    var personnelId = event.currentTarget.dataset.personnelid;
+    // console.log(projectId)
+    wx.navigateTo({
+      url: 'personnelDetail?personnelId=' + personnelId,
+      success: function(res){
+        // success
+      },
+      fail: function() {
+        // fail
+      },
+      complete: function() {
+        // complete
+      }
+    });
   }
 })

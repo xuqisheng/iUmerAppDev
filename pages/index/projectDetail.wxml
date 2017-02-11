@@ -90,7 +90,7 @@
                 </view>
             </view>
             <view id="comments-area">
-                <view class="comments-area-title">网友评价({{ totalCommentNum || 0 }})</view>
+                <view class="comments-area-title">用户评价({{ totalCommentNum || 0 }})</view>
                 <block wx:for="{{ commentList }}" wx:key="id">
                     <view class="comment-item">
                         <view class="comment-item-left">

@@ -1,2 +1,85 @@
-<!--pages/index/personnelDetail.wxml-->
-<text>pages/index/personnelDetail.wxml</text>
+<view class="container">
+    <view id="personnel-info-area">
+        <view class="personnel-info">
+            <view class="personnel-info-left">
+                <view class="personnel-info-left-header">
+                    <image src="https://www.iumer.cn{{ personnelInfo.header || '/umer/css/image/default.jpg' }}"></image>
+                </view>
+                <view class="personnel-info-left-rating">
+                    <block wx:for="{{ [ 0,1,2,3,4 ] }}" wx:for-item="itm" wx:key="*this">
+                        <view wx:if="{{ itm < (personnelInfo.level || 0) }}">
+                            <image src="https://www.iumer.cn/umer/js/raty/img/star-on.png"></image>
+                        </view>
+                        <view wx:if="{{ itm >= (personnelInfo.level || 0) }}">
+                            <image src="https://www.iumer.cn/umer/js/raty/img/star-off.png"></image>
+                        </view>
+                    </block>
+                </view>
+            </view>
+            <view class="personnel-info-right">
+                <view class="personnel-info-right-title">{{ personnelInfo.name || "匿名用户" }}</view>
+                <view class="personnel-info-right-desc">{{ personnelInfo.description || "无简介" }}</view>
+            </view>
+        </view>
+    </view>
+    <view id="hot">
+		<view class="index-header">
+			个人项目
+		</view>
+		<view id="hot-area">
+			<block wx:for="{{ projectList }}" wx:key="id">
+				<view class="hot-item" data-projectId="{{ item.id }}" bindtap="clickProjectItem" >
+					<view class="hot-item-left">
+						<view class="hot-item-img">
+							<image src="https://www.iumer.cn{{ item.filePath || '/umer/css/image/default.jpg' }}" />
+						</view>
+					</view>
+					<view class="hot-item-right">
+						<view class="hot-item-name">{{ item.projectName || "" }}</view>
+						<view class="hot-item-place-and-price">
+							<view class="hot-item-place">{{ item.shopName || "" }}</view>
+							<view class="hot-item-price">￥{{ item.unitPrice || "0" }}元</view>
+						</view>
+						<view class="hot-item-info">
+							<view class="hot-item-info-distance">
+								<image src="https://www.iumer.cn/umer/css/image/wechat/pin@3x.png" />距离{{ item.distance || "0米" }}左右</view>
+							<view class="hot-item-info-duration"><image src="https://www.iumer.cn/umer/css/image/wechat/history-red@2x.png" />{{ item.duration || "0" }}分钟</view>
+						</view>
+					</view>
+				</view>
+			</block>
+		</view>
+	</view>
+    <view id="comments-area">
+        <view class="comments-area-title">用户评价({{ totalCommentNum || 0 }})</view>
+        <block wx:for="{{ commentList }}" wx:key="id">
+            <view class="comment-item">
+                <view class="comment-item-left">
+                    <view class="comment-item-hd-img">
+                        <image src="https://www.iumer.cn{{ item.customerHeader || '/umer/css/image/default.jpg' }}" />
+                    </view>
+                </view>
+                <view class="comment-item-right">
+                    <view class="comment-item-hd-info-name">{{ item.customerName || "匿名用户"}}</view>
+                    <view class="star" data-score='{{ item.starLevel || 0 }}'>
+                        <block wx:for="{{ [ 0,1,2,3,4 ] }}" wx:for-item="itm" wx:key="*this">
+                            <view wx:if="{{ itm < (item.starLevel || 0) }}">
+                                <image src="https://www.iumer.cn/umer/js/raty/img/star-on.png"></image>
+                            </view>
+                            <view wx:if="{{ itm >= (item.starLevel || 0) }}">
+                                <image src="https://www.iumer.cn/umer/js/raty/img/star-off.png"></image>
+                            </view>
+                        </block>
+                    </view>
+                    <view class="comment-item-bd">{{ item.content || "无内容" }}</view>
+                    <view class="comment-item-time">
+                        <view class="comment-item-hd-info-time">
+                            <image alt="" src="https://www.iumer.cn/umer/css/image/wechat/history@3x.png" />{{ item.commentTime || "" }}
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </block>
+        <view class="more-comment text-center" bindtap="showComments">查看全部<text>{{ totalCommentNum || 0 }}</text>条评论</view>
+    </view>
+</view>

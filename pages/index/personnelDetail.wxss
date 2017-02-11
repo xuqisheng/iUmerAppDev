@@ -1,1 +1,188 @@
-/* pages/index/personnelDetail.wxss */
+.personnel-info {
+    display: flex;
+    padding: 20rpx;
+    background-color: white;
+}
+.personnel-info-left {
+    width: 170rpx;
+}
+.personnel-info-left-header {
+    display: flex;
+    justify-content: center;
+}
+.personnel-info-left-header image {
+    width: 130rpx;
+    height: 130rpx;
+    border-radius: 100%;
+}
+.personnel-info-left-rating {
+    display: flex;
+    justify-content: center;
+    margin-top: 10rpx;
+}
+.personnel-info-left-rating image {
+    width: 32rpx;
+	height: 32rpx;
+}
+.personnel-info-right {
+    padding: 0 0 0 20rpx;
+}
+.personnel-info-right .personnel-info-right-title {
+    padding: 10rpx 0;
+}
+.personnel-info-right .personnel-info-right-desc {
+    color: gray;
+    font-size: 28rpx;
+}
+.index-header {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	padding-bottom: 10rpx;
+}
+#hot {
+	background-color: white;
+	padding: 20rpx 20rpx 0 20rpx;
+    margin-top: 10rpx;
+}
+.hot-item {
+	background-color: white;
+	display: flex;
+	justify-content: space-between;
+	font-family: SimHei;
+	border-top: solid 2rpx #F7F7F7;
+}
+.hot-item:first-child {
+	margin-top: 10rpx;
+}
+.hot-item-left {
+	width: 150rpx;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction:column;
+	margin-right: 20rpx;
+}
+.hot-item-left .hot-item-img image {
+	width: 130rpx;
+	height: 130rpx;
+}
+.hot-item-right {
+	width: 100%;
+	padding: 20rpx 0 10rpx 0;
+}
+.hot-item-name {
+	color: #414141;
+	margin-bottom: 10rpx;
+}
+.hot-item-place-and-price {
+	display: flex;
+	justify-content: space-between;
+}
+.hot-item-place {
+	color: #414141;
+}
+.hot-item-price {
+	color: orange;
+}
+.hot-item-info {
+	display: flex;
+	justify-content: space-between;
+}
+.hot-item-info-distance {
+	color: #686868;
+	display: flex;
+	align-items: center;
+}
+.hot-item-info-distance image {
+	width: 30rpx;
+	height: 40rpx;
+	margin: 10rpx 10rpx 10rpx 0;
+}
+.hot-item-info-duration {
+	color: #686868;
+	display: flex;
+	align-items: center;
+}
+.hot-item-info-duration image {
+	width: 30rpx;
+	height: 30rpx;
+	margin: 10rpx;
+}
+#comments-area {
+	background-color: white;
+	padding: 20rpx;
+	margin-top: 10rpx;
+}
+.comments-area-title {
+	border-bottom: solid 2rpx #F7F7F7;
+	padding-bottom: 20rpx;
+}
+.comment-item {
+	padding:20rpx 20rpx 20rpx 0;
+	background-color: white;
+	display: flex;
+}
+.comment-item-left {
+	margin-right: 20rpx;
+}
+.comment-item-hd {
+    display: flex;
+    font-size: 28rpx;
+    text-align: left;
+}
+.comment-item-hd-img {
+	width: 100rpx;    
+	height: 100rpx;   
+}
+.comment-item-hd-img image {
+	width: 100rpx;
+	height: 100rpx;
+	border-radius: 100%;
+}
+.comment-item-right {
+	width: 100%;
+}
+.comment-item-hd-info {
+    display: flex;
+	flex-direction: column;
+	justify-content: center;
+    padding-left: 20rpx;
+}
+.comment-item-hd-info-name {
+	font-weight: bold;
+    padding: 10rpx 0;
+}
+.comment-item-right .star {
+	display: flex;
+}
+.comment-item-right .star image {
+	width: 32rpx;
+	height: 32rpx;
+}
+.comment-item-time {
+	float: right;
+}
+.comment-item-hd-info-time {
+    display: flex;
+    align-items: center;
+	justify-content: flex-end;
+	font-size: 25rpx;
+}
+.comment-item-hd-info-time image {
+	height: 32rpx;
+    width: 32rpx;
+    margin-right: 10rpx;
+}
+.comment-item-bd {
+	padding: 10rpx 0;
+    font-size: 28rpx;
+    text-align: left;
+}
+.comment-item:not(:last-child) {
+	border-bottom: solid 2rpx #F7F7F7;
+}
+.more-comment {
+	color: #FD8CA3;
+	padding-top: 20rpx;
+}

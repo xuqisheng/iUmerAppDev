@@ -55,7 +55,7 @@
 }
 #hot {
 	background-color: white;
-	padding: 8px;
+	padding: 20rpx 20rpx 0 20rpx;
 }
 .hot-item {
 	background-color: white;
@@ -123,7 +123,7 @@
 }
 #people {
 	background-color: white;
-	padding: 16rpx;
+	padding: 20rpx 20rpx 0 20rpx;
 	margin-top: 10rpx;
 }
 .people-item {
@@ -135,9 +135,6 @@
 }
 .people-item:first-child {
 	margin-top: 10rpx;
-}
-.people-item:last-child {
-	border-bottom: solid 2rpx #F7F7F7;
 }
 .people-item-left {
 	width: 150rpx;

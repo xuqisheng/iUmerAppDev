@@ -17,7 +17,7 @@
                     <view class="order-item" data-orderid="{{ item.id }}" bindtap="clickOrderItem">
                         <view class="order-item-left">
                             <view class="order-item-left-img">
-                                <image src="https://www.iumer.cn/umer/css/image/default.jpg" />
+                                <image src="https://www.iumer.cn{{ item.filePath || '/umer/css/image/default.jpg' }}" />
                             </view>
                         </view>
                         <view class="order-item-middle">
@@ -40,7 +40,7 @@
                     <view class="order-item" data-orderid="{{ item.id }}" bindtap="clickOrderItem">
                         <view class="order-item-left">
                             <view class="order-item-left-img">
-                                <image src="https://www.iumer.cn/umer/css/image/default.jpg" />
+                                <image src="https://www.iumer.cn{{ item.filePath || '/umer/css/image/default.jpg' }}" />
                             </view>
                         </view>
                         <view class="order-item-middle">
@@ -63,7 +63,7 @@
                     <view class="order-item" data-orderid="{{ item.id }}" bindtap="clickOrderItem">
                         <view class="order-item-left">
                             <view class="order-item-left-img">
-                                <image src="https://www.iumer.cn/umer/css/image/default.jpg" />
+                                <image src="https://www.iumer.cn{{ item.filePath || '/umer/css/image/default.jpg' }}" />
                             </view>
                         </view>
                         <view class="order-item-middle">
@@ -86,7 +86,7 @@
                     <view class="order-item" data-orderid="{{ item.id }}" bindtap="clickOrderItem">
                         <view class="order-item-left">
                             <view class="order-item-left-img">
-                                <image src="https://www.iumer.cn/umer/css/image/default.jpg" />
+                                <image src="https://www.iumer.cn{{ item.filePath || '/umer/css/image/default.jpg' }}" />
                             </view>
                         </view>
                         <view class="order-item-middle">
@@ -109,7 +109,7 @@
                     <view class="order-item" data-orderid="{{ item.id }}" bindtap="clickOrderItem">
                         <view class="order-item-left">
                             <view class="order-item-left-img">
-                                <image src="https://www.iumer.cn/umer/css/image/default.jpg" />
+                                <image src="https://www.iumer.cn{{ item.filePath || '/umer/css/image/default.jpg' }}" />
                             </view>
                         </view>
                         <view class="order-item-middle">
@@ -132,7 +132,7 @@
                     <view class="order-item" data-orderid="{{ item.id }}" bindtap="clickOrderItem">
                         <view class="order-item-left">
                             <view class="order-item-left-img">
-                                <image src="https://www.iumer.cn/umer/css/image/default.jpg" />
+                                <image src="https://www.iumer.cn{{ item.filePath || '/umer/css/image/default.jpg' }}" />
                             </view>
                         </view>
                         <view class="order-item-middle">

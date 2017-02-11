@@ -22,7 +22,8 @@ Page({
     console.log("projectDetail onLoad");
     // 页面初始化 options为页面跳转所带来的参数
     this.setData({
-      projectId: options.projectId
+      projectId: options.projectId,
+      personnelId: options.personnelId
     });
     this.loadComments(0, ""); 
     this.updateCommentNum();
@@ -104,7 +105,8 @@ Page({
     wx.request({
         url: app.globalData.server_url + 'webService/customer/biz/index/projectCommentGroupNum', 
         data: {
-          projectId: that.data.projectId
+          projectId: that.data.projectId,
+          personnelId: that.data.personnelId
         },
         method: "POST",
         dataType: "json",
@@ -133,6 +135,7 @@ Page({
     // console.log("loadComments: " + this)
     var data = {};
     data["projectId"] = this.data.projectId;
+    data["personnelId"] = this.data.personnelId;
     if (level == 0) {
       data["commentLevel"] = 3;
     } else if (level == 1) {
