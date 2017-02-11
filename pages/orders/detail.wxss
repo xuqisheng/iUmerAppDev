@@ -157,7 +157,17 @@ page {
 .btn-area-apply-cancel {
     margin-right: 2rpx;
 }
-.btn-area-order-again {
+.btn-area-order-comment, .btn-area-order-again-1 {
+    padding: 30rpx 0;
+	width: calc(50% - 1rpx);
+	color: white;
+	font-weight: bold;
+	background-color: #FD8CA3;
+}
+.btn-area-order-comment {
+    margin-right: 2rpx;
+}
+.btn-area-order-again-2 {
     padding: 30rpx 0;
 	width: 100%;
 	color: white;

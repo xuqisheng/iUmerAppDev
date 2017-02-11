@@ -11,12 +11,12 @@ Page({
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
     this.setData({
-      // orderNo: options.orderNo,
+      orderNo: options.orderNo
       // orderNo: 'DD5835963228129030' // 取消中 5
       // orderNo: 'DD5710593313463820' // 待评价 2
       // orderNo: 'DD2433910090490640' // 已评价 3
       // orderNo: 'DD5836271871488530' // 已取消 4
-      orderNo: 'DD5819284514093920' // 进行中 1
+      // orderNo: 'DD5819284514093920' // 进行中 1
       // orderNo: 'DD5819196003434350' // 待付款 0
     });
     this.loadOrder();

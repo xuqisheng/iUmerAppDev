@@ -81,11 +81,12 @@
         </block>
         <!-- 待评价 -->
         <block wx:if="{{ orderInfo.approveStatus == 2 }}">
-            <view class="btn-area-order-again text-center" bindtap="orderAgain">再次预约</view>
+            <view class="btn-area-order-comment text-center" bindtap="addComment">评价</view>
+            <view class="btn-area-order-again-1 text-center" bindtap="orderAgain">再次预约</view>
         </block>
         <!-- 已评价 -->
         <block wx:if="{{ orderInfo.approveStatus == 3 }}">
-            <view class="btn-area-order-again text-center" bindtap="orderAgain">再次预约</view>
+            <view class="btn-area-order-again-2 text-center" bindtap="orderAgain">再次预约</view>
         </block>
         <!-- 已取消 -->
         <block wx:if="{{ orderInfo.approveStatus == 4 || orderInfo.approveStatus == 6 }}">

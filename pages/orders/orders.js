@@ -136,9 +136,9 @@ Page({
     this.loadOrders(status, "down");
   },
   clickOrderItem: function(e) {
-    var orderId = e.currentTarget.dataset.orderid;
+    var orderNo = e.currentTarget.dataset.orderno;
     wx.navigateTo({
-      url: 'detail?orderId=' + orderId,
+      url: 'detail?orderNo=' + orderNo,
       success: function(res){
         // success
       },
