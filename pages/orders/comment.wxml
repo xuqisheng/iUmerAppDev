@@ -1,0 +1,59 @@
+<view class="container">
+    <view id="comment-bd">
+        <view class="comment-project-area">
+            <view class="project-item">
+                <view class="project-left">
+                    <image src="https://www.iumer.cn{{ orderInfo.filePath || '/umer/css/image/default.jpg' }}"></image>
+                </view>
+                <view class="project-right">
+                    <view class="project-right-title">{{ orderInfo.orderName || '' }}</view>
+                    <view class="project-right-shop-and-price">
+                        <view class="project-right-shop">{{ orderInfo.shopName || '' }}</view>
+                        <view class="project-right-price">￥{{ orderInfo.orderPrice + (orderInfo.priceType == '0'? '元/次': '元/疗程' ) }}</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view id="comment-txt-area">
+            <textarea placeholder="评价一下此次服务吧" bindinput="txtInput" />
+        </view>
+        <view id="comment-rate-area">
+            <view class="rating rate-profession">
+                <view class="rate-txt">专业评分</view>
+                <view class="rate-stars" wx:for="{{ [0,1,2,3,4] }}" wx:key="*this">
+                    <view wx:if="{{ item < (levelProfession || 0) }}">
+                        <image src="https://www.iumer.cn/umer/js/raty/img/star-on.png" bindtap="chooseLevelProfession"  data-level="{{ item }}"></image>
+                    </view>
+                    <view wx:if="{{ item >= (levelProfession || 0) }}">
+                        <image src="https://www.iumer.cn/umer/js/raty/img/star-off.png" bindtap="chooseLevelProfession" data-level="{{ item }}"></image>
+                    </view>
+                </view>
+            </view>
+            <view class="rating rate-service">
+                <view class="rate-txt">服务评分</view>
+                <view class="rate-stars" wx:for="{{ [0,1,2,3,4] }}" wx:key="*this">
+                    <view wx:if="{{ item < (levelService || 0) }}">
+                        <image src="https://www.iumer.cn/umer/js/raty/img/star-on.png" bindtap="chooseLevelService" data-level="{{ item }}"></image>
+                    </view>
+                    <view wx:if="{{ item >= (levelService || 0) }}">
+                        <image src="https://www.iumer.cn/umer/js/raty/img/star-off.png" bindtap="chooseLevelService" data-level="{{ item }}"></image>
+                    </view>
+                </view>
+            </view>
+            <view class="rating rate-communication">
+                <view class="rate-txt">沟通评分</view>
+                <view class="rate-stars" wx:for="{{ [0,1,2,3,4] }}" wx:key="*this">
+                    <view wx:if="{{ item < (levelCommunication || 0) }}">
+                        <image src="https://www.iumer.cn/umer/js/raty/img/star-on.png" bindtap="chooseLevelCommunication" data-level="{{ item }}"></image>
+                    </view>
+                    <view wx:if="{{ item >= (levelCommunication || 0) }}">
+                        <image src="https://www.iumer.cn/umer/js/raty/img/star-off.png" bindtap="chooseLevelCommunication" data-level="{{ item }}"></image>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view id="comment-btn-area">
+            <view class="btn-submit text-center" bindtap="submitOrder">发表评价</view>
+        </view>
+    </view>
+</view>

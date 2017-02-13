@@ -439,5 +439,20 @@ Page({
         }
       }
     });
+  },
+  addComment: function() {
+    var that = this;
+    wx.navigateTo({
+      url: "comment?orderNo=" + that.data.orderNo,
+      success: function(res){
+        // success
+      },
+      fail: function() {
+        // fail
+      },
+      complete: function() {
+        // complete
+      }
+    })
   }
 })
