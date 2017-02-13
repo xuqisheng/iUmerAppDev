@@ -17,7 +17,7 @@
     <view id="shop-desc-area">
         <view class="shop-desc-cell shop-desc-addr">
             <view class="shop-addr"><image src="https://www.iumer.cn/umer/css/image/wechat/pin@3x.png" />{{ shopInfo.address || "无地址" }}</view>
-            <view class="call-shop" bindtap="callShop"><image src="https://www.iumer.cn/umer/css/image/wechat/login/call@2x.png"></image></view>
+            <view class="call-shop" data-phone="{{ shopInfo.phone }}" bindtap="callShop"><image src="https://www.iumer.cn/umer/css/image/wechat/login/call@2x.png"></image></view>
         </view>
         <view class="shop-desc-cell shop-desc-desc">
             <view class="shop-desc-title"><image src="https://www.iumer.cn/umer/css/image/wechat/my/uncommented@3x.png" />门店介绍</view>

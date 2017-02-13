@@ -227,5 +227,14 @@ Page({
         // complete
       }
     });
+  },
+  callShop: function(e) {
+    var phone = e.currentTarget.dataset.phone;
+    wx.makePhoneCall({
+      phoneNumber: phone,
+      success: function(res) {
+        // success
+      }
+    })
   }
 }) 
