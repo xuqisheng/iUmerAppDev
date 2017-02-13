@@ -67,6 +67,7 @@ Page({
             	  var diffSec = parseInt((diff / 1000) % 60);
                 if (diff <= 0) {
                   // 15分钟内未支付取消订单
+                  clearInterval(timer);
                   wx.request({
                     url: app.globalData.server_url + 'webService/customer/biz/reserve/cancelOrder', 
                     data: {
@@ -89,7 +90,7 @@ Page({
                           showCancel: false,
                           success: function() {
                             wx.redirectTo({
-                              url: 'detail',
+                              url: 'detail?orderNo=' + orderNo,
                               success: function(res){
                                 // success
                               },
@@ -104,7 +105,7 @@ Page({
                         }); 
                         that.setData({
                           showTimer: false
-                        })
+                        });
                       } else if (res.data.code == -4) {
                         wx.navigateTo({
                           url: '../login/login',
