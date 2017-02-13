@@ -1,0 +1,63 @@
+<view class="container">
+    <view class="filter filter-project">
+        <view class="filter-item filter-item-area" bindtap="showAreaF">
+            <view class="filter-item-inner">
+                <view class="filter-item-triangle"></view>
+                <text class="text-center">全城</text>
+            </view>
+            <view class="filter-item-list filter-item-list-area" hidden="{{ showArea }}">
+                <view class="filter-item-list-items">
+                    <block wx:for="{{ areaList }}" wx:key="name">
+                        <view wx:if="{{ item.list.length > 0 && item.name == '附近' }}">
+                            <view class="filter-item-list-item" bindtap="showNearF"><text data-areaid="{{ item.code || ''}}">{{  item.name }}</text>
+                                <view class="filter-item-sublist">
+                                    <block wx:for="{{ item.list }}" wx:for-item="itm" wx:key="code">
+                                        <view class="filter-item-sublist-item" hidden="{{ showNear }}"><text data-range="{{ itm.code }}">{{ itm.name }}</text></view>
+                                    </block>
+                                </view>
+                            </view>
+                        </view>
+                        <view wx:if="{{ item.list.length == 0 }}">
+                            <view class="filter-item-list-item"><text bindtap="clickArea" data-areaid="{{ item.code || ''}}">{{  item.name }}</text></view>
+                        </view>
+                    </block>
+                </view>
+                <view class="filter-item-list-item-end text-center" catchtap="hideFilter"><image alt="" src="https://www.iumer.cn/umer/css/image/wechat/pull-down@3x.png" /></view>
+            </view>
+        </view>
+        <view class="filter-item" bindtap="showSortingF">
+            <view class="filter-item-inner">
+                <view class="filter-item-triangle"></view>
+                <text class="text-center">排序</text>
+            </view>
+            <view class="filter-item-list filter-item-list-sorting" hidden="{{ showSorting }}">
+                <view class="filter-item-list-items">
+                    <view class="filter-item-list-item" onclick="GLOBAL.sorting=1;"><image alt="" src="https://www.iumer.cn/umer/css/image/wechat/sort@3x.png" /><text>智能排序</text></view>
+                    <view class="filter-item-list-item" onclick="GLOBAL.sorting=2;"><image alt="" src="https://www.iumer.cn/umer/css/image/wechat/price@3x.png" /><text>价格排序</text></view>
+                    <view class="filter-item-list-item" onclick="GLOBAL.sorting=3;"><image alt="" src="https://www.iumer.cn/umer/css/image/wechat/service@3x.png" /><text>服务最多</text></view>
+                    <view class="filter-item-list-item" onclick="GLOBAL.sorting=4;"><image alt="" src="https://www.iumer.cn/umer/css/image/wechat/score@3x.png" /><text>评价最高</text></view>
+                </view>
+                <view class="filter-item-list-item-end text-center" catchtap="hideFilter"><image alt="" src="https://www.iumer.cn/umer/css/image/wechat/pull-down@3x.png" /></view>
+            </view>
+        </view>
+        <view class="filter-item" bindtap="showCategoryF">
+            <view class="filter-item-inner">
+                <view class="filter-item-triangle"></view>
+                <text class="text-center">分类</text>
+            </view>
+            <view class="filter-item-list filter-item-list-category" hidden="{{ showCategory }}">
+                <view class="filter-item-list-items-category">
+    <!-- 						<view class="filter-item-list-item"><span>全部分类</span></view> -->
+    <!-- 						<view class="filter-item-list-item"><span>收缩毛孔</span></view> -->
+    <!-- 						<view class="filter-item-list-item"><span>美白嫩肤</span></view> -->
+    <!-- 						<view class="filter-item-list-item"><span>补水保湿</span></view> -->
+    <!-- 						<view class="filter-item-list-item"><span>祛皱抗衰</span></view> -->
+    <!-- 						<view class="filter-item-list-item"><span>淡斑祛痘</span></view> -->
+    <!-- 						<view class="filter-item-list-item"><span>面部清洁</span></view> -->
+    <!-- 						<view class="filter-item-list-item"><span>眼部护理</span></view> -->
+                </view>
+                <view class="filter-item-list-item-end text-center" catchtap="hideFilter"><image src="https://www.iumer.cn/umer/css/image/wechat/pull-down@3x.png" /></view>
+            </view>
+        </view>
+    </view>
+</view>

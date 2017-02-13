@@ -1,6 +1,6 @@
 // pages/orders/detail.js
 var app = getApp();
-
+var timer;
 Page({
   data:{
     min: 0,
@@ -32,6 +32,8 @@ Page({
   },
   onUnload:function(){
     // 页面关闭
+    console.log("unload");
+    clearInterval(timer);
   },
   loadOrder: function(){
     var orderNo = this.data.orderNo;
@@ -60,11 +62,12 @@ Page({
               that.setData({
                 showTimer: true
               })
-              var timer = setInterval(function() {
+              timer = setInterval(function() {
                 var nowTime = new Date().getTime();
                 var diff = 15 * 60 * 1000 + orderTime - nowTime;
             	  var diffMin = parseInt((diff / 1000 / 60) % 60);
             	  var diffSec = parseInt((diff / 1000) % 60);
+                // console.log(diff)
                 if (diff <= 0) {
                   // 15分钟内未支付取消订单
                   clearInterval(timer);
