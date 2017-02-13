@@ -1,1 +1,73 @@
-/* pages/orders/pay.wxss */
+page {
+    background-color: #F7F7F7;
+}
+.container {
+    background-color: #F7F7F7;
+}
+.project-item {
+    display: flex;
+    background-color: white;
+    padding: 20rpx;
+}
+.project-left {
+    width: 120rpx;
+}
+.project-left image {
+    width: 100rpx;
+    height: 100rpx;
+}
+.project-right {
+    font-weight: bold;
+    width: 100%;
+    padding-left: 20rpx;
+}
+.project-right-title {
+    margin-bottom: 5rpx;
+}
+.project-right-price {
+    display: flex;
+    justify-content: flex-end;
+    color: orange;
+}
+.payment-type-cell {
+    padding: 20rpx;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: solid 2rpx #F7F7F7;
+}
+.payment-type-cell-hd {
+    display: flex;
+    align-items: center;
+}
+.payment-type-cell-hd image {
+    width: 50rpx;
+    height: 40rpx;
+    padding-right: 10rpx;
+}
+.payment-type-cell-ft {
+    width: 65%;
+    display: flex;
+    justify-content: flex-end;
+}
+.payment-type-cell-ft-circle {
+    width: 55rpx;
+    height: 55rpx;
+    border: solid 2rpx #F7F7F7;
+    border-radius: 100%;
+}
+.circle-on {
+    background-image: url("https://www.iumer.cn/umer/css/image/wechat/selected-round@2x.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+#btn-area {
+    margin-top: 20rpx;
+}
+.btn-pay {
+    width: 100%;
+    background-color: #FD8CA3;
+    color: white;
+    padding: 30rpx;
+}

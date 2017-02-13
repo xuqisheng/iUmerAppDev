@@ -1,2 +1,27 @@
-<!--pages/orders/pay.wxml-->
-<text>pages/orders/pay.wxml</text>
+<view class="container">
+    <view class="project-area">
+        <view class="project-item">
+            <view class="project-left">
+                <image src="https://www.iumer.cn{{ orderInfo.filePath || '/umer/css/image/default.jpg' }}"></image>
+            </view>
+            <view class="project-right">
+                <view class="project-right-title">{{ orderInfo.orderName || '' }}</view>
+                <view class="project-right-shop">{{ orderInfo.shopName || '' }}</view>
+                <view class="project-right-price">￥{{ orderInfo.orderPrice + (orderInfo.priceType == '0'? '元/次': '元/疗程' ) }}</view>
+            </view>
+        </view>
+    </view>
+    <view id="payment-type-area">
+        <block wx:for="{{ paymentMethods }}" wx:key="value">
+            <view class="payment-type-cell" wx:if="{{ item.value != 'alipay' }}">
+                <view class="payment-type-cell-hd"><image src="https://www.iumer.cn/umer/css/image/wechat/orders/{{ item.value == 'yetbuy'? 'card': item.value }}@2x.png"></image>{{ item.label }}</view>
+                <view class="payment-type-cell-ft" data-type="{{ item.value }}" bindtap="choosePayment">
+                    <view class="payment-type-cell-ft-circle {{ selected == item.value? 'circle-on': '' }}" bindtap="choosePayment"></view>
+                </view>           
+            </view>
+        </block>
+    </view>
+    <view id="btn-area">
+        <view class="btn-pay text-center" bindtap="pay">确定支付{{ orderInfo.orderPrice || 0 }}元</view>
+    </view>
+</view>
