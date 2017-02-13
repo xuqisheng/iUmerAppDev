@@ -62,7 +62,7 @@ Page({
               })
               var timer = setInterval(function() {
                 var nowTime = new Date().getTime();
-                var diff = orderTime - nowTime;
+                var diff = 15 * 60 * 1000 + orderTime - nowTime;
             	  var diffMin = parseInt((diff / 1000 / 60) % 60);
             	  var diffSec = parseInt((diff / 1000) % 60);
                 if (diff <= 0) {
@@ -445,6 +445,21 @@ Page({
     var that = this;
     wx.navigateTo({
       url: "comment?orderNo=" + that.data.orderNo,
+      success: function(res){
+        // success
+      },
+      fail: function() {
+        // fail
+      },
+      complete: function() {
+        // complete
+      }
+    })
+  },
+  payOrder: function() {
+    var that = this;
+    wx.navigateTo({
+      url: "pay?orderNo=" + that.data.orderNo,
       success: function(res){
         // success
       },
