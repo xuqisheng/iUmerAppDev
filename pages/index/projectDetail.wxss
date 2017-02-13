@@ -64,7 +64,7 @@ page {
     margin-bottom:10rpx;
 }
 .shop-info-area-txt-description {
-	padding-left: 20rpx;
+	padding: 0 0 10rpx 20rpx;
 }
 .shop-info-area-txt-stats {
     display: flex;

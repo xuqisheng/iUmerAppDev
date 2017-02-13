@@ -76,6 +76,21 @@ Page({
             timestampFirst: res.data.data[0].createDate,
             timestampLast: res.data.data[res.data.data.length - 1].createDate
           });
+        } else if (res.data.code == -4) {
+          wx.navigateTo({
+            url: '../login/login',
+            success: function(res){
+              // success
+            },
+            fail: function() {
+              // fail
+            },
+            complete: function() {
+              // complete
+            }
+          }); 
+        } else {
+
         }
       },
       fail: function(res) {
@@ -125,6 +140,21 @@ Page({
             timestampFirst: res.data.data[0].createDate,
             timestampLast: res.data.data[res.data.data.length - 1].createDate
           });
+        } else if (res.data.code == -4) {
+          wx.navigateTo({
+            url: '../login/login',
+            success: function(res){
+              // success
+            },
+            fail: function() {
+              // fail
+            },
+            complete: function() {
+              // complete
+            }
+          }); 
+        } else {
+          
         }
       },
       fail: function(res) {

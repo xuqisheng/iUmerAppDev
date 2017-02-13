@@ -103,7 +103,7 @@ Page({
   searchShop: function(txt) {
     var that = this;
     wx.request({
-        url: app.globalData.server_url + 'webService/customer/biz/index/searchPersonnelList', 
+        url: app.globalData.server_url + 'webService/customer/biz/index/searchShopList', 
         data: {
           cityId: wx.getStorageSync("cityCode"),
           shopName: txt,
