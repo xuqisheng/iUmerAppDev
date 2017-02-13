@@ -68,7 +68,7 @@ Page({
         success: function(res) {
           if (res.data.code == 1) {
             that.setData({
-              projectList: res.data.data.concat(res.data.data)          
+              projectList: res.data.data          
             });
           }
         },
@@ -99,7 +99,7 @@ Page({
               totalCommentNum: res.data.data.totalReputation,
               goodReputation: res.data.data.goodReputation,
               middleReputation: res.data.data.middleReputation,
-              badputation: res.data.data.badReputation            
+              badReputation: res.data.data.badReputation            
             });
           }
         },

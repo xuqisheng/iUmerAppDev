@@ -1,7 +1,12 @@
+var app = getApp();
 Page({
-  data:{},
+  data:{
+    loadingHidden: true,
+    currTab: 0
+  },
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
+    this.loadProjects("");
   },
   onReady:function(){
     // 页面渲染完成
@@ -14,5 +19,169 @@ Page({
   },
   onUnload:function(){
     // 页面关闭
+  },
+  switchTab: function (e) {
+    // this.loadOrders(e.detail.status, ""); 
+    if (this.data.currTab == e.target.dataset.tabindex) { 
+      return false;  
+    } else {  
+      this.setData( {  
+        currTab: e.target.dataset.tabindex,
+      });
+    } 
+  },
+  switchSwiper: function(e) {
+    this.setData( {  
+      currTab: e.detail.current, 
+    });
+    if (e.detail.current == 0) {
+      this.loadProjects("");
+    } else if (e.detail.current == 1) {
+      this.loadPersonnels("");
+    }
+  },
+  loadProjects: function(opType) {
+    var that = this;
+    this.setData({
+      loadingHidden: false
+    });
+    var data = {};
+    data["customerId"] = wx.getStorageSync('id');
+    data["pageSize"] = 10;
+    if (opType) {
+      data["operationType"] = opType;
+      switch(opType) {
+      case "up": data["timestamp"] = this.data.timestampLast; break;
+      case "down": data["timestamp"] = this.data.timestampFirst; break;
+      }
+    }
+    wx.request({
+      url: app.globalData.server_url + 'webService/customer/biz/order/reserveProjectRecord', 
+      data: data,
+      method: "POST",
+      dataType: "json",
+      header: {
+          'Content-Type': 'application/json;charset=UTF-8;',
+          'X-Token': wx.getStorageSync('X-TOKEN'),
+          'X-Type': 3
+      },
+      success: function(res) {
+        if (res.data.code == 1) {
+          if (res.data.data.length == 0) {
+            return false;
+          }
+          var projectList = opType == "down"? res.data.data.concat(that.data.projectList): opType == "up"? that.data.projectList.concat(res.data.data): res.data.data;
+          that.setData({
+            projectList: projectList,
+            timestampFirst: res.data.data[0].createDate,
+            timestampLast: res.data.data[res.data.data.length - 1].createDate
+          });
+        }
+      },
+      fail: function(res) {
+        console.log("loadProjects fail")
+      },
+      complete: function(res) {
+        that.setData({
+          loadingHidden: true
+        });
+        console.log("loadProjects complete")
+      }
+    });
+  },
+  loadPersonnels: function(opType) {
+    var that = this;
+    this.setData({
+      loadingHidden: false
+    });
+    var data = {};
+    data["customerId"] = wx.getStorageSync('id');
+    data["pageSize"] = 10;
+    if (opType) {
+      data["operationType"] = opType;
+      switch(opType) {
+      case "up": data["timestamp"] = this.data.timestampLast; break;
+      case "down": data["timestamp"] = this.data.timestampFirst; break;
+      }
+    }
+    wx.request({
+      url: app.globalData.server_url + 'webService/customer/biz/order/reservePersonnelRecord', 
+      data: data,
+      method: "POST",
+      dataType: "json",
+      header: {
+          'Content-Type': 'application/json;charset=UTF-8;',
+          'X-Token': wx.getStorageSync('X-TOKEN'),
+          'X-Type': 3
+      },
+      success: function(res) {
+        if (res.data.code == 1) {
+          if (res.data.data.length == 0) {
+            return false;
+          }
+          var personnelList = opType == "down"? res.data.data.concat(that.data.personnelList): opType == "up"? that.data.personnelList.concat(res.data.data): res.data.data;
+          that.setData({
+            personnelList: res.data.data,
+            timestampFirst: res.data.data[0].createDate,
+            timestampLast: res.data.data[res.data.data.length - 1].createDate
+          });
+        }
+      },
+      fail: function(res) {
+        console.log("loadPersonnels fail")
+      },
+      complete: function(res) {
+        that.setData({
+          loadingHidden: true
+        });
+        console.log("loadPersonnels complete")
+      }
+    });
+  },
+  loadMore: function(e) {
+    console.log("loadMore");
+    if (this.data.currTab == 0) {
+      this.loadProjects("up");
+    } else if (this.data.currTab == 1) {
+      this.loadPersonnels("up");
+    }
+  },
+  refresh: function(e){
+    console.log("refresh");
+    if (this.data.currTab == 0) {
+      this.loadProjects("down");
+    } else if (this.data.currTab == 1) {
+      this.loadPersonnels("down");
+    }
+  },
+  appointPersonnel: function(e) {
+    var projectId = e.currentTarget.dataset.projectid;
+    wx.navigateTo({
+      url: '../quickAppoint/appointPersonnel?projectId=' + projectId,
+      success: function(res){
+        // success
+      },
+      fail: function() {
+        // fail
+      },
+      complete: function() {
+        // complete
+      }
+    });
+  },
+  appointProject: function(e) {
+    var personnelId = e.currentTarget.dataset.personnelid;
+    wx.navigateTo({
+      url: '../quickAppoint/appointProject?personnelId=' + personnelId,
+      success: function(res){
+        // success
+      },
+      fail: function() {
+        // fail
+      },
+      complete: function() {
+        // complete
+      }
+    });
   }
 })

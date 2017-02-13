@@ -58,27 +58,6 @@ Page({
       }
     })
   },
-  switchNav: function(e) {   
-    var that = this;
-    // console.log(this) 
-    if (this.data.currTab == e.target.dataset.current ) {  
-      return false;  
-    } else {  
-      that.setData( {  
-        currTab: e.target.dataset.current  
-      }) ; 
-    } 
-  },
-  switchSwiper: function(e) {
-    var that = this;
-    if (this.data.currTab == e.detail.current ) {  
-      return false;  
-    } else {  
-      that.setData( {  
-        currTab: e.detail.current  
-      }) ; 
-    } 
-  },
   switchNav2: function(e) {   
     var that = this; 
     // this.updateCommentNum();

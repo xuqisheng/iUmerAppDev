@@ -1,0 +1,177 @@
+page {
+    height: 100%;
+}
+.container {
+    height: 100%;
+}
+#top-tabs-2 {
+	padding: 10rpx;
+	background-color: white;
+}
+#top-tabs-2 .tab-outer {
+	border: solid 2rpx #FD8CA3;
+    display: flex;
+	justify-content: center;
+	padding: 10rpx;
+}
+#top-tabs-2 .tab-inner {
+	color: black;
+	width: 50%;
+    text-align: center;
+    padding: 10rpx;
+}
+#top-tabs-2 .tab-inner-on-2 {
+	color: white !important;
+	background-color: #FD8CA3;
+}
+.hot-item {
+	background-color: white;
+	display: flex;
+	justify-content: space-between;
+	font-family: SimHei;
+	border-top: solid 2rpx #F7F7F7;
+    padding: 0 20rpx;
+}
+.hot-item:first-child {
+	margin-top: 10rpx;
+}
+.hot-item-left {
+	width: 150rpx;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction:column;
+	margin-right: 20rpx;
+}
+.hot-item-left .hot-item-img image {
+	width: 130rpx;
+	height: 130rpx;
+}
+.hot-item-right {
+	width: 100%;
+	padding: 20rpx 0 10rpx 0;
+}
+.hot-item-name {
+	color: #414141;
+	margin-bottom: 10rpx;
+}
+.hot-item-place-and-price {
+	display: flex;
+	justify-content: space-between;
+}
+.hot-item-place {
+	color: #414141;
+}
+.hot-item-price {
+	color: orange;
+}
+.hot-item-info {
+	display: flex;
+	justify-content: space-between;
+}
+.hot-item-info-distance {
+	color: #686868;
+	display: flex;
+	align-items: center;
+}
+.hot-item-info-distance image {
+	width: 30rpx;
+	height: 40rpx;
+	margin: 10rpx 10rpx 10rpx 0;
+}
+.hot-item-info-duration {
+	color: #686868;
+	display: flex;
+	align-items: center;
+}
+.hot-item-info-duration image {
+	width: 30rpx;
+	height: 30rpx;
+	margin: 10rpx;
+}
+.people-item {
+	background-color: white;
+	display: flex;
+	justify-content: space-between;
+	font-family: SimHei;
+	border-top: solid 2rpx #F7F7F7;
+    padding: 0 20rpx;
+}
+.people-item:first-child {
+	margin-top: 10rpx;
+}
+.people-item-left {
+	width: 150rpx;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction:column;
+	margin-right: 20rpx;
+}
+.people-item-left .people-item-img image {
+	width: 130rpx;
+	height: 130rpx;
+}
+.people-item-right {
+	width: 100%;
+	padding: 20rpx 0 10rpx 0;
+}
+.people-item-right .star {
+	display: flex;
+	margin-top: 10rpx;
+}
+.people-item-right .star image {
+	width: 32rpx;
+	height: 32rpx;
+}
+.people-item-name {
+	color: #414141;
+}
+.people-item-place {
+	color: #414141;
+}
+.people-item-dot-line {
+	margin-right: 40rpx;
+	background-image: url('https://www.iumer.cn/umer/css/image/wechat/dotted-line@2x.png');
+	width: 100%;
+	height: 2rpx;
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+}
+.people-item-info {
+	display: flex;
+	justify-content: space-between;
+}
+.people-item-info-distance {
+	color: #686868;
+	display: flex;
+	align-items: center;
+}
+.people-item-info-distance image {
+	width: 30rpx;
+	height: 40rpx;
+	margin: 10rpx 10rpx 10rpx 0;
+}
+.people-item-info-board-comment {
+	display: flex;
+}
+.people-item-info-comment {
+	color: #686868;
+	display: flex;
+	align-items: center;
+}
+.people-item-info-comment image {
+	width: 40rpx;
+	height: 40rpx;
+	margin: 10rpx;
+}
+.people-item-info-board {
+	color: #686868;
+	display: flex;
+	align-items: center;
+}
+.people-item-info-board image {
+	width: 20px;
+	height: 20px;
+	margin: 5px;
+}
