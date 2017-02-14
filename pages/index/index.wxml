@@ -11,15 +11,15 @@
 		<view class="top-menu-alert" url="messageCenter"></view>
 	</view>
 	<view id="nav">
-		<view class="nav-item" bindtap="jumpToSearchProject" data-navid="0">
+		<view class="nav-item" bindtap="jumpToSearchProject" data-navid="0" data-groupno="10">
 			<view class="nav-item-img "><image src="https://www.iumer.cn/umer/css/image/wechat/index/facial@2x.png"></image></view>
 			<view class="nav-item-txt ">面部美容</view>	
 		</view>
-		<view class="nav-item" bindtap="jumpToSearchProject" data-navid="1">
+		<view class="nav-item" bindtap="jumpToSearchProject" data-navid="1" data-groupno="20">
 			<view class="nav-item-img "><image src="https://www.iumer.cn/umer/css/image/wechat/index/massage@2x.png"></image></view>
 			<view class="nav-item-txt ">经络养生</view>	
 		</view>
-		<view class="nav-item" bindtap="jumpToSearchProject" data-navid="2">
+		<view class="nav-item" bindtap="jumpToSearchProject" data-navid="2" data-groupno="30">
 			<view class="nav-item-img "><image src="https://www.iumer.cn/umer/css/image/wechat/index/body@2x.png"></image></view>
 			<view class="nav-item-txt ">身体护理</view>	
 		</view>

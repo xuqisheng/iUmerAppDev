@@ -11,7 +11,8 @@ Page({
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
     this.setData({
-      'type': options.type
+      'type': options.type,
+      groupNo: options.groupNo
     });
     this.loadAreaList();
     this.loadCategoryList();
@@ -157,8 +158,8 @@ Page({
       data["longitude"] = wx.getStorageSync("longitude");
       data["latitude"] = wx.getStorageSync("latitude");
     }
-    if (that.data.categoryNo) {
-      data["groupNo"] = that.data.categoryNo;
+    if (that.data.categoryNo || that.data.groupNo) {
+      data["groupNo"] = that.data.categoryNo || that.data.groupNo;
     }
     data["page"] = that.data.page;
     data["pageSize"] = 10;

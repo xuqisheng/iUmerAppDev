@@ -236,8 +236,9 @@ Page({
   },
   jumpToSearchProject: function(e) {
     var typeNo = e.currentTarget.dataset.navid;
+    var groupNo = e.currentTarget.dataset.groupno;
     wx.navigateTo({
-      url: 'projectSearch?type=' + typeNo,
+      url: 'projectSearch?type=' + typeNo + '&groupNo=' + groupNo,
       success: function(res){
         // success
       },
@@ -248,5 +249,21 @@ Page({
         // complete
       }
     })
+  },
+  clickProjectItem: function(event){
+    var projectId = event.currentTarget.dataset.projectid;
+    // console.log(projectId)
+    wx.navigateTo({
+      url: 'projectDetail?projectId=' + projectId,
+      success: function(res){
+        // success
+      },
+      fail: function() {
+        // fail
+      },
+      complete: function() {
+        // complete
+      }
+    });
   }
 })
