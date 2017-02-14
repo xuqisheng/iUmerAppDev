@@ -233,5 +233,20 @@ Page({
         // complete
       }
     });
+  },
+  jumpToSearchProject: function(e) {
+    var typeNo = e.currentTarget.dataset.navid;
+    wx.navigateTo({
+      url: 'projectSearch?type=' + typeNo,
+      success: function(res){
+        // success
+      },
+      fail: function() {
+        // fail
+      },
+      complete: function() {
+        // complete
+      }
+    })
   }
 })
