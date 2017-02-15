@@ -3,19 +3,34 @@
     <loading hidden="{{ loadingHidden }}">
         加载中...
     </loading>
-    <view class="project-item">
-        <view class="project-item-left">
-            <view class="project-item-img"><image src="https://www.iumer.cn{{ projectFilePath }}" /></view>
+    <view class="people-item">
+        <view class="people-item-left">
+            <view class="people-item-img">
+                <image src="https://www.iumer.cn{{ personnelInfo.header || '/umer/css/image/default.jpg' }}" />
+            </view>
         </view>
-        <view class="project-item-right">
-            <view class="project-item-name">{{ projectTitle }}</view>
-            <view class="project-item-place">{{ shopTitle }}</view>
-            <view class="project-item-price">{{ priceType == 0? projectUnitPrice + '元/次': projectCoursePrice + '元/疗程' }}</view>
-            <view class="clear"></view>
-            <view class="project-item-dot-line"></view>
-            <view class="project-item-info">
-                <span class="project-item-info-distance"><image src="https://www.iumer.cn/umer/css/image/wechat/pin@3x.png" />{{ shopAddress }}</span>
-                <span class="project-item-info-duration"><image src="https://www.iumer.cn/umer/css/image/wechat/history-red@2x.png" />{{ projectDuration }}分钟</span>
+        <view class="people-item-right">
+            <view class="people-item-name">{{ personnelInfo.name || "" }}</view>
+            <view class="people-item-rate">
+                <view class="star" data-score='{{ personnelInfo.level || 0 }}'>
+                    <block wx:for="{{ [ 0,1,2,3,4 ] }}" wx:for-item="itm" wx:key="*this">
+                        <view wx:if="{{ itm < (personnelInfo.level || 0) }}">
+                            <image src="https://www.iumer.cn/umer/js/raty/img/star-on.png"></image>
+                        </view>
+                        <view wx:if="{{ itm >= (personnelInfo.level || 0) }}">
+                            <image src="https://www.iumer.cn/umer/js/raty/img/star-off.png"></image>
+                        </view>
+                    </block>
+                </view>
+            </view>
+            <view class="people-item-info">
+                <view class="people-item-info-distance">
+				    <image src="https://www.iumer.cn/umer/css/image/wechat/pin@3x.png" />距离{{ personnelInfo.distance || "0米" }}左右
+                </view>
+                <view class="people-item-info-board-comment">
+                    <view class="people-item-info-board"><image src="https://www.iumer.cn/umer/css/image/wechat/order-count@2x.png" /> {{ personnelInfo.orderCount || 0 }}</view>
+                    <view class="people-item-info-comment"><image src="https://www.iumer.cn/umer/css/image/wechat/comments@2x.png" />{{ personnelInfo.commentCount || 0 }}</view>
+                </view>
             </view>
         </view>
     </view>
@@ -27,7 +42,7 @@
             <view class="selection-cell__ft cell-project-price">
                 <view class="dropdown">
                     <view class="dropdown-toggle">
-                        <text class="selected-price" data-price-type="0">{{ priceType == 0? '次数：'+ projectUnitPrice + '元/次': projectCoursePrice + '元/疗程' }}</text>
+                        <text class="selected-price" data-price-type="0">{{ priceType == 0? '次数：'+ (projectUnitPrice || '') + '元/次': (projectCoursePrice || '') + '元/疗程' }}</text>
                     </view>
                     <view class="dropdown-menu" hidden="{{ priceDropdownHidden }}">
                         <view style="padding: 20rpx 0;" data-pricetype="0" bindtap="changePriceType">
@@ -42,12 +57,12 @@
             </view>
             <view class="{{ priceDropdownHidden? '': 'arrow-down' }}"></view>
         </view>
-        <view class="selection-cell selection-cell_access" href="javascript:;" bindtap="choosePersonnel">
+        <view class="selection-cell selection-cell_access" href="javascript:;" bindtap="chooseProject">
             <view class="selection-cell__bd">
-            <text>优美师</text>
+            <text>项目</text>
             </view>
-            <view class="selection-cell__ft chosen-personnel">
-            {{ personnelName || "请选择优美师" }}<image hidden="{{ !personnelHeader }}" src="{{ personnelHeader? ('https://www.iumer.cn'+personnelHeader): '' }}"></image>
+            <view class="selection-cell__ft chosen-project">
+            {{ projectName || "请选择项目" }}<image hidden="{{ !projectHeader }}" src="{{ projectHeader? ('https://www.iumer.cn' + projectHeader): '' }}"></image>
             </view>
         </view>
         <view class="selection-cell">
@@ -59,7 +74,7 @@
         <view class="selection-cell">	
             <view class="selection-cell__bd">
                 <view class="date-select">
-                    <view class="text-center swiper-slide {{ item.dateTime == chosenDate? 'date-select-on': '' }}" data-time="{{ item.dateTime }}" wx:for="{{ weekdays }}" bindtap="loadTimeslots"><text>{{ item.week + "\n" + item.dateTime }}</text></view>
+                     <view class="text-center swiper-slide {{ item.dateTime == chosenDate? 'date-select-on': '' }}" data-time="{{ item.dateTime }}" wx:for="{{ weekdays }}" bindtap="loadTimeslots"><text>{{ item.week + "\n" + item.dateTime }}</text></view>
                 </view>
             </view>
         </view>

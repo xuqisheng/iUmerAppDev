@@ -99,3 +99,7 @@ page {
 .comment-item:not(:last-child) {
 	border-bottom: solid 2rpx #F7F7F7;
 }
+.loading-txt {
+	padding: 30rpx;
+	color: black;
+}

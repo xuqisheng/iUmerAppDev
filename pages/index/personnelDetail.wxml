@@ -28,7 +28,7 @@
 		</view>
 		<view id="hot-area">
 			<block wx:for="{{ projectList }}" wx:key="id">
-				<view class="hot-item" data-projectId="{{ item.id }}" bindtap="clickProjectItem" >
+				<view class="hot-item" data-projectId="{{ item.id }}" bindtap="appointBoth" >
 					<view class="hot-item-left">
 						<view class="hot-item-img">
 							<image src="https://www.iumer.cn{{ item.filePath || '/umer/css/image/default.jpg' }}" />
@@ -81,5 +81,8 @@
             </view>
         </block>
         <view class="more-comment text-center" bindtap="showComments">查看全部<text>{{ totalCommentNum || 0 }}</text>条评论</view>
+    </view>
+    <view id="btn-area">
+        <view class="btn-appoint text-center" bindtap="appoint">预约</view>
     </view>
 </view>

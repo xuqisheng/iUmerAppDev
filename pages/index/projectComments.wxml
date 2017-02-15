@@ -40,6 +40,7 @@
                         </view>
                     </view>
                 </block>
+                <view class="loading-txt text-center" wx:if="{{ showLoadingTxt }}">正在加载数据...</view>
             </scroll-view>
         </swiper-item>  
         <swiper-item>  

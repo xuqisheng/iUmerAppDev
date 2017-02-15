@@ -18,6 +18,9 @@
     "pages/quickAppoint/quickAppoint",
     "pages/quickAppoint/appointPersonnel",
     "pages/quickAppoint/choosePersonnel",
+    "pages/quickAppoint/appointProject",
+    "pages/quickAppoint/chooseProject",
+    "pages/quickAppoint/appoint",
     "pages/my/my"
   ],
   "window":{

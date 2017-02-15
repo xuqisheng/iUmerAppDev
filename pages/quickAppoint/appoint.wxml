@@ -42,12 +42,12 @@
             </view>
             <view class="{{ priceDropdownHidden? '': 'arrow-down' }}"></view>
         </view>
-        <view class="selection-cell selection-cell_access" href="javascript:;" bindtap="choosePersonnel">
+        <view class="selection-cell" href="javascript:;">
             <view class="selection-cell__bd">
             <text>优美师</text>
             </view>
             <view class="selection-cell__ft chosen-personnel">
-            {{ personnelName || "请选择优美师" }}<image hidden="{{ !personnelHeader }}" src="{{ personnelHeader? ('https://www.iumer.cn'+personnelHeader): '' }}"></image>
+            {{ personnelName }}<image hidden="{{ !personnelHeader }}" src="{{ personnelHeader? ('https://www.iumer.cn'+personnelHeader): '' }}"></image>
             </view>
         </view>
         <view class="selection-cell">

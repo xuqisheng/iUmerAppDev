@@ -70,8 +70,8 @@ Page({
           var data = res.data.data;
           if (that.data.remember) {
             wx.setStorageSync('remember', true);
-            wx.setStorageSync('rememberAccount', that.data.account);
-            wx.setStorageSync('rememberPwd', that.data.pwd);
+            wx.setStorageSync('rememberAccount', that.data.account || that.data.rememberAccount);
+            wx.setStorageSync('rememberPwd', that.data.pwd || that.data.rememberPwd);
           } else {
             wx.removeStorageSync('remember');
             wx.removeStorageSync('rememberAccount');

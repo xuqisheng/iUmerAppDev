@@ -1,0 +1,27 @@
+<view class="container">
+    <view id="project">
+        <scroll-view scroll-y style="width: 100%; height: 100%;" bindscrolltolower="loadMore" bindscrolltoupper="refresh">
+            <block wx:for="{{ personnelProjects }}" wx:key="id">
+                <view class="hot-item" data-projectid="{{ item.id }}" bindtap="clickProjectItem" >
+					<view class="hot-item-left">
+						<view class="hot-item-img">
+							<image class="lazy" src="https://www.iumer.cn{{ item.filePath || '/umer/css/image/default.jpg' }}" />
+						</view>
+					</view>
+					<view class="hot-item-right">
+						<view class="hot-item-name">{{ item.projectName || "" }}</view>
+						<view class="hot-item-place-and-price">
+							<view class="hot-item-place">{{ item.shopName || "" }}</view>
+							<view class="hot-item-price">￥{{ item.unitPrice || "0" }}元</view>
+						</view>
+						<view class="hot-item-info">
+							<view class="hot-item-info-distance">
+								<image src="https://www.iumer.cn/umer/css/image/wechat/pin@3x.png" />距离{{ item.distance || "0米" }}左右</view>
+							<view class="hot-item-info-duration"><image src="https://www.iumer.cn/umer/css/image/wechat/history-red@2x.png" />{{ item.duration || "0" }}分钟</view>
+						</view>
+					</view>
+				</view>
+            </block>
+        </scroll-view>
+    </view>
+</view>
