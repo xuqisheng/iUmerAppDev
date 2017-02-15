@@ -46,8 +46,8 @@ page {
 	padding-right: 10rpx;
 }
 #shop-desc-area .call-shop image {
-    width: 100rpx;
-    height: 100rpx;
+    width: 60rpx;
+    height: 80rpx;
 }
 #shop-desc-area .call-shop {
     border-left: solid 2rpx #F7F7F7;

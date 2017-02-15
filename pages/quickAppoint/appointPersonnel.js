@@ -15,7 +15,8 @@ Page({
     this.setData({
       projectId: options.projectId,
       personnelId: options.personnelId,
-      priceType: options.priceType || 0
+      priceType: options.priceType || 0,
+      'from': options.from || ""
     });
     this.loadProject();
     this.loadWeekdays();
@@ -493,5 +494,35 @@ Page({
       reservePhone: value
     });
     return value;
+  },
+  cancelOrder: function() {
+    var that = this;
+    if (that.data.from == "projectDetail") {
+      wx.redirectTo({
+        url: '../index/projectDetail?projectId=' + that.data.projectId,
+        success: function(res){
+          // success
+        },
+        fail: function() {
+          // fail
+        },
+        complete: function() {
+          // complete
+        }
+      });
+    } else {
+      wx.switchTab({
+        url: 'quickAppoint',
+        success: function(res){
+          // success
+        },
+        fail: function() {
+          // fail
+        },
+        complete: function() {
+          // complete
+        }
+      })
+    }
   }
 })

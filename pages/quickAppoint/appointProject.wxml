@@ -103,6 +103,7 @@
         </view>	
     </view>
     <view class="btn-area">
-        <view class="btn-item" bindtap="submitOrder">确认预约</view>
+        <view class="btn-item btn-cancel" bindtap="cancelOrder">取消预约</view>
+        <view class="btn-item btn-confirm" bindtap="submitOrder">确认预约</view>
     </view>
 </view>

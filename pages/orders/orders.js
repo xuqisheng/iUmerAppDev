@@ -38,10 +38,6 @@ Page({
   },
   switchSwiper: function(e) {
     var mapping = this.data.mapping;
-    this.setData({
-      orderList: []
-    });
-
     this.loadOrders(mapping[e.detail.current], ""); 
     this.setData( {  
       currTab: e.detail.current, 
@@ -79,7 +75,12 @@ Page({
         success: function(res) {
           // console.log(res.data)
           if (res.data.code == 1) {
-            if (res.data.data.length == 0) {
+            if (res.data.data.length == 0 && !opType) {
+              that.setData({
+                orderList: [],
+                timestampFirst: 0,
+                timestampLast: 0
+              });
               return false;
             }
             var orderList = opType == "down"? res.data.data.concat(that.data.orderList): opType == "up"? that.data.orderList.concat(res.data.data): res.data.data;

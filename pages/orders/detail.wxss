@@ -106,8 +106,8 @@ page {
     border-left: solid 2rpx #F7F7F7;
 }
 .call-personnel image{
-    width: 100rpx;
-    height: 100rpx;
+    width: 60rpx;
+    height: 80rpx;
 }
 .order-detail {
     margin-top: 10rpx;

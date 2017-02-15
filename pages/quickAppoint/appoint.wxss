@@ -237,6 +237,9 @@ button.timeslot::after {
     padding: 30rpx 0;
     color: white;
     font-family: SimHei;
-    width: 100%;
+    width: calc(50% - 1rpx);
     text-align: center;
+}
+.btn-cancel {
+	margin-right: 2rpx;
 }

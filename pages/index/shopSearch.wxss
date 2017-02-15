@@ -1,0 +1,102 @@
+page {
+    background-color: #F1F1F1;
+    height: 100%;
+}
+.container {
+    font-size: 30rpx;
+    height: 100%;
+}
+.top-menu-active {
+	padding: 0 20rpx;
+	display: flex;
+	background-color: #F1F1F1;
+	color: black;
+	justify-content: space-between;
+	align-items: center;
+	height: 96rpx;
+}	
+.top-menu-search {
+	position: relative;
+	width: 600rpx;
+	background-color: white;
+	font-size: 28rpx;
+}
+.top-menu-search .search-icon {
+	position: absolute;
+	left: 16rpx;
+	top: 12rpx;
+	background-image: url('https://www.iumer.cn/umer/css/image/wechat/search@3x.png');
+	background-repeat: no-repeat;
+	background-size: 32rpx 32rpx;
+	width: 32rpx;
+	height: 32rpx;
+}
+.top-menu-search input {
+	width: 90%;
+	height: 100%;
+	border: none;
+	color: black;
+	margin-left: 60rpx;
+	line-height: normal;
+}
+#shop-area {
+    height: calc(100% - 96rpx);
+}
+.shop-item {
+	background-color: white;
+    display: flex;
+	justify-content: space-between;
+	font-family: SimHei;
+	border-top: solid 2rpx #F7F7F7;
+	padding: 0 20rpx;
+}
+.shop-item-left {
+	width: 150rpx;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction:column;
+	margin-right: 20rpx;
+}
+.shop-item-left image {
+	width: 130rpx;
+	height: 130rpx;
+}
+.shop-item-right {
+/* 	border: solid 1px green; */
+	width: 100%;
+	padding: 20rpx 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.shop-item-right-title {
+	color: #414141;
+	margin-bottom: 10rpx;
+}
+.shop-item-right-intro {
+	color: #414141;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.shop-item-right-info-distance {
+	color: #686868;
+    display: flex;
+    align-items: center;
+    float: left;
+}
+.shop-item-right-info-distance image {
+	width: 30rpx;
+    height: 40rpx;
+    margin: 10rpx 10rpx 10rpx 0;
+}
+.shop-item-right-info-stats {
+	float: right;
+	color: #686868;
+    display: flex;
+    align-items: center;
+    margin: 10rpx;
+}
+.red {
+    color: #FD8CA3;
+}

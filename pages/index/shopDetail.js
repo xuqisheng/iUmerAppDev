@@ -113,7 +113,12 @@ Page({
       },
       success: function(res) {
         if (res.data.code == 1) {
-          if (res.data.data.length == 0) {
+          if (res.data.data.length == 0 && !opType) {
+            that.setData({
+              projectList: [],
+              timestampFirst: 0,
+              timestampLast: 0
+            });
             return false;
           }
           var projectList = opType == "down"? res.data.data.concat(that.data.projectList): opType == "up"? that.data.projectList.concat(res.data.data): res.data.data;
@@ -160,7 +165,12 @@ Page({
       },
       success: function(res) {
         if (res.data.code == 1) {
-          if (res.data.data.length == 0) {
+          if (res.data.data.length == 0 && !opType) {
+            that.setData({
+              personnelList: [],
+              timestampFirst: 0,
+              timestampLast: 0
+            });
             return false;
           }
           var personnelList = opType == "down"? res.data.data.concat(that.data.personnelList): opType == "up"? that.data.personnelList.concat(res.data.data): res.data.data;

@@ -234,11 +234,9 @@ Page({
       }
     });
   },
-  jumpToSearchProject: function(e) {
-    var typeNo = e.currentTarget.dataset.navid;
-    var groupNo = e.currentTarget.dataset.groupno;
+  jumpToSearchProject: function() {
     wx.navigateTo({
-      url: 'projectSearch?type=' + typeNo + '&groupNo=' + groupNo,
+      url: 'projectSearch',
       success: function(res){
         // success
       },
@@ -250,11 +248,9 @@ Page({
       }
     })
   },
-  clickProjectItem: function(event){
-    var projectId = event.currentTarget.dataset.projectid;
-    // console.log(projectId)
-    wx.navigateTo({
-      url: 'projectDetail?projectId=' + projectId,
+  jumpToSearchPersonnel: function() {
+    wx.redirectTo({
+      url: 'personnelSearch',
       success: function(res){
         // success
       },
@@ -264,6 +260,20 @@ Page({
       complete: function() {
         // complete
       }
-    });
+    })
+  },
+  jumpToSearchProjectNoFilter: function() {
+    wx.redirectTo({
+      url: 'projectSearchNoFilter',
+      success: function(res){
+        // success
+      },
+      fail: function() {
+        // fail
+      },
+      complete: function() {
+        // complete
+      }
+    })
   }
 })

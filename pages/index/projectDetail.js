@@ -228,8 +228,8 @@ Page({
   },
   appoint: function(){
     var that = this;
-    wx.navigateTo({
-      url: '../quickAppoint/appointPersonnel?projectId=' + that.data.projectId,
+    wx.redirectTo({
+      url: '../quickAppoint/appointPersonnel?from=projectDetail&projectId=' + that.data.projectId,
       success: function(res){
         // success
       },

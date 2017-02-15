@@ -178,8 +178,8 @@ Page({
     });
   },
   moreProjects: function() {
-    wx.redirectTo({
-      url: 'searchProjects',
+    wx.navigateTo({
+      url: 'projectSearch',
       success: function(res){
         // success
       },
@@ -193,7 +193,7 @@ Page({
   },
   morePersonnels: function() {
     wx.redirectTo({
-      url: 'searchPersonnels',
+      url: 'personnelSearch',
       success: function(res){
         // success
       },
@@ -207,7 +207,7 @@ Page({
   },
   moreShops: function() {
     wx.redirectTo({
-      url: 'searchShops',
+      url: 'shopSearch',
       success: function(res){
         // success
       },

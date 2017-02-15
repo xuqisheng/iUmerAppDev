@@ -145,10 +145,15 @@ Page({
         success: function(res) {
           // console.log(res.data)
           if (res.data.code == 1) {
-            if (res.data.data.length == 0) {
-              return false;
-            }
             if (level == 0) {
+              if (res.data.data.length == 0 && !opType) {
+                that.setData({
+                  goodList: [],
+                  goodTimestampFirst: 0,
+                  goodTimestampLast: 0
+                })
+                return false;
+              }
               var goodList = opType == "down"? res.data.data.concat(that.data.goodList): opType == "up"? that.data.goodList.concat(res.data.data): res.data.data;
               that.setData({
                 goodList: goodList,
@@ -156,6 +161,14 @@ Page({
                 goodTimestampLast: goodList[goodList.length - 1].createDate
               });
             } else if (level == 1) {
+              if (res.data.data.length == 0 && !opType) {
+                that.setData({
+                  middleList: [],
+                  middleTimestampFirst: 0,
+                  middleTimestampLast: 0
+                })
+                return false;
+              }
               var middleList = opType == "down"? res.data.data.concat(that.data.middleList): opType == "up"? that.data.middleList.concat(res.data.data): res.data.data;
               that.setData({
                 middleList: middleList,
@@ -163,6 +176,14 @@ Page({
                 middleTimestampLast: middleList[middleList.length - 1].createDate
               });
             } else if (level == 2) {
+              if (res.data.data.length == 0 && !opType) {
+                that.setData({
+                  badList: [],
+                  badTimestampFirst: 0,
+                  badTimestampLast: 0
+                })
+                return false;
+              }
               var badList = opType == "down"? res.data.data.concat(that.data.badList): opType == "up"? that.data.badList.concat(res.data.data): res.data.data;
               that.setData({
                 badList: badList,

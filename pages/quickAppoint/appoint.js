@@ -15,7 +15,8 @@ Page({
     this.setData({
       projectId: options.projectId,
       personnelId: options.personnelId,
-      priceType: options.priceType || 0
+      priceType: options.priceType || 0,
+      orderNo: options.orderNo
     });
     this.loadProject();
     this.loadPersonnel();
@@ -490,5 +491,35 @@ Page({
       reservePhone: value
     });
     return value;
+  },
+  cancelOrder: function() {
+    var that = this;
+    if (that.data.from == "personnelDetail") {
+      wx.redirectTo({
+        url: '../index/personnelDetail?personnelId=' + that.data.personnelId,
+        success: function(res){
+          // success
+        },
+        fail: function() {
+          // fail
+        },
+        complete: function() {
+          // complete
+        }
+      });
+    } else {
+      wx.redirectTo({
+        url: '../orders/detail?orderNo=' + that.data.orderNo,
+        success: function(res){
+          // success
+        },
+        fail: function() {
+          // fail
+        },
+        complete: function() {
+          // complete
+        }
+      })
+    }
   }
 })

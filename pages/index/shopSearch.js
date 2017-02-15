@@ -1,18 +1,16 @@
-// pages/quickAppoint/choosePersonnel.js
+// pages/index/indexSearch.js
 var app = getApp();
 Page({
   data:{
+    shopList: [],
     timestampFirst: 0,
-    timestampLast: 0,
-    projectPersonnels: []
+    timestampLast: 0
   },
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
     this.setData({
-      projectId: options.projectId,
-      priceType: options.priceType
-    });
-    this.loadPersonnels("");
+      value: options.value || ""
+    })
   },
   onReady:function(){
     // 页面渲染完成
@@ -26,9 +24,9 @@ Page({
   onUnload:function(){
     // 页面关闭
   },
-  back: function(){
-    wx.redirectTo({
-      url: 'appointPersonnel?personnelId=' + personnelId + '&projectId=' + projectId + "&priceType=" + priceType,
+  back: function(e) {
+    wx.switchTab({
+      url: 'index',
       success: function(res){
         // success
       },
@@ -40,56 +38,63 @@ Page({
       }
     })
   },
-  loadPersonnels:function(operationType){
+  inputSearch: function(e) {
+    var value = e.detail.value.trim();
+    this.setData({
+      value: value
+    })
+    this.searchShop("", value);
+  },
+  searchShop: function(operationType, value) {
     var that = this;
     var data = {};
     if (operationType) {
       data["operationType"] = operationType;
       switch (operationType) {
-      case "up": data["timestamp"] = this.data.timestampLast; break;
-      case "down": data["timestamp"] = this.data.timestampFirst; break;
+        case "up": data["timestamp"] = this.data.timestampLast; break;
+        case "down": data["timestamp"] = this.data.timestampFirst; break;
       }
     }
     data["pageSize"] = 10;
-    data["projectId"] = this.data.projectId;
+    data["shopName"] = value;
+    data["cityId"] = wx.getStorageSync('cityCode');
     wx.request({
-        url: app.globalData.server_url + 'webService/customer/biz/reserve/projectPersonnelList', 
+        url: app.globalData.server_url + 'webService/customer/biz/index/searchShopList', 
         data: data,
         method: "POST",
         dataType: "json",
         header: {
            'Content-Type': 'application/json;charset=UTF-8;'
-       },
+        },
         success: function(res) {
-          var res = res.data;
-          if (res.code == 1) {
-            if (res.data.length == 0) {
+          if (res.data.code == 1) {
+            if (res.data.data.length == 0 && !operationType) {
+              that.setData({
+                shopList: []
+              })
               return false;
             }
-            var list = operationType == "down"? res.data.concat(that.data.projectPersonnels): operationType == "up"? that.data.projectPersonnels.concat(res.data): res.data;
+            var list = operationType == "down"? res.data.data.concat(that.data.shopList): operationType == "up"? that.data.shopList.concat(res.data.data): res.data.data;
             that.setData({
-              projectPersonnels: list,
+              shopList: list,
               timestampFirst: list[0].createDate,
               timestampLast: list[list.length - 1].createDate
             });
-          } else {
-            
           }
         },
         fail: function(res) {
-          console.log("getHotProject fail")
+          console.log("searchShopList fail")
         },
         complete: function(res) {
-          console.log("complete")
+          console.log("searchShopList complete")
         }
     });
   },
-  clickPersonnelItem: function(e) {
-    var personnelId = e.currentTarget.dataset.personnelid;
-    var projectId = this.data.projectId;
-    var priceType = this.data.priceType;
-    wx.redirectTo({
-      url: 'appointPersonnel?personnelId=' + personnelId + '&projectId=' + projectId + "&priceType=" + priceType,
+  clickShopItem: function(e){
+    var shopId = e.currentTarget.dataset.shopid;
+    // console.log(projectId)
+    wx.navigateTo({
+      url: 'shopDetail?shopId=' + shopId,
       success: function(res){
         // success
       },
@@ -99,14 +104,14 @@ Page({
       complete: function() {
         // complete
       }
-    })
+    });
   },
   loadMore: function(e) {
     console.log("loadMore");
-    this.loadPersonnels("up");
+    this.searchShop("up", this.data.value);
   },
   refresh: function(e){
     console.log("refresh");
-    this.loadPersonnels("down");
+    this.searchShop("down", this.data.value);
   }
 })

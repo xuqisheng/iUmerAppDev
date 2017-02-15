@@ -473,5 +473,20 @@ Page({
         // complete
       }
     })
+  },
+  orderAgain: function(){
+    var that = this;
+    wx.redirectTo({
+      url: '../quickAppoint/appoint?orderNo=' + that.data.orderNo + '&personnelId=' + that.data.orderInfo.personnelId + '&projectId=' + that.data.orderInfo.projectId,
+      success: function(res){
+        // success
+      },
+      fail: function() {
+        // fail
+      },
+      complete: function() {
+        // complete
+      }
+    })
   }
 })

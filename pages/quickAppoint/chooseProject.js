@@ -40,33 +40,22 @@ Page({
         method: "POST",
         dataType: "json",
         header: {
-           'Content-Type': 'application/json;charset=UTF-8;',
-           "X-Token": wx.getStorageSync('X-TOKEN'),
-           "X-Type": 3
+           'Content-Type': 'application/json;charset=UTF-8;'
        },
         success: function(res) {
           var res = res.data;
           if (res.code == 1) {
+            if (res.data.length == 0) {
+              return false;
+            }
             var list = operationType == "down"? res.data.concat(that.data.personnelProjects): operationType == "up"? that.data.personnelProjects.concat(res.data): res.data;
             that.setData({
               personnelProjects: list,
               timestampFirst: list[0].createDate,
               timestampLast: list[list.length - 1].createDate
             });
-          } else if (res.code == -4) {
-            console.log("TOKEN失效！")
-            wx.navigateTo({
-              url: '../login/login',
-              success: function(res){
-                // success
-              },
-              fail: function() {
-                // fail
-              },
-              complete: function() {
-                // complete
-              }
-            })
+          } else {
+            
           }
         },
         fail: function(res) {
