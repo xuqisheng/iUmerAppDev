@@ -161,8 +161,8 @@ page {
 	align-items: center;
 }
 .people-item-info-comment image {
-	width: 40rpx;
-	height: 40rpx;
+	width: 30rpx;
+	height: 30rpx;
 	margin: 10rpx;
 }
 .people-item-info-board {
@@ -171,7 +171,7 @@ page {
 	align-items: center;
 }
 .people-item-info-board image {
-	width: 20px;
-	height: 20px;
-	margin: 5px;
+	width: 30rpx;
+	height: 30rpx;
+	margin: 10rpx;
 }

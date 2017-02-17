@@ -1,6 +1,7 @@
 //index.js
 //获取应用实例
-var app = getApp()
+var app = getApp();
+var cities = require("../../utils/cities.js");
 Page({
   data: {
     
@@ -33,7 +34,7 @@ Page({
       wx.getLocation({
         type: 'wgs84',
         success: function(res) {
-          if (res.data.code == 1) {
+          if (res.errMsg == "getLocation:ok") {
             var latitude = res.latitude
             var longitude = res.longitude
             wx.setStorageSync('latitude', latitude);
@@ -63,11 +64,24 @@ Page({
                     var cityCode = ele.code;
                     // console.log(ele)
                     if (cityName == city) {
+                      if (city.length < 3) {
+    
+                      } else if (city.length == 3) {
+                        city = city.substring(0, 2);
+                      }  else {
+                        city = city.substring(0, 2) + "...";
+                      }
                       that.setData({
                         baiduCity: cityName,
-                        baiduCityCode: cityCode
+                        baiduCityCode: cityCode,
+                        cityCode: cityCode,
+                        cityName: city
                       });
+                      wx.setStorageSync('cityCode', cityCode);
+                      wx.setStorageSync('cityName', cityName);
                       console.log("定位到的城市是：" + city);
+                      that.getHotProject();
+                      that.getHotPersonnel();
                       find = true;
                       return false;
                     }
@@ -81,6 +95,12 @@ Page({
           } else {
 
           }
+        },
+        fail: function(res) {
+          console.log('getLocation failed');
+        },
+        complete: function(res) {
+          console.log("getLocation completed");
         }
       });
     }

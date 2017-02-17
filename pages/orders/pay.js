@@ -72,7 +72,7 @@ Page({
     wx.request({
       url: app.globalData.server_url + 'webService/common/payMode', 
       data: {
-      
+        type: 2
       },
       method: "POST",
       dataType: "json",

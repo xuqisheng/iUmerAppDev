@@ -61,8 +61,8 @@
                                 <view class="people-item-info-distance">
                                     <image src="https://www.iumer.cn/umer/css/image/wechat/pin@3x.png" />距离{{ item.distance || "0米" }}左右</view>
                                 <view class="people-item-info-board-comment">
-                                    <view class="people-item-info-board"><image src="https://www.iumer.cn/umer/css/image/wechat/order-count@2x.png" /> {{ item.orderCount || 0 }}</view>
-                                    <view class="people-item-info-comment"><image src="https://www.iumer.cn/umer/css/image/wechat/comments@2x.png" />{{ item.commentCount || 0 }}</view>
+                                    <view class="people-item-info-board"><image src="https://www.iumer.cn/umer/css/image/wechat/app/order-count@2x.png" /> {{ item.orderCount || 0 }}</view>
+                                    <view class="people-item-info-comment"><image src="https://www.iumer.cn/umer/css/image/wechat/app/comments@2x.png" />{{ item.commentCount || 0 }}</view>
                                 </view>
                             </view>
                         </view>

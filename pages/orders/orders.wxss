@@ -17,6 +17,7 @@ page {
 }
 .top-tab {
     padding: 20rpx 40rpx;
+    display: inline-block;
 }
 .top-tab-on {
     border-bottom: solid 4rpx red;

@@ -1,80 +1,22 @@
-/* pages/login/login.wxss */
+page {
+	height: 100%;
+}
 .container {
-    background-color: white;
-}
-#logo-area {
-    display: flex;
-	justify-content: center;
-	flex-direction: column;
-	font-family: SimHei;
-	font-weight: bold;
-	margin-top: 80rpx;
-}
-.logo-area-img {
-	background-image: url('https://www.iumer.cn/umer/css/image/wechat/logo@2x.png');    
-	width: 128rpx;    
-	height: 128rpx;   
-	background-size: 128rpx 128rpx;
-	margin: 0 auto;
-}
-.logo-area-txt {
-	padding: 20rpx;
-}
-#frm-area {
-	padding: 20rpx;
-}
-.frm-area-input {
-	background-image: url('https://www.iumer.cn/umer/css/image/kuang.jpg');
-	background-size: 100% 90rpx;
-	height: 90rpx;
-	width: 612rpx;
-	margin: 20rpx 0;
-    display: flex;
-	justify-content: center;
-	flex-direction: column;
-    padding-left: 100rpx;
-    position: relative;
-}
-.frm-area-input-icon {
-	position: absolute;
-	left: 5px;
-	top: 5px;
-    background-size: 35px 35px;
-    background-repeat: no-repeat;
-	width: 50px;
-    height: 100%;
-}
-.frm-area-input-icon-account {
-	background-image: url('https://www.iumer.cn/umer/css/image/wechat/login/data@2x.png');	
-}
-.frm-area-input-icon-pwd {
-	background-image: url('https://www.iumer.cn/umer/css/image/wechat/login/account@2x.png');	
-}
-.frm-area-input input {
-	height: 80%;
-	width: 80%;
-	border: none;
-}
-.frm-area-input-opt {
-	font-family: SimHei;
-    display: flex;
-	justify-content: space-between;
-}
-.frm-area-input-opt input {
-	border-radius: 100%;
-}
-#btn-area {
-	padding: 10px;
-    display: flex;
+	background-color: white;
+	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	font-family: SimHei;
-	font-weight: bold;
+	align-items: center;
+	height: 100%;
+}
+.container image {
+	width: 35%;
+	height: calc(750rpx / 106 * 132 * 0.35);
+}
+.container view {
+	background-color: #FD8CA3;
 	color: white;
-}
-.btn-area-btn {
-	background-color: #E84057;
-	width: 100%;
-	padding: 20rpx 0;
-	margin: 10rpx 0;
+	padding: 25rpx 80rpx;
+	border-radius: 5rpx;
+	margin-top: 20rpx;
 }

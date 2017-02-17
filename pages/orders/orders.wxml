@@ -3,12 +3,14 @@
         加载中...
     </loading>
     <view class="top-tabs">
-        <view class="top-tab {{ currTab == 0? 'top-tab-on': '' }} text-center" data-tabindex="0" bindtap="switchTab" data-status="1">进行中</view>
-        <view class="top-tab {{ currTab == 1? 'top-tab-on': '' }} text-center" data-tabindex="1" bindtap="switchTab" data-status="0">待付款</view>
-        <view class="top-tab {{ currTab == 2? 'top-tab-on': '' }} text-center" data-tabindex="2" bindtap="switchTab" data-status="2">待评价</view>
-        <view class="top-tab {{ currTab == 3? 'top-tab-on': '' }} text-center" data-tabindex="3" bindtap="switchTab" data-status="3">已完成</view>  
-        <view class="top-tab {{ currTab == 4? 'top-tab-on': '' }} text-center" data-tabindex="4" bindtap="switchTab" data-status="5">取消中</view>
-        <view class="top-tab {{ currTab == 5? 'top-tab-on': '' }} text-center" data-tabindex="5" bindtap="switchTab" data-status="4">已取消</view>  
+        <scroll-view scroll-x scroll-left="{{ currTab * 85 }}" style="width: 100%">
+            <view class="top-tab {{ currTab == 0? 'top-tab-on': '' }} text-center" data-tabindex="0" bindtap="switchTab" data-status="1">进行中</view>
+            <view class="top-tab {{ currTab == 1? 'top-tab-on': '' }} text-center" data-tabindex="1" bindtap="switchTab" data-status="0">待付款</view>
+            <view class="top-tab {{ currTab == 2? 'top-tab-on': '' }} text-center" data-tabindex="2" bindtap="switchTab" data-status="2">待评价</view>
+            <view class="top-tab {{ currTab == 3? 'top-tab-on': '' }} text-center" data-tabindex="3" bindtap="switchTab" data-status="3">已完成</view>  
+            <view class="top-tab {{ currTab == 4? 'top-tab-on': '' }} text-center" data-tabindex="4" bindtap="switchTab" data-status="5">取消中</view>
+            <view class="top-tab {{ currTab == 5? 'top-tab-on': '' }} text-center" data-tabindex="5" bindtap="switchTab" data-status="4">已取消</view> 
+        </scroll-view> 
     </view>
     <swiper class="swiper" duration="300" current="{{ currTab }}" bindchange="switchSwiper" style="height: calc(100% - 78rpx);">
         <swiper-item style="height: 100%">
