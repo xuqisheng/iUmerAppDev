@@ -1,6 +1,9 @@
 var app = getApp();
+var timer;
 Page({
   data:{
+    sec: 0,
+    showTimer: false,
     phoneValid: false,
     codeValid: false,
     pwdValid: false
@@ -19,6 +22,7 @@ Page({
   },
   onUnload:function(){
     // 页面关闭
+    clearInterval(timer);
   },
   checkPhone: function(e) {
     var phone = e.detail.value;
@@ -30,6 +34,20 @@ Page({
   },
   getCode: function() {
     if (!this.data.phoneValid) {
+      wx.showModal({
+        title: '提示',
+        content: '请输入合法的手机号',
+        showCancel: false,
+        confirmColor: '#FD8CA3',
+        success: function(res) {
+          if (res.confirm) {
+            
+          }
+        }
+      });
+      return false;
+    }
+    if (this.data.showTimer) {
       return false;
     }
     var that = this;
@@ -55,7 +73,29 @@ Page({
                 
               }
             }
-          })
+          });
+          that.setData({
+            showTimer: true
+          });
+          var sentTime = new Date().getTime();
+          timer = setInterval(function() {
+            var nowTime = new Date().getTime();
+            var diff = 60 * 1000 + sentTime - nowTime;
+            var diffMin = parseInt((diff / 1000 / 60) % 60);
+            var diffSec = parseInt((diff / 1000) % 60);
+            // console.log(diff)
+            if (diff <= 0) {
+              // 15分钟内未支付取消订单
+              clearInterval(timer);
+              that.setData({
+                showTimer: false
+              })
+            } else {
+              that.setData({
+                sec: diffSec 
+              });
+            }
+          }, 1000);  
         } else {
           wx.showModal({
             title: '提示',
