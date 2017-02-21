@@ -401,7 +401,7 @@ Page({
             }); 
           } else if (d.code == -4) {
             wx.navigateTo({
-              url: '../login/login',
+              url: '../login/authorize',
               success: function(res){
                 // success
               },

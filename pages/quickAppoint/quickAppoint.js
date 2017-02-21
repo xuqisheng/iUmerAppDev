@@ -78,7 +78,7 @@ Page({
           });
         } else if (res.data.code == -4) {
           wx.navigateTo({
-            url: '../login/login',
+            url: '../login/authorize',
             success: function(res){
               // success
             },
@@ -142,7 +142,7 @@ Page({
           });
         } else if (res.data.code == -4) {
           wx.navigateTo({
-            url: '../login/login',
+            url: '../login/authorize',
             success: function(res){
               // success
             },
@@ -186,7 +186,7 @@ Page({
   },
   appointPersonnel: function(e) {
     var projectId = e.currentTarget.dataset.projectid;
-    wx.navigateTo({
+    wx.redirectTo({
       url: '../quickAppoint/appointPersonnel?projectId=' + projectId,
       success: function(res){
         // success
@@ -201,7 +201,7 @@ Page({
   },
   appointProject: function(e) {
     var personnelId = e.currentTarget.dataset.personnelid;
-    wx.navigateTo({
+    wx.redirectTo({
       url: '../quickAppoint/appointProject?personnelId=' + personnelId,
       success: function(res){
         // success

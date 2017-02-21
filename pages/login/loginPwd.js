@@ -15,42 +15,20 @@ Page({
   },
   onUnload:function(){
     // 页面关闭
-  },  
-  checkPhone: function(e) {
-    var phone = e.detail.value;
-    var result = phone.match(/^1\d{10}$/);
-    this.setData({
-       phoneValid: !!result,
-       phone: phone
-    });
   },
   inputPwd: function(e) {
     this.setData({
       pwd: e.detail.value
     })
   },
-  login: function(){
+  login: function() {
     var that = this;
-    if (!that.data.phone || !that.data.phoneValid) {
-      wx.showModal({
-        title: '提示',
-        confirmColor: '#FD8CA3',
-        showCancel: false,
-        content: '请输入正确的手机号',
-        success: function(res) {
-          if (res.confirm) {
-            
-          }
-        }
-      })
-      return false;
-    }
     if (!that.data.pwd) {
       wx.showModal({
         title: '提示',
-        confirmColor: '#FD8CA3',
         showCancel: false,
-        content: '请输入您的密码',
+        confirmColor: '#FD8CA3',
+        content: '请输入密码',
         success: function(res) {
           if (res.confirm) {
             
@@ -62,7 +40,7 @@ Page({
     wx.request({
         url: app.globalData.server_url + 'webService/customer/sys/user/login', 
         data: {
-          phone: that.data.phone,
+          phone: wx.getStorageSync('phone'),
           password: that.data.pwd,
           openId: wx.getStorageSync('openId')
         },
@@ -117,19 +95,5 @@ Page({
           console.log("login complete")
         }
     });
-  },
-  register: function(){
-    wx.redirectTo({
-      url: 'register',
-      success: function(res){
-        // success
-      },
-      fail: function() {
-        // fail
-      },
-      complete: function() {
-        // complete
-      }
-    })
   }
 })

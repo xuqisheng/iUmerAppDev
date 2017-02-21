@@ -22,11 +22,15 @@ page {
     left: 30rpx;
     top: 27rpx;
 }
+.input-cell:not(:first-child) image {
+    width: 60rpx;
+	left: 20rpx;
+}
 .input-cell input {
     width: 70%;
     border: none;
 }
-.input-phone .get-code-active {
+.input-verifyCode .get-code-active {
     color: white;
     background-color: #FD8CA3;
     padding: 10rpx;
@@ -34,7 +38,7 @@ page {
     justify-content: center;
     align-items: center;
 }
-.input-phone .get-code {
+.input-verifyCode .get-code {
     color: white;
     background-color: lightgray;
     padding: 10rpx;
@@ -42,24 +46,23 @@ page {
     justify-content: center;
     align-items: center;
 }
-.input-pwd image {
-	width: 60rpx;
-	left: 20rpx;
-}
-.bind-text {
-    font-size: 28rpx;
-    padding: 30rpx 0;
-    color: gray;
-}
 #btn-area {
-	display: flex;
-	justify-content: center;
-	margin-top: 50rpx;
+    padding: 60rpx 0;
 }
-#btn-area view {
-	background-color: #FD8CA3;
-	color: white;
-	padding: 30rpx 100rpx;
-	margin: 20rpx;
-	border-radius: 5rpx;
+.btn-bind {
+    width: 80%;
+    padding: 30rpx;
+    background-color: lightgray;
+    border: solid 1px gray;
+    border-radius: 5rpx;
+    margin: 0 auto;
+    color: white;
+}
+.btn-bind-active {
+    background-color: #FD8CA3;
+    width: 80%;
+    padding: 30rpx;
+    border-radius: 5rpx;
+    margin: 0 auto;
+    color: white;
 }

@@ -136,6 +136,16 @@ page {
     padding: 10rpx;
     display: block;
 }
+.filter-list-item-on {
+	background-image: url("https://www.iumer.cn/umer/css/image/wechat/selected@2x.png");
+	background-repeat: no-repeat;
+	background-position: right center;
+    background-size: 80rpx calc(80rpx / 46 * 29);
+}
+.filter-list-item-category-on {
+	border: solid 2rpx #FD8CA3 !important;
+	color: #FD8CA3 !important;
+}
 #project-area {
 	height: calc(100% - 84rpx);
 }

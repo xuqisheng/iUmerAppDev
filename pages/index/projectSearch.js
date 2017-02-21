@@ -56,7 +56,7 @@ Page({
     wx.request({
       url: app.globalData.server_url + 'webService/common/areaList', 
       data: {
-        cityId: wx.getStorageSync('cityCode')
+        cityId: wx.getStorageSync('cityCode') || '320500'
       },
       method: "POST",
       dataType: "json",
@@ -96,11 +96,14 @@ Page({
     var range = e.currentTarget.dataset.range;
     this.setData({
       showArea: true,
-      areaId: areaId,
-      range: range,
-      page: 1
+      areaId: areaId || "",
+      range: range || "",
+      page: 1,
+      showNear: !range,
+      all: areaId == 'all' || ''
     });
     this.loadProjects();
+    console.log(this.data)
   },
   clickSorting: function(e) {
     var sortingId = e.currentTarget.dataset.sortingid;
@@ -116,7 +119,7 @@ Page({
     wx.request({
       url: app.globalData.server_url + 'webService/common/projectTypeTree', 
       data: {
-        
+        groupNo: that.data.groupNo
       },
       method: "POST",
       dataType: "json",

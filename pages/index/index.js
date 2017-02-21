@@ -40,18 +40,22 @@ Page({
             wx.setStorageSync('latitude', latitude);
             wx.setStorageSync('longitude', longitude);
             var letterIndex = [];
-            var url = "http://api.map.baidu.com/geocoder/v2/?ak=2IBKO6GVxbYZvaR2mf0GWgZE&output=json&pois=0&location=" + latitude + "," + longitude;
+            var url = "https://www.iumer.cn/umer/webService/common/baiduCoordinate";
             wx.request({
               url: url, //仅为示例，并非真实的接口地址
               data: {
-                
+                latitude: latitude,
+                longitude: longitude
               },
+              method: "POST",
+              dataType: "json",
               header: {
-                
+                'Content-Type': 'application/json;charset=UTF-8;'
               },
               success: function(baiduRes) {
+                var res = JSON.parse(baiduRes.data.data);
                 var find = false;
-                var city = baiduRes.data.result.addressComponent.city;
+                var city = res.result.addressComponent.city;
                 // console.log(cities.data.length)
                 for (var i = 0; i < cities.data.length; i++) {
                   // console.log(i)
@@ -254,9 +258,9 @@ Page({
       }
     });
   },
-  jumpToSearchProject: function() {
+  jumpToSearchProject: function(e) {
     wx.navigateTo({
-      url: 'projectSearch',
+      url: 'projectSearch?groupNo=' + e.currentTarget.dataset.groupno + '&type=' + e.currentTarget.dataset.navid,
       success: function(res){
         // success
       },

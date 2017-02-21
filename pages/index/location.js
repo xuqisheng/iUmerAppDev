@@ -13,6 +13,7 @@ Page({
       cityList: cities.data,
       currentCity: wx.getStorageSync('cityName') || ""
     });
+    this.generateIndex();
     wx.getLocation({
       type: 'wgs84',
       success: function(res) {
@@ -22,23 +23,27 @@ Page({
         wx.setStorageSync('longitude', longitude);
         var letterIndex = [];
         // var url = "http://api.map.baidu.com/geocoder/v2/?callback=renderReverse&location=" + latitude + "," + longitude + "&output=json&pois=0&ak=Yh9wolTpm7OZPY57B7spMf4t";
-        var url = "http://api.map.baidu.com/geocoder/v2/?ak=2IBKO6GVxbYZvaR2mf0GWgZE&output=json&pois=0&location=" + latitude + "," + longitude;
+        var url = "https://www.iumer.cn/umer/webService/common/baiduCoordinate";
         wx.request({
           url: url, //仅为示例，并非真实的接口地址
           data: {
-            
+            latitude: latitude,
+            longitude: longitude
           },
+          method: "POST",
+          dataType: "json",
           header: {
-             
+            'Content-Type': 'application/json;charset=UTF-8;'
           },
           success: function(baiduRes) {
+            var res = JSON.parse(baiduRes.data.data);
             var find = false;
-            var city = baiduRes.data.result.addressComponent.city;
+            var city = res.result.addressComponent.city;
             // console.log(cities.data.length)
             for (var i = 0; i < cities.data.length; i++) {
               // console.log(i)
               var el = cities.data[i];
-              letterIndex.push(el.name);
+              // letterIndex.push(el.name);
               // console.log(el)
               var list = el.list;
               for (var j = 0; j < list.length; j++) {
@@ -61,9 +66,9 @@ Page({
                 baiduCity: "定位失败"
               });
             }
-            that.setData({
-              letterIndex: letterIndex
-            });
+            // that.setData({
+            //   letterIndex: letterIndex
+            // });
             // console.log(letterIndex);
           }
         });
@@ -83,6 +88,17 @@ Page({
   },
   onUnload:function(){
     // 页面关闭
+  },
+  generateIndex: function() {
+    var that = this;
+    var letterIndex = [];
+    for (var i = 0; i < cities.data.length; i++) {
+      var el = cities.data[i];
+      letterIndex.push(el.name);
+    };
+    that.setData({
+      letterIndex: letterIndex
+    });
   },
   setLocation: function(event){
     console.log(event)

@@ -1,9 +1,5 @@
 <view class="container">
     <view id="input-area">
-        <view class="input-phone input-cell">
-            <image src="https://www.iumer.cn/umer/css/image/wechat/app/cell@3x.png"></image>
-            <input type="number" maxlength="11" bindinput="checkPhone" placeholder="请输入您的手机号" />
-        </view>
         <view class="input-pwd input-cell">
             <image src="https://www.iumer.cn/umer/css/image/wechat/app/pwd@3x.png"></image>
             <input type="password" placeholder="请输入您的密码" bindinput="inputPwd"/>
@@ -11,6 +7,5 @@
     </view>
     <view id="btn-area">
         <view class="text-center btn-login" bindtap="login">登录</view>
-        <view class="text-center btn-register" bindtap="register">注册</view>
     </view>
 </view>

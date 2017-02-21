@@ -1,0 +1,22 @@
+page {
+	height: 100%;
+}
+.container {
+	background-color: white;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+}
+.container image {
+	width: 35%;
+	height: calc(750rpx / 106 * 132 * 0.35);
+}
+.container view {
+	background-color: #FD8CA3;
+	color: white;
+	padding: 25rpx 80rpx;
+	border-radius: 5rpx;
+	margin-top: 20rpx;
+}
