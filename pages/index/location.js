@@ -126,7 +126,7 @@ Page({
   moveNav: function(e) {
     var letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     var letterIndex = (e.changedTouches["0"].clientY - e.currentTarget.offsetTop) / 378 * this.data.letterIndex.length;
-    var letter = this.data.letterIndex[parseInt(letterIndex)];
+    var letter = letters.charAt(parseInt(letterIndex));
     this.setData({
       selectedLetter: letter
     });

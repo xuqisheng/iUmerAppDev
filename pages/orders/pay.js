@@ -72,7 +72,7 @@ Page({
     wx.request({
       url: app.globalData.server_url + 'webService/common/payMode', 
       data: {
-        type: 2
+        type: 3
       },
       method: "POST",
       dataType: "json",
@@ -85,7 +85,17 @@ Page({
             paymentMethods: res.data.data
           });
         } else {
-          
+          wx.showModal({
+            title: '提示',
+            showCancel: false,
+            confirmColor: '#FD8CA3',
+            content: res.data.desc,
+            success: function(res) {
+              if (res.confirm) {
+                
+              }
+            }
+          })
         }
       },
       fail: function(res) {
@@ -104,6 +114,20 @@ Page({
   },
   pay: function() {
     var that = this;
+    if (!that.data.selected) {
+      wx.showModal({
+        title: '提示',
+        showCancel: false,
+        confirmColor: '#FD8CA3',
+        content: '请选择付款方式',
+        success: function(res) {
+          if (res.confirm) {
+            
+          }
+        }
+      })
+      return false;
+    }
     wx.request({
       url: app.globalData.server_url + 'webService/customer/biz/pay/wechatSubmitPay', 
       data: {
@@ -173,9 +197,44 @@ Page({
               
               }
             });
+          }  else if (that.data.selected == "miniapp") {
+            wx.requestPayment({
+              'timeStamp': res.data.timeStamp,
+              'nonceStr': res.data.nonceStr,
+              'package': res.data.packAge,
+              'signType': 'MD5',
+              'paySign': res.data.sign,
+              'success':function(res) {
+                wx.redirectTo({
+                  url: 'detail?paySign=1&orderNo=' + that.data.orderNo,
+                  success: function(res){
+                    // success
+                  },
+                  fail: function() {
+                    // fail
+                  },
+                  complete: function() {
+                    // complete
+                  }
+                })
+              },
+              'fail':function(res) {
+              
+              }
+            });
           }
         } else {
-          
+          wx.showModal({
+            title: '提示',
+            showCancel: false,
+            confirmColor: '#FD8CA3',
+            content: res.desc,
+            success: function(res) {
+              if (res.confirm) {
+                
+              }
+            }
+          })
         }
       },
       fail: function(res) {

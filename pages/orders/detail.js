@@ -57,7 +57,7 @@ Page({
             that.setData({
               orderInfo: data
             });
-            var orderTime = new Date(data.orderTime).getTime();
+            var orderTime = new Date(data.orderTime.replace(new RegExp(/-/g),'/')).getTime();
             if (data.approveStatus == 0) {
               that.setData({
                 showTimer: true
@@ -250,7 +250,7 @@ Page({
                   showCancel: false,
                   success: function() {
                     wx.redirectTo({
-                      url: 'detail',
+                      url: 'detail?orderNo=' + that.data.orderNo,
                       success: function(res){
                         // success
                       },
@@ -324,7 +324,7 @@ Page({
                   showCancel: false,
                   success: function() {
                     wx.redirectTo({
-                      url: 'detail',
+                      url: 'detail?orderNo=' + that.data.orderNo,
                       success: function(res){
                         // success
                       },
@@ -399,7 +399,7 @@ Page({
                   showCancel: false,
                   success: function() {
                     wx.redirectTo({
-                      url: 'detail',
+                      url: 'detail?orderNo=' + that.data.orderNo,
                       success: function(res){
                         // success
                       },

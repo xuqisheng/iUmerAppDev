@@ -6,8 +6,10 @@
 			<text class="cityName" style="margin-right: 10rpx;">{{ cityName }}</text>
 			<image src="https://www.iumer.cn/umer/css/image/wechat/app/arrow@2x.png"></image>
 		</view>
-		<view class="top-menu-search"><view class="search-icon"></view>
-		<input placeholder="搜索优美师/项目/店铺等" type="text" bindtap="indexSearch" /></view>
+		<view class="top-menu-search" bindtap="indexSearch">
+			<view class="search-icon"></view>
+			<view class="placeholder" bindinput="indexSearch">搜索优美师/项目/店铺等</view>
+		</view>
 		<view class="top-menu-alert" url="messageCenter"></view>
 	</view>
 	<view id="nav">

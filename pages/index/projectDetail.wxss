@@ -1,11 +1,4 @@
-page {
-    height: 100%;
-}
-.container {
-    font-size: 30rpx;
-    height: 100%;
-	background-color: #F7F7F7;
-}
+
 .swiper-description {
 	width: 100%;
     position: absolute;
@@ -87,20 +80,6 @@ page {
 .other-info-area-procedure {
 	font-size: 25rpx;
 }
-#btn-area {
-
-}
-.btn-area-btn {
-	position: fixed;
-    background-color: #FD8CA3;
-    padding: 20rpx 0;
-    color: white;
-    font-family: SimHei;
-    width: 100%;
-    right: 0;
-    z-index: 1000;
-    bottom: 0;
-}
 #comments-area {
 	background-color: white;
 	padding: 20rpx;
@@ -177,4 +156,14 @@ page {
 .more-comment {
 	color: #FD8CA3;
 	padding-top: 20rpx;
+}
+.btn-area-btn {
+	background-color: #FD8CA3;
+	color: white;
+	width: 100%;
+	padding: 30rpx;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	height: 30rpx;
 }

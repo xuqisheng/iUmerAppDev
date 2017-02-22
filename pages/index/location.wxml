@@ -1,9 +1,9 @@
 <!--pages/index/location.wxml-->
 <view class="container">
     <view id="top-menu">
-        <view class="top-menu-search">
+        <view class="top-menu-search" bindtap="searchCity">
             <view class="search-icon"></view>
-            <input placeholder="输入城市名搜索" type="text" bindtap="searchCity"/>
+            <view class="placeholder" bindinput="searchCity">输入城市名搜索</view>
         </view>
         <view class="top-menu-search-cancel" bindtap="back">取消</view>
     </view>

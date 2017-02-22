@@ -433,23 +433,28 @@ Page({
           // console.log(res.data)
           var d = res.data;
           if (d.code == 1) {
-            wx.showToast({
-              title: '订单提交成功!',
-              icon: 'success',
-              duration: 5000
-            });
-            wx.navigateTo({
-              url: '../orders/pay?orderNo=' + d.data,
-              success: function(res){
-                // success
-              },
-              fail: function() {
-                // fail
-              },
-              complete: function() {
-                // complete
+            wx.showModal({
+              title: '提示',
+              showCancel: false,
+              confirmColor: '#FD8CA3',
+              content: '订单提交成功',
+              success: function(res) {
+                if (res.confirm) {
+                  wx.navigateTo({
+                    url: '../orders/pay?orderNo=' + d.data,
+                    success: function(res){
+                      // success
+                    },
+                    fail: function() {
+                      // fail
+                    },
+                    complete: function() {
+                      // complete
+                    }
+                  }); 
+                }
               }
-            }); 
+            });
           } else if (d.code == -4) {
             wx.navigateTo({
               url: '../login/authorize',
@@ -463,6 +468,18 @@ Page({
                 // complete
               }
             }); 
+          } else {
+            wx.showModal({
+              title: '提示',
+              showCancel: false,
+              confirmColor: '#FD8CA3',
+              content: d.desc,
+              success: function(res) {
+                if (res.confirm) {
+                  
+                }
+              }
+            });
           }
         },
         fail: function(res) {
