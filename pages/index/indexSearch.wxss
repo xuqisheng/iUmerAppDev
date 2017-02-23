@@ -22,7 +22,7 @@ page {
 .top-menu-search .search-icon {
 	position: absolute;
 	left: 16rpx;
-	top: 12rpx;
+	top: 8rpx;
 	background-image: url('https://www.iumer.cn/umer/css/image/wechat/search@3x.png');
 	background-repeat: no-repeat;
 	background-size: 32rpx 32rpx;

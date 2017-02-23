@@ -134,7 +134,7 @@ Page({
         "orderNo": that.data.orderNo,
         "paymentMode": that.data.selected,
         "customerId": wx.getStorageSync('id'),
-        "openId": wx.getStorageSync('openId') || 'oV4G3v6BcECno8Z0XGtMt6ex7Eqk'
+        "openId": wx.getStorageSync('openId')
       },
       method: "POST",
       dataType: "json",

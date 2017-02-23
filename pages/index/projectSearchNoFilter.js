@@ -24,8 +24,8 @@ Page({
     // 页面关闭
   },
   back: function(e) {
-    wx.switchTab({
-      url: 'index',
+    wx.redirectTo({
+      url: 'indexSearch',
       success: function(res){
         // success
       },

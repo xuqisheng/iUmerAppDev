@@ -3,7 +3,7 @@
     <loading hidden="{{ loadingHidden }}">
         加载中...
     </loading>
-    <scroll-view scroll-y="true" style="height: calc(100% - 80rpx);">
+    <scroll-view scroll-y="true" style="height: calc(100% - 90rpx);">
         <view id="project-detail">
             <view id="avatar-area">
                 <swiper style="height: 750rpx;" class="swiper3" indicator-dots autoplay circular>
@@ -121,9 +121,9 @@
                 </block>
                 <view class="more-comment text-center" bindtap="showComments">查看全部<text>{{ totalCommentNum || 0 }}</text>条评论</view>
             </view>
-            <view id="btn-area">
-                <view class="btn-area-btn text-center" bindtap="appoint">预约</view>
-            </view>
         </view>
     </scroll-view>
+    <view id="btn-area">
+        <view class="btn-area-btn text-center" bindtap="appoint">预约</view>
+    </view>
 </view>
