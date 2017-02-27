@@ -89,11 +89,11 @@
     <view class="input-area">
         <view class="input-cells input-cells_form">
             <view class="input-cell">
-                <view class="input-cell__hd">预约人：</view>
+                <view class="input-cell__hd reserve-label">预约人：</view>
                 <input class="reserve-name" placeholder="请输入姓名" bindinput="inputReserveName" value="{{ reserveName || '' }}"/>
             </view>
             <view class="input-cell">
-                <view class="input-cell__hd">
+                <view class="input-cell__hd reserve-label">
                     <view class="input-label">预约手机号：</view>
                 </view>
                 <view class="input-cell__bd">

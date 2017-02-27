@@ -242,6 +242,9 @@ button.timeslot::after {
 .input-cell:not(:last-child) {
 	border-bottom: solid 2rpx #F7F7F7;
 }
+.reserve-label {
+	width: 30%;
+}
 .btn-area {
 	margin-top: 100rpx;
     display: flex;

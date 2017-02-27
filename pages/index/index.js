@@ -274,7 +274,7 @@ Page({
   },
   jumpToSearchPersonnel: function() {
     wx.redirectTo({
-      url: 'personnelSearch',
+      url: 'personnelSearch?from=index',
       success: function(res){
         // success
       },
@@ -288,7 +288,7 @@ Page({
   },
   jumpToSearchProjectNoFilter: function() {
     wx.redirectTo({
-      url: 'projectSearchNoFilter',
+      url: 'projectSearchNoFilter?from=index',
       success: function(res){
         // success
       },

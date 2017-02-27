@@ -1,14 +1,14 @@
 <view class="container">
-    <loading hidden="{{ loadingHidden }}">
+    <!--<loading hidden="{{ loadingHidden }}">
         加载中...
-    </loading>
+    </loading>-->
     <view id="top-tabs-2">
         <view class="tab-outer">
             <view class="tab-inner {{ currTab == 0? 'tab-inner-on-2':'' }}" data-tabindex="0" bindtap="switchTab">预约过的项目</view>
             <view class="tab-inner {{ currTab == 1? 'tab-inner-on-2':'' }}" data-tabindex="1" bindtap="switchTab">预约过的优美师</view>
         </view>
     </view>
-    <swiper class="swiper" current="{{ currTab }}" duration="300" bindchange="switchSwiper" style="height: calc(100% - 98rpx)">
+    <swiper class="swiper" current="{{ currTab }}" duration="300" bindchange="switchSwiper" style="height: calc(100% - 108rpx)">
         <swiper-item>    
             <scroll-view scroll-y style="width: 100%; height: calc(100%);" bindscrolltolower="loadMore" bindscrolltoupper="refresh">
                 <block wx:for="{{ projectList }}" wx:key="id">
@@ -32,6 +32,7 @@
                         </view>
                     </view>
                 </block>
+                <view class="load-more text-center" hidden="{{ loadingHidden }}">加载中</view>
             </scroll-view>
         </swiper-item>  
         <swiper-item>  
@@ -68,6 +69,7 @@
                         </view>
                     </view>
                 </block>
+                <view class="load-more text-center" hidden="{{ loadingHidden }}">加载中</view>
             </scroll-view>
         </swiper-item>  
     </swiper>

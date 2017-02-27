@@ -5,13 +5,13 @@ Page({
     currTab: 0
   },
   onLoad:function(options){
-    // 页面初始化 options为页面跳转所带来的参数
-    this.loadProjects("");
+    // 页面初始化 options为页面跳转所带来的参数    
   },
   onReady:function(){
     // 页面渲染完成
   },
   onShow:function(){
+    this.loadProjects("");
     // 页面显示
   },
   onHide:function(){
@@ -42,9 +42,6 @@ Page({
   },
   loadProjects: function(opType) {
     var that = this;
-    this.setData({
-      loadingHidden: false
-    });
     var data = {};
     data["customerId"] = wx.getStorageSync('id');
     data["pageSize"] = 10;
@@ -68,6 +65,9 @@ Page({
       success: function(res) {
         if (res.data.code == 1) {
           if (res.data.data.length == 0) {
+            that.setData({
+              loadingHidden: true
+            });
             return false;
           }
           var projectList = opType == "down"? res.data.data.concat(that.data.projectList): opType == "up"? that.data.projectList.concat(res.data.data): res.data.data;
@@ -76,6 +76,15 @@ Page({
             timestampFirst: res.data.data[0].createDate,
             timestampLast: res.data.data[res.data.data.length - 1].createDate
           });
+          if (projectList.length < 10 || res.data.data.length < 10) {
+            that.setData({
+              loadingHidden: true
+            });
+          } else {
+            that.setData({
+              loadingHidden: false
+            });
+          }
         } else if (res.data.code == -4) {
           wx.navigateTo({
             url: '../login/authorize',
@@ -106,9 +115,6 @@ Page({
   },
   loadPersonnels: function(opType) {
     var that = this;
-    this.setData({
-      loadingHidden: false
-    });
     var data = {};
     data["customerId"] = wx.getStorageSync('id');
     data["pageSize"] = 10;
@@ -132,6 +138,9 @@ Page({
       success: function(res) {
         if (res.data.code == 1) {
           if (res.data.data.length == 0) {
+            that.setData({
+              loadingHidden: true
+            });
             return false;
           }
           var personnelList = opType == "down"? res.data.data.concat(that.data.personnelList): opType == "up"? that.data.personnelList.concat(res.data.data): res.data.data;
@@ -140,6 +149,15 @@ Page({
             timestampFirst: res.data.data[0].createDate,
             timestampLast: res.data.data[res.data.data.length - 1].createDate
           });
+          if (personnelList.length < 10 || res.data.data.length == 0) {
+            that.setData({
+              loadingHidden: true
+            });
+          } else {
+            that.setData({
+              loadingHidden: false
+            });
+          }
         } else if (res.data.code == -4) {
           wx.navigateTo({
             url: '../login/authorize',

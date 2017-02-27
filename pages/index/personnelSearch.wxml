@@ -39,6 +39,7 @@
                     </view>
                 </view>
             </block>
+            <view class="load-more text-center" hidden="{{ loadingHidden }}" >加载中</view>
         </scroll-view>
     </view>
 </view>

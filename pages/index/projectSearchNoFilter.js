@@ -3,12 +3,14 @@ var app = getApp();
 Page({
   data:{
     personnelList: [],
-    page: 1
+    page: 1,
+    loadingHidden: true
   },
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
     this.setData({
-      value: options.value || ""
+      value: options.value || "",
+      'from': options.from
     })
   },
   onReady:function(){
@@ -24,8 +26,8 @@ Page({
     // 页面关闭
   },
   back: function(e) {
-    wx.redirectTo({
-      url: 'indexSearch',
+    wx.switchTab({
+      url: 'index',
       success: function(res){
         // success
       },
@@ -70,19 +72,30 @@ Page({
         if (res.data.code == 1) {
           if (res.data.data.length == 0 && that.data.page == 1) {
             that.setData({
-              projectList: []
-            });
+              projectList: [],
+              loadingHidden: true
+            })
             return false;
           } else if (res.data.data.length == 0) {
             that.setData({
-              page: that.data.page - 1
-            });
+              page: that.data.page - 1,
+              loadingHidden: true
+            })
             return false;
           }
           var projectList = that.data.page == 1? res.data.data: that.data.projectList.concat(res.data.data);
           that.setData({
             projectList: projectList
           });
+          if (projectList.length < 10 || res.data.data.length < 0) {
+            that.setData({
+              loadingHidden: true
+            })
+          } else {
+            that.setData({
+              loadingHidden: false
+            })
+          }
         }
       },
       fail: function(res) {

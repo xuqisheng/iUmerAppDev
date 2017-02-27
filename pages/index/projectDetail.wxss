@@ -63,6 +63,7 @@ page {
 }
 .shop-info-area-txt-description {
 	padding: 0 0 10rpx 20rpx;
+	word-break: break-all;
 }
 .shop-info-area-txt-stats {
     display: flex;
@@ -154,6 +155,7 @@ page {
 	padding: 10rpx 0;
     font-size: 28rpx;
     text-align: left;
+	word-break: break-all;
 }
 .comment-item:not(:last-child) {
 	border-bottom: solid 2rpx #F7F7F7;

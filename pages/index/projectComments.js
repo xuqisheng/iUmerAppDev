@@ -150,7 +150,8 @@ Page({
                 that.setData({
                   goodList: [],
                   goodTimestampFirst: 0,
-                  goodTimestampLast: 0
+                  goodTimestampLast: 0,
+                  loadingHidden: true
                 })
                 return false;
               }
@@ -160,6 +161,15 @@ Page({
                 goodTimestampFirst: goodList[0].createDate,
                 goodTimestampLast: goodList[goodList.length - 1].createDate
               });
+              if (goodList.length < 10 || res.data.data.length < 10) {
+                that.setData({
+                  loadingHidden: true
+                });
+              } else {
+                that.setData({
+                  loadingHidden: false
+                })
+              }
             } else if (level == 1) {
               if (res.data.data.length == 0 && !opType) {
                 that.setData({
@@ -175,6 +185,15 @@ Page({
                 middleTimestampFirst: middleList[0].createDate,
                 middleTimestampLast: middleList[middleList.length - 1].createDate
               });
+              if (middleList.length < 10 || res.data.data.length < 10) {
+                that.setData({
+                  loadingHidden: true
+                });
+              } else {
+                that.setData({
+                  loadingHidden: false
+                })
+              }
             } else if (level == 2) {
               if (res.data.data.length == 0 && !opType) {
                 that.setData({
@@ -190,6 +209,15 @@ Page({
                 badTimestampFirst: badList[0].createDate,
                 badTimestampLast: badList[badList.length - 1].createDate
               });
+              if (badList.length < 10 || res.data.data.length < 10) {
+                that.setData({
+                  loadingHidden: true
+                });
+              } else {
+                that.setData({
+                  loadingHidden: false
+                })
+              }
             }
           }
         },

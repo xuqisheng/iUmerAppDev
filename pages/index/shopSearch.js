@@ -4,7 +4,8 @@ Page({
   data:{
     shopList: [],
     timestampFirst: 0,
-    timestampLast: 0
+    timestampLast: 0,
+    loadingHidden: true
   },
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
@@ -70,7 +71,8 @@ Page({
           if (res.data.code == 1) {
             if (res.data.data.length == 0 && !operationType) {
               that.setData({
-                shopList: []
+                shopList: [],
+                loadingHidden: true
               })
               return false;
             }
@@ -80,6 +82,15 @@ Page({
               timestampFirst: list[0].createDate,
               timestampLast: list[list.length - 1].createDate
             });
+            if (list.length < 10 || res.data.data.length < 10) {
+              that.setData({
+                loadingHidden: true
+              })
+            } else {
+              that.setData({
+                loadingHidden: false
+              })
+            }
           }
         },
         fail: function(res) {

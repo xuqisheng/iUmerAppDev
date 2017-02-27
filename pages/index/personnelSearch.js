@@ -4,12 +4,14 @@ Page({
   data:{
     personnelList: [],
     timestampFirst: 0,
-    timestampLast: 0
+    timestampLast: 0,
+    loadingHidden: true
   },
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
     this.setData({
-      value: options.value || ""
+      value: options.value || "",
+      'from': options.from || ""
     })
   },
   onReady:function(){
@@ -25,18 +27,33 @@ Page({
     // 页面关闭
   },
   back: function(e) {
-    wx.redirectTo({
-      url: 'indexSearch',
-      success: function(res){
-        // success
-      },
-      fail: function() {
-        // fail
-      },
-      complete: function() {
-        // complete
-      }
-    })
+    if (this.data.from == "index"){
+      wx.switchTab({
+        url: 'index',
+        success: function(res){
+          // success
+        },
+        fail: function() {
+          // fail
+        },
+        complete: function() {
+          // complete
+        }
+      })
+    } else {
+      wx.redirectTo({
+        url: 'indexSearch',
+        success: function(res){
+          // success
+        },
+        fail: function() {
+          // fail
+        },
+        complete: function() {
+          // complete
+        }
+      })
+    }
   },
   inputSearch: function(e) {
     var value = e.detail.value.trim();
@@ -70,8 +87,9 @@ Page({
           if (res.data.code == 1) {
             if (res.data.data.length == 0 && !operationType) {
               that.setData({
-                personnelList: []
-              })
+                personnelList: [],
+                loadingHidden: true
+              });
               return false;
             }
             var list = operationType == "down"? res.data.data.concat(that.data.personnelList): operationType == "up"? that.data.personnelList.concat(res.data.data): res.data.data;
@@ -79,6 +97,24 @@ Page({
               personnelList: list,
               timestampFirst: list[0].createDate,
               timestampLast: list[list.length - 1].createDate
+            });
+            if (orderList.length < 10 || res.data.data.length < 10) {
+              that.setData({
+                loadingHidden: true
+              })
+            } else {
+              that.setData({
+                loadingHidden: false
+              })
+            }
+          } else {
+            wx.showModal({
+              title: '提示',
+              showCancel: false,
+              content: res.data.desc,
+              success: function(res1) {
+                
+              }
             });
           }
         },

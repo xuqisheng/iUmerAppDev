@@ -64,6 +64,9 @@ Page({
           var res = res.data;
           if (res.code == 1) {
             if (res.data.length == 0) {
+              that.setData({
+                loadingHidden: true
+              });
               return false;
             }
             var list = operationType == "down"? res.data.concat(that.data.projectPersonnels): operationType == "up"? that.data.projectPersonnels.concat(res.data): res.data;
@@ -72,6 +75,15 @@ Page({
               timestampFirst: list[0].createDate,
               timestampLast: list[list.length - 1].createDate
             });
+            if (list.length < 10 || res.data.length < 10) {
+              that.setData({
+                loadingHidden: true
+              });
+            } else {
+              that.setData({
+                loadingHidden: false
+              });
+            }
           } else {
             
           }

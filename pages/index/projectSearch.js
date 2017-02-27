@@ -78,7 +78,7 @@ Page({
         }
     });
   },
-  showNearF: function() {
+  showNearF: function(e) {
     this.setData({
       showNear: false
     });
@@ -187,12 +187,16 @@ Page({
         if (res.data.code == 1) {
           if (res.data.data.length == 0 && that.data.page == 1) {
             that.setData({
-              projectList: []
+              projectList: [],
+              loadingHidden: true
             });
             return false;
           } else if (res.data.data.length == 0) {
             that.setData({
               page: that.data.page - 1
+            });
+            that.setData({
+              loadingHidden: true
             });
             return false;
           }
@@ -200,6 +204,15 @@ Page({
           that.setData({
             projectList: projectList
           });
+          if (projectList.length < 10 || res.data.data.length < 10) {
+            that.setData({
+              loadingHidden: true
+            });
+          } else {
+            that.setData({
+              loadingHidden: false
+            })
+          }
         }
       },
       fail: function(res) {
@@ -217,5 +230,20 @@ Page({
   refresh: function() {
     this.data.page = 1;
     this.loadProjects();
+  },
+  clickProjectItem: function(e){
+    var projectId = e.currentTarget.dataset.projectid;
+    wx.navigateTo({
+      url: 'projectDetail?projectId=' + projectId,
+      success: function(res){
+        // success
+      },
+      fail: function() {
+        // fail
+      },
+      complete: function() {
+        // complete
+      }
+    })
   }
 })

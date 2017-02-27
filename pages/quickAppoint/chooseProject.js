@@ -6,7 +6,8 @@ Page({
     // 页面初始化 options为页面跳转所带来的参数
     this.setData({
       personnelId: options.personnelId,
-      priceType: options.priceType
+      priceType: options.priceType,
+      loadingHidden: true
     });
     this.loadProjects("");
   },
@@ -46,6 +47,9 @@ Page({
           var res = res.data;
           if (res.code == 1) {
             if (res.data.length == 0) {
+              that.setData({
+                loadingHidden: true
+              });
               return false;
             }
             var list = operationType == "down"? res.data.concat(that.data.personnelProjects): operationType == "up"? that.data.personnelProjects.concat(res.data): res.data;
@@ -54,6 +58,15 @@ Page({
               timestampFirst: list[0].createDate,
               timestampLast: list[list.length - 1].createDate
             });
+            if (list.length < 10 || res.data.length < 10) {
+              that.setData({
+                loadingHidden: true
+              });
+            } else {
+              that.setData({
+                loadingHidden: false
+              });
+            }
           } else {
             
           }

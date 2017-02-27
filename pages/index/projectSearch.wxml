@@ -9,7 +9,7 @@
                 <view class="filter-item-list-items">
                     <block wx:for="{{ areaList }}" wx:key="name">
                         <view wx:if="{{ item.list.length > 0 && item.name == '附近' }}">
-                            <view class="filter-item-list-item" bindtap="showNearF"><text data-areaid="{{ item.name }}">{{  item.name }}</text>
+                            <view class="filter-item-list-item"><text catchtap="showNearF" data-areaid="{{ item.name }}">{{  item.name }}</text>
                                 <view class="filter-item-sublist">
                                     <block wx:for="{{ item.list }}" wx:for-item="itm" wx:key="code">
                                         <view class="filter-item-sublist-item {{ range == itm.code? 'filter-list-item-on' :'' }}" hidden="{{ showNear }}"><text data-range="{{ itm.code }}" catchtap="clickArea">{{ itm.name }}</text></view>
@@ -18,7 +18,7 @@
                             </view>
                         </view>
                         <view wx:if="{{ item.list.length == 0 }}">
-                            <view class="filter-item-list-item {{ (areaId == item.code && item.name != '全部')? 'filter-list-item-on' :'' }} {{ (range == '' && areaId == '' && item.name == '全部')? 'filter-list-item-on' :'' }}"><text catchtap="clickArea" data-areaid="{{ item.code }}">{{  item.name }}</text></view>
+                            <view catchtap="clickArea" data-areaid="{{ item.code }}" class="filter-item-list-item {{ (areaId == item.code && item.name != '全部')? 'filter-list-item-on' :'' }} {{ (range == '' && areaId == '' && item.name == '全部')? 'filter-list-item-on' :'' }}"><text data-areaid="{{ item.code }}">{{  item.name }}</text></view>
                         </view>
                     </block>
                 </view>
@@ -83,6 +83,7 @@
                     </view>
                 </view>
             </block>
+            <view class="load-more text-center" hidden="{{ loadingHidden }}">加载中</view>
         </scroll-view>
     </view>
 </view>

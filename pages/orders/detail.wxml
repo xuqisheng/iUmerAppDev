@@ -76,7 +76,7 @@
         </block>
         <!-- 进行中 -->
         <block wx:if="{{ orderInfo.approveStatus == 1 }}">
-            <view class="btn-area-apply-cancel text-center" bindtap="applyCancelOrder">申请取消订单</view>
+            <view class="btn-area-apply-cancel text-center" bindtap="applyCancelOrder">取消订单</view>
             <view class="btn-area-done text-center" bindtap="orderDone">确认订单完成</view>
         </block>
         <!-- 待评价 -->

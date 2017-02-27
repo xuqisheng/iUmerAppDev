@@ -52,9 +52,6 @@ Page({
     });
   },
   loadProject: function(){
-    this.setData({
-      loadingHidden: false
-    });
     var that = this;
     wx.request({
         url: app.globalData.server_url + 'webService/customer/biz/index/projectDetails', 
@@ -144,11 +141,8 @@ Page({
   },
   loadWeekdays: function(){
     var that = this;
-    this.setData({
-      loadingHidden: false
-    });
     wx.request({
-      url: app.globalData.server_url + 'webService/customer/biz/reserve/reservePeriodList', 
+      url: app.globalData.server_url + 'webService/common/reservePeriodList', 
         data: {
           
         },
@@ -196,7 +190,7 @@ Page({
       selectedIndex: {}
     })
     wx.request({
-      url: app.globalData.server_url + 'webService/customer/biz/reserve/reserveTimeList', 
+      url: app.globalData.server_url + 'webService/common/reserveTimeList', 
         data: {
           personnelId: that.data.personnelId,
           dateTime: date  
@@ -264,7 +258,7 @@ Page({
   choosePersonnel: function(){
     var that = this;
     console.log(that.data)
-    wx.redirectTo({
+    wx.navigateTo({
       url: 'choosePersonnel?projectId=' + that.data.projectId + "&priceType=" + that.data.priceType,
       success: function(res){
         // success

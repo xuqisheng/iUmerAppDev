@@ -198,6 +198,15 @@ Page({
                 // complete
               }
             }); 
+          } else {
+            wx.showModal({
+              title: '提示',
+              showCancel: false,
+              content: d.desc,
+              success: function(res1) {
+                
+              }
+            });
           }
         },
         fail: function(res) {

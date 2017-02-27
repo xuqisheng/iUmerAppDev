@@ -5,20 +5,23 @@ Page({
     currTab: 0,
     status: 1,
     loadingHidden: true,
+    loadingHidden2: false,
     orderList: [],
     timestampFirst: 0,
     timestampLast: 0,
-    mapping: [1, 0, 2, 3, 5, 4]
+    mapping: [1, 0, 2, 3, 4]
   },
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
-    this.loadOrders(1, "");
+    
   },
   onReady:function(){
     // 页面渲染完成
   },
   onShow:function(){
     // 页面显示
+    console.log("orders onshow");
+    this.loadOrders(this.data.mapping[this.data.currTab], "");
   },
   onHide:function(){
     // 页面隐藏
@@ -44,33 +47,30 @@ Page({
     });
   },
   loadOrders: function(status, opType) {
-    this.setData({
-      loadingHidden: false
-    });
+    console.log(status + " " + opType);
+    var that = this;
     // console.log("loadComments: " + this)
     var data = {};
     data["approveStatus"] = status;
     data["customerId"] = wx.getStorageSync('id');
-    data["projectId"] = this.data.projectId;
+    data["projectId"] = that.data.projectId;
     data["pageSize"] = 10;
     if (opType) {
       data["operationType"] = opType;
       switch(opType) {
-      case "up": data["timestamp"] = this.data.timestampLast; break;
-      case "down": data["timestamp"] = this.data.timestampFirst; break;
+      case "up": data["timestamp"] = that.data.timestampLast; break;
+      case "down": data["timestamp"] = that.data.timestampFirst; break;
       }
     }
-    // console.log(data)
-    var that = this;
     wx.request({
         url: app.globalData.server_url + 'webService/customer/biz/order/myOrderList', 
         data: data,
         method: "POST",
         dataType: "json",
         header: {
-           'Content-Type': 'application/json;charset=UTF-8;',
-           'X-Token': wx.getStorageSync('X-TOKEN'),
-           'X-Type': 3
+          'Content-Type': 'application/json;charset=UTF-8;',
+          'X-Token': wx.getStorageSync('X-TOKEN'),
+          'X-Type': 3
         },
         success: function(res) {
           // console.log(res.data)
@@ -79,7 +79,8 @@ Page({
               that.setData({
                 orderList: [],
                 timestampFirst: 0,
-                timestampLast: 0
+                timestampLast: 0,
+                loadingHidden2: true
               });
               return false;
             }
@@ -98,6 +99,15 @@ Page({
               timestampFirst: orderList[0].createDate,
               timestampLast: orderList[orderList.length - 1].createDate
             });
+            if (orderList.length < 10 || res.data.data.length < 10) {
+              that.setData({
+                loadingHidden2: true
+              })
+            } else {
+              that.setData({
+                loadingHidden2: false
+              })
+            }
           } else if (res.data.code == -4) {
             wx.navigateTo({
               url: '../login/authorize',
@@ -128,13 +138,13 @@ Page({
   },
   loadMore: function(e) {
     console.log("loadMore");
-    var status = e.target.dataset.status;
-    this.loadOrders(status, "up");
+var mapping = this.data.mapping;
+    this.loadOrders(mapping[this.data.currTab], "up"); 
   },
   refresh: function(e){
     console.log("refresh");
-    var status = e.target.dataset.status;
-    this.loadOrders(status, "down");
+    var mapping = this.data.mapping;
+    this.loadOrders(mapping[this.data.currTab], "down"); 
   },
   clickOrderItem: function(e) {
     var orderNo = e.currentTarget.dataset.orderno;

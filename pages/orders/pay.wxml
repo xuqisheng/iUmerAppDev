@@ -14,7 +14,7 @@
     <view id="payment-type-area">
         <block wx:for="{{ paymentMethods }}" wx:key="value">
             <view class="payment-type-cell" wx:if="{{ item.value != 'alipay' }}">
-                <view class="payment-type-cell-hd"><image src="https://www.iumer.cn/umer{{ item.icon }}"></image>{{ item.label }}</view>
+                <view class="payment-type-cell-hd"><image src="https://www.iumer.cn{{ item.icon }}"></image>{{ item.label }}</view>
                 <view class="payment-type-cell-ft" data-type="{{ item.value }}" bindtap="choosePayment">
                     <view class="payment-type-cell-ft-circle {{ selected == item.value? 'circle-on': '' }}" bindtap="choosePayment"></view>
                 </view>           

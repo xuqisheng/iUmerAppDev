@@ -27,7 +27,7 @@ page {
 .top-menu-search .search-icon {
 	position: absolute;
     left: 16rpx;
-    top: 8rpx;
+    top: 14rpx;
     background-image: url('https://www.iumer.cn/umer/css/image/wechat/search@3x.png');
     background-repeat: no-repeat;
     background-size: 32rpx 32rpx;
@@ -42,6 +42,7 @@ page {
     margin-left: 60rpx;
     line-height: normal;
     font-size: 25rpx;
+    padding: 10rpx 0;
 }
 #city-area {
     padding: 10rpx;

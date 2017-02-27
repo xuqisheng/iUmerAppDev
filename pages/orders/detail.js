@@ -122,6 +122,15 @@ Page({
                             // complete
                           }
                         })
+                      } else {
+                        wx.showModal({
+                          title: '提示',
+                          content: res.data.desc,
+                          showCancel: false,
+                          success: function() {
+                            
+                          }
+                        });
                       }
                     },
                     fail: function(res) {
@@ -246,7 +255,7 @@ Page({
                 var data = res.data.data;
                 wx.showModal({
                   title: '提示',
-                  content: '订单已取消',
+                  content: res.data.desc,
                   showCancel: false,
                   success: function() {
                     wx.redirectTo({
@@ -277,11 +286,23 @@ Page({
                   }
                 })
               } else if (res.data.code == 0){
-                wx.showToast({
-                  title: res.data.desc,
-                  icon: 'success',
-                  duration: 5000
+                wx.showModal({
+                  title: '提示',
+                  content: res.data.desc,
+                  showCancel: false,
+                  success: function() {
+                    
+                  }
                 }); 
+              } else {
+                wx.showModal({
+                  title: '提示',
+                  content: res.data.desc,
+                  showCancel: false,
+                  success: function() {
+                    
+                  }
+                });
               }
             },
             fail: function(res) {
@@ -299,7 +320,7 @@ Page({
     var that = this;
     wx.showModal({
       title: '提示',
-      content: '是否申请取消订单？',
+      content: '是否取消订单？',
       success: function(res) {
         if (res.confirm) {
           wx.request({
@@ -320,7 +341,7 @@ Page({
                 var data = res.data.data;
                 wx.showModal({
                   title: '提示',
-                  content: '已申请取消订单',
+                  content: res.data.desc,
                   showCancel: false,
                   success: function() {
                     wx.redirectTo({
@@ -351,11 +372,23 @@ Page({
                   }
                 })
               } else if (res.data.code == 0){
-                wx.showToast({
-                  title: res.data.desc,
-                  icon: 'success',
-                  duration: 5000
-                }); 
+                wx.showModal({
+                  title: '提示',
+                  content: res.data.desc,
+                  showCancel: false,
+                  success: function() {
+                    
+                  }
+                });
+              } else {
+                wx.showModal({
+                  title: '提示',
+                  content: res.data.desc,
+                  showCancel: false,
+                  success: function() {
+                    
+                  }
+                });
               }
             },
             fail: function(res) {
@@ -426,11 +459,23 @@ Page({
                   }
                 })
               } else if (res.data.code == 0){
-                wx.showToast({
-                  title: res.data.desc,
-                  icon: 'success',
-                  duration: 5000
-                }); 
+                wx.showModal({
+                  title: '提示',
+                  content: res.data.desc,
+                  showCancel: false,
+                  success: function() {
+                    
+                  }
+                });
+              } else {
+                wx.showModal({
+                  title: '提示',
+                  content: res.data.desc,
+                  showCancel: false,
+                  success: function() {
+                    
+                  }
+                });
               }
             },
             fail: function(res) {

@@ -38,9 +38,6 @@ Page({
   },
   loadPersonnel: function() {
     var that = this;
-    that.setData({
-      loadingHidden: false
-    })
     wx.request({
         url: app.globalData.server_url + 'webService/customer/biz/index/personnelDetail', 
         data: {
@@ -71,11 +68,8 @@ Page({
   },
   loadWeekdays: function(){
     var that = this;
-    this.setData({
-      loadingHidden: false
-    });
     wx.request({
-      url: app.globalData.server_url + 'webService/customer/biz/reserve/reservePeriodList', 
+      url: app.globalData.server_url + 'webService/common/reservePeriodList', 
         data: {
           
         },
@@ -123,7 +117,7 @@ Page({
       selectedIndex: {}
     })
     wx.request({
-      url: app.globalData.server_url + 'webService/customer/biz/reserve/reserveTimeList', 
+      url: app.globalData.server_url + 'webService/common/reserveTimeList', 
         data: {
           personnelId: that.data.personnelId,
           dateTime: date  
@@ -155,15 +149,12 @@ Page({
     });
   },
   loadProject: function(){
-    this.setData({
-      loadingHidden: false
-    });
     var that = this;
     wx.request({
         url: app.globalData.server_url + 'webService/customer/biz/index/projectDetails', 
         data: {
           id: that.data.projectId,
-          customerId: wx.getStorageSync('id') || 30
+          customerId: wx.getStorageSync('id')
         },
         method: "POST",
         dataType: "json",
@@ -199,7 +190,7 @@ Page({
   chooseProject: function(){
     var that = this;
     console.log(that.data)
-    wx.redirectTo({
+    wx.navigateTo({
       url: 'chooseProject?personnelId=' + that.data.personnelId + "&priceType=" + that.data.priceType,
       success: function(res){
         // success
