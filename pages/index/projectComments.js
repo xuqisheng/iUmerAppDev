@@ -80,7 +80,7 @@ Page({
   },
   updateCommentNum: function(){
     var that = this;
-    // console.log(this.data.projectId)
+    wx.showNavigationBarLoading();
     wx.request({
         url: app.globalData.server_url + 'webService/customer/biz/index/projectCommentGroupNum', 
         data: {
@@ -105,15 +105,13 @@ Page({
           console.log("updateCommentNum fail")
         },
         complete: function(res) {
-          console.log("updateCommentNum complete")
+          console.log("updateCommentNum complete");
+          wx.hideNavigationBarLoading();
         }
     });
   },
   loadComments: function(level, opType) {
-    this.setData({
-      loadingHidden: false
-    });
-    // console.log("loadComments: " + this)
+    wx.showNavigationBarLoading();
     var data = {};
     data["projectId"] = this.data.projectId;
     data["personnelId"] = this.data.personnelId;
@@ -226,9 +224,7 @@ Page({
         },
         complete: function(res) {
           console.log("loadComments complete");
-          that.setData({
-            loadingHidden: true
-          });
+          wx.hideNavigationBarLoading();
         }
     });
   },

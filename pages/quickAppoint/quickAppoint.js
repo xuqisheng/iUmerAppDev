@@ -42,6 +42,7 @@ Page({
   },
   loadProjects: function(opType) {
     var that = this;
+    wx.showNavigationBarLoading();
     var data = {};
     data["customerId"] = wx.getStorageSync('id');
     data["pageSize"] = 10;
@@ -106,9 +107,7 @@ Page({
         console.log("loadProjects fail")
       },
       complete: function(res) {
-        that.setData({
-          loadingHidden: true
-        });
+        wx.hideNavigationBarLoading();
         console.log("loadProjects complete")
       }
     });
@@ -125,6 +124,7 @@ Page({
       case "down": data["timestamp"] = this.data.timestampFirst; break;
       }
     }
+    wx.showNavigationBarLoading();
     wx.request({
       url: app.globalData.server_url + 'webService/customer/biz/order/reservePersonnelRecord', 
       data: data,
@@ -179,9 +179,7 @@ Page({
         console.log("loadPersonnels fail")
       },
       complete: function(res) {
-        that.setData({
-          loadingHidden: true
-        });
+        wx.hideNavigationBarLoading();
         console.log("loadPersonnels complete")
       }
     });

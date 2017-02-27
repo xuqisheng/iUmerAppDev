@@ -1,8 +1,8 @@
 <!--pages/quickAppoint/appointPersonnel.wxml-->
 <view class="container">
-    <loading hidden="{{ loadingHidden }}">
+    <!--<loading hidden="{{ loadingHidden }}">
         加载中...
-    </loading>
+    </loading>-->
     <view class="project-item">
         <view class="project-item-left">
             <view class="project-item-img"><image src="https://www.iumer.cn{{ projectFilePath }}" /></view>

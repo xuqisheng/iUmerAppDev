@@ -8,7 +8,7 @@ Page({
     priceDropdownHidden: true,
     priceType: 0,
     reservePhone: wx.getStorageSync('phone'),
-    reserveName: wx.getStorageSync('name')
+    reserveName: wx.getStorageSync('name'),
   },
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
@@ -53,6 +53,7 @@ Page({
   },
   loadProject: function(){
     var that = this;
+    wx.showNavigationBarLoading();
     wx.request({
         url: app.globalData.server_url + 'webService/customer/biz/index/projectDetails', 
         data: {
@@ -133,14 +134,13 @@ Page({
         },
         complete: function(res) {
           console.log("loadProject complete");
-          that.setData({
-            loadingHidden: true
-          });
+          wx.hideNavigationBarLoading();
         }
     });
   },
   loadWeekdays: function(){
     var that = this;
+    wx.showNavigationBarLoading();
     wx.request({
       url: app.globalData.server_url + 'webService/common/reservePeriodList', 
         data: {
@@ -166,9 +166,7 @@ Page({
         },
         complete: function(res) {
           console.log("loadWeekdays complete");
-          that.setData({
-            loadingHidden: true
-          });
+          wx.hideNavigationBarLoading();
         }
     });
   },
@@ -189,6 +187,7 @@ Page({
       selectedTime: "",
       selectedIndex: {}
     })
+    wx.showNavigationBarLoading();
     wx.request({
       url: app.globalData.server_url + 'webService/common/reserveTimeList', 
         data: {
@@ -215,14 +214,13 @@ Page({
         },
         complete: function(res) {
           console.log("loadTimeslots complete");
-          that.setData({
-            loadingHidden: true
-          });
+          wx.hideNavigationBarLoading();
         }
     });
   },
   loadPersonnel: function(){
     var that = this;
+    wx.showNavigationBarLoading();
     wx.request({
       url: app.globalData.server_url + 'webService/customer/biz/index/personnelDetail', 
         data: {
@@ -237,7 +235,7 @@ Page({
           if (res.data.code == 1) {
             var d = res.data.data;
             that.setData({
-              personnelHeader: d.header || "/css/image/default.jpg",
+              personnelHeader: d.header || "/css/image/wechat/2.jpg",
               personnelName: d.name || ""
             });
           } else {
@@ -249,9 +247,7 @@ Page({
         },
         complete: function(res) {
           console.log("loadPersonnel complete");
-          that.setData({
-            loadingHidden: true
-          });
+          wx.hideNavigationBarLoading();
         }
     });
   },
@@ -407,6 +403,7 @@ Page({
 		var startDate = new Date(startDateStr.replace(new RegExp(/-/g),'/'));
 		var endDateStr = that.data.chosenDate + " " + that.data.chosenHours[that.data.chosenHours.length - 1];
 		var endDate = new Date(endDateStr.replace(new RegExp(/-/g),'/'));
+    wx.showNavigationBarLoading();
     wx.request({
       url: app.globalData.server_url + 'webService/customer/biz/reserve/orderSave', 
         data: {
@@ -484,9 +481,7 @@ Page({
         },
         complete: function(res) {
           console.log("submitOrder complete");
-          that.setData({
-            loadingHidden: true
-          });
+          wx.hideNavigationBarLoading();
         }
     });
   },

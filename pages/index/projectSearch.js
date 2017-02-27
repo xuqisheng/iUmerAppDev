@@ -52,6 +52,7 @@ Page({
     })
   },
   loadAreaList: function() {
+    wx.showNavigationBarLoading();
     var that = this;
     wx.request({
       url: app.globalData.server_url + 'webService/common/areaList', 
@@ -74,7 +75,8 @@ Page({
           console.log("getPPT fail")
         },
         complete: function(res) {
-          console.log("complete")
+          console.log("complete");
+          wx.hideNavigationBarLoading();
         }
     });
   },
@@ -116,6 +118,7 @@ Page({
   },
   loadCategoryList: function() {
     var that = this;
+    wx.showNavigationBarLoading();
     wx.request({
       url: app.globalData.server_url + 'webService/common/projectTypeTree', 
       data: {
@@ -137,7 +140,8 @@ Page({
           console.log("loadCategoryList fail")
         },
         complete: function(res) {
-          console.log("loadCategoryList complete")
+          console.log("loadCategoryList complete");
+          wx.hideNavigationBarLoading();
         }
     });
   },
@@ -151,6 +155,7 @@ Page({
     this.loadProjects();
   },
   loadProjects: function() {
+    wx.showNavigationBarLoading();
     var that = this;
     var data = {};
     if (that.data.areaId) {
@@ -220,6 +225,7 @@ Page({
       },
       complete: function(res) {
         console.log("loadProjects complete")
+        wx.hideNavigationBarLoading();
       }
     });
   },

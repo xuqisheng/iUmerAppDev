@@ -4,15 +4,25 @@ var app = getApp();
 var cities = require("../../utils/cities.js");
 Page({
   data: {
-    
+    login: false
   },
-  onLoad: function () {
+  onLoad: function (options) {
     console.log('onLoad');
+    if (wx.getStorageSync('id')) {
+      this.setData({
+        login: true
+      })
+    }
   },
   onReady:function(){
     console.log("onReady");
   },
   onShow: function(){
+    if (wx.getStorageSync('id')) {
+      this.setData({
+        login: true
+      })
+    }
     var that = this;
     console.log("onShow");
     if (wx.getStorageSync('cityCode')) {
@@ -31,6 +41,7 @@ Page({
       this.getHotProject();
       this.getHotPersonnel();
     } else {
+      wx.showNavigationBarLoading();
       wx.getLocation({
         type: 'wgs84',
         success: function(res) {
@@ -105,6 +116,7 @@ Page({
         },
         complete: function(res) {
           console.log("getLocation completed");
+          wx.hideNavigationBarLoading()
         }
       });
     }
@@ -299,5 +311,29 @@ Page({
         // complete
       }
     })
+  },
+  logout: function(){
+    wx.showModal({
+      title: '提示',
+      confirmColor: '#FD8CA3',
+      content: "您确定要登出吗?",
+      success: function(res) {
+        if (res.confirm) {
+          wx.removeStorageSync('id');
+          wx.removeStorageSync("name");
+          wx.removeStorageSync("phone");
+          wx.removeStorageSync("password");
+          wx.removeStorageSync("header");
+          wx.removeStorageSync("sex");
+          wx.removeStorageSync("birthday");
+          wx.removeStorageSync("X-TOKEN");
+          wx.removeStorageSync("alias");
+          wx.removeStorageSync("authCode");  
+        }
+        this.setData({
+          login: false
+        });
+      }
+    });
   }
 })

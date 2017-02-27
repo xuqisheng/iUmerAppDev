@@ -1,7 +1,7 @@
 <view class="container">
-    <loading hidden="{{ loadingHidden }}">
+    <!--<loading hidden="{{ loadingHidden }}">
         加载中...
-    </loading>
+    </loading>-->
     <view id="avatar-area">
         <swiper style="height: 750rpx;" class="swiper3" indicator-dots autoplay circular>
             <view class='swiper-description'>

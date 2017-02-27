@@ -25,6 +25,7 @@ Page({
     // 页面关闭
   },
   loadPersonnel: function() {
+    wx.showNavigationBarLoading();
     var that = this;
     wx.request({
         url: app.globalData.server_url + 'webService/customer/biz/index/personnelDetail', 
@@ -48,12 +49,14 @@ Page({
           console.log("loadPersonnel fail")
         },
         complete: function(res) {
-          console.log("loadPersonnel complete")
+          console.log("loadPersonnel complete");
+          wx.hideNavigationBarLoading();
         }
     });
   },
   loadPersonnelProjects: function() {
     var that = this;
+    wx.showNavigationBarLoading();
     wx.request({
         url: app.globalData.server_url + 'webService/customer/biz/reserve/personnelProjectList', 
         data: {
@@ -77,12 +80,14 @@ Page({
         },
         complete: function(res) {
           console.log("loadPersonnelProjects complete")
+          wx.hideNavigationBarLoading();
         }
     });
   },
   updateCommentNum: function(){
     var that = this;
     // console.log(this.data.projectId)
+    wx.showNavigationBarLoading();
     wx.request({
         url: app.globalData.server_url + 'webService/customer/biz/index/projectCommentGroupNum', 
         data: {
@@ -108,13 +113,12 @@ Page({
         },
         complete: function(res) {
           console.log("updateCommentNum complete")
+          wx.hideNavigationBarLoading();
         }
     });
   },
   loadComments: function() {
-    this.setData({
-      loadingHidden: false
-    });
+    wx.showNavigationBarLoading();
     // console.log("loadComments: " + this)
     var data = {};
     data["personnelId"] = this.data.personnelId;
@@ -145,9 +149,7 @@ Page({
         },
         complete: function(res) {
           console.log("loadComments complete");
-          that.setData({
-            loadingHidden: true
-          });
+          wx.hideNavigationBarLoading();
         }
     });
   },

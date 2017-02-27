@@ -26,9 +26,7 @@ Page({
   },
   loadShop: function(){
     var shopId = this.data.shopId;
-    this.setData({
-      loadingHidden: false
-    });
+    wx.showNavigationBarLoading();
     var that = this;
     wx.request({
         url: app.globalData.server_url + 'webService/customer/biz/index/shopDetail', 
@@ -63,9 +61,7 @@ Page({
         },
         complete: function(res) {
           console.log("loadShop complete");
-          that.setData({
-            loadingHidden: true
-          });
+          wx.hideNavigationBarLoading();
         }
     });
   },
@@ -89,10 +85,8 @@ Page({
     }
   },
   loadProjects: function(opType) {
+    wx.showNavigationBarLoading();
     var that = this;
-    this.setData({
-      loadingHidden: false
-    });
     var data = {};
     data["shopId"] = that.data.shopId;
     data["pageSize"] = 10;
@@ -133,18 +127,14 @@ Page({
         console.log("loadProjects fail")
       },
       complete: function(res) {
-        that.setData({
-          loadingHidden: true
-        });
+        wx.hideNavigationBarLoading();
         console.log("loadProjects complete")
       }
     });
   },
   loadPersonnels: function(opType) {
     var that = this;
-    this.setData({
-      loadingHidden: false
-    });
+    wx.showNavigationBarLoading();
     var data = {};
     data["shopId"] = that.data.shopId;
     data["pageSize"] = 10;
@@ -185,9 +175,7 @@ Page({
         console.log("loadPersonnels fail")
       },
       complete: function(res) {
-        that.setData({
-          loadingHidden: true
-        });
+        wx.hideNavigationBarLoading();
         console.log("loadPersonnels complete")
       }
     });

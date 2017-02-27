@@ -47,6 +47,7 @@ Page({
     this.searchShop("", value);
   },
   searchShop: function(operationType, value) {
+    wx.showNavigationBarLoading();
     var that = this;
     var data = {};
     if (operationType) {
@@ -98,6 +99,7 @@ Page({
         },
         complete: function(res) {
           console.log("searchShopList complete")
+          wx.hideNavigationBarLoading();
         }
     });
   },

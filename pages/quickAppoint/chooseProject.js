@@ -25,6 +25,7 @@ Page({
   },
   loadProjects:function(operationType){
     var that = this;
+    wx.showNavigationBarLoading();
     var data = {};
     if (operationType) {
       data["operationType"] = operationType;
@@ -76,6 +77,7 @@ Page({
         },
         complete: function(res) {
           console.log("complete")
+          wx.hideNavigationBarLoading();
         }
     });
   },

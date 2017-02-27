@@ -22,6 +22,7 @@ Page({
     // 页面关闭
   },
   loadOrder: function() {
+    wx.showNavigationBarLoading();
     var that = this;
     var orderNo = this.data.orderNo;
     wx.request({
@@ -64,11 +65,13 @@ Page({
       },
       complete: function(res) {
         console.log("pay - loadOrder complete")
+        wx.hideNavigationBarLoading();
       }
     });
   },
   loadPaymentMethods: function() {
     var that = this;
+    wx.showNavigationBarLoading();
     wx.request({
       url: app.globalData.server_url + 'webService/common/payMode', 
       data: {
@@ -103,6 +106,7 @@ Page({
       },
       complete: function(res) {
         console.log("pay - loadPaymentMethods complete")
+        wx.hideNavigationBarLoading();
       }
     });
   },
@@ -128,6 +132,7 @@ Page({
       })
       return false;
     }
+    wx.showNavigationBarLoading();
     wx.request({
       url: app.globalData.server_url + 'webService/customer/biz/pay/wechatSubmitPay', 
       data: {
@@ -242,6 +247,7 @@ Page({
       },
       complete: function(res) {
         console.log("pay - loadPaymentMethods complete")
+        wx.hideNavigationBarLoading();
       }
     });
   }

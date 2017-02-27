@@ -38,6 +38,7 @@ Page({
   },
   loadPersonnel: function() {
     var that = this;
+    wx.showNavigationBarLoading();
     wx.request({
         url: app.globalData.server_url + 'webService/customer/biz/index/personnelDetail', 
         data: {
@@ -59,15 +60,14 @@ Page({
           console.log("loadPersonnel fail")
         },
         complete: function(res) {
-          that.setData({
-            loadingHidden: true
-          })
+          wx.hideNavigationBarLoading();
           console.log("loadPersonnel complete")
         }
     });
   },
   loadWeekdays: function(){
     var that = this;
+    wx.showNavigationBarLoading();
     wx.request({
       url: app.globalData.server_url + 'webService/common/reservePeriodList', 
         data: {
@@ -93,9 +93,7 @@ Page({
         },
         complete: function(res) {
           console.log("loadWeekdays complete");
-          that.setData({
-            loadingHidden: true
-          });
+          wx.hideNavigationBarLoading();
         }
     });
   },
@@ -116,6 +114,7 @@ Page({
       selectedTime: "",
       selectedIndex: {}
     })
+    wx.showNavigationBarLoading();
     wx.request({
       url: app.globalData.server_url + 'webService/common/reserveTimeList', 
         data: {
@@ -142,14 +141,13 @@ Page({
         },
         complete: function(res) {
           console.log("loadTimeslots complete");
-          that.setData({
-            loadingHidden: true
-          });
+          wx.hideNavigationBarLoading();
         }
     });
   },
   loadProject: function(){
     var that = this;
+    wx.showNavigationBarLoading();
     wx.request({
         url: app.globalData.server_url + 'webService/customer/biz/index/projectDetails', 
         data: {
@@ -181,9 +179,7 @@ Page({
         },
         complete: function(res) {
           console.log("loadProject complete");
-          that.setData({
-            loadingHidden: true
-          });
+          wx.hideNavigationBarLoading();
         }
     });
   },
@@ -350,6 +346,7 @@ Page({
 		var startDate = new Date(startDateStr.replace(new RegExp(/-/g),'/'));
 		var endDateStr = that.data.chosenDate + " " + that.data.chosenHours[that.data.chosenHours.length - 1];
 		var endDate = new Date(endDateStr.replace(new RegExp(/-/g),'/'));
+    wx.showNavigationBarLoading();
     wx.request({
       url: app.globalData.server_url + 'webService/customer/biz/reserve/orderSave', 
         data: {
@@ -427,9 +424,7 @@ Page({
         },
         complete: function(res) {
           console.log("submitOrder complete");
-          that.setData({
-            loadingHidden: true
-          });
+          wx.hideNavigationBarLoading();
         }
     });
   },

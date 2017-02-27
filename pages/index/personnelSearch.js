@@ -63,6 +63,7 @@ Page({
     this.searchPersonnel("", value);
   },
   searchPersonnel: function(operationType, value) {
+    wx.showNavigationBarLoading();
     var that = this;
     var data = {};
     if (operationType) {
@@ -122,7 +123,8 @@ Page({
           console.log("indexSearch - searchPersonnel fail")
         },
         complete: function(res) {
-          console.log("indexSearch - searchPersonnel complete")
+          console.log("indexSearch - searchPersonnel complete");
+          wx.hideNavigationBarLoading();
         }
     });
   },

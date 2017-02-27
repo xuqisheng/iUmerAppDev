@@ -9,6 +9,10 @@
 .top-menu-search-bar {
 	z-index: 1000;
 }
+.top-menu-alert image {
+	width: 48rpx;
+	height: 48rpx;
+}
 .index-header {
 	display: flex;
 	justify-content: flex-start;

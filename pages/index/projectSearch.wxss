@@ -129,6 +129,7 @@ page {
 .filter-item-list-item-category {
 	width: 22%;
     padding: 10rpx;
+	white-space: nowrap;
 }
 .filter-item-list-item-category text {
 	border: solid 2rpx lightgrey;

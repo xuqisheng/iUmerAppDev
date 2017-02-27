@@ -36,6 +36,7 @@ Page({
     clearInterval(timer);
   },
   loadOrder: function(){
+    wx.showNavigationBarLoading();
     var orderNo = this.data.orderNo;
     var that = this;
     wx.request({
@@ -168,13 +169,12 @@ Page({
         },
         complete: function(res) {
           console.log("orderDetail - loadOrder complete")
+          wx.hideNavigationBarLoading();
         }
     });
   },
   showQRCode: function() {
-    this.setData({
-      showModal: true
-    });
+    wx.showNavigationBarLoading();
     var that = this;
     wx.request({
         url: app.globalData.server_url + 'webService/customer/biz/order/payQRDetail', 
@@ -216,6 +216,7 @@ Page({
         },
         complete: function(res) {
           console.log("orderDetail - loadQr complete")
+          wx.hideNavigationBarLoading();
         }
     });
   },
@@ -237,6 +238,7 @@ Page({
       content: '是否取消订单？',
       success: function(res) {
         if (res.confirm) {
+          wx.showNavigationBarLoading();
           wx.request({
             url: app.globalData.server_url + 'webService/customer/biz/reserve/cancelOrder', 
             data: {
@@ -310,6 +312,7 @@ Page({
             },
             complete: function(res) {
               console.log("orderDetail - loadOrder complete")
+              wx.hideNavigationBarLoading();
             }
         });
         }
@@ -396,6 +399,7 @@ Page({
             },
             complete: function(res) {
               console.log("orderDetail - loadOrder complete")
+              wx.hideNavigationBarLoading();
             }
           });
         }
@@ -409,6 +413,7 @@ Page({
       content: '订单是否已完成？',
       success: function(res) {
         if (res.confirm) {
+          wx.showNavigationBarLoading();
           wx.request({
             url: app.globalData.server_url + 'webService/customer/biz/order/confirmFinishOrder', 
             data: {
@@ -483,6 +488,7 @@ Page({
             },
             complete: function(res) {
               console.log("orderDetail - loadOrder complete")
+              wx.hideNavigationBarLoading();
             }
           });   
         }

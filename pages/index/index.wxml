@@ -10,7 +10,7 @@
 			<view class="search-icon"></view>
 			<view class="placeholder" bindinput="indexSearch">搜索优美师/项目/店铺等</view>
 		</view>
-		<view class="top-menu-alert" url="messageCenter"></view>
+		<view class="top-menu-alert"><image wx:if="{{ login }}" src="https://www.iumer.cn/umer/css/image/wechat/app/logout.png" bindtap="logout" ></image></view>
 	</view>
 	<view id="nav">
 		<view class="nav-item" bindtap="jumpToSearchProject" data-navid="0" data-groupno="10">

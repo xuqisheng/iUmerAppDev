@@ -48,6 +48,7 @@ Page({
   },
   loadOrders: function(status, opType) {
     console.log(status + " " + opType);
+    wx.showNavigationBarLoading();
     var that = this;
     // console.log("loadComments: " + this)
     var data = {};
@@ -130,9 +131,7 @@ Page({
         },
         complete: function(res) {
           console.log("loadOrders complete");
-          that.setData({
-            loadingHidden: true
-          });
+          wx.hideNavigationBarLoading();
         }
     });
   },

@@ -1,8 +1,8 @@
 <!--pages/index/projectDetail.wxml-->
 <view class="container">
-    <loading hidden="{{ loadingHidden }}">
+    <!--<loading hidden="{{ loadingHidden }}">
         加载中...
-    </loading>
+    </loading>-->
     <scroll-view scroll-y="true" style="height: calc(100% - 90rpx);">
         <view id="project-detail">
             <view id="avatar-area">

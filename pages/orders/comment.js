@@ -27,6 +27,7 @@ Page({
     // 页面关闭
   },
   loadOrder: function() {
+    wx.showNavigationBarLoading();
     var that = this;
     var orderNo = this.data.orderNo;
     wx.request({
@@ -71,6 +72,7 @@ Page({
         },
         complete: function(res) {
           console.log("orderDetail - loadOrder complete")
+          wx.hideNavigationBarLoading();
         }
     });
   },
@@ -143,6 +145,7 @@ Page({
       });
       return false;
     }
+    wx.showNavigationBarLoading();
     wx.request({
       url: app.globalData.server_url + 'webService/customer/biz/order/orderComment', 
         data: {
@@ -214,9 +217,7 @@ Page({
         },
         complete: function(res) {
           console.log("submitOrder complete");
-          that.setData({
-            loadingHidden: true
-          });
+          wx.hideNavigationBarLoading();
         }
     });
   }

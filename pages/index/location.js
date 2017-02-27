@@ -7,6 +7,7 @@ Page({
   },
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
+    wx.showNavigationBarLoading();
     var that = this;
     console.log("onload");
     this.setData({
@@ -70,6 +71,12 @@ Page({
             //   letterIndex: letterIndex
             // });
             // console.log(letterIndex);
+          },
+          fail: function(){
+
+          },
+          complete: function() {
+            wx.hideNavigationBarLoading();
           }
         });
         // var speed = res.speed

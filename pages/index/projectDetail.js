@@ -91,9 +91,7 @@ Page({
     });
   },
   loadComments: function() {
-    this.setData({
-      loadingHidden: false
-    });
+    wx.showNavigationBarLoading();
     // console.log("loadComments: " + this)
     var data = {};
     data["projectId"] = this.data.projectId;
@@ -124,9 +122,7 @@ Page({
         },
         complete: function(res) {
           console.log("loadComments complete");
-          that.setData({
-            loadingHidden: true
-          });
+          wx.hideNavigationBarLoading();
         }
     });
   },
@@ -141,9 +137,7 @@ Page({
     this.loadComments(level, "down");
   },
   loadProject: function() {
-    this.setData({
-      loadingHidden: false
-    });
+    wx.showNavigationBarLoading();
     var that = this;
     wx.request({
         url: app.globalData.server_url + 'webService/customer/biz/index/projectDetails', 
@@ -220,9 +214,7 @@ Page({
         },
         complete: function(res) {
           console.log("loadProject complete");
-          that.setData({
-            loadingHidden: true
-          });
+          wx.hideNavigationBarLoading();
         }
     });
   },

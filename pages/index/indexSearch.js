@@ -42,6 +42,7 @@ Page({
     this.searchShop(txt);
   },
   searchProject: function(txt) {
+    wx.showNavigationBarLoading();
     var that = this;
     wx.request({
         url: app.globalData.server_url + 'webService/customer/biz/index/searchProjectList', 
@@ -68,10 +69,12 @@ Page({
         },
         complete: function(res) {
           console.log("indexSearch - searchProject complete")
+          wx.hideNavigationBarLoading();
         }
     });
   },
   searchPersonnel: function(txt) {
+    wx.showNavigationBarLoading();
     var that = this;
     wx.request({
         url: app.globalData.server_url + 'webService/customer/biz/index/searchPersonnelList', 
@@ -97,11 +100,13 @@ Page({
         },
         complete: function(res) {
           console.log("indexSearch - searchPersonnel complete")
+          wx.hideNavigationBarLoading();
         }
     });
   },
   searchShop: function(txt) {
     var that = this;
+    wx.showNavigationBarLoading();
     wx.request({
         url: app.globalData.server_url + 'webService/customer/biz/index/searchShopList', 
         data: {
@@ -126,6 +131,7 @@ Page({
         },
         complete: function(res) {
           console.log("indexSearch - searchShop complete")
+          wx.hideNavigationBarLoading();
         }
     });
   },

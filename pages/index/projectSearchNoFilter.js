@@ -47,6 +47,7 @@ Page({
     this.searchProject("", value);
   },
   searchProject: function(operationType, value) {
+    wx.showNavigationBarLoading();
     var that = this;
     var data = {};
     if (operationType) {
@@ -103,14 +104,15 @@ Page({
       },
       complete: function(res) {
         console.log("loadProjects complete")
+        wx.hideNavigationBarLoading();
       }
     });
   },
   clickProjectItem: function(e){
-    var personnelId = e.currentTarget.dataset.personnelid;
+    var projectId = e.currentTarget.dataset.projectid;
     // console.log(projectId)
     wx.navigateTo({
-      url: 'projectDetail?projectId=' + personnelId,
+      url: 'projectDetail?projectId=' + projectId,
       success: function(res){
         // success
       },

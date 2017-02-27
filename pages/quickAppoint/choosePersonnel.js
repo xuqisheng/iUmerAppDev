@@ -52,6 +52,7 @@ Page({
     }
     data["pageSize"] = 10;
     data["projectId"] = this.data.projectId;
+    wx.showNavigationBarLoading();
     wx.request({
         url: app.globalData.server_url + 'webService/customer/biz/reserve/projectPersonnelList', 
         data: data,
@@ -93,6 +94,7 @@ Page({
         },
         complete: function(res) {
           console.log("complete")
+          wx.hideNavigationBarLoading();
         }
     });
   },
