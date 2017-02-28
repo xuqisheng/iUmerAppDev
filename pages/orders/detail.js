@@ -194,7 +194,8 @@ Page({
             var data = res.data.data;
             that.setData({
               qrImg: data.qrPath,
-              qrTxt: data.payCode
+              qrTxt: data.payCode,
+              showModal: true
             });
           } else if (res.data.code == -4) {
             wx.navigateTo({

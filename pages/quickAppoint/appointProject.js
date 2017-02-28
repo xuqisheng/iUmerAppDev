@@ -164,7 +164,7 @@ Page({
             var d = res.data.data;
             that.setData({
               projectName: d.projectName || "",
-              projectHeader: d.header || "css/image/wechat/2.jpg",
+              projectHeader: d.header || "umer/css/image/wechat/2.jpg",
               projectUnitPrice: d.unitPrice || 0,
               projectCoursePrice: d.coursePrice || 0,
               projectCourseRemark: d.courseRemark || "",

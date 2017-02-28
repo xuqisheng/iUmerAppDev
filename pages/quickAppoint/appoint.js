@@ -232,7 +232,7 @@ Page({
           if (res.data.code == 1) {
             var d = res.data.data;
             that.setData({
-              personnelHeader: d.header || "/css/image/default.jpg",
+              personnelHeader: d.header || "umer/css/image/default.jpg",
               personnelName: d.name || ""
             });
           } else {

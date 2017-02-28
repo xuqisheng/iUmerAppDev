@@ -14,7 +14,10 @@
             <view class="clear"></view>
             <view class="project-item-dot-line"></view>
             <view class="project-item-info">
-                <span class="project-item-info-distance"><image src="https://www.iumer.cn/umer/css/image/wechat/pin@3x.png" />{{ shopAddress }}</span>
+                <span class="project-item-info-distance">
+                    <image src="https://www.iumer.cn/umer/css/image/wechat/pin@3x.png" />
+                    <text >{{ shopAddress }}</text>
+                </span>
                 <span class="project-item-info-duration"><image src="https://www.iumer.cn/umer/css/image/wechat/history-red@2x.png" />{{ projectDuration }}分钟</span>
             </view>
         </view>
@@ -57,9 +60,11 @@
             <view class="selection-cell__ft cell-appoint-time">{{ selectedTime }}</view>
         </view>
         <view class="selection-cell">	
-            <view class="selection-cell__bd">
+            <view class="selection-cell__bd" style="width: 100%;">
                 <view class="date-select">
-                    <view class="text-center swiper-slide {{ item.dateTime == chosenDate? 'date-select-on': '' }}" data-time="{{ item.dateTime }}" wx:for="{{ weekdays }}" bindtap="loadTimeslots"><text>{{ item.week + "\n" + item.dateTime }}</text></view>
+                    <scroll-view scroll-x style="width: 100%">
+                        <view class="text-center swiper-slide {{ item.dateTime == chosenDate? 'date-select-on': '' }}" data-time="{{ item.dateTime }}" wx:for="{{ weekdays }}" bindtap="loadTimeslots"><text>{{ item.week + "\n" + item.dateTime }}</text></view>
+                    </scroll-view>
                 </view>
             </view>
         </view>

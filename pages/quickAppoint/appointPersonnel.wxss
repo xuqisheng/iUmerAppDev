@@ -1,4 +1,7 @@
 /* pages/quickAppoint/appointPersonnel.wxss */
+page {
+	overflow: hidden;
+}
 button {
 	line-height: 50rpx;
 }
@@ -105,6 +108,9 @@ button {
     height: 40rpx;
 	margin: 0 10rpx 0 0;
 }
+.project-item-info-distance text {
+	width: 350rpx;
+}
 .project-item-info-duration {
 	float: right;
 	color: #686868;
@@ -164,16 +170,18 @@ button {
 }
 .date-select {
 	height: 100rpx;
-	overflow-x: scroll;
+	overflow: scroll;
 	display: flex;
-	width: 750rpx;
+	width: 100%;
 	white-space: nowrap;
+	justify-content: space-between;
 }
 .date-select-on {
 	border-bottom: solid 4rpx #FD8CA3;
 }
 .swiper-slide {
-	padding:0 40rpx;	
+	padding: 0 40rpx 20rpx 40rpx;
+    display: inline-block;	
 }
 .timeslots {
     display: flex;

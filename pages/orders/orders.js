@@ -5,7 +5,7 @@ Page({
     currTab: 0,
     status: 1,
     loadingHidden: true,
-    loadingHidden2: false,
+    loadingHidden2: true,
     orderList: [],
     timestampFirst: 0,
     timestampLast: 0,

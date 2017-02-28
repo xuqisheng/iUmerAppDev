@@ -235,7 +235,7 @@ Page({
           if (res.data.code == 1) {
             var d = res.data.data;
             that.setData({
-              personnelHeader: d.header || "/css/image/wechat/2.jpg",
+              personnelHeader: d.header? ("https://www.iumer.cn" + d.header): "https://www.iumer.cn/umer/css/image/wechat/2.jpg",
               personnelName: d.name || ""
             });
           } else {
