@@ -29,7 +29,7 @@ page {
 	background-color: white;
 }
 .filter-item-active {
-	color: #E84057;
+	color: #FD8CA3;
 	border-top: solid 2rpx #CFCFCF;
 	border-right: solid 2rpx #CFCFCF;
 	border-bottom: solid 2rpx #CFCFCF;
@@ -40,6 +40,9 @@ page {
 .filter-item-inner {
 	padding: 20rpx 40rpx;
 	position: relative;
+}
+.filter-text-active {
+	color: #FD8CA3;
 }
 .filter-item-triangle {
 	position: absolute; 
@@ -56,7 +59,7 @@ page {
 	bottom:0; 
 	width: 0; 
 	height: 0; 
-	border-bottom: 24rpx solid #E84057; 
+	border-bottom: 24rpx solid #FD8CA3; 
 	border-left: 24rpx solid transparent;
 }
 .filter-item-list {

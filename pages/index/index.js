@@ -313,6 +313,7 @@ Page({
     })
   },
   logout: function(){
+    var that = this;
     wx.showModal({
       title: '提示',
       confirmColor: '#FD8CA3',
@@ -329,10 +330,10 @@ Page({
           wx.removeStorageSync("X-TOKEN");
           wx.removeStorageSync("alias");
           wx.removeStorageSync("authCode");  
+          that.setData({
+            login: false
+          });
         }
-        this.setData({
-          login: false
-        });
       }
     });
   }

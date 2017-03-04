@@ -191,7 +191,7 @@
 	background-color: #FD8CA3;
 	color: white;
 	width: 100%;
-	padding: 30rpx;
+	padding: 30rpx 0;
 	position: fixed;
 	bottom: 0;
 	left: 0;

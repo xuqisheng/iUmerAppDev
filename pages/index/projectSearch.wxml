@@ -3,7 +3,7 @@
         <view class="filter-item filter-item-area" bindtap="showAreaF">
             <view class="filter-item-inner">
                 <view class="{{ !showArea? 'filter-item-triangle-active': 'filter-item-triangle' }}"></view>
-                <text class="text-center">全城</text>
+                <text class="text-center {{ !showArea? 'filter-text-active':'' }}">全城</text>
             </view>
             <view class="filter-item-list filter-item-list-area" hidden="{{ showArea }}">
                 <view class="filter-item-list-items">
@@ -28,7 +28,7 @@
         <view class="filter-item" bindtap="showSortingF">
             <view class="filter-item-inner">
                 <view class="{{ !showSorting? 'filter-item-triangle-active': 'filter-item-triangle' }}"></view>
-                <text class="text-center">排序</text>
+                <text class="text-center {{ !showSorting? 'filter-text-active':'' }}">排序</text>
             </view>
             <view class="filter-item-list filter-item-list-sorting" hidden="{{ showSorting }}">
                 <view class="filter-item-list-items">
@@ -43,7 +43,7 @@
         <view class="filter-item" bindtap="showCategoryF">
             <view class="filter-item-inner">
                 <view class="{{ !showCategory? 'filter-item-triangle-active': 'filter-item-triangle' }}"></view>
-                <text class="text-center">分类</text>
+                <text class="text-center {{ !showCategory? 'filter-text-active':'' }}">分类</text>
             </view>
             <view class="filter-item-list filter-item-list-category" hidden="{{ showCategory }}">
                 <view class="filter-item-list-items-category">

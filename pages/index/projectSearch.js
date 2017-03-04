@@ -32,7 +32,7 @@ Page({
   },
   showAreaF: function() {
     this.setData({
-      showArea: false,
+      showArea: !this.data.showArea,
       showSorting: true,
       showCategory: true
     });
@@ -40,7 +40,7 @@ Page({
   showSortingF: function() {
     this.setData({
       showArea: true,
-      showSorting: false,
+      showSorting: !this.data.showSorting,
       showCategory: true
     });
   },
@@ -48,7 +48,7 @@ Page({
     this.setData({
       showArea: true,
       showSorting: true,
-      showCategory: false
+      showCategory: !this.data.showCategory
     })
   },
   loadAreaList: function() {

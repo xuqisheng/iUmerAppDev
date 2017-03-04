@@ -90,6 +90,10 @@
 .hot-item-name {
 	color: #414141;
 	margin-bottom: 10rpx;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	width: 100%;
 }
 .hot-item-place-and-price {
 	display: flex;
@@ -166,6 +170,10 @@
 }
 .people-item-name {
 	color: #414141;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	width: 100%;
 }
 .people-item-place {
 	color: #414141;
