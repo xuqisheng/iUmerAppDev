@@ -54,7 +54,19 @@ Page({
             that.setData({
               shopInfo: d
             });
-          }
+          } else {
+            wx.showModal({
+              title: '提示',
+              content: res.data.desc,
+              confirmColor: '#FD8CA3',
+              showCancel: false,
+              success: function(res) {
+                if (res.confirm) {
+                  
+                }
+              }
+            });
+          } 
         },
         fail: function(res) {
           console.log("loadShop fail");
@@ -121,7 +133,19 @@ Page({
             timestampFirst: res.data.data[0].createDate,
             timestampLast: res.data.data[res.data.data.length - 1].createDate
           });
-        }
+        } else {
+          wx.showModal({
+            title: '提示',
+            content: res.data.desc,
+            confirmColor: '#FD8CA3',
+            showCancel: false,
+            success: function(res) {
+              if (res.confirm) {
+                
+              }
+            }
+          });
+        } 
       },
       fail: function(res) {
         console.log("loadProjects fail")
@@ -169,7 +193,19 @@ Page({
             timestampFirst: res.data.data[0].createDate,
             timestampLast: res.data.data[res.data.data.length - 1].createDate
           });
-        }
+        } else {
+          wx.showModal({
+            title: '提示',
+            content: res.data.desc,
+            confirmColor: '#FD8CA3',
+            showCancel: false,
+            success: function(res) {
+              if (res.confirm) {
+                
+              }
+            }
+          });
+        } 
       },
       fail: function(res) {
         console.log("loadPersonnels fail")

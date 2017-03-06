@@ -80,7 +80,19 @@ Page({
               middleReputation: res.data.data.middleReputation,
               badputation: res.data.data.badReputation            
             });
-          }
+          } else {
+            wx.showModal({
+              title: '提示',
+              content: res.data.desc,
+              confirmColor: '#FD8CA3',
+              showCancel: false,
+              success: function(res) {
+                if (res.confirm) {
+                  
+                }
+              }
+            });
+          } 
         },
         fail: function(res) {
           console.log("updateCommentNum fail")
@@ -115,7 +127,19 @@ Page({
             that.setData({
               commentList: res.data.data,
             });
-          }
+          } else {
+            wx.showModal({
+              title: '提示',
+              content: res.data.desc,
+              confirmColor: '#FD8CA3',
+              showCancel: false,
+              success: function(res) {
+                if (res.confirm) {
+                  
+                }
+              }
+            });
+          } 
         },
         fail: function(res) {
           console.log("loadComments fail");
@@ -207,7 +231,19 @@ Page({
                 });
               }
             });
-          }
+          } else {
+            wx.showModal({
+              title: '提示',
+              content: res.data.desc,
+              confirmColor: '#FD8CA3',
+              showCancel: false,
+              success: function(res) {
+                if (res.confirm) {
+                  
+                }
+              }
+            });
+          } 
         },
         fail: function(res) {
           console.log("loadProject fail");

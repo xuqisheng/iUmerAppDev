@@ -109,8 +109,18 @@ Page({
                     personnelCount: d2.personnelCount || 0
                   });
                 } else {
-
-                }
+                  wx.showModal({
+                    title: '提示',
+                    content: res2.data.desc,
+                    confirmColor: '#FD8CA3',
+                    showCancel: false,
+                    success: function(res) {
+                      if (res.confirm) {
+                        
+                      }
+                    }
+                  });
+                } 
               },
               fail: function(res) {
                 console.log("loadProject fail");
@@ -123,8 +133,18 @@ Page({
               }
             });
           } else {
-            
-          }
+            wx.showModal({
+              title: '提示',
+              content: res.data.desc,
+              confirmColor: '#FD8CA3',
+              showCancel: false,
+              success: function(res) {
+                if (res.confirm) {
+                  
+                }
+              }
+            });
+          } 
         },
         fail: function(res) {
           console.log("loadProject fail");
@@ -155,8 +175,18 @@ Page({
               weekdays: d
             });
           } else {
-
-          }
+            wx.showModal({
+              title: '提示',
+              content: res.data.desc,
+              confirmColor: '#FD8CA3',
+              showCancel: false,
+              success: function(res) {
+                if (res.confirm) {
+                  
+                }
+              }
+            });
+          } 
         },
         fail: function(res) {
           console.log("loadWeekdays fail");
@@ -203,8 +233,18 @@ Page({
               timeslots: data
             })
           } else {
-
-          }
+            wx.showModal({
+              title: '提示',
+              content: res.data.desc,
+              confirmColor: '#FD8CA3',
+              showCancel: false,
+              success: function(res) {
+                if (res.confirm) {
+                  
+                }
+              }
+            });
+          } 
         },
         fail: function(res) {
           console.log("loadTimeslots fail");
@@ -236,8 +276,18 @@ Page({
               personnelName: d.name || ""
             });
           } else {
-
-          }
+            wx.showModal({
+              title: '提示',
+              content: res.data.desc,
+              confirmColor: '#FD8CA3',
+              showCancel: false,
+              success: function(res) {
+                if (res.confirm) {
+                  
+                }
+              }
+            });
+          } 
         },
         fail: function(res) {
           console.log("loadPersonnel fail");

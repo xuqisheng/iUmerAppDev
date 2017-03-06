@@ -154,6 +154,18 @@ Page({
           that.setData({
             banners: res.data.data
           });
+        } else {
+          wx.showModal({
+            title: '提示',
+            content: res.data.desc,
+            confirmColor: '#FD8CA3',
+            showCancel: false,
+            success: function(res) {
+              if (res.confirm) {
+                
+              }
+            }
+          });
         }
       },
         fail: function(res) {
@@ -183,6 +195,18 @@ Page({
           if (res.data.code == 1) {
             that.setData({
               hotProjects: res.data.data
+            });
+          } else {
+            wx.showModal({
+              title: '提示',
+              content: res.data.desc,
+              confirmColor: '#FD8CA3',
+              showCancel: false,
+              success: function(res) {
+                if (res.confirm) {
+                  
+                }
+              }
             });
           }
         },
@@ -214,7 +238,19 @@ Page({
             that.setData({
               hotPersonnel: res.data.data
             });
-          }
+          } else {
+            wx.showModal({
+              title: '提示',
+              content: res.data.desc,
+              confirmColor: '#FD8CA3',
+              showCancel: false,
+              success: function(res) {
+                if (res.confirm) {
+                  
+                }
+              }
+            });
+          } 
         },
         fail: function(res) {
           console.log("getHotProject fail")

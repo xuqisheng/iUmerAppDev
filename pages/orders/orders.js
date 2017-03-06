@@ -123,8 +123,18 @@ Page({
               }
             });
           } else {
-              
-          }
+            wx.showModal({
+              title: '提示',
+              content: res.data.desc,
+              confirmColor: '#FD8CA3',
+              showCancel: false,
+              success: function(res) {
+                if (res.confirm) {
+                  
+                }
+              }
+            });
+          } 
         },
         fail: function(res) {
           console.log("loadOrders fail");

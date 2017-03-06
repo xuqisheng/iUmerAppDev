@@ -62,7 +62,19 @@ Page({
             that.setData({
               projectList: res.data.data
             });
-          }
+          } else {
+            wx.showModal({
+              title: '提示',
+              content: res.data.desc,
+              confirmColor: '#FD8CA3',
+              showCancel: false,
+              success: function(res) {
+                if (res.confirm) {
+                  
+                }
+              }
+            });
+          } 
         },
         fail: function(res) {
           console.log("indexSearch - searchProject fail")
@@ -93,7 +105,19 @@ Page({
             that.setData({
               personnelList: res.data.data
             });
-          }
+          } else {
+            wx.showModal({
+              title: '提示',
+              content: res.data.desc,
+              confirmColor: '#FD8CA3',
+              showCancel: false,
+              success: function(res) {
+                if (res.confirm) {
+                  
+                }
+              }
+            });
+          } 
         },
         fail: function(res) {
           console.log("indexSearch - searchPersonnel fail")
@@ -124,7 +148,19 @@ Page({
             that.setData({
               shopList: res.data.data
             });
-          }
+          } else {
+            wx.showModal({
+              title: '提示',
+              content: res.data.desc,
+              confirmColor: '#FD8CA3',
+              showCancel: false,
+              success: function(res) {
+                if (res.confirm) {
+                  
+                }
+              }
+            });
+          } 
         },
         fail: function(res) {
           console.log("indexSearch - searchShop fail")

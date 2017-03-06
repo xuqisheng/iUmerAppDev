@@ -43,7 +43,19 @@ Page({
             that.setData({
               personnelInfo: res.data.data          
             });
-          }
+          } else {
+            wx.showModal({
+              title: '提示',
+              content: res.data.desc,
+              confirmColor: '#FD8CA3',
+              showCancel: false,
+              success: function(res) {
+                if (res.confirm) {
+                  
+                }
+              }
+            });
+          } 
         },
         fail: function(res) {
           console.log("loadPersonnel fail")
@@ -73,7 +85,19 @@ Page({
             that.setData({
               projectList: res.data.data          
             });
-          }
+          } else {
+            wx.showModal({
+              title: '提示',
+              content: res.data.desc,
+              confirmColor: '#FD8CA3',
+              showCancel: false,
+              success: function(res) {
+                if (res.confirm) {
+                  
+                }
+              }
+            });
+          } 
         },
         fail: function(res) {
           console.log("loadPersonnelProjects fail")
@@ -107,8 +131,18 @@ Page({
               badReputation: res.data.data.badReputation            
             });
           } else {
-            
-          }
+            wx.showModal({
+              title: '提示',
+              content: res.data.desc,
+              confirmColor: '#FD8CA3',
+              showCancel: false,
+              success: function(res) {
+                if (res.confirm) {
+                  
+                }
+              }
+            });
+          } 
         },
         fail: function(res) {
           console.log("updateCommentNum fail")
@@ -144,7 +178,19 @@ Page({
             that.setData({
               commentList: res.data.data,
             });
-          }
+          } else {
+            wx.showModal({
+              title: '提示',
+              content: res.data.desc,
+              confirmColor: '#FD8CA3',
+              showCancel: false,
+              success: function(res) {
+                if (res.confirm) {
+                  
+                }
+              }
+            });
+          } 
         },
         fail: function(res) {
           console.log("loadComments fail");

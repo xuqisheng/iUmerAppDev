@@ -142,7 +142,7 @@ Page({
     if (!this.data.phoneValid){
       wx.showModal({
         title: '提示',
-        content: "请输入合法的手机号",
+        content: "请输入正确的手机号",
         confirmColor: '#FD8CA3',
         showCancel: false,
         success: function(res) {
@@ -156,7 +156,7 @@ Page({
     if (!this.data.codeValid) {
       wx.showModal({
         title: '提示',
-        content: "请输入合法的验证码",
+        content: "请输入正确的验证码",
         confirmColor: '#FD8CA3',
         showCancel: false,
         success: function(res) {

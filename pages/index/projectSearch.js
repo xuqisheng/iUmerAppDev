@@ -134,15 +134,27 @@ Page({
           that.setData({
             categoryList: res.data.data
           });
-        }
+        } else {
+          wx.showModal({
+            title: '提示',
+            content: res.data.desc,
+            confirmColor: '#FD8CA3',
+            showCancel: false,
+            success: function(res) {
+              if (res.confirm) {
+                
+              }
+            }
+          });
+        } 
       },
-        fail: function(res) {
-          console.log("loadCategoryList fail")
-        },
-        complete: function(res) {
-          console.log("loadCategoryList complete");
-          wx.hideNavigationBarLoading();
-        }
+      fail: function(res) {
+        console.log("loadCategoryList fail")
+      },
+      complete: function(res) {
+        console.log("loadCategoryList complete");
+        wx.hideNavigationBarLoading();
+      }
     });
   },
   clickCategory: function(e) {
@@ -218,7 +230,19 @@ Page({
               loadingHidden: false
             })
           }
-        }
+        } else {
+          wx.showModal({
+            title: '提示',
+            content: res.data.desc,
+            confirmColor: '#FD8CA3',
+            showCancel: false,
+            success: function(res) {
+              if (res.confirm) {
+                
+              }
+            }
+          });
+        } 
       },
       fail: function(res) {
         console.log("loadProjects fail")
