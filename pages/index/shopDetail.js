@@ -234,5 +234,12 @@ Page({
         // success
       }
     })
+  },
+  onShareAppMessage: function () {
+    var that = this;
+    return {
+      title: 'iUmer - 优美东方',
+      path: '/pages/index/shopDetail?shopId=' + that.data.shopId
+    }
   }
 }) 

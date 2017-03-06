@@ -198,5 +198,12 @@ Page({
         // complete
       }
     })
+  },
+  onShareAppMessage: function () {
+    var that = this;
+    return {
+      title: 'iUmer - 优美东方',
+      path: '/pages/index/personnelDetail?personnelId=' + that.data.personnelId
+    }
   }
 })

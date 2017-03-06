@@ -247,5 +247,12 @@ Page({
         // complete
       }
     })
+  },
+  onShareAppMessage: function () {
+    var that = this;
+    return {
+      title: 'iUmer - 优美东方',
+      path: '/pages/index/projectDetail?projectId=' + that.data.projectId
+    }
   }
 })

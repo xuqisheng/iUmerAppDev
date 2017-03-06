@@ -336,5 +336,11 @@ Page({
         }
       }
     });
+  },
+  onShareAppMessage: function () {
+    return {
+      title: 'iUmer - 优美东方',
+      path: '/pages/index/index'
+    }
   }
 })

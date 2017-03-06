@@ -6,7 +6,7 @@
         </view>
         <view class="input-pwd input-cell">
             <image src="https://www.iumer.cn/umer/css/image/wechat/app/pwd@3x.png"></image>
-            <input type="password" placeholder="请输入您的密码" bindinput="inputPwd"/>
+            <input type="password" maxlength="16" placeholder="请输入您的密码" bindinput="inputPwd"/>
         </view>
     </view>
     <view id="btn-area">
