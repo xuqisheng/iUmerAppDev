@@ -106,6 +106,8 @@ Page({
               middleReputation: res.data.data.middleReputation,
               badReputation: res.data.data.badReputation            
             });
+          } else {
+            
           }
         },
         fail: function(res) {
@@ -169,6 +171,21 @@ Page({
     })
   },
   appoint: function(){
+    if (!wx.getStorageSync('id')) {
+      wx.navigateTo({
+        url: '../login/authorize',
+        success: function(res){
+          // success
+        },
+        fail: function() {
+          // fail
+        },
+        complete: function() {
+          // complete
+        }
+      })
+      return false;
+    }
     var that = this;
     wx.redirectTo({
       url: '../quickAppoint/appointProject?from=personnelDetail&personnelId=' + that.data.personnelId,
@@ -184,6 +201,21 @@ Page({
     })
   },
   appointBoth: function(e){
+    if (!wx.getStorageSync('id')) {
+      wx.navigateTo({
+        url: '../login/authorize',
+        success: function(res){
+          // success
+        },
+        fail: function() {
+          // fail
+        },
+        complete: function() {
+          // complete
+        }
+      })
+      return false;
+    }
     var that = this;
     var projectId = e.currentTarget.dataset.projectid;
     wx.redirectTo({

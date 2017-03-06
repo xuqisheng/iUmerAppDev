@@ -201,6 +201,21 @@ Page({
     }
   },
   appointPersonnel: function(e) {
+    if (!wx.getStorageSync('id')) {
+      wx.navigateTo({
+        url: '../login/authorize',
+        success: function(res){
+          // success
+        },
+        fail: function() {
+          // fail
+        },
+        complete: function() {
+          // complete
+        }
+      })
+      return false;
+    }
     var projectId = e.currentTarget.dataset.projectid;
     wx.redirectTo({
       url: '../quickAppoint/appointPersonnel?projectId=' + projectId,
@@ -216,6 +231,21 @@ Page({
     });
   },
   appointProject: function(e) {
+    if (!wx.getStorageSync('id')) {
+      wx.navigateTo({
+        url: '../login/authorize',
+        success: function(res){
+          // success
+        },
+        fail: function() {
+          // fail
+        },
+        complete: function() {
+          // complete
+        }
+      })
+      return false;
+    }
     var personnelId = e.currentTarget.dataset.personnelid;
     wx.redirectTo({
       url: '../quickAppoint/appointProject?personnelId=' + personnelId,

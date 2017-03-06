@@ -219,6 +219,21 @@ Page({
     });
   },
   appoint: function(){
+    if (!wx.getStorageSync('id')) {
+      wx.navigateTo({
+        url: '../login/authorize',
+        success: function(res){
+          // success
+        },
+        fail: function() {
+          // fail
+        },
+        complete: function() {
+          // complete
+        }
+      })
+      return false;
+    }
     var that = this;
     wx.redirectTo({
       url: '../quickAppoint/appointPersonnel?from=projectDetail&projectId=' + that.data.projectId,

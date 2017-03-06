@@ -527,6 +527,21 @@ Page({
     })
   },
   orderAgain: function(){
+    if (!wx.getStorageSync('id')) {
+      wx.navigateTo({
+        url: '../login/authorize',
+        success: function(res){
+          // success
+        },
+        fail: function() {
+          // fail
+        },
+        complete: function() {
+          // complete
+        }
+      })
+      return false;
+    }
     var that = this;
     wx.redirectTo({
       url: '../quickAppoint/appoint?orderNo=' + that.data.orderNo + '&personnelId=' + that.data.orderInfo.personnelId + '&projectId=' + that.data.orderInfo.projectId,

@@ -129,19 +129,72 @@ Page({
   inputPwd: function(e){
     this.setData({
       pwd: e.detail.value,
-      pwdValid: e.detail.value && e.detail.value == this.data.pwdVerify 
+      pwdValid: e.detail.value && e.detail.value == this.data.pwdVerify && e.detail.value.length >= 6 && e.detail.value.length <= 16
     })
   },
   inputPwdVerify: function(e){
     this.setData({
       pwdVerify: e.detail.value,
-      pwdValid: e.detail.value && e.detail.value == this.data.pwd
+      pwdValid: e.detail.value && e.detail.value == this.data.pwd && e.detail.value.length >= 6 && e.detail.value.length <= 16
     })
   },
   register: function(){
-    if (!this.data.phoneValid || !this.data.codeValid || !this.data.pwdValid) {
+    if (!this.data.phoneValid){
+      wx.showModal({
+        title: '提示',
+        content: "请输入合法的手机号",
+        confirmColor: '#FD8CA3',
+        showCancel: false,
+        success: function(res) {
+          if (res.confirm) {
+            
+          }
+        }
+      });
       return false;
     }
+    if (!this.data.codeValid) {
+      wx.showModal({
+        title: '提示',
+        content: "请输入合法的验证码",
+        confirmColor: '#FD8CA3',
+        showCancel: false,
+        success: function(res) {
+          if (res.confirm) {
+            
+          }
+        }
+      });
+      return false;
+    } 
+    if (!this.data.pwdValid) {
+        wx.showModal({
+          title: '提示',
+          content: "请输入合法的密码",
+          confirmColor: '#FD8CA3',
+          showCancel: false,
+          success: function(res) {
+            if (res.confirm) {
+              
+            }
+          }
+        });
+      return false;
+    }
+    if (this.data.pwd.length < 6 || this.data.pwd.length > 16) {
+      wx.showModal({
+        title: '提示',
+        content: "请输入6-16位密码",
+        confirmColor: '#FD8CA3',
+        showCancel: false,
+        success: function(res) {
+          if (res.confirm) {
+            
+          }
+        }
+      });
+      return false;
+    } 
     var that = this;
     wx.request({
         url: app.globalData.server_url + 'webService/customer/sys/user/register', 
