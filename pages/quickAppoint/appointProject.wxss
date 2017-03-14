@@ -116,6 +116,14 @@ button {
 .dropdown {
 	position: static;
 }
+.selected-price {
+	color: red;
+}
+.selected-price text {
+	/* margin-left: 10rpx; */
+	color: gray;
+	text-decoration: line-through;
+}
 .dropdown button {
 	border: none;
 	background: none;

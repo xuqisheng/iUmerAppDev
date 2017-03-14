@@ -27,6 +27,14 @@ button {
 .dropdown {
 	position: static;
 }
+.selected-price {
+	color: red;
+}
+.selected-price text {
+	/*margin-left10rpx;*/
+	color: gray;
+	text-decoration: line-through;
+}
 .dropdown button {
 	border: none;
 	background: none;
@@ -93,6 +101,11 @@ button {
 .project-item-price {
 	float: right;
 	color: red;
+}
+.project-item-price text {
+	text-decoration: line-through;
+	color: gray;
+	/*margin-left: 10rpx;*/
 }
 .project-item-dot-line {
 	background-image: url('https://www.iumer.cn/umer/css/image/wechat/dotted-line@2x.png');

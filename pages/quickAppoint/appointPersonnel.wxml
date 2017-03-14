@@ -10,7 +10,13 @@
         <view class="project-item-right">
             <view class="project-item-name">{{ projectTitle }}</view>
             <view class="project-item-place">{{ shopTitle }}</view>
-            <view class="project-item-price">{{ item.projectActivityId? (priceType == 0? item.activityUnitPrice + '元/次': item.activityCoursePrice + '元/疗程'): (priceType == 0? projectUnitPrice + '元/次': projectCoursePrice + '元/疗程') }}</view>
+            <view class="project-item-price" wx:if="{{ !item.projectActivityId }}">
+                {{ priceType == 0? projectUnitPrice + '元/次': projectCoursePrice + '元/疗程' }}
+            </view>
+            <view class="project-item-price" wx:if="{{ !!item.projectActivityId }}">
+                {{ priceType == 0? item.activityUnitPrice + '元/次': item.activityCoursePrice + '元/疗程' }}
+                <text>{{ priceType == 0? projectUnitPrice + '元/次': projectCoursePrice + '元/疗程' }}</text>
+            </view>
             <view class="clear"></view>
             <view class="project-item-dot-line"></view>
             <view class="project-item-info">
@@ -30,7 +36,13 @@
             <view class="selection-cell__ft cell-project-price">
                 <view class="dropdown">
                     <view class="dropdown-toggle">
-                        <text class="selected-price" data-price-type="0">{{ item.projectActivityId? (priceType == 0? item.activityUnitPrice + '元/次': item.activityCoursePrice + '元/疗程'): (priceType == 0? projectUnitPrice + '元/次': projectCoursePrice + '元/疗程') }}</text>
+                        <view class="selected-price" data-price-type="0" wx:if="{{ !item.projectActivityId }}">
+                            {{ priceType == 0? projectUnitPrice + '元/次': projectCoursePrice + '元/疗程' }}
+                        </view>
+                        <view class="selected-price" data-price-type="0" wx:if="{{ !!item.projectActivityId }}">
+                            {{ priceType == 0? item.activityUnitPrice + '元/次': item.activityCoursePrice + '元/疗程' }}
+                            <text>{{ priceType == 0? projectUnitPrice + '元/次': projectCoursePrice + '元/疗程' }}</text>
+                        </view>
                     </view>
                     <view class="dropdown-menu" hidden="{{ priceDropdownHidden }}">
                         <view style="padding: 20rpx 0 20rpx 20rpx;" data-pricetype="0" bindtap="changePriceType">

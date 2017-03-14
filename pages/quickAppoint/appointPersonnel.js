@@ -309,7 +309,7 @@ Page({
     var that = this;
     console.log(that.data)
     wx.redirectTo({
-      url: 'choosePersonnel?projectId=' + that.data.projectId + "&priceType=" + that.data.priceType + "&activityId=" + that.data.activityId,
+      url: 'choosePersonnel?projectId=' + that.data.projectId + "&priceType=" + that.data.priceType + "&activityId=" + (that.data.activityId || ''),
       success: function(res){
         // success
       },

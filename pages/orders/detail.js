@@ -561,6 +561,7 @@ Page({
     })
   },
   orderAgain: function(){
+    var that = this;
     if (!wx.getStorageSync('id')) {
       wx.navigateTo({
         url: '../login/authorize',
@@ -576,18 +577,45 @@ Page({
       })
       return false;
     }
-    var that = this;
-    wx.redirectTo({
-      url: '../quickAppoint/appoint?orderNo=' + that.data.orderNo + '&personnelId=' + that.data.orderInfo.personnelId + '&projectId=' + that.data.orderInfo.projectId,
-      success: function(res){
-        // success
+    wx.request({
+      url: app.globalData.server_url + 'webService/customer/biz/reserve/personnelServeProject', 
+      data: {
+        projectId: that.data.orderInfo.projectId,
+        personnelId: that.data.orderInfo.personnelId
       },
-      fail: function() {
-        // fail
+      method: "POST",
+      dataType: "json",
+      header: {
+        'Content-Type': 'application/json;charset=UTF-8;',
+        'X-Token': wx.getStorageSync('X-TOKEN'),
+        'X-Type': 3
       },
-      complete: function() {
-        // complete
+      success: function(res) {
+        if (res.data.code == 1) {
+          wx.redirectTo({
+            url: '../quickAppoint/appoint?orderNo=' + that.data.orderNo + '&personnelId=' + that.data.orderInfo.personnelId + '&projectId=' + that.data.orderInfo.projectId,
+            success: function(res){
+              // success
+            },
+            fail: function() {
+              // fail
+            },
+            complete: function() {
+              // complete
+            }
+          });
+        } else {
+          wx.showModal({
+            title: '提示',
+            content: res.data.desc,
+            confirmColor: '#FD8CA3',
+            showCancel: false,
+            success: function() {
+              
+            }
+          });
+        }
       }
-    })
+    });
   }
 })
