@@ -24,6 +24,21 @@ Page({
   onUnload:function(){
     // 页面关闭
   },
+  showActivies: function(e){
+    var that = this;
+    wx.redirectTo({
+      url: '../activity/activities?shopId=' + that.data.shopId,
+      success: function(res){
+        // success
+      },
+      fail: function() {
+        // fail
+      },
+      complete: function() {
+        // complete
+      }
+    })
+  },
   loadShop: function(){
     var shopId = this.data.shopId;
     wx.showNavigationBarLoading();
@@ -249,8 +264,9 @@ Page({
   },
   appointPersonnel: function(e) {
     var projectId = e.currentTarget.dataset.projectid;
+    var activityId = e.currentTarget.dataset.activityid;
     wx.navigateTo({
-      url: '../quickAppoint/appointPersonnel?projectId=' + projectId,
+      url: '../quickAppoint/appointPersonnel?projectId=' + projectId + '&activityId=' + activityId,
       success: function(res){
         // success
       },

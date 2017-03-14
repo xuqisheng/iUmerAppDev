@@ -91,5 +91,19 @@ Page({
         }
       }
     });
+  },
+  cancel: function() {
+    wx.switchTab({
+      url: '../index/index',
+      success: function(res){
+        // success
+      },
+      fail: function() {
+        // fail
+      },
+      complete: function() {
+        // complete
+      }
+    })
   }
 })

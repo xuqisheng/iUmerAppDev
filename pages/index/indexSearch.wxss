@@ -93,6 +93,11 @@ page {
 .hot-item-price {
 	color: orange;
 }
+.hot-item-price text {
+	text-decoration: line-through; 
+	color: gray; 
+	margin-left: 10rpx;
+}
 .hot-item-place {
 	color: #414141;
 }
@@ -237,6 +242,8 @@ page {
 	color: #414141;
     overflow: hidden;
     white-space: nowrap;
+	text-overflow: ellipsis;
+	width: 575rpx;
 }
 .shop-item-right-info-distance {
 	color: #686868;

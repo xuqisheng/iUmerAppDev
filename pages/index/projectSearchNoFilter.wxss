@@ -80,6 +80,11 @@ page {
 .hot-item-price {
 	color: orange;
 }
+.hot-item-price text {
+	text-decoration: line-through; 
+	color: gray; 
+	margin-left: 10rpx;
+}
 .hot-item-place {
 	color: #414141;
 }

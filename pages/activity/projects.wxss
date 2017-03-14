@@ -1,0 +1,70 @@
+page {
+    height: 100%;
+}
+.container {
+    height: 100%;
+}
+.btn-return {
+	position: fixed;
+	right: 30rpx;
+	bottom: 30rpx;
+	z-index: 9999;
+	width: 150rpx;
+	height: 150rpx;
+	opacity: 0.5;
+}
+.banner {
+	width: 100%;
+}
+.banner image {
+	width: 100%;
+	height: calc(750rpx / 16.0 * 9.0);
+}
+#project-area {
+	height: 100%;
+}
+.project-item {
+	background-color: white;
+    display: flex;
+    margin-top: 10rpx;
+    padding: 16rpx;
+}
+.project-item-left {
+	width: 180rpx;
+    display: flex;
+    align-items: center;
+}
+.project-item-left image {
+	width: 180rpx;
+	height: 180rpx;
+}
+.project-item-right {
+/* 	border: solid 1px green; */
+	width: 100%;
+	padding: 20rpx;
+}
+.project-item-name {
+	color: #414141;
+}
+.project-item-right-title {
+	color: #414141;
+	font-size: 110%;
+	padding: 10rpx 0;
+}
+.project-item-right-duration {
+	color: #414141;
+	font-size: 85%;
+	padding: 5rpx 0;
+}
+.project-item-right-price-single, .project-item-right-price-multiple {
+	font-size: 85%;
+} 
+.project-item-right-price-sale {
+	color: red;
+	font-size: 28rpx;
+	margin-right: 20rpx;
+}
+.project-item-right-price-original {
+	font-size: 85%;
+    text-decoration: line-through;
+}

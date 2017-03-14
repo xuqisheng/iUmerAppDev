@@ -29,7 +29,7 @@
                             <view class="order-item-middle-order-time">下单时间：{{ item.orderTime || "" }}</view> 
                         </view>
                         <view class="order-item-right">
-                            <view class="order-item-right-price red">￥{{ item.priceType == 0? item.orderPrice + '元/': item.orderPrice + '元/' + item.courseRemark }}次</view>
+                            <view class="order-item-right-price red">￥{{ item.priceType == 0? item.orderPrice + '元/次': item.orderPrice + '元/疗程' }}</view>
                             <view class="order-item-right-status">进行中</view>
                         </view>
                     </view>
@@ -76,7 +76,7 @@
                             <view class="order-item-middle-order-time">下单时间：{{ item.orderTime || "" }}</view> 
                         </view>
                         <view class="order-item-right">
-                            <view class="order-item-right-price red">￥{{ item.priceType == 0? item.orderPrice + '元/': item.orderPrice + '元/' + item.courseRemark }}次</view>
+                            <view class="order-item-right-price red">￥{{ item.priceType == 0? item.orderPrice + '元/次': item.orderPrice + '元/疗程' }}</view>
                             <view class="order-item-right-status">待评价</view>
                         </view>
                     </view>
@@ -99,7 +99,7 @@
                             <view class="order-item-middle-order-time">下单时间：{{ item.orderTime || "" }}</view> 
                         </view>
                         <view class="order-item-right">
-                            <view class="order-item-right-price red">￥{{ item.priceType == 0? item.orderPrice + '元/': item.orderPrice + '元/' + item.courseRemark }}次</view>
+                            <view class="order-item-right-price red">￥{{ item.priceType == 0? item.orderPrice + '元/次': item.orderPrice + '元/疗程' }}</view>
                             <view class="order-item-right-status">已完成</view>
                         </view>
                     </view>
@@ -145,7 +145,7 @@
                             <view class="order-item-middle-order-time">下单时间：{{ item.orderTime || "" }}</view> 
                         </view>
                         <view class="order-item-right">
-                            <view class="order-item-right-price red">￥{{ item.priceType == 0? item.orderPrice + '元/': item.orderPrice + '元/' + item.courseRemark }}次</view>
+                            <view class="order-item-right-price red">￥{{ item.priceType == 0? item.orderPrice + '元/次': item.orderPrice + '元/疗程' }}</view>
                             <view class="order-item-right-status">已取消</view>
                         </view>
                     </view>

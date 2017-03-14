@@ -73,6 +73,11 @@ page {
     white-space: nowrap;
     text-overflow: ellipsis;
 }
+.price text {
+	text-decoration: line-through; 
+	color: gray; 
+	margin-left: 10rpx;
+}
 .order-item-right-status {
     color: gray;
     border: solid 2rpx gray;

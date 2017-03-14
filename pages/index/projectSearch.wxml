@@ -47,7 +47,7 @@
             </view>
             <view class="filter-item-list filter-item-list-category" hidden="{{ showCategory }}">
                 <view class="filter-item-list-items-category">
-                    <view class="filter-item-list-item-category"><text catchtap="clickCategory" data-categoryno="{{ categoryList[type]['no'] }}">全部分类</text></view>
+                    <view class="filter-item-list-item-category"><text catchtap="clickCategory" data-categoryno="{{ categoryList[type]['no'] }}" class="{{ !categoryNo || categoryNo == categoryList[type]['no']? 'filter-list-item-category-on' :'' }}">全部分类</text></view>
                     <block wx:for="{{ categoryList }}" wx:key="no">
                         <block wx:if="{{ categoryList[type]['no'] == item.no }}" >
                             <block wx:for="{{ item.list }}" wx:for-item="itm" wx:key="no">
@@ -63,7 +63,7 @@
     <view id="project-area">
         <scroll-view scroll-y style="width: 100%; height: 100%;" bindscrolltolower="loadMore" bindscrolltoupper="refresh">
             <block wx:for="{{ projectList }}" wx:key="id">
-                <view class="hot-item" data-projectId="{{ item.id }}" bindtap="clickProjectItem" >
+                <view class="hot-item" data-projectId="{{ item.id }}" data-activityid="{{ item.projectActivityId || '' }}" bindtap="clickProjectItem" >
                     <view class="hot-item-left">
                         <view class="hot-item-img">
                             <image class="lazy" src="https://www.iumer.cn{{ item.filePath || '/umer/css/image/default.jpg' }}" />
@@ -73,7 +73,8 @@
                         <view class="hot-item-name">{{ item.projectName || "" }}</view>
                         <view class="hot-item-place-and-price">
                             <view class="hot-item-place">{{ item.shopName || "" }}</view>
-                            <view class="hot-item-price">￥{{ item.unitPrice || "0" }}元</view>
+                            <view class="hot-item-price" wx:if="{{ !!item.projectActivityId }}">￥{{ item.activityUnitPrice || "0" }}元<text>￥{{ item.unitPrice || "0" }}元</text></view>
+							<view class="hot-item-price" wx:if="{{ !item.projectActivityId }}">￥{{ item.unitPrice || "0" }}元</view>
                         </view>
                         <view class="hot-item-info">
                             <view class="hot-item-info-distance">

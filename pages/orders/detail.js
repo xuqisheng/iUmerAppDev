@@ -90,6 +90,7 @@ Page({
                         var data = res.data.data;
                         wx.showModal({
                           title: '提示',
+                          confirmColor: '#FD8CA3',
                           content: '订单未在15分钟内支付，已取消',
                           showCancel: false,
                           success: function() {
@@ -127,6 +128,7 @@ Page({
                         wx.showModal({
                           title: '提示',
                           content: res.data.desc,
+                          confirmColor: '#FD8CA3',
                           showCancel: false,
                           success: function() {
                             
@@ -261,6 +263,7 @@ Page({
     wx.showModal({
       title: '提示',
       content: '是否取消订单？',
+      confirmColor: '#FD8CA3',
       success: function(res) {
         if (res.confirm) {
           wx.showNavigationBarLoading();
@@ -325,6 +328,7 @@ Page({
                 wx.showModal({
                   title: '提示',
                   content: res.data.desc,
+                  confirmColor: '#FD8CA3',
                   showCancel: false,
                   success: function() {
                     
@@ -349,6 +353,7 @@ Page({
     wx.showModal({
       title: '提示',
       content: '是否取消订单？',
+      confirmColor: '#FD8CA3',
       success: function(res) {
         if (res.confirm) {
           wx.request({
@@ -411,6 +416,7 @@ Page({
               } else {
                 wx.showModal({
                   title: '提示',
+                  confirmColor: '#FD8CA3',
                   content: res.data.desc,
                   showCancel: false,
                   success: function() {
@@ -435,6 +441,7 @@ Page({
     var that = this;
     wx.showModal({
       title: '提示',
+      confirmColor: '#FD8CA3',
       content: '订单是否已完成？',
       success: function(res) {
         if (res.confirm) {
@@ -458,6 +465,7 @@ Page({
                 var data = res.data.data;
                 wx.showModal({
                   title: '提示',
+                  confirmColor: '#FD8CA3',
                   content: '订单已确认完成',
                   showCancel: false,
                   success: function() {
@@ -492,6 +500,7 @@ Page({
                 wx.showModal({
                   title: '提示',
                   content: res.data.desc,
+                  confirmColor: '#FD8CA3',
                   showCancel: false,
                   success: function() {
                     
@@ -501,6 +510,7 @@ Page({
                 wx.showModal({
                   title: '提示',
                   content: res.data.desc,
+                  confirmColor: '#FD8CA3',
                   showCancel: false,
                   success: function() {
                     

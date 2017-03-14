@@ -22,7 +22,13 @@
                             <view class="hot-item-name">{{ item.projectName || "" }}</view>
                             <view class="hot-item-place-and-price">
                                 <view class="hot-item-place">{{ item.shopName || "" }}</view>
-                                <view class="hot-item-price">￥{{ item.unitPrice || "0" }}元</view>
+                                <view class="hot-item-price" wx:if="{{ !item.activityUnitPrice }}">
+                                    ￥{{ item.unitPrice || "0" }}元
+                                </view>
+                                <view class="hot-item-price" wx:if="{{ !!item.activityUnitPrice }}">
+                                    ￥{{ item.activityUnitPrice || "0" }}元
+                                    <text>￥{{ item.unitPrice || "0" }}元</text>
+                                </view>
                             </view>
                             <view class="hot-item-info">
                                 <view class="hot-item-info-distance">

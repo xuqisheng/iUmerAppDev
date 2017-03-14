@@ -42,16 +42,28 @@
             <view class="selection-cell__ft cell-project-price">
                 <view class="dropdown">
                     <view class="dropdown-toggle">
-                        <text class="selected-price" data-price-type="0">{{ priceType == 0? '次数：'+ (projectUnitPrice || '') + '元/次': (projectCoursePrice || '') + '元/疗程' }}</text>
+                        <text class="selected-price" data-price-type="0">{{ item?(item.projectActivityId? (priceType == 0? item.activityUnitPrice + '元/次': item.activityCoursePrice + '元/疗程'): (priceType == 0? projectUnitPrice + '元/次': projectCoursePrice + '元/疗程')): '元/次' }}</text>
                     </view>
                     <view class="dropdown-menu" hidden="{{ priceDropdownHidden }}">
-                        <view style="padding: 20rpx 0;" data-pricetype="0" bindtap="changePriceType">
-                            <text class="price-item-icon price-item-icon-unit">次数：<text>{{ projectUnitPrice }}</text>元/次</text>
+                        <view style="padding: 20rpx 0 20rpx 20rpx;" data-pricetype="0" bindtap="changePriceType">
+                            <view wx:if="{{ !!item.projectActivityId }}">
+                                次数：<text class="price-item-icon price-item-icon-sale"><text>{{ item.activityUnitPrice }}元/次</text></text>
+                                <text class="price-item-icon price-item-icon-original"><text>{{ projectUnitPrice }}元/次</text></text>
+                            </view>
+                            <view wx:if="{{ !item.projectActivityId }}">
+                                次数：<text class="price-item-icon price-item-icon-unit"><text>{{ projectUnitPrice }}元/次</text></text>
+                            </view>
                         </view>   
                         <view class="divider"></view>
-                        <view style="padding: 20rpx 0;" data-pricetype="1" bindtap="changePriceType">
-                            <text class="price-item-icon price-item-icon-course">疗程：<text>{{ projectCoursePrice }}</text>元/疗程（<text>{{ projectCourseRemark }}次</text>）</text>
-                        </view>   
+                        <view style="padding: 20rpx 0 20rpx 20rpx;" data-pricetype="1" bindtap="changePriceType">
+                            <view wx:if="{{ !!item.projectActivityId }}">
+                                疗程：<text class="price-item-icon price-item-icon-sale"><text>{{ item.activityCoursePrice }}元/疗程</text></text>
+                                <text class="price-item-icon price-item-icon-original"><text>{{ projectCoursePrice }}元/疗程</text></text>（<text>{{ projectCourseRemark }}次</text>）
+                            </view>
+                            <view wx:if="{{ !item.projectActivityId }}">
+                                疗程：<text class="price-item-icon price-item-icon-course"><text>{{ projectCoursePrice }}</text>元/疗程（<text>{{ projectCourseRemark }}次</text>）</text>
+                            </view>
+                        </view>  
                     </view>
                 </view>
             </view>
@@ -62,7 +74,7 @@
             <text>项目</text>
             </view>
             <view class="selection-cell__ft chosen-project">
-            {{ projectName || "请选择项目" }}<image hidden="{{ !projectHeader }}" src="{{ projectHeader? ('https://www.iumer.cn' + projectHeader): '' }}"></image>
+                {{ projectId? projectName: "请选择项目" }}<image hidden="{{ !projectHeader }}" src="{{ projectHeader? projectHeader: '' }}"></image>
             </view>
         </view>
         <view class="selection-cell">

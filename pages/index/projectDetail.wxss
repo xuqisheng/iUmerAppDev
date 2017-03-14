@@ -28,6 +28,17 @@ page {
 	text-align: right;
 	padding-right: 20rpx;
 }
+.activity-counting {
+	position: absolute;
+	z-index: 2;
+	top: 0;
+	right: 0;
+    background: rgba(255,255,255,0.5);
+    width: 100%;
+    padding: 10px 15px;
+    text-align: right;
+    color: #e84057;
+}
 #description-area {
 	margin-top: 10rpx;
 	background-color: white;
@@ -37,6 +48,11 @@ page {
 }
 .description-cell:not(:last-child) {
 	border-bottom: solid 2rpx #F7F7F7;
+}
+.price text {
+	text-decoration: line-through; 
+	color: gray; 
+	margin-left: 10rpx;
 }
 #shop-info-area {
 	margin-top: 10rpx;

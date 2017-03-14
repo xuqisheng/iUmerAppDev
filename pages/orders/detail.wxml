@@ -16,7 +16,11 @@
                 <view class="dot-line"></view>
                 <view class="order-content-row order-content-second-row">
                     <view class="order-content-second-row-shop">{{ orderInfo.shopName }}</view>
-                    <view class="order-content-second-row-collect">￥{{ orderInfo.priceType == 0? ( orderInfo.unitPrice + '元/次'): (orderInfo.coursePrice + '元/疗程(' + orderInfo.courseRemark + '次)')  }}</view>
+                    <view class="order-content-second-row-collect" wx:if="{{ !!orderInfo.activityUnitPrice }}">
+                        <text class="order-price-sale">￥{{ orderInfo.priceType == 0? orderInfo.activityUnitPrice + '元/次': orderInfo.activityCoursePrice + '元/疗程' }}</text>
+                        <text class="order-price-original">￥{{ orderInfo.priceType == 0? orderInfo.unitPrice + '元/次': orderInfo.coursePrice + '元/疗程' }}</text>
+                    </view>
+                    <view class="order-content-second-row-collect" wx:if="{{ !orderInfo.activityUnitPrice }}">￥{{ (orderInfo.priceType == 0? orderInfo.unitPrice + '元/次': orderInfo.coursePrice + '元/疗程') }}</view>
         <!--    			            		<view class="order-content-second-row-count">123</view> -->
         <!--    			            		<view class="order-content-second-row-comment">待评价</view> -->
                 </view>

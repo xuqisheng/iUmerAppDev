@@ -2,4 +2,5 @@
     <image src="https://www.iumer.cn/umer/css/image/wechat/app/cat-no-login.png"></image>
     <text>您还没有登录，请登录后查看</text>
     <view class="btn-login text-center" bindtap="login">登录</view>
+    <view class="btn-cancel text-center" bindtap="cancel">取消</view>
 </view>

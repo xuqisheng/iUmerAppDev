@@ -1,3 +1,9 @@
+page {
+	height: 100%;
+}
+.container {
+	height: 100%;
+}
 .personnel-info {
     display: flex;
     padding: 20rpx;
@@ -84,6 +90,11 @@
 }
 .hot-item-price {
 	color: orange;
+}
+.hot-item-price text {
+	text-decoration: line-through; 
+	color: gray; 
+	margin-left: 10rpx;
 }
 .hot-item-info {
 	display: flex;

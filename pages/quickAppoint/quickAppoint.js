@@ -159,7 +159,7 @@ Page({
             timestampFirst: res.data.data[0].createDate,
             timestampLast: res.data.data[res.data.data.length - 1].createDate
           });
-          if (personnelList.length < 10 || res.data.data.length == 0) {
+          if (personnelList.length < 10 || res.data.data.length < 10) {
             that.setData({
               loadingHidden: true
             });

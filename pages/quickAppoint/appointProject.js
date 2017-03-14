@@ -16,7 +16,9 @@ Page({
       personnelId: options.personnelId,
       projectId: options.projectId,
       priceType: options.priceType || 0,
-      'from': options.from || ''  
+      'from': options.from || '',
+      activityId: options.activityId,
+      referrer: options.referrer
     });
     this.loadPersonnel();
     this.loadWeekdays();
@@ -172,7 +174,8 @@ Page({
         url: app.globalData.server_url + 'webService/customer/biz/index/projectDetails', 
         data: {
           id: that.data.projectId,
-          customerId: wx.getStorageSync('id')
+          customerId: wx.getStorageSync('id'),
+          projectActivityId: that.data.activityId
         },
         method: "POST",
         dataType: "json",
@@ -182,9 +185,20 @@ Page({
         success: function(res) {
           if (res.data.code == 1) {
             var d = res.data.data;
+            if (!d.picList || d.picList.length == 0) {
+              var filePath = ("/umer/css/image/default.jpg"); 
+              that.setData({
+                projectPics: [{ id: 0, filePath: filePath }]
+              });
+            } else {
+              that.setData({
+                projectPics: d.picList
+              });
+            }
             that.setData({
+              item: d,
               projectName: d.projectName || "",
-              projectHeader: d.header || "umer/css/image/wechat/2.jpg",
+              projectHeader: 'https://www.iumer.cn/' + that.data.projectPics[0].filePath || "https://www.iumer.cn/umer/css/image/default.jpg",
               projectUnitPrice: d.unitPrice || 0,
               projectCoursePrice: d.coursePrice || 0,
               projectCourseRemark: d.courseRemark || "",
@@ -216,7 +230,7 @@ Page({
   chooseProject: function(){
     var that = this;
     console.log(that.data)
-    wx.navigateTo({
+    wx.redirectTo({
       url: 'chooseProject?personnelId=' + that.data.personnelId + "&priceType=" + that.data.priceType,
       success: function(res){
         // success
@@ -387,7 +401,9 @@ Page({
 	        "makeEndDate": endDate.getTime(),
 	        "reserveName" : that.data.reserveName,
 	        "reservePhone": that.data.reservePhone,
-	        "priceType": that.data.priceType
+	        "priceType": that.data.priceType,
+	        "projectActivityId": that.data.activityId,
+	        "referrer": that.data.referrer
         },
         method: "POST",
         dataType: "json",

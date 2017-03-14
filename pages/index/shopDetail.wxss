@@ -3,6 +3,16 @@ page {
 }
 .container {
     height: 100%;
+	position: relative;
+	z-index: 1;
+}
+.activity-icon {
+	width: 300rpx;
+	height: 300rpx;
+	position: absolute;
+	top: 40%;
+	right: 0;
+	z-index: 2222;
 }
 .swiper-description {
 	width: 100%;
@@ -121,6 +131,11 @@ page {
 }
 .hot-item-price {
 	color: orange;
+}
+.hot-item-price text {
+	text-decoration: line-through; 
+	color: gray; 
+	margin-left: 10rpx;
 }
 .hot-item-info {
 	display: flex;

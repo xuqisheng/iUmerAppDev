@@ -65,6 +65,11 @@ page {
 .hot-item-price {
 	color: orange;
 }
+.hot-item-price text{
+	margin-left: 10rpx;
+	color: gray;
+	text-decoration: line-through;
+}
 .hot-item-info {
 	display: flex;
 	justify-content: space-between;

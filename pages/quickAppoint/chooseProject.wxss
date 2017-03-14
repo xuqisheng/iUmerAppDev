@@ -1,3 +1,21 @@
+page {
+	height: 100%;
+}
+.container {
+	height: 100%;
+}
+#project {
+	height: 100%;
+}
+.btn-return {
+	position: fixed;
+	right: 30rpx;
+	bottom: 30rpx;
+	z-index: 9999;
+	width: 150rpx;
+	height: 150rpx;
+	opacity: 0.5;
+}
 .hot-item {
 	background-color: white;
 	display: flex;
@@ -38,6 +56,11 @@
 }
 .hot-item-price {
 	color: orange;
+}
+.hot-item-price text {
+	text-decoration: line-through; 
+	color: gray; 
+	margin-left: 10rpx;
 }
 .hot-item-info {
 	display: flex;

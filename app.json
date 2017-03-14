@@ -26,7 +26,9 @@
     "pages/quickAppoint/choosePersonnel",
     "pages/quickAppoint/appointProject",
     "pages/quickAppoint/chooseProject",
-    "pages/quickAppoint/appoint"
+    "pages/quickAppoint/appoint",
+    "pages/activity/activities",
+    "pages/activity/projects"
   ],
   "window":{
     "backgroundTextStyle": "light",

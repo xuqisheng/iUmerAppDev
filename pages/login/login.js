@@ -84,8 +84,8 @@ Page({
             wx.setStorageSync("X-TOKEN", data.token || "");
             wx.setStorageSync("alias", data.alias || "");
             wx.setStorageSync("authCode", data.authCode || "");
-            wx.switchTab({
-              url: '../index/index',
+            wx.navigateBack({
+              delta: 1, // 回退前 delta(默认为1) 页面
               success: function(res){
                 // success
               },

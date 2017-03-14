@@ -16,7 +16,9 @@ Page({
       projectId: options.projectId,
       personnelId: options.personnelId,
       priceType: options.priceType || 0,
-      'from': options.from || ""
+      'from': options.from || "",
+      activityId: options.activityId,
+      referrer: options.referer
     });
     this.loadProject();
     this.loadWeekdays();
@@ -58,7 +60,8 @@ Page({
         url: app.globalData.server_url + 'webService/customer/biz/index/projectDetails', 
         data: {
           id: that.data.projectId,
-          customerId: wx.getStorageSync('id') || 30
+          customerId: wx.getStorageSync('id'),
+          projectActivityId: that.data.activityId
         },
         method: "POST",
         dataType: "json",
@@ -69,7 +72,7 @@ Page({
           if (res.data.code == 1) {
             var d = res.data.data;
             if (!d.picList || d.picList.length == 0) {
-              var filePath = (d.header || "https://www.iumer.cn/umer/css/image/wechat/2.jpg"); 
+              var filePath = ("/umer/css/image/default.jpg"); 
               that.setData({
                 projectPics: [{ id: 0, filePath: filePath }]
               });
@@ -79,7 +82,8 @@ Page({
               });
             }
             that.setData({
-              projectFilePath: d.header || "css/image/wechat/2.jpg",
+              item: d,
+              projectFilePath: d.header || "css/image/default.jpg",
               projectUnitPrice: d.unitPrice || 0,
               projectCoursePrice: d.coursePrice || 0,
               projectCourseRemark: d.courseRemark || 0,
@@ -275,7 +279,7 @@ Page({
           if (res.data.code == 1) {
             var d = res.data.data;
             that.setData({
-              personnelHeader: d.header? ("https://www.iumer.cn" + d.header): "https://www.iumer.cn/umer/css/image/wechat/2.jpg",
+              personnelHeader: d.header? ("https://www.iumer.cn" + d.header): "https://www.iumer.cn/umer/css/image/default,jpg",
               personnelName: d.name || ""
             });
           } else {
@@ -304,8 +308,8 @@ Page({
   choosePersonnel: function(){
     var that = this;
     console.log(that.data)
-    wx.navigateTo({
-      url: 'choosePersonnel?projectId=' + that.data.projectId + "&priceType=" + that.data.priceType,
+    wx.redirectTo({
+      url: 'choosePersonnel?projectId=' + that.data.projectId + "&priceType=" + that.data.priceType + "&activityId=" + that.data.activityId,
       success: function(res){
         // success
       },
@@ -464,7 +468,9 @@ Page({
 	        "makeEndDate": endDate.getTime(),
 	        "reserveName" : that.data.reserveName,
 	        "reservePhone": that.data.reservePhone,
-	        "priceType": that.data.priceType
+	        "priceType": that.data.priceType,
+	        "projectActivityId": that.data.activityId,
+	        "referrer": that.data.referrer
         },
         method: "POST",
         dataType: "json",

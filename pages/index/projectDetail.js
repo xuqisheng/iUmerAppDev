@@ -1,5 +1,6 @@
 // pages/index/projectDetail.js
 var app = getApp();
+var timer;
 Page({
   data:{
     currTab: 0,
@@ -23,7 +24,8 @@ Page({
     console.log("projectDetail onLoad");
     // 页面初始化 options为页面跳转所带来的参数
     this.setData({
-      projectId: options.projectId
+      projectId: options.projectId,
+      activityId: options.activityId
     });
     this.loadProject();
     this.loadComments(); 
@@ -44,6 +46,7 @@ Page({
   onUnload:function(){
     console.log("projectDetail onUnload");
     // 页面关闭
+    clearInterval(timer);
   },
   back: function(){
     wx.navigateBack({
@@ -167,7 +170,8 @@ Page({
         url: app.globalData.server_url + 'webService/customer/biz/index/projectDetails', 
         data: {
           id: that.data.projectId,
-          customerId: wx.getStorageSync('id') || 30
+          customerId: wx.getStorageSync('id'),
+          projectActivityId: that.data.activityId
         },
         method: "POST",
         dataType: "json",
@@ -187,7 +191,30 @@ Page({
                 projectPics: d.picList
               });
             }
+            if (d.activityEndDate) {
+							var activityEnd = new Date(d.activityEndDate.replace(new RegExp(/-/g),'/')).getTime();
+							timer = setInterval(function(){
+								var nowTime = new Date().getTime();
+								var diff = activityEnd - nowTime;
+								var diffDay = parseInt(diff / 1000 / 60 / 60 / 24);
+								var diffHour = parseInt(diff / 1000 / 60 / 60 % 24);
+                var diffMin = parseInt((diff / 1000 / 60) % 60);
+                var diffSec = parseInt((diff / 1000) % 60);
+                if (diff > 0) {
+                  that.setData({
+                      timerTxt: "距离活动结束还有：" + diffDay + "天" + diffHour + "时" + diffMin + "分" + diffSec + "秒"
+                    })
+                } else {
+                  that.setData({
+                      timerTxt: "活动结束"
+                  });
+                  clearInterval(timer);
+                }
+							}, 1000);
+						} 
+
             that.setData({
+              item: d,
               projectUnitPrice: d.unitPrice || 0,
               projectCoursePrice: d.coursePrice || 0,
               projectCourseRemark: d.courseRemark || 0,
@@ -272,7 +299,7 @@ Page({
     }
     var that = this;
     wx.redirectTo({
-      url: '../quickAppoint/appointPersonnel?from=projectDetail&projectId=' + that.data.projectId,
+      url: '../quickAppoint/appointPersonnel?from=projectDetail&projectId=' + that.data.projectId + "&activityId=" + (that.data.activityId || ''),
       success: function(res){
         // success
       },

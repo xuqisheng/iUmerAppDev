@@ -40,7 +40,7 @@
 		</view>
 		<view id="hot-area">
 			<block wx:for="{{ hotProjects }}" wx:key="id">
-				<view class="hot-item" data-projectId="{{ item.id }}" bindtap="clickProjectItem" >
+				<view class="hot-item" data-projectId="{{ item.id }}" data-activityid="{{ item.projectActivityId || '' }}" bindtap="clickProjectItem" >
 					<view class="hot-item-left">
 						<view class="hot-item-img">
 							<image class="lazy" src="https://www.iumer.cn{{ item.filePath || '/umer/css/image/default.jpg' }}" />
@@ -50,7 +50,8 @@
 						<view class="hot-item-name">{{ item.projectName || "" }}</view>
 						<view class="hot-item-place-and-price">
 							<view class="hot-item-place">{{ item.shopName || "" }}</view>
-							<view class="hot-item-price">￥{{ item.unitPrice || "0" }}元</view>
+							<view class="hot-item-price" wx:if="{{ !!item.projectActivityId }}">￥{{ item.activityUnitPrice || "0" }}元<text>￥{{ item.unitPrice || "0" }}元</text></view>
+							<view class="hot-item-price" wx:if="{{ !item.projectActivityId }}">￥{{ item.unitPrice || "0" }}元</view>
 						</view>
 						<view class="hot-item-info">
 							<view class="hot-item-info-distance">

@@ -5,7 +5,8 @@ Page({
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
     this.setData({
-      personnelId: options.personnelId
+      personnelId: options.personnelId,
+      activityId: options.activityId
     });
     this.loadPersonnel();
     this.loadPersonnelProjects();
@@ -264,8 +265,9 @@ Page({
     }
     var that = this;
     var projectId = e.currentTarget.dataset.projectid;
+    var activityId = e.currentTarget.dataset.activityid;
     wx.redirectTo({
-      url: '../quickAppoint/appoint?from=personnelDetail&personnelId=' + that.data.personnelId + "&projectId=" + projectId,
+      url: '../quickAppoint/appoint?from=personnelDetail&personnelId=' + that.data.personnelId + "&projectId=" + projectId + "&activityId=" + (activityId || ''),
       success: function(res){
         // success
       },

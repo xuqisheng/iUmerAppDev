@@ -10,7 +10,8 @@ Page({
     // 页面初始化 options为页面跳转所带来的参数
     this.setData({
       projectId: options.projectId,
-      priceType: options.priceType
+      priceType: options.priceType,
+      activityId: options.activityId
     });
     this.loadPersonnels("");
   },
@@ -25,20 +26,6 @@ Page({
   },
   onUnload:function(){
     // 页面关闭
-  },
-  back: function(){
-    wx.redirectTo({
-      url: 'appointPersonnel?personnelId=' + personnelId + '&projectId=' + projectId + "&priceType=" + priceType,
-      success: function(res){
-        // success
-      },
-      fail: function() {
-        // fail
-      },
-      complete: function() {
-        // complete
-      }
-    })
   },
   loadPersonnels:function(operationType){
     var that = this;
@@ -112,8 +99,9 @@ Page({
     var personnelId = e.currentTarget.dataset.personnelid;
     var projectId = this.data.projectId;
     var priceType = this.data.priceType;
+    var activityId = this.data.activityId;
     wx.redirectTo({
-      url: 'appointPersonnel?personnelId=' + personnelId + '&projectId=' + projectId + "&priceType=" + priceType,
+      url: 'appointPersonnel?personnelId=' + personnelId + '&projectId=' + projectId + "&priceType=" + priceType + "&activityId=" + activityId,
       success: function(res){
         // success
       },
@@ -132,5 +120,23 @@ Page({
   refresh: function(e){
     console.log("refresh");
     this.loadPersonnels("down");
+  },
+  back: function() {
+    console.log("back")
+    var projectId = this.data.projectId;
+    var priceType = this.data.priceType;
+    var activityId = this.data.activityId;
+    wx.redirectTo({
+      url: 'appointPersonnel?projectId=' + projectId + "&priceType=" + priceType + "&activityId=" + activityId,
+      success: function(res){
+        // success
+      },
+      fail: function() {
+        // fail
+      },
+      complete: function() {
+        // complete
+      }
+    })
   }
 })

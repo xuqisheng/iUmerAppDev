@@ -93,10 +93,11 @@ Page({
   },
   clickProjectItem: function(e) {
     var projectId = e.currentTarget.dataset.projectid;
+    var activityId = e.currentTarget.dataset.activityid;
     var personnelId = this.data.personnelId;
     var priceType = this.data.priceType;
     wx.redirectTo({
-      url: 'appointProject?personnelId=' + personnelId + '&projectId=' + projectId + "&priceType=" + priceType,
+      url: 'appointProject?personnelId=' + personnelId + '&projectId=' + projectId + "&priceType=" + priceType + "&activityId=" + activityId,
       success: function(res){
         // success
       },
@@ -115,5 +116,21 @@ Page({
   refresh: function(e){
     console.log("refresh");
     this.loadProjects("down");
+  },
+  back: function(){
+    var personnelId = this.data.personnelId;
+    var priceType = this.data.priceType;
+    wx.redirectTo({
+      url: 'appointProject?personnelId=' + personnelId + "&priceType=" + priceType,
+      success: function(res){
+        // success
+      },
+      fail: function() {
+        // fail
+      },
+      complete: function() {
+        // complete
+      }
+    })
   }
 })

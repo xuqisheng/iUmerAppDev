@@ -1,4 +1,5 @@
 <view class="container">
+    <image src="https://www.iumer.cn/umer/css/image/wechat/activity/return@2x.png" class="btn-return text-center" bindtap="back" />
     <view id="people">
         <scroll-view scroll-y style="width: 100%; height: 100%;" bindscrolltolower="loadMore" bindscrolltoupper="refresh">
             <block wx:for="{{ projectPersonnels }}" wx:key="id">

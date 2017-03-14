@@ -99,7 +99,7 @@ Page({
               timestampFirst: list[0].createDate,
               timestampLast: list[list.length - 1].createDate
             });
-            if (orderList.length < 10 || res.data.data.length < 10) {
+            if (list.length < 10 || res.data.data.length < 10) {
               that.setData({
                 loadingHidden: true
               })

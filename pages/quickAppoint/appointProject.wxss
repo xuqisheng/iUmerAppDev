@@ -130,13 +130,21 @@ button {
 	z-index:1000;
 	border: solid 1px #F7F7F7;
 }
-.dropdown-menu text {
-	padding: 0 20rpx;
-}
 .dropdown-menu .divider {
 	border-top: solid 1px #F7F7F7;
 }
-
+.price-item-icon-sale {
+	color: red;
+}
+.price-item-icon-original {
+	margin-left: 10rpx;
+	text-decoration: line-through;
+	font-size: 90%;
+}
+.price-item-icon-original {
+	margin-left: 10rpx;
+	text-decoration: line-through;
+}
 .chosen-project span {
     display: flex;
     align-items: center;

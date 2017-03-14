@@ -211,16 +211,26 @@ Page({
         },
         success: function(res) {
           if (res.data.code == 1) {
-            wx.switchTab({
-              url: '../index/index',
-              success: function(res){
-                // success
-              },
-              fail: function() {
-                // fail
-              },
-              complete: function() {
-                // complete
+            wx.showModal({
+              title: '提示',
+              confirmColor: '#FD8CA3',
+              showCancel: false,
+              content: res.data.desc,
+              success: function(res) {
+                if (res.confirm) {
+                  wx.redirectTo({
+                    url: '../login/authorize',
+                    success: function(res){
+                      // success
+                    },
+                    fail: function() {
+                      // fail
+                    },
+                    complete: function() {
+                      // complete
+                    }
+                  });
+                }
               }
             })
           } else {

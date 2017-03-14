@@ -88,7 +88,7 @@ Page({
           that.setData({
             projectList: projectList
           });
-          if (projectList.length < 10 || res.data.data.length < 0) {
+          if (projectList.length < 10 || res.data.data.length < 10) {
             that.setData({
               loadingHidden: true
             })
@@ -122,9 +122,10 @@ Page({
   },
   clickProjectItem: function(e){
     var projectId = e.currentTarget.dataset.projectid;
+    var activityId = e.currentTarget.dataset.activityid;
     // console.log(projectId)
     wx.navigateTo({
-      url: 'projectDetail?projectId=' + projectId,
+      url: 'projectDetail?projectId=' + projectId +  "&activityId=" + activityId,
       success: function(res){
         // success
       },

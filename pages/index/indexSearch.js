@@ -173,9 +173,10 @@ Page({
   },
   clickProjectItem: function(event){
     var projectId = event.currentTarget.dataset.projectid;
+    var activityId = event.currentTarget.dataset.activityid;
     // console.log(projectId)
     wx.navigateTo({
-      url: 'projectDetail?projectId=' + projectId,
+      url: 'projectDetail?projectId=' + projectId + "&activityId=" + activityId,
       success: function(res){
         // success
       },
