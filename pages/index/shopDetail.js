@@ -57,7 +57,7 @@ Page({
           if (res.data.code == 1){
             var d = res.data.data;
             if (!d.picList || d.picList.length == 0) {
-              var filePath = (d.header + 'big.jpg' || "/umer/css/image/wechat/2.jpg"); 
+              var filePath = (d.header || "/umer/css/image/wechat/2.jpg"); 
               that.setData({
                 projectPics: [{ id: 0, filePath: filePath }]
               });

@@ -279,7 +279,7 @@ Page({
           if (res.data.code == 1) {
             var d = res.data.data;
             that.setData({
-              personnelHeader: d.header? ("https://www.iumer.cn" + d.header): "https://www.iumer.cn/umer/css/image/default,jpg",
+              personnelHeader: d.header? ("https://www.iumer.cn" + d.header): "https://www.iumer.cn/umer/css/image/default.jpg",
               personnelName: d.name || ""
             });
           } else {
