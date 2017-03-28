@@ -54,10 +54,10 @@ Page({
             var url = "https://www.iumer.cn/umer/webService/common/baiduCoordinate";
             wx.request({
               url: url, //仅为示例，并非真实的接口地址
-              data: {
+              data: app.encode({
                 latitude: latitude,
                 longitude: longitude
-              },
+              }),
               method: "POST",
               dataType: "json",
               header: {
@@ -139,11 +139,11 @@ Page({
     var that = this;
     wx.request({
       url: app.globalData.server_url + 'webService/common/messages', 
-      data: {
+      data: app.encode({
         "banner": "index",
         "platform": "customer",
         "pageSize": 10
-      },
+      }),
       method: "POST",
       dataType: "json",
       header: {
@@ -180,12 +180,12 @@ Page({
     var that = this;
     wx.request({
         url: app.globalData.server_url + 'webService/customer/biz/index/hotProject', 
-        data: {
+        data: app.encode({
           cityId: wx.getStorageSync("cityCode"),
           longitude: wx.getStorageSync("longitude"),
           latitude: wx.getStorageSync("latitude"),
           pageSize: 3
-        },
+        }),
         method: "POST",
         dataType: "json",
         header: {
@@ -222,12 +222,12 @@ Page({
     var that = this;
     wx.request({
         url: app.globalData.server_url + 'webService/customer/biz/index/hotPersonnel', 
-        data: {
+        data: app.encode({
           cityId: wx.getStorageSync("cityCode"),
           longitude: wx.getStorageSync("longitude"),
           latitude: wx.getStorageSync("latitude"),
           pageSize: 3
-        },
+        }),
         method: "POST",
         dataType: "json",
         header: {

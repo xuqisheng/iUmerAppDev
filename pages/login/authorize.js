@@ -35,9 +35,9 @@ Page({
               wx.setStorageSync('openId', r.data.data.openid);
               wx.request({
                 url: app.globalData.server_url + 'webService/customer/sys/user/miniAppLogin',
-                data: {
+                data: app.encode({
                   openId: '' + r.data.data.openid
-                },
+                }),
                 method: "POST",
                 dataType: "json",
                 header: {

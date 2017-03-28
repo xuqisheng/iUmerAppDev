@@ -56,9 +56,9 @@ Page({
     var that = this;
     wx.request({
       url: app.globalData.server_url + 'webService/common/areaList', 
-      data: {
+      data: app.encode({
         cityId: wx.getStorageSync('cityCode') || '320500'
-      },
+      }),
       method: "POST",
       dataType: "json",
       header: {
@@ -121,9 +121,9 @@ Page({
     wx.showNavigationBarLoading();
     wx.request({
       url: app.globalData.server_url + 'webService/common/projectTypeTree', 
-      data: {
+      data: app.encode({
         groupNo: that.data.groupNo
-      },
+      }),
       method: "POST",
       dataType: "json",
       header: {
@@ -194,7 +194,7 @@ Page({
     }
     wx.request({
       url: app.globalData.server_url + 'webService/customer/biz/index/searchProjectList', 
-      data: data,
+      data: app.encode(data),
       method: "POST",
       dataType: "json",
       header: {

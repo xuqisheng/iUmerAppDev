@@ -46,12 +46,12 @@ Page({
     var that = this;
     wx.request({
         url: app.globalData.server_url + 'webService/customer/biz/index/searchProjectList', 
-        data: {
+        data: app.encode({
           cityId: wx.getStorageSync("cityCode"),
           projectName: txt,
           pageSize: 3,
           page: 1
-        },
+        }),
         method: "POST",
         dataType: "json",
         header: {
@@ -90,11 +90,11 @@ Page({
     var that = this;
     wx.request({
         url: app.globalData.server_url + 'webService/customer/biz/index/searchPersonnelList', 
-        data: {
+        data: app.encode({
           cityId: wx.getStorageSync("cityCode"),
           personnelName: txt,
           pageSize: 3
-        },
+        }),
         method: "POST",
         dataType: "json",
         header: {
@@ -133,11 +133,11 @@ Page({
     wx.showNavigationBarLoading();
     wx.request({
         url: app.globalData.server_url + 'webService/customer/biz/index/searchShopList', 
-        data: {
+        data: app.encode({
           cityId: wx.getStorageSync("cityCode"),
           shopName: txt,
           pageSize: 3
-        },
+        }),
         method: "POST",
         dataType: "json",
         header: {

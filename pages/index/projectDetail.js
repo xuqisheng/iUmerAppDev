@@ -67,9 +67,9 @@ Page({
     // console.log(this.data.projectId)
     wx.request({
         url: app.globalData.server_url + 'webService/customer/biz/index/projectCommentGroupNum', 
-        data: {
+        data: app.encode({
           projectId: that.data.projectId
-        },
+        }),
         method: "POST",
         dataType: "json",
         header: {
@@ -116,7 +116,7 @@ Page({
     var that = this;
     wx.request({
         url: app.globalData.server_url + 'webService/customer/biz/index/projectCommentList', 
-        data: data,
+        data: app.encode(data),
         method: "POST",
         dataType: "json",
         header: {
@@ -168,11 +168,11 @@ Page({
     var that = this;
     wx.request({
         url: app.globalData.server_url + 'webService/customer/biz/index/projectDetails', 
-        data: {
+        data: app.encode({
           id: that.data.projectId,
           customerId: wx.getStorageSync('id'),
           projectActivityId: that.data.activityId
-        },
+        }),
         method: "POST",
         dataType: "json",
         header: {
@@ -192,7 +192,7 @@ Page({
               });
             }
             if (d.activityEndDate) {
-							var activityEnd = new Date(d.activityEndDate.replace(new RegExp(/-/g),'/')).getTime();
+							var activityEnd = new Date(d.activityEndDate.replace(new RegExp(/-/g),'/').replace("00:00:00", "23:59:59")).getTime();
 							timer = setInterval(function(){
 								var nowTime = new Date().getTime();
 								var diff = activityEnd - nowTime;
@@ -241,7 +241,7 @@ Page({
                 // console.log(res.data)
                 var d2 = res2.data.data;
                 that.setData({
-                  shopHeader: (d2.header + "big.jpg") || "/umer/css/image/default.jpg",
+                  shopHeader: d2.header || "/umer/css/image/default.jpg",
                   shopTitle: d2.shopName || "",
                   shopDescription: d2.description || "",
                   projectCount: d2.projectCount || 0,

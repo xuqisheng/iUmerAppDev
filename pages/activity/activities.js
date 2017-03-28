@@ -55,7 +55,7 @@ Page({
 		data["pageSize"] = 10;
     wx.request({
         url: app.globalData.server_url + 'webService/customer/biz/projectActivity/activityList', 
-        data: data,
+        data: app.encode(data),
         method: "POST",
         dataType: "json",
         header: {

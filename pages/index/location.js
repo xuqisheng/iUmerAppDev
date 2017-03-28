@@ -1,6 +1,6 @@
 // pages/index/location.js
 var cities = require("../../utils/cities.js");
-
+var app = getApp();
 Page({
   data:{
 
@@ -27,10 +27,10 @@ Page({
         var url = "https://www.iumer.cn/umer/webService/common/baiduCoordinate";
         wx.request({
           url: url, //仅为示例，并非真实的接口地址
-          data: {
+          data: app.encode({
             latitude: latitude,
             longitude: longitude
-          },
+          }),
           method: "POST",
           dataType: "json",
           header: {

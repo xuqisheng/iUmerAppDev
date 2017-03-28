@@ -54,8 +54,11 @@
 							<view class="hot-item-price" wx:if="{{ !item.projectActivityId }}">￥{{ item.unitPrice || "0" }}元</view>
 						</view>
 						<view class="hot-item-info">
-							<view class="hot-item-info-distance">
+							<view class="hot-item-info-distance" wx:if="{{ !!item.distance }}">
 								<image src="https://www.iumer.cn/umer/css/image/wechat/pin@3x.png" />距离{{ item.distance || "0米" }}左右</view>
+							<view class="hot-item-info-distance" wx:if="{{ !item.distance }}">
+								<text> </text>
+							</view>
 							<view class="hot-item-info-duration"><image src="https://www.iumer.cn/umer/css/image/wechat/history-red@2x.png" />{{ item.duration || "0" }}分钟</view>
 						</view>
 					</view>
@@ -90,8 +93,11 @@
 							</view>
 						</view>
 						<view class="people-item-info">
-							<view class="people-item-info-distance">
+							<view class="people-item-info-distance" wx:if="{{ !!item.distance }}">
 								<image src="https://www.iumer.cn/umer/css/image/wechat/pin@3x.png" />距离{{ item.distance || "0米" }}左右</view>
+							<view class="people-item-info-distance" wx:if="{{ !item.distance }}">
+								<text> </text>
+							</view>
 							<view class="people-item-info-board-comment">
 								<view class="people-item-info-board"><image src="https://www.iumer.cn/umer/css/image/wechat/app/order-count@2x.png" /> {{ item.orderCount || 0 }}</view>
 								<view class="people-item-info-comment"><image src="https://www.iumer.cn/umer/css/image/wechat/app/comments@2x.png" />{{ item.commentCount || 0 }}</view>

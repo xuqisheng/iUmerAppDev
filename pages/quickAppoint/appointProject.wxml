@@ -43,7 +43,7 @@
                 <view class="dropdown">
                     <view class="dropdown-toggle">
                         <view class="selected-price" data-price-type="0" wx:if="{{ !item.projectActivityId }}">
-                            {{ priceType == 0? projectUnitPrice + '元/次': projectCoursePrice + '元/疗程' }}
+                            {{ priceType == 0? (projectUnitPrice || '') + '元/次': (projectCoursePrice || '') + '元/疗程' }}
                         </view>
                         <view class="selected-price" data-price-type="0" wx:if="{{ !!item.projectActivityId }}">
                             {{ priceType == 0? item.activityUnitPrice + '元/次': item.activityCoursePrice + '元/疗程' }}

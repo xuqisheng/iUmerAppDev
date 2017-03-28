@@ -55,7 +55,7 @@ Page({
     }
     wx.request({
       url: app.globalData.server_url + 'webService/customer/biz/order/reserveProjectRecord', 
-      data: data,
+      data: app.encode(data),
       method: "POST",
       dataType: "json",
       header: {
@@ -137,7 +137,7 @@ Page({
     wx.showNavigationBarLoading();
     wx.request({
       url: app.globalData.server_url + 'webService/customer/biz/order/reservePersonnelRecord', 
-      data: data,
+      data: app.encode(data),
       method: "POST",
       dataType: "json",
       header: {

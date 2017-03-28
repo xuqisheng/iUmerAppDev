@@ -15,10 +15,22 @@ page {
 }
 .banner {
 	width: 100%;
+	position: relative;
 }
 .banner image {
 	width: 100%;
 	height: calc(750rpx / 16.0 * 9.0);
+}
+.banner .activity-counting {
+	position: absolute;
+	z-index: 2;
+	top: 0;
+	right: 0;
+    background: rgba(255,255,255,0.5);
+    width: 100%;
+    padding: 10px 15px;
+    text-align: right;
+    color: #FD8CA3;
 }
 #project-area {
 	height: 100%;

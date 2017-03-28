@@ -27,10 +27,10 @@ Page({
     var orderNo = this.data.orderNo;
     wx.request({
       url: app.globalData.server_url + 'webService/customer/biz/order/orderDetail', 
-      data: {
+      data: app.encode({
         orderNo: orderNo,
         customerId: wx.getStorageSync('id')
-      },
+      }),
       method: "POST",
       dataType: "json",
       header: {
@@ -84,9 +84,9 @@ Page({
     wx.showNavigationBarLoading();
     wx.request({
       url: app.globalData.server_url + 'webService/common/payMode', 
-      data: {
+      data: app.encode({
         type: 3
-      },
+      }),
       method: "POST",
       dataType: "json",
       header: {
@@ -145,12 +145,12 @@ Page({
     wx.showNavigationBarLoading();
     wx.request({
       url: app.globalData.server_url + 'webService/customer/biz/pay/wechatSubmitPay', 
-      data: {
+      data: app.encode({
         "orderNo": that.data.orderNo,
         "paymentMode": that.data.selected,
         "customerId": wx.getStorageSync('id'),
         "openId": wx.getStorageSync('openId')
-      },
+      }),
       method: "POST",
       dataType: "json",
       header: {

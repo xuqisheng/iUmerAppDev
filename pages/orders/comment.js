@@ -32,10 +32,10 @@ Page({
     var orderNo = this.data.orderNo;
     wx.request({
         url: app.globalData.server_url + 'webService/customer/biz/order/orderDetail', 
-        data: {
+        data: app.encode({
           orderNo: orderNo,
           customerId: wx.getStorageSync('id')
-        },
+        }),
         method: "POST",
         dataType: "json",
         header: {
@@ -158,7 +158,7 @@ Page({
     wx.showNavigationBarLoading();
     wx.request({
       url: app.globalData.server_url + 'webService/customer/biz/order/orderComment', 
-        data: {
+        data: app.encode({
           "customerId": wx.getStorageSync('id'),
 		    	"personnelId": that.data.personnelId,
 		    	"projectId": that.data.projectId,
@@ -167,7 +167,7 @@ Page({
 		    	"serveLevel": that.data.levelService,
 		    	"communicationLevel": that.data.levelCommunication,
 		    	"orderNo": that.data.orderNo
-        },
+        }),
         method: "POST",
         dataType: "json",
         header: {

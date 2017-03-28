@@ -42,7 +42,7 @@ Page({
     wx.showNavigationBarLoading();
     wx.request({
         url: app.globalData.server_url + 'webService/customer/biz/reserve/projectPersonnelList', 
-        data: data,
+        data: app.encode(data),
         method: "POST",
         dataType: "json",
         header: {

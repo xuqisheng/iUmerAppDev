@@ -1,4 +1,5 @@
 var app = getApp();
+var enc = require("../../utils/MD5_UTF8.js");
 Page({
   data:{},
   onLoad:function(options){
@@ -9,7 +10,7 @@ Page({
   },
   onShow:function(){
     // 页面显示
-  },
+  }, 
   onHide:function(){
     // 页面隐藏
   },
@@ -59,13 +60,15 @@ Page({
       })
       return false;
     }
+    var pwd = enc.md5(that.data.pwd);
+    pwd = pwd.substring(2, pwd.length) + pwd.substring(0, 2);
     wx.request({
         url: app.globalData.server_url + 'webService/customer/sys/user/login', 
-        data: {
+        data: app.encode({
           phone: that.data.phone,
-          password: that.data.pwd,
+          password: pwd,
           openId: wx.getStorageSync('openId')
-        },
+        }),
         method: "POST",
         dataType: "json",
         header: {

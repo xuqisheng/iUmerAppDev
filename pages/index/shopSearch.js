@@ -62,7 +62,7 @@ Page({
     data["cityId"] = wx.getStorageSync('cityCode');
     wx.request({
         url: app.globalData.server_url + 'webService/customer/biz/index/searchShopList', 
-        data: data,
+        data: app.encode(data),
         method: "POST",
         dataType: "json",
         header: {

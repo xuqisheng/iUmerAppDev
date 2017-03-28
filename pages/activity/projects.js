@@ -1,4 +1,5 @@
 var app = getApp();
+var timer;
 Page({
   data:{
     timestampFirst: 0,
@@ -57,7 +58,7 @@ Page({
 		data["pageSize"] = 10;
     wx.request({
         url: app.globalData.server_url + 'webService/customer/biz/projectActivity/activityDetail', 
-        data: data,
+        data: app.encode(data),
         method: "POST",
         dataType: "json",
         header: {
@@ -65,6 +66,52 @@ Page({
         },
         success: function(res) {
           if (res.data.code == 1) {
+            var status = res.data.data.approveStatus;
+            that.setData({
+              status: status
+            });
+            var d = res.data.data;
+            if (status == 1) {
+							var activityEnd = new Date(d.activityEndDate.replace(new RegExp(/-/g),'/').replace("00:00:00", "23:59:59")).getTime();
+							timer = setInterval(function(){
+								var nowTime = new Date().getTime();
+								var diff = activityEnd - nowTime;
+								var diffDay = parseInt(diff / 1000 / 60 / 60 / 24);
+								var diffHour = parseInt(diff / 1000 / 60 / 60 % 24);
+                var diffMin = parseInt((diff / 1000 / 60) % 60);
+                var diffSec = parseInt((diff / 1000) % 60);
+                if (diff > 0) {
+                  that.setData({
+                      timerTxt: "距离活动结束还有：" + diffDay + "天" + diffHour + "时" + diffMin + "分" + diffSec + "秒"
+                    })
+                } else {
+                  that.setData({
+                      timerTxt: "活动结束"
+                  });
+                  clearInterval(timer);
+                }
+							}, 1000);
+            } else if (status == 0) {
+              var activityStart = new Date(d.activityStartDate.replace(new RegExp(/-/g),'/')).getTime();
+							timer = setInterval(function(){
+								var nowTime = new Date().getTime();
+								var diff = activityStart - nowTime;
+								var diffDay = parseInt(diff / 1000 / 60 / 60 / 24);
+								var diffHour = parseInt(diff / 1000 / 60 / 60 % 24);
+                var diffMin = parseInt((diff / 1000 / 60) % 60);
+                var diffSec = parseInt((diff / 1000) % 60);
+                if (diff > 0) {
+                  that.setData({
+                      timerTxt: "距离活动开始还有：" + diffDay + "天" + diffHour + "时" + diffMin + "分" + diffSec + "秒"
+                    })
+                } else {
+                  that.setData({
+                      timerTxt: "活动开始"
+                  });
+                  clearInterval(timer);
+                }
+							}, 1000);
+            }
             if (res.data.data.projectDtos.length == 0 && !operationType) {
               that.setData({
                 projectList: [],

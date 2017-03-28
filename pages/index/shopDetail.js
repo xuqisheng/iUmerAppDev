@@ -45,9 +45,9 @@ Page({
     var that = this;
     wx.request({
         url: app.globalData.server_url + 'webService/customer/biz/index/shopDetail', 
-        data: {
+        data: app.encode({
           id: shopId
-        },
+        }),
         method: "POST",
         dataType: "json",
         header: {
@@ -126,7 +126,7 @@ Page({
     }
     wx.request({
       url: app.globalData.server_url + 'webService/customer/biz/index/shopProjectList', 
-      data: data,
+      data: app.encode(data),
       method: "POST",
       dataType: "json",
       header: {
@@ -186,7 +186,7 @@ Page({
     }
     wx.request({
       url: app.globalData.server_url + 'webService/customer/biz/index/shopPersonnelList', 
-      data: data,
+      data: app.encode(data),
       method: "POST",
       dataType: "json",
       header: {

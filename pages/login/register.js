@@ -1,4 +1,5 @@
 var app = getApp();
+var enc = require("../../utils/MD5_UTF8.js");
 var timer;
 Page({
   data:{
@@ -53,11 +54,11 @@ Page({
     var that = this;
     wx.request({
       url: 'https://www.iumer.cn/umer/webService/common/authPhone',
-      data: {
+      data: app.encode({
         "phone": that.data.phone,
         "type": 3, //顾客
         "operationType": 1 //注册
-      },
+      }),
       method: 'POST',
       // header: {}, // 设置请求的 header
       success: function(res){
@@ -196,14 +197,16 @@ Page({
       return false;
     } 
     var that = this;
+    var pwd = enc.md5(that.data.pwd);
+    pwd = pwd.substring(2, pwd.length) + pwd.substring(0, 2);
     wx.request({
         url: app.globalData.server_url + 'webService/customer/sys/user/register', 
-        data: {
+        data: app.encode({
           phone: that.data.phone,
-          password: that.data.pwd,
+          password: pwd,
           openId: wx.getStorageSync('openId'),
         	authCode: that.data.code
-        },
+        }),
         method: "POST",
         dataType: "json",
         header: {

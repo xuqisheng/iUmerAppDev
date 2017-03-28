@@ -41,10 +41,10 @@ Page({
     var that = this;
     wx.request({
         url: app.globalData.server_url + 'webService/customer/biz/order/orderDetail', 
-        data: {
+        data: app.encode({
           orderNo: orderNo,
           customerId: wx.getStorageSync('id')
-        },
+        }),
         method: "POST",
         dataType: "json",
         header: {
@@ -74,10 +74,10 @@ Page({
                   clearInterval(timer);
                   wx.request({
                     url: app.globalData.server_url + 'webService/customer/biz/reserve/cancelOrder', 
-                    data: {
+                    data: app.encode({
                       orderNo: orderNo,
                       customerId: wx.getStorageSync('id')
-                    },
+                    }),
                     method: "POST",
                     dataType: "json",
                     header: {
@@ -192,10 +192,10 @@ Page({
     var that = this;
     wx.request({
         url: app.globalData.server_url + 'webService/customer/biz/order/payQRDetail', 
-        data: {
+        data: app.encode({
           orderNo: that.data.orderNo,
           customerId: wx.getStorageSync('id')
-        },
+        }),
         method: "POST",
         dataType: "json",
         header: {
@@ -269,10 +269,10 @@ Page({
           wx.showNavigationBarLoading();
           wx.request({
             url: app.globalData.server_url + 'webService/customer/biz/reserve/cancelOrder', 
-            data: {
+            data: app.encode({
               orderNo: that.data.orderNo,
               customerId: wx.getStorageSync('id')
-            },
+            }),
             method: "POST",
             dataType: "json",
             header: {
@@ -358,10 +358,10 @@ Page({
         if (res.confirm) {
           wx.request({
             url: app.globalData.server_url + 'webService/customer/biz/reserve/applyCancelOrder', 
-            data: {
+            data: app.encode({
               orderNo: that.data.orderNo,
               customerId: wx.getStorageSync('id')
-            },
+            }),
             method: "POST",
             dataType: "json",
             header: {
@@ -448,11 +448,11 @@ Page({
           wx.showNavigationBarLoading();
           wx.request({
             url: app.globalData.server_url + 'webService/customer/biz/order/confirmFinishOrder', 
-            data: {
+            data: app.encode({
               orderNo: that.data.orderNo,
               customerId: wx.getStorageSync('id'),
               personnelId: that.data.orderInfo.personnelId
-            },
+            }),
             method: "POST",
             dataType: "json",
             header: {
@@ -579,10 +579,10 @@ Page({
     }
     wx.request({
       url: app.globalData.server_url + 'webService/customer/biz/reserve/personnelServeProject', 
-      data: {
+      data: app.encode({
         projectId: that.data.orderInfo.projectId,
         personnelId: that.data.orderInfo.personnelId
-      },
+      }),
       method: "POST",
       dataType: "json",
       header: {

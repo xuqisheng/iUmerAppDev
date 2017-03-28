@@ -2,6 +2,7 @@
     <image src="https://www.iumer.cn/umer/css/image/wechat/activity/return@2x.png" class="btn-return text-center" bindtap="back" />
     <view class="banner">
         <image src="https://www.iumer.cn/umer/css/image/wechat/2.jpg"/>
+        <view wx:if="{{ status != 2 }}" class="activity-counting">{{ timerTxt }}</view>
     </view>
     <swiper class="swiper" style="height: calc(100% - 425rpx)">
         <swiper-item> 

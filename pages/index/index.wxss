@@ -36,7 +36,7 @@
 	height: 96rpx;
 }	
 .red {
-	color: #E84057 !important;
+	color: #FD8CA3 !important;
 }
 #nav {
 	width: 100%;

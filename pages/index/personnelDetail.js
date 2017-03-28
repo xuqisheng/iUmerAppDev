@@ -30,10 +30,10 @@ Page({
     var that = this;
     wx.request({
         url: app.globalData.server_url + 'webService/customer/biz/index/personnelDetail', 
-        data: {
+        data: app.encode({
           id: that.data.personnelId,
           customerId: wx.getStorageSync('id')
-        },
+        }),
         method: "POST",
         dataType: "json",
         header: {
@@ -72,10 +72,10 @@ Page({
     wx.showNavigationBarLoading();
     wx.request({
         url: app.globalData.server_url + 'webService/customer/biz/reserve/personnelProjectList', 
-        data: {
+        data: app.encode({
           personnelId: that.data.personnelId,
           pageSize: 3
-        },
+        }),
         method: "POST",
         dataType: "json",
         header: {
@@ -115,9 +115,9 @@ Page({
     wx.showNavigationBarLoading();
     wx.request({
         url: app.globalData.server_url + 'webService/customer/biz/index/projectCommentGroupNum', 
-        data: {
+        data: app.encode({
           personnelId: that.data.personnelId
-        },
+        }),
         method: "POST",
         dataType: "json",
         header: {
@@ -165,7 +165,7 @@ Page({
     var that = this;
     wx.request({
         url: app.globalData.server_url + 'webService/customer/biz/index/projectCommentList', 
-        data: data,
+        data: app.encode(data),
         method: "POST",
         dataType: "json",
         header: {

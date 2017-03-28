@@ -83,10 +83,10 @@ Page({
     wx.showNavigationBarLoading();
     wx.request({
         url: app.globalData.server_url + 'webService/customer/biz/index/projectCommentGroupNum', 
-        data: {
+        data: app.encode({
           projectId: that.data.projectId,
           personnelId: that.data.personnelId
-        },
+        }),
         method: "POST",
         dataType: "json",
         header: {
@@ -146,7 +146,7 @@ Page({
     var that = this;
     wx.request({
         url: app.globalData.server_url + 'webService/customer/biz/index/projectCommentList', 
-        data: data,
+        data: app.encode(data),
         method: "POST",
         dataType: "json",
         header: {

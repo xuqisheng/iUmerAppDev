@@ -58,11 +58,11 @@ Page({
     wx.showNavigationBarLoading();
     wx.request({
         url: app.globalData.server_url + 'webService/customer/biz/index/projectDetails', 
-        data: {
+        data: app.encode({
           id: that.data.projectId,
           customerId: wx.getStorageSync('id'),
           projectActivityId: that.data.activityId
-        },
+        }),
         method: "POST",
         dataType: "json",
         header: {
@@ -224,10 +224,10 @@ Page({
     wx.showNavigationBarLoading();
     wx.request({
       url: app.globalData.server_url + 'webService/common/reserveTimeList', 
-        data: {
+        data: app.encode({
           personnelId: that.data.personnelId,
           dateTime: date  
-        },
+        }),
         method: "POST",
         dataType: "json",
         header: {
@@ -267,9 +267,9 @@ Page({
     wx.showNavigationBarLoading();
     wx.request({
       url: app.globalData.server_url + 'webService/customer/biz/index/personnelDetail', 
-        data: {
+        data: app.encode({
           id: that.data.personnelId
-        },
+        }),
         method: "POST",
         dataType: "json",
         header: {
@@ -460,7 +460,7 @@ Page({
     wx.showNavigationBarLoading();
     wx.request({
       url: app.globalData.server_url + 'webService/customer/biz/reserve/orderSave', 
-        data: {
+        data: app.encode({
           "projectId": that.data.projectId,
 	        "personnelId": that.data.personnelId,
 	        "customerId": wx.getStorageSync('id'),
@@ -471,7 +471,7 @@ Page({
 	        "priceType": that.data.priceType,
 	        "projectActivityId": that.data.activityId,
 	        "referrer": that.data.referrer
-        },
+        }),
         method: "POST",
         dataType: "json",
         header: {
