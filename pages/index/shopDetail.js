@@ -2,7 +2,11 @@
 var app = getApp();
 Page({
   data:{
-    currTab: 0
+    currTab: 0,
+    loadMoreTimeStamp: 0,
+    refreshTimeStamp: 0,
+    appointPersonnelTimeStamp: 0,
+    appointProjectTimeStamp: 0
   },
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
@@ -233,50 +237,82 @@ Page({
   },
   loadMore: function(e) {
     console.log("loadMore");
-    if (this.data.currTab == 0) {
-      this.loadProjects("up");
-    } else if (this.data.currTab == 1) {
-      this.loadPersonnels("up");
+    var timestamp = e.timeStamp;
+    if (timestamp - this.data.loadMoreTimeStamp < 500) {
+
+    } else {
+      if (this.data.currTab == 0) {
+        this.loadProjects("up");
+      } else if (this.data.currTab == 1) {
+        this.loadPersonnels("up");
+      }
     }
+    this.setData({
+      loadMoreTimeStamp: timestamp
+    });
   },
   refresh: function(e){
     console.log("refresh");
-    if (this.data.currTab == 0) {
-      this.loadProjects("down");
-    } else if (this.data.currTab == 1) {
-      this.loadPersonnels("down");
+    var timestamp = e.timeStamp;
+    if (timestamp - this.data.refreshTimeStamp < 500) {
+
+    } else {
+      if (this.data.currTab == 0) {
+        this.loadProjects("down");
+      } else if (this.data.currTab == 1) {
+        this.loadPersonnels("down");
+      }
     }
+    this.setData({
+      refreshTimeStamp: timestamp
+    })
   },
   appointProject: function(e) {
     var personnelId = e.currentTarget.dataset.personnelid;
-    wx.navigateTo({
-      url: '../quickAppoint/appointProject?personnelId=' + personnelId,
-      success: function(res){
-        // success
-      },
-      fail: function() {
-        // fail
-      },
-      complete: function() {
-        // complete
-      }
-    });
+    var timestamp = e.timeStamp;
+    if (timestamp - this.data.appointProjectTimeStamp < 500) {
+
+    } else {
+      wx.navigateTo({
+        url: '../quickAppoint/appointProject?personnelId=' + personnelId,
+        success: function(res){
+          // success
+        },
+        fail: function() {
+          // fail
+        },
+        complete: function() {
+          // complete
+        }
+      });
+    }
+    this.setData({
+      appointProjectTimeStamp: timestamp
+    })
   },
   appointPersonnel: function(e) {
     var projectId = e.currentTarget.dataset.projectid;
     var activityId = e.currentTarget.dataset.activityid;
-    wx.navigateTo({
-      url: '../quickAppoint/appointPersonnel?projectId=' + projectId + '&activityId=' + activityId,
-      success: function(res){
-        // success
-      },
-      fail: function() {
-        // fail
-      },
-      complete: function() {
-        // complete
-      }
-    });
+    var timestamp = e.timeStamp;
+    if (timestamp - this.data.appointPersonnelTimeStamp < 500) {
+
+    } else {
+      wx.navigateTo({
+        url: '../quickAppoint/appointPersonnel?projectId=' + projectId + '&activityId=' + activityId,
+        success: function(res){
+          // success
+        },
+        fail: function() {
+          // fail
+        },
+        complete: function() {
+          // complete
+        }
+      });
+    }
+    this.setData({
+      appointPersonnelTimeStamp: timestamp
+    })
   },
   callShop: function(e) {
     var phone = e.currentTarget.dataset.phone;

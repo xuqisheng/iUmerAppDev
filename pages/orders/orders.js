@@ -9,9 +9,10 @@ Page({
     orderList: [],
     timestampFirst: 0,
     timestampLast: 0,
-    mapping: [1, 0, 2, 3, 4],
+    mapping: [1, "0", 2, 3, 4],
     loadMoreTimeStamp: 0,
-    refreshTimeStamp: 0
+    refreshTimeStamp: 0,
+    clickOrderItemTimeStamp: 0
   },
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
@@ -98,8 +99,6 @@ Page({
             console.log(that.data.orderList.length + " " + res.data.data.length)
             var orderList = opType == "down"? res.data.data.concat(that.data.orderList): opType == "up"? that.data.orderList.concat(res.data.data): res.data.data;
 
-            
-
             that.setData({
               orderList: orderList,
               timestampFirst: orderList[0].createDate,
@@ -145,8 +144,8 @@ Page({
           console.log("loadOrders fail");
         },
         complete: function(res) {
-          console.log("loadOrders complete");
           wx.hideNavigationBarLoading();
+          console.log("loadOrders complete");
         }
     });
   },
@@ -167,30 +166,38 @@ Page({
   refresh: function(e){
     console.log("refresh");
     // console.log(e.timeStamp - this.data.refreshTimeStamp)
-    var timeStamp = e.timeStamp;
-    if (timeStamp - this.data.refreshTimeStamp < 500) {
+    var timestamp = e.timeStamp;
+    if (timestamp - this.data.refreshTimeStamp < 500) {
 
     } else {
       var mapping = this.data.mapping;
       this.loadOrders(mapping[this.data.currTab], "down"); 
     }
     this.setData({
-      refreshTimeStamp: timeStamp
+      refreshTimeStamp: timestamp
     })
   },
   clickOrderItem: function(e) {
     var orderNo = e.currentTarget.dataset.orderno;
-    wx.navigateTo({
-      url: 'detail?orderNo=' + orderNo,
-      success: function(res){
-        // success
-      },
-      fail: function() {
-        // fail
-      },
-      complete: function() {
-        // complete
-      }
+    var timestamp = e.timeStamp;
+    if (timestamp - this.data.clickOrderItemTimeStamp < 500) {
+
+    } else {
+      wx.navigateTo({
+        url: 'detail?orderNo=' + orderNo,
+        success: function(res){
+          // success
+        },
+        fail: function() {
+          // fail
+        },
+        complete: function() {
+          // complete
+        }
+      })
+    }
+    this.setData({
+      clickOrderItemTimeStamp: timestamp
     })
   }
 })

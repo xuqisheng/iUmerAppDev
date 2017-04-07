@@ -2,7 +2,9 @@ var app = getApp();
 Page({
   data:{
     loadingHidden: true,
-    currTab: 0
+    currTab: 0,
+    loadMoreTimeStamp: 0,
+    refreshTimeStamp: 0
   },
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数    
@@ -41,8 +43,8 @@ Page({
     }
   },
   loadProjects: function(opType) {
-    var that = this;
     wx.showNavigationBarLoading();
+    var that = this;
     var data = {};
     data["customerId"] = wx.getStorageSync('id');
     data["pageSize"] = 10;
@@ -123,6 +125,7 @@ Page({
     });
   },
   loadPersonnels: function(opType) {
+    wx.showNavigationBarLoading();
     var that = this;
     var data = {};
     data["customerId"] = wx.getStorageSync('id');
@@ -134,7 +137,6 @@ Page({
       case "down": data["timestamp"] = this.data.timestampFirst; break;
       }
     }
-    wx.showNavigationBarLoading();
     wx.request({
       url: app.globalData.server_url + 'webService/customer/biz/order/reservePersonnelRecord', 
       data: app.encode(data),
@@ -206,19 +208,34 @@ Page({
   },
   loadMore: function(e) {
     console.log("loadMore");
-    if (this.data.currTab == 0) {
-      this.loadProjects("up");
-    } else if (this.data.currTab == 1) {
-      this.loadPersonnels("up");
+    var timestamp = e.timeStamp;
+    if (timestamp - this.data.loadMoreTimeStamp < 500) {
+
+    } else {
+      if (this.data.currTab == 0) {
+        this.loadProjects("up");
+      } else if (this.data.currTab == 1) {
+        this.loadPersonnels("up");
+      }
     }
+    this.setData({
+      loadMoreTimeStamp: timestamp
+    })
   },
   refresh: function(e){
     console.log("refresh");
-    if (this.data.currTab == 0) {
-      this.loadProjects("down");
-    } else if (this.data.currTab == 1) {
-      this.loadPersonnels("down");
+    var timestamp = e.timeStamp;
+    if (timestamp - this.data.refreshTimeStamp < 500) {
+    } else {
+      if (this.data.currTab == 0) {
+        this.loadProjects("down");
+      } else if (this.data.currTab == 1) {
+        this.loadPersonnels("down");
+      }
     }
+    this.setData({
+      refreshTimeStamp: timestamp
+    })
   },
   appointPersonnel: function(e) {
     if (!wx.getStorageSync('id')) {

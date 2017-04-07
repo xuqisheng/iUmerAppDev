@@ -5,7 +5,9 @@ Page({
     timestampFirst: 0,
     timestampLast: 0,
     projectPersonnels: [],
-    noDataHidden: true
+    noDataHidden: true,
+    loadMoreTimeStamp: 0,
+    refreshTimeStamp: 0
   },
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
@@ -52,7 +54,7 @@ Page({
         success: function(res) {
           var res = res.data;
           if (res.code == 1) {
-            if (res.data.length == 0) {
+            if (res.data.length == 0 && !operationType) {
               that.setData({
                 loadingHidden: true,
                 noDataHidden: false
@@ -117,11 +119,27 @@ Page({
   },
   loadMore: function(e) {
     console.log("loadMore");
-    this.loadPersonnels("up");
+    var timestamp = e.timeStamp;
+    if (timestamp - this.data.loadMoreTimeStamp < 500) {
+       
+    } else {
+      this.loadPersonnels("up");
+    }
+    this.setData({
+      loadMoreTimeStamp: timestamp
+    })
   },
   refresh: function(e){
     console.log("refresh");
-    this.loadPersonnels("down");
+    var timestamp = e.timeStamp;
+    if (timestamp - this.data.refreshTimeStamp < 500) {
+       
+    } else {
+      this.loadPersonnels("down");
+    }
+    this.setData({
+      refreshTimeStamp: timestamp
+    })
   },
   back: function() {
     console.log("back")

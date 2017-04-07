@@ -6,7 +6,8 @@ Page({
     // 页面初始化 options为页面跳转所带来的参数
     this.setData({
       personnelId: options.personnelId,
-      activityId: options.activityId
+      activityId: options.activityId,
+      commentTimeStamp: 0
     });
     this.loadPersonnel();
     this.loadPersonnelProjects();
@@ -202,19 +203,27 @@ Page({
         }
     });
   },
-  showComments: function() {
+  showComments: function(e) {
     var that = this;
-    wx.navigateTo({
-      url: '../index/projectComments?personnelId=' + that.data.personnelId,
-      success: function(res){
-        // success
-      },
-      fail: function() {
-        // fail
-      },
-      complete: function() {
-        // complete
-      }
+    var timestamp = e.timeStamp;
+    if (timestamp - this.data.commentTimeStamp < 500) {
+
+    } else {
+      wx.navigateTo({
+        url: '../index/projectComments?personnelId=' + that.data.personnelId,
+        success: function(res){
+          // success
+        },
+        fail: function() {
+          // fail
+        },
+        complete: function() {
+          // complete
+        }
+      })
+    }
+    this.setData({
+      commentTimeStamp: timestamp
     })
   },
   appoint: function(){

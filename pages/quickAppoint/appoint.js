@@ -8,7 +8,8 @@ Page({
     priceDropdownHidden: true,
     priceType: "0",
     reservePhone: wx.getStorageSync('phone'),
-    reserveName: wx.getStorageSync('name')
+    reserveName: wx.getStorageSync('name'),
+    submitOrderTimeStamp: 0
   },
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
@@ -454,90 +455,99 @@ Page({
 		var startDate = new Date(startDateStr.replace(new RegExp(/-/g),'/'));
 		var endDateStr = that.data.chosenDate + " " + that.data.chosenHours[that.data.chosenHours.length - 1];
 		var endDate = new Date(endDateStr.replace(new RegExp(/-/g),'/'));
-    wx.showNavigationBarLoading();
     console.log(that.data.priceType)
-    wx.request({
-      url: app.globalData.server_url + 'webService/customer/biz/reserve/orderSave', 
-        data: app.encode({
-          "projectId": that.data.projectId,
-	        "personnelId": that.data.personnelId,
-	        "customerId": wx.getStorageSync('id'),
-	        "makeStartDate": startDate.getTime(),
-	        "makeEndDate": endDate.getTime(),
-	        "reserveName" : that.data.reserveName,
-	        "reservePhone": that.data.reservePhone,
-	        "priceType": that.data.priceType,
-	        "projectActivityId": that.data.activityId,
-	        "referrer": that.data.referrer
-        }),
-        method: "POST",
-        dataType: "json",
-        header: {
-          'Content-Type': 'application/json;charset=UTF-8;',
-          'X-Token': wx.getStorageSync('X-TOKEN'),
-          'X-Type': 3
-        },
-        success: function(res) {
-          // console.log(res.data)
-          var d = res.data;
-          if (d.code == 1) {
-            wx.showModal({
-              title: '提示',
-              showCancel: false,
-              confirmColor: '#FD8CA3',
-              content: '订单提交成功',
-              success: function(res) {
-                if (res.confirm) {
-                  wx.navigateTo({
-                    url: '../orders/pay?orderNo=' + d.data,
-                    success: function(res){
-                      // success
-                    },
-                    fail: function() {
-                      // fail
-                    },
-                    complete: function() {
-                      // complete
-                    }
-                  }); 
+    var timestamp = e.timeStamp;
+    if (timestamp - that.data.submitOrderTimeStamp < 500) {
+
+    } else {
+      wx.showNavigationBarLoading();
+      
+      wx.request({
+        url: app.globalData.server_url + 'webService/customer/biz/reserve/orderSave', 
+          data: app.encode({
+            "projectId": that.data.projectId,
+            "personnelId": that.data.personnelId,
+            "customerId": wx.getStorageSync('id'),
+            "makeStartDate": startDate.getTime(),
+            "makeEndDate": endDate.getTime(),
+            "reserveName" : that.data.reserveName,
+            "reservePhone": that.data.reservePhone,
+            "priceType": that.data.priceType,
+            "projectActivityId": that.data.activityId,
+            "referrer": that.data.referrer
+          }),
+          method: "POST",
+          dataType: "json",
+          header: {
+            'Content-Type': 'application/json;charset=UTF-8;',
+            'X-Token': wx.getStorageSync('X-TOKEN'),
+            'X-Type': 3
+          },
+          success: function(res) {
+            // console.log(res.data)
+            var d = res.data;
+            if (d.code == 1) {
+              wx.showModal({
+                title: '提示',
+                showCancel: false,
+                confirmColor: '#FD8CA3',
+                content: '订单提交成功',
+                success: function(res) {
+                  if (res.confirm) {
+                    wx.navigateTo({
+                      url: '../orders/pay?orderNo=' + d.data,
+                      success: function(res){
+                        // success
+                      },
+                      fail: function() {
+                        // fail
+                      },
+                      complete: function() {
+                        // complete
+                      }
+                    }); 
+                  }
                 }
-              }
-            });
-          } else if (d.code == -4) {
-            wx.navigateTo({
-              url: '../login/authorize',
-              success: function(res){
-                // success
-              },
-              fail: function() {
-                // fail
-              },
-              complete: function() {
-                // complete
-              }
-            }); 
-          } else {
-            wx.showModal({
-              title: '提示',
-              showCancel: false,
-              confirmColor: '#FD8CA3',
-              content: d.desc,
-              success: function(res) {
-                if (res.confirm) {
-                  
+              });
+            } else if (d.code == -4) {
+              wx.navigateTo({
+                url: '../login/authorize',
+                success: function(res){
+                  // success
+                },
+                fail: function() {
+                  // fail
+                },
+                complete: function() {
+                  // complete
                 }
-              }
-            });
+              }); 
+            } else {
+              wx.showModal({
+                title: '提示',
+                showCancel: false,
+                confirmColor: '#FD8CA3',
+                content: d.desc,
+                success: function(res) {
+                  if (res.confirm) {
+                    
+                  }
+                }
+              });
+            }
+          },
+          fail: function(res) {
+            console.log("submitOrder fail");
+          },
+          complete: function(res) {
+            console.log("submitOrder complete");
+            wx.hideNavigationBarLoading();
           }
-        },
-        fail: function(res) {
-          console.log("submitOrder fail");
-        },
-        complete: function(res) {
-          console.log("submitOrder complete");
-          wx.hideNavigationBarLoading();
-        }
-    });
+      });
+    }
+    that.setData({
+      submitOrderTimeStamp: timestamp
+    })
   },
   inputReserveName: function(e) {
     this.setData({

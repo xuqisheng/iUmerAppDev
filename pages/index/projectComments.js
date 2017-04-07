@@ -16,7 +16,9 @@ Page({
     goodList: [],
     middleList: [],
     badList: [],
-    loadingHidden: true
+    loadingHidden: true,
+    loadMoreTimeStamp: 0,
+    refreshTimeStamp: 0
   },
   onLoad:function(options){
     console.log("projectDetail onLoad");
@@ -43,20 +45,6 @@ Page({
   onUnload:function(){
     console.log("projectDetail onUnload");
     // 页面关闭
-  },
-  back: function(){
-    wx.navigateBack({
-      delta: 1, // 回退前 delta(默认为1) 页面
-      success: function(res){
-        // success
-      },
-      fail: function() {
-        // fail
-      },
-      complete: function() {
-        // complete
-      }
-    })
   },
   switchNav2: function(e) {   
     var that = this; 
@@ -254,12 +242,28 @@ Page({
   },
   loadMore: function(e) {
     console.log("loadMore");
-    var level = e.target.dataset.level;
-    this.loadComments(level, "up");
+    var timestamp = e.timeStamp;
+    if (timestamp - this.data.loadMoreTimeStamp < 500) {
+
+    } else {
+      var level = e.target.dataset.level;
+      this.loadComments(level, "up");
+    }
+    this.setData({
+      loadMoreTimeStamp: timestamp
+    });
   },
   refresh: function(e){
     console.log("refresh");
-    var level = e.target.dataset.level;
-    this.loadComments(level, "down");
+    var timeStamp = e.timeStamp;
+    if (timeStamp - this.data.refreshTimeStamp < 500) {
+
+    } else {
+      var level = e.target.dataset.level;
+      this.loadComments(level, "down");
+    }
+    this.setData({
+      refreshTimeStamp: timeStamp
+    })
   }
 })

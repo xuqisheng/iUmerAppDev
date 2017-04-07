@@ -4,7 +4,10 @@ Page({
   data:{
     personnelList: [],
     page: 1,
-    loadingHidden: true
+    loadingHidden: true,
+    loadMoreTimeStamp: 0,
+    refreshTimeStamp: 0,
+    clickProjectItemTimeStamp: 0
   },
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
@@ -123,26 +126,49 @@ Page({
   clickProjectItem: function(e){
     var projectId = e.currentTarget.dataset.projectid;
     var activityId = e.currentTarget.dataset.activityid;
-    // console.log(projectId)
-    wx.navigateTo({
-      url: 'projectDetail?projectId=' + projectId +  "&activityId=" + activityId,
-      success: function(res){
-        // success
-      },
-      fail: function() {
-        // fail
-      },
-      complete: function() {
-        // complete
-      }
+    var timestamp = e.timeStamp;
+    if (timestamp - this.data.clickProjectItemTimeStamp < 500) {
+
+    } else {
+      wx.navigateTo({
+        url: 'projectDetail?projectId=' + projectId +  "&activityId=" + activityId,
+        success: function(res){
+          // success
+        },
+        fail: function() {
+          // fail
+        },
+        complete: function() {
+          // complete
+        }
+      });
+    }
+    this.setData({
+      clickProjectItemTimeStamp: timestamp
+    })
+  },
+  loadMore: function(e) {
+    var timestamp = e.timeStamp;
+    if (timestamp - this.data.loadMoreTimeStamp < 500) {
+
+    } else {
+      this.data.page++;
+      this.searchProject('up', this.data.value);
+    }
+    this.setData({
+      loadMoreTimeStamp: timestamp
     });
   },
-  loadMore: function() {
-    this.data.page++;
-    this.searchProject('up', this.data.value);
-  },
-  refresh: function() {
-    this.data.page = 1;
+  refresh: function(e) {
+    var timeStamp = e.timeStamp;
+    if (timeStamp - this.data.refreshTimeStamp < 500) {
+
+    } else {
+      this.data.page = 1;
     this.searchProject('down', this.data.value);
+    }
+    this.setData({
+      refreshTimeStamp: timeStamp
+    })
   }
 })

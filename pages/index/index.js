@@ -4,7 +4,10 @@ var app = getApp();
 var cities = require("../../utils/cities.js");
 Page({
   data: {
-    login: false
+    login: false,
+    searchTimeStamp: 0,
+    clickProjectItemTimeStamp: 0,
+    clickPersonnelItemTimeStamp: 0
   },
   onLoad: function (options) {
     console.log('onLoad');
@@ -177,6 +180,7 @@ Page({
     });
   },
   getHotProject: function(){ 
+    wx.showNavigationBarLoading();
     var that = this;
     wx.request({
         url: app.globalData.server_url + 'webService/customer/biz/index/hotProject', 
@@ -214,11 +218,13 @@ Page({
           console.log("getHotProject fail")
         },
         complete: function(res) {
-          console.log("complete")
+          console.log("complete");
+          wx.hideNavigationBarLoading();
         }
     });
   },
   getHotPersonnel: function(){
+    wx.showNavigationBarLoading();
     var that = this;
     wx.request({
         url: app.globalData.server_url + 'webService/customer/biz/index/hotPersonnel', 
@@ -257,6 +263,7 @@ Page({
         },
         complete: function(res) {
           console.log("complete")
+          wx.hideNavigationBarLoading()
         }
     });
   },
@@ -277,48 +284,75 @@ Page({
   clickProjectItem: function(event){
     var projectId = event.currentTarget.dataset.projectid;
     var activityId = event.currentTarget.dataset.activityid;
+    var timestamp = event.timeStamp;
     // console.log(projectId)
-    wx.navigateTo({
-      url: 'projectDetail?projectId=' + projectId + "&activityId=" + activityId,
-      success: function(res){
-        // success
-      },
-      fail: function() {
-        // fail
-      },
-      complete: function() {
-        // complete
-      }
-    });
+    if (timestamp - this.data.clickProjectItemTimeStamp < 500) {
+
+    } else {
+      // console.log(projectId)
+      wx.navigateTo({
+        url: 'projectDetail?projectId=' + projectId + "&activityId=" + activityId,
+        success: function(res){
+          // success
+        },
+        fail: function() {
+          // fail
+        },
+        complete: function() {
+          // complete
+        }
+      });
+    }
+    this.setData({
+      clickProjectItemTimeStamp: timestamp
+    })
   },
   clickPersonnelItem: function(event) {
     var personnelId = event.currentTarget.dataset.personnelid;
     // console.log(projectId)
-    wx.navigateTo({
-      url: 'personnelDetail?personnelId=' + personnelId,
-      success: function(res){
-        // success
-      },
-      fail: function() {
-        // fail
-      },
-      complete: function() {
-        // complete
-      }
-    });
+    var timestamp = event.timeStamp;
+    // console.log(projectId)
+    if (timestamp - this.data.clickPersonnelItemTimeStamp < 500) {
+
+    } else {
+      wx.navigateTo({
+        url: 'personnelDetail?personnelId=' + personnelId,
+        success: function(res){
+          // success
+        },
+        fail: function() {
+          // fail
+        },
+        complete: function() {
+          // complete
+        }
+      });
+    }
+    this.setData({
+      clickPersonnelItemTimeStamp: timestamp
+    })
   },
   jumpToSearchProject: function(e) {
-    wx.navigateTo({
-      url: 'projectSearch?groupNo=' + e.currentTarget.dataset.groupno + '&type=' + e.currentTarget.dataset.navid,
-      success: function(res){
-        // success
-      },
-      fail: function() {
-        // fail
-      },
-      complete: function() {
-        // complete
-      }
+    var timestamp = e.timeStamp;
+    // console.log(projectId)
+    if (timestamp - this.data.searchTimeStamp < 500) {
+
+    } else {
+      wx.navigateTo({
+        url: 'projectSearch?groupNo=' + e.currentTarget.dataset.groupno + '&type=' + e.currentTarget.dataset.navid,
+        success: function(res){
+          // success
+        },
+        fail: function() {
+          // fail
+        },
+        complete: function() {
+          // complete
+        }
+      })
+    }
+    this.setData({
+      searchTimeStamp: timestamp
     })
   },
   jumpToSearchPersonnel: function() {

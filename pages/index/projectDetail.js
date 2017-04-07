@@ -18,7 +18,9 @@ Page({
     goodList: [],
     middleList: [],
     badList: [],
-    loadingHidden: true
+    loadingHidden: true,
+    commentTimeStamp: 0,
+    showShopTimeStamp: 0
   },
   onLoad:function(options){
     console.log("projectDetail onLoad");
@@ -47,20 +49,6 @@ Page({
     console.log("projectDetail onUnload");
     // 页面关闭
     clearInterval(timer);
-  },
-  back: function(){
-    wx.navigateBack({
-      delta: 1, // 回退前 delta(默认为1) 页面
-      success: function(res){
-        // success
-      },
-      fail: function() {
-        // fail
-      },
-      complete: function() {
-        // complete
-      }
-    })
   },
   updateCommentNum: function(){
     var that = this;
@@ -152,16 +140,6 @@ Page({
           wx.hideNavigationBarLoading();
         }
     });
-  },
-  loadMore: function(e) {
-    console.log("loadMore");
-    var level = e.target.dataset.level;
-    this.loadComments(level, "up");
-  },
-  refresh: function(e){
-    console.log("refresh");
-    var level = e.target.dataset.level;
-    this.loadComments(level, "down");
   },
   loadProject: function() {
     wx.showNavigationBarLoading();
@@ -311,19 +289,27 @@ Page({
       }
     })
   },
-  showComments: function() {
+  showComments: function(e) {
     var that = this;
-    wx.navigateTo({
-      url: '../index/projectComments?projectId=' + that.data.projectId,
-      success: function(res){
-        // success
-      },
-      fail: function() {
-        // fail
-      },
-      complete: function() {
-        // complete
-      }
+    var timestamp = e.timeStamp;
+    if (timestamp - this.data.commentTimeStamp < 500) {
+
+    } else {
+      wx.navigateTo({
+        url: '../index/projectComments?projectId=' + that.data.projectId,
+        success: function(res){
+          // success
+        },
+        fail: function() {
+          // fail
+        },
+        complete: function() {
+          // complete
+        }
+      })
+    }
+    this.setData({
+      commentTimeStamp: timestamp
     })
   },
   onShareAppMessage: function () {
@@ -335,17 +321,25 @@ Page({
   },
   showShop: function(e) {
     var that = this;
-    wx.navigateTo({
-      url: '../index/shopDetail?shopId=' + that.data.item.shopId,
-      success: function(res){
-        // success
-      },
-      fail: function(res) {
-        // fail
-      },
-      complete: function(res) {
-        // complete
-      }
+    var timestamp = e.timeStamp;
+    if (timestamp - this.data.showShopTimeStamp < 500) {
+
+    } else {
+      wx.navigateTo({
+        url: '../index/shopDetail?shopId=' + that.data.item.shopId,
+        success: function(res){
+          // success
+        },
+        fail: function(res) {
+          // fail
+        },
+        complete: function(res) {
+          // complete
+        }
+      })
+    }
+    this.setData({
+      showShopTimeStamp: timestamp
     })
   }
 })

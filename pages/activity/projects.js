@@ -5,7 +5,10 @@ Page({
     timestampFirst: 0,
     timestampLast: 0,
     loadingHidden: true,
-    projectList: []
+    projectList: [],
+    loadMoreTimeStamp: 0,
+    refreshTimeStamp: 0,
+    clickProjectItemTimeStamp: 0
   },
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
@@ -157,19 +160,27 @@ Page({
   clickProjectItem: function(e){
     var projectId = e.currentTarget.dataset.projectid;
     var activityId = e.currentTarget.dataset.activityid;
+    var timestamp = e.timeStamp;
     // console.log(projectId)
-    wx.navigateTo({
-      url: '../index/projectDetail?projectId=' + projectId + "&activityId=" + activityId,
-      success: function(res){
-        // success
-      },
-      fail: function() {
-        // fail
-      },
-      complete: function() {
-        // complete
-      }
-    });
+    if (timestamp - this.data.clickProjectItemTimeStamp < 500) {
+
+    } else {
+      wx.navigateTo({
+        url: '../index/projectDetail?projectId=' + projectId + "&activityId=" + activityId,
+        success: function(res){
+          // success
+        },
+        fail: function() {
+          // fail
+        },
+        complete: function() {
+          // complete
+        }
+      });
+    }
+    this.setData({
+      clickProjectItemTimeStamp: timestamp
+    })
   },
   loadMore: function(e) {
     console.log("loadMore");

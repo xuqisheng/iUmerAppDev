@@ -5,7 +5,10 @@ Page({
     personnelList: [],
     timestampFirst: 0,
     timestampLast: 0,
-    loadingHidden: true
+    loadingHidden: true,
+    clickPersonnelItemTimeStamp: 0,
+    loadMoreTimeStamp: 0,
+    refreshTimeStamp: 0
   },
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
@@ -131,25 +134,49 @@ Page({
   clickPersonnelItem: function(e){
     var personnelId = e.currentTarget.dataset.personnelid;
     // console.log(projectId)
-    wx.navigateTo({
-      url: 'personnelDetail?personnelId=' + personnelId,
-      success: function(res){
-        // success
-      },
-      fail: function() {
-        // fail
-      },
-      complete: function() {
-        // complete
-      }
-    });
+    var timestamp = e.timeStamp;
+    if (timestamp - this.data.clickPersonnelItemTimeStamp < 500) {
+
+    } else {
+      wx.navigateTo({
+        url: 'personnelDetail?personnelId=' + personnelId,
+        success: function(res){
+          // success
+        },
+        fail: function() {
+          // fail
+        },
+        complete: function() {
+          // complete
+        }
+      });
+    }
+    this.setData({
+      clickPersonnelItemTimeStamp: timestamp
+    })
   },
   loadMore: function(e) {
     console.log("loadMore");
-    this.searchPersonnel("up", this.data.value);
+    var timestamp = e.timeStamp;
+    if (timestamp - this.data.loadMoreTimeStamp < 500) {
+
+    } else {
+      this.searchPersonnel("up", this.data.value);
+    }
+    this.setData({
+      loadMoreTimeStamp: timestamp
+    })
   },
   refresh: function(e){
     console.log("refresh");
-    this.searchPersonnel("down", this.data.value);
+    var timestamp = e.timeStamp;
+    if (timestamp - this.data.refreshTimeStamp < 500) {
+
+    } else {
+      this.searchPersonnel("down", this.data.value);
+    }
+    this.setData({
+      refreshTimeStamp: timestamp
+    })
   }
 })
