@@ -173,10 +173,26 @@ Page({
   },
   loadMore: function(e) {
     console.log("loadMore");
-    this.loadProjects("up");
+    var timestamp = e.timeStamp;
+    if (timestamp - this.data.loadMoreTimeStamp < 500) {
+
+    } else {
+      this.loadProjects("up");
+    }
+    this.setData({
+      loadMoreTimeStamp: timestamp
+    });
   },
   refresh: function(e){
     console.log("refresh");
-    this.loadProjects("down");
+    var timestamp = e.timeStamp;
+    if (timestamp - this.data.refreshTimeStamp < 500) {
+
+    } else {
+      this.loadProjects("down");
+    }
+    this.setData({
+      refreshTimeStamp: timestamp
+    })
   }
 })

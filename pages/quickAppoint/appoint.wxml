@@ -21,7 +21,7 @@
             <view class="project-item-dot-line"></view>
             <view class="project-item-info">
                 <span class="project-item-info-distance">
-                    <image src="https://www.iumer.cn/umer/css/image/wechat/pin@3x.png" />
+                    <image src="https://www.iumer.cn/umer/css/image/wechat/app/pin@3x.png" />
                     <text >{{ shopAddress }}</text>
                 </span>
                 <span class="project-item-info-duration"><image src="https://www.iumer.cn/umer/css/image/wechat/history-red@2x.png" />{{ projectDuration }}分钟</span>

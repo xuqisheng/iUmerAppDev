@@ -61,6 +61,10 @@ page {
 	flex-direction:column;
     margin-right: 20rpx;
 }
+.hot-item-left .hot-item-img {
+	display: flex;
+	align-items: center;
+}
 .hot-item-left .hot-item-img image {
 	width: 130rpx;
 	height: 130rpx;

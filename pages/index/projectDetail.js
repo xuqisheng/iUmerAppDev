@@ -229,9 +229,9 @@ Page({
             });
             wx.request({
               url: app.globalData.server_url + 'webService/customer/biz/index/shopDetail', 
-              data: {
+              data: app.encode({
                 id: d.shopId
-              },
+              }),
               method: "POST",
               dataType: "json",
               header: {
@@ -332,5 +332,20 @@ Page({
       title: 'iUmer - 优美东方',
       path: '/pages/index/projectDetail?projectId=' + that.data.projectId
     }
+  },
+  showShop: function(e) {
+    var that = this;
+    wx.navigateTo({
+      url: '../index/shopDetail?shopId=' + that.data.item.shopId,
+      success: function(res){
+        // success
+      },
+      fail: function(res) {
+        // fail
+      },
+      complete: function(res) {
+        // complete
+      }
+    })
   }
 })

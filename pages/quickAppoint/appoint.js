@@ -6,7 +6,7 @@ Page({
     durationNum: 0,
     selectedTime: "",
     priceDropdownHidden: true,
-    priceType: 0,
+    priceType: "0",
     reservePhone: wx.getStorageSync('phone'),
     reserveName: wx.getStorageSync('name')
   },
@@ -15,7 +15,7 @@ Page({
     this.setData({
       projectId: options.projectId,
       personnelId: options.personnelId,
-      priceType: options.priceType || 0,
+      priceType: options.priceType || "0",
       activityId: options.activityId,
       referrer: options.referrer,
       'from': options.from
@@ -455,6 +455,7 @@ Page({
 		var endDateStr = that.data.chosenDate + " " + that.data.chosenHours[that.data.chosenHours.length - 1];
 		var endDate = new Date(endDateStr.replace(new RegExp(/-/g),'/'));
     wx.showNavigationBarLoading();
+    console.log(that.data.priceType)
     wx.request({
       url: app.globalData.server_url + 'webService/customer/biz/reserve/orderSave', 
         data: app.encode({

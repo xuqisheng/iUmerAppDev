@@ -5,6 +5,13 @@ page {
 .container {
 	height: 100%;
 }
+.no-data image {
+	width: 75%;
+	height: calc(750rpx / 742 * 278 * 0.75);
+}
+.no-data text {
+	
+}
 #people {
 	height: 100%;
 }
@@ -52,6 +59,9 @@ page {
 .people-item-right .star image {
 	width: 32rpx;
 	height: 32rpx;
+}
+.people-item-right .star view:not(:first-child) image {
+	padding-left: 5rpx;
 }
 .people-item-name {
 	color: #414141;

@@ -5,14 +5,6 @@ page {
 .container {
 	height: 100%;
 }
-.no-data {
-	background-color: white;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	height: 100%;
-}
 .no-data image {
 	width: 35%;
 	height: calc(750rpx / 106 * 132 * 0.35);

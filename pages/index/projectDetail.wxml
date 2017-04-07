@@ -37,7 +37,7 @@
                     <view class="description-cell__ft"></view>
                 </view>
             </view>
-            <view id="shop-info-area">
+            <view id="shop-info-area" bindtap="showShop">
                 <view class="shop-info-area-logo"><image src="https://www.iumer.cn{{ shopHeader }}"></image></view>
                 <view class="shop-info-area-txt"> 
                     <view class="shop-info-area-txt-title">{{ shopTitle }}</view> 
@@ -52,14 +52,14 @@
                 <view class="other-cell" href="javascript:;">
                     <view class="other-cell__hd"></view>
                     <view class="other-cell__bd">
-                        <text>服务地址 {{ shopAddress }}</text>
+                        <view>服务地址 <text>{{ shopAddress }}</text></view>
                     </view>
                     <view class="other-cell__ft"></view>
                 </view>
                 <view class="other-cell" href="javascript:;">
                     <view class="other-cell__hd"></view>
                     <view class="other-cell__bd">
-                        <text>服务步骤</text>
+                        <view>服务步骤</view>
                     </view>
                     <view class="other-cell__ft"></view>
                 </view>
@@ -73,21 +73,21 @@
                 <view class="other-cell" href="javascript:;">
                     <view class="other-cell__hd"></view>
                     <view class="other-cell__bd">
-                        <text>产品品牌 {{ projectBrand }} </text>
+                        <view>产品品牌 <text>{{ projectBrand }}</text></view>
                     </view>
                     <view class="other-cell__ft"></view>
                 </view>
                 <view class="other-cell" href="javascript:;">
                     <view class="other-cell__hd"></view>
                     <view class="other-cell__bd">
-                        <text>注意事项 {{ projectMatters }}</text>
+                        <view>注意事项 <text>{{ projectMatters }}</text></view>
                     </view>
                     <view class="other-cell__ft"></view>
                 </view>
                 <view class="other-cell" href="javascript:;">
                     <view class="other-cell__hd"></view>
                     <view class="other-cell__bd">
-                        <text>适用人群 {{ projectApply }}</text>
+                        <view>适用人群 <text>{{ projectApply }}</text></view>
                     </view>
                     <view class="other-cell__ft"></view>
                 </view>

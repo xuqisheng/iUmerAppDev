@@ -74,6 +74,10 @@ page {
 	flex-direction:column;
     margin-right: 20rpx;
 }
+.hot-item-left .hot-item-img {
+	display: flex;
+	align-items: center;
+}
 .hot-item-left .hot-item-img image {
 	width: 130rpx;
 	height: 130rpx;
@@ -143,6 +147,10 @@ page {
 	flex-direction:column;
 	margin-right: 20rpx;
 }
+.people-item-left .people-item-img {
+	display: flex;
+	align-items: center;
+}
 .people-item-left .people-item-img image {
 	width: 130rpx;
 	height: 130rpx;
@@ -158,6 +166,9 @@ page {
 .people-item-right .star image {
 	width: 32rpx;
 	height: 32rpx;
+}
+.people-item-right .star view:not(:first-child) image {
+	padding-left: 5rpx;
 }
 .people-item-name {
 	color: #414141;

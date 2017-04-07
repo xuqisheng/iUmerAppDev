@@ -18,7 +18,7 @@
                 </view>
             </view>
             <view class="personnel-info-right">
-                <view class="personnel-info-right-title">{{ personnelInfo.name || "匿名用户" }}</view>
+                <view class="personnel-info-right-title">{{ personnelInfo.name || "匿名用户" }}<text>({{ personnelInfo.shopName }})</text></view>
                 <view class="personnel-info-right-desc">{{ personnelInfo.description || "无简介" }}</view>
             </view>
         </view>
@@ -44,8 +44,8 @@
 						</view>
 						<view class="hot-item-info">
 							<view class="hot-item-info-distance">
-								<image src="https://www.iumer.cn/umer/css/image/wechat/pin@3x.png" />距离{{ item.distance || "0米" }}左右</view>
-							<view class="hot-item-info-duration"><image src="https://www.iumer.cn/umer/css/image/wechat/history-red@2x.png" />{{ item.duration || "0" }}分钟</view>
+								<image src="https://www.iumer.cn/umer/css/image/wechat/app/pin@3x.png" />{{ item.distance? "距离" + item.distance + "左右": "未定位到优美师" }}</view>
+							<view class="hot-item-info-duration"><image src="https://www.iumer.cn/umer/css/image/wechat/app/time@2x.png" />{{ item.duration || "0" }}分钟</view>
 						</view>
 					</view>
 				</view>

@@ -4,7 +4,8 @@ Page({
   data:{
     timestampFirst: 0,
     timestampLast: 0,
-    projectPersonnels: []
+    projectPersonnels: [],
+    noDataHidden: true
   },
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
@@ -53,7 +54,8 @@ Page({
           if (res.code == 1) {
             if (res.data.length == 0) {
               that.setData({
-                loadingHidden: true
+                loadingHidden: true,
+                noDataHidden: false
               });
               return false;
             }

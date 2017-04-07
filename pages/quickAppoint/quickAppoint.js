@@ -74,8 +74,8 @@ Page({
           var projectList = opType == "down"? res.data.data.concat(that.data.projectList): opType == "up"? that.data.projectList.concat(res.data.data): res.data.data;
           that.setData({
             projectList: projectList,
-            timestampFirst: res.data.data[0].createDate,
-            timestampLast: res.data.data[res.data.data.length - 1].createDate
+            timestampFirst: projectList[0].createDate,
+            timestampLast: projectList[projectList.length - 1].createDate
           });
           if (projectList.length < 10 || res.data.data.length < 10) {
             that.setData({
@@ -155,9 +155,9 @@ Page({
           }
           var personnelList = opType == "down"? res.data.data.concat(that.data.personnelList): opType == "up"? that.data.personnelList.concat(res.data.data): res.data.data;
           that.setData({
-            personnelList: res.data.data,
-            timestampFirst: res.data.data[0].createDate,
-            timestampLast: res.data.data[res.data.data.length - 1].createDate
+            personnelList: personnelList,
+            timestampFirst: personnelList[0].createDate,
+            timestampLast: personnelList[personnelList.length - 1].createDate
           });
           if (personnelList.length < 10 || res.data.data.length < 10) {
             that.setData({

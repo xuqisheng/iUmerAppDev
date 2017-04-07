@@ -9,7 +9,9 @@ Page({
     orderList: [],
     timestampFirst: 0,
     timestampLast: 0,
-    mapping: [1, 0, 2, 3, 4]
+    mapping: [1, 0, 2, 3, 4],
+    loadMoreTimeStamp: 0,
+    refreshTimeStamp: 0
   },
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
@@ -63,6 +65,7 @@ Page({
       case "down": data["timestamp"] = that.data.timestampFirst; break;
       }
     }
+    console.log(data)
     wx.request({
         url: app.globalData.server_url + 'webService/customer/biz/order/myOrderList', 
         data: app.encode(data),
@@ -85,16 +88,18 @@ Page({
               });
               return false;
             }
-            var orderList = opType == "down"? res.data.data.concat(that.data.orderList): opType == "up"? that.data.orderList.concat(res.data.data): res.data.data;
-            for (var i = 0; i < orderList.length; i++) {
-              var makeTime = orderList[i].makeTime;
-              if (makeTime) {
-                makeTime = makeTime.split(" ");
-                if (makeTime.length > 2) {
-                  orderList[i].makeTime = makeTime[0] + ' ' + makeTime[1] + '~' + makeTime[4];
-                }
-              }
+
+            if (!opType) {
+              that.setData({
+                orderList: []
+              });
             }
+
+            console.log(that.data.orderList.length + " " + res.data.data.length)
+            var orderList = opType == "down"? res.data.data.concat(that.data.orderList): opType == "up"? that.data.orderList.concat(res.data.data): res.data.data;
+
+            
+
             that.setData({
               orderList: orderList,
               timestampFirst: orderList[0].createDate,
@@ -147,13 +152,31 @@ Page({
   },
   loadMore: function(e) {
     console.log("loadMore");
-var mapping = this.data.mapping;
-    this.loadOrders(mapping[this.data.currTab], "up"); 
+    //console.log(e.timeStamp + " " + this.data.scrollTimeStamp)
+    var timestamp = e.timeStamp;
+    if (timestamp - this.data.loadMoreTimeStamp < 500) {
+
+    } else {
+      var mapping = this.data.mapping;
+      this.loadOrders(mapping[this.data.currTab], "up"); 
+    }
+    this.setData({
+      loadMoreTimeStamp: timestamp
+    });
   },
   refresh: function(e){
     console.log("refresh");
-    var mapping = this.data.mapping;
-    this.loadOrders(mapping[this.data.currTab], "down"); 
+    // console.log(e.timeStamp - this.data.refreshTimeStamp)
+    var timeStamp = e.timeStamp;
+    if (timeStamp - this.data.refreshTimeStamp < 500) {
+
+    } else {
+      var mapping = this.data.mapping;
+      this.loadOrders(mapping[this.data.currTab], "down"); 
+    }
+    this.setData({
+      refreshTimeStamp: timeStamp
+    })
   },
   clickOrderItem: function(e) {
     var orderNo = e.currentTarget.dataset.orderno;

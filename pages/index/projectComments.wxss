@@ -77,6 +77,9 @@ page {
 	width: 32rpx;
 	height: 32rpx;
 }
+.comment-item-right .star view:not(:first-child) image {
+	padding-left: 5rpx;
+}
 .comment-item-time {
 	float: right;
 }

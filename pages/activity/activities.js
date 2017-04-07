@@ -4,7 +4,9 @@ Page({
     timestampFirst: 0,
     timestampLast: 0,
     loadingHidden: true,
-    noDataHidden: true
+    noDataHidden: true,
+    loadMoreTimeStamp: 0,
+    refreshTimeStamp: 0
   },
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
@@ -144,10 +146,25 @@ Page({
   },
   loadMore: function(e) {
     console.log("loadMore");
-    this.loadActivities("up");
+    var timestamp = e.timeStamp;
+    if (timestamp - this.data.loadMoreTimeStamp < 500) {
+
+    } else {
+      this.loadActivities("up");
+    }
+    this.setData({
+      loadMoreTimeStamp: timestamp
+    })
   },
   refresh: function(e){
     console.log("refresh");
-    this.loadActivities("down");
+    if (timestamp - this.data.refreshTimeStamp < 500) {
+
+    } else {
+      this.loadActivities("down");
+    }
+    this.setData({
+      refreshTimeStamp: timestamp
+    })
   }
 })

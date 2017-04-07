@@ -25,7 +25,7 @@
             </view>
             <view class="people-item-info">
                 <view class="people-item-info-distance">
-				    <image src="https://www.iumer.cn/umer/css/image/wechat/pin@3x.png" />距离{{ personnelInfo.distance || "0米" }}左右
+				    <image src="https://www.iumer.cn/umer/css/image/wechat/app/pin@3x.png" />{{ item.distance? "距离" + item.distance + "左右": "未定位到优美师" }}
                 </view>
                 <view class="people-item-info-board-comment">
                     <view class="people-item-info-board"><image src="https://www.iumer.cn/umer/css/image/wechat/order-count@2x.png" /> {{ personnelInfo.orderCount || 0 }}</view>
@@ -75,7 +75,7 @@
             </view>
             <view class="{{ priceDropdownHidden? '': 'arrow-down' }}"></view>
         </view>
-        <view class="selection-cell selection-cell_access" href="javascript:;" bindtap="chooseProject">
+        <view style="color: {{ !projectId? 'red': 'black' }}; border: {{ !projectId? 'solid 1px red': 'none' }}; border-bottom: {{ !projectId? 'solid 1px red': 'solid 1px #F7F7F7;' }};" class="selection-cell selection-cell_access" href="javascript:;" bindtap="chooseProject">
             <view class="selection-cell__bd">
             <text>项目</text>
             </view>

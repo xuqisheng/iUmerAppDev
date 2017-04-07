@@ -30,6 +30,9 @@ page {
     width: 32rpx;
 	height: 32rpx;
 }
+.personnel-info-left-rating view:not(:first-child) image {
+	padding-left: 5rpx;
+}
 .personnel-info-right {
     padding: 0 0 0 20rpx;
 }
@@ -68,6 +71,10 @@ page {
 	align-items: center;
 	flex-direction:column;
 	margin-right: 20rpx;
+}
+.hot-item-left .hot-item-img {
+	display: flex;
+	align-items: center;
 }
 .hot-item-left .hot-item-img image {
 	width: 130rpx;
@@ -171,6 +178,9 @@ page {
 	width: 32rpx;
 	height: 32rpx;
 }
+.comment-item-right .star view:not(:first-child) image {
+	padding-left: 5rpx;
+}
 .comment-item-time {
 	float: right;
 }
@@ -190,6 +200,7 @@ page {
     font-size: 28rpx;
     text-align: left;
 	word-break: break-all;
+	color: #585858;
 }
 .comment-item:not(:last-child) {
 	border-bottom: solid 2rpx #F7F7F7;
