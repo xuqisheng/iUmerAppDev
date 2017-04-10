@@ -15,6 +15,9 @@ Page({
     });
     this.loadShop();
     this.loadProjects();
+    wx.setNavigationBarTitle({
+      title: '优美店详情'
+    })
   },
   onReady:function(){
     // 页面渲染完成

@@ -21,6 +21,9 @@ Page({
     this.loadAreaList();
     this.loadCategoryList();
     this.loadProjects();
+    wx.setNavigationBarTitle({
+      title: '项目'
+    })
   },
   onReady:function(){
     // 页面渲染完成

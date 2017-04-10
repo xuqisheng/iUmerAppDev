@@ -8,6 +8,9 @@ Page({
     });
     this.loadOrder();
     this.loadPaymentMethods();
+    wx.setNavigationBarTitle({
+      title: '订单'
+    })
   },
   onReady:function(){
     // 页面渲染完成

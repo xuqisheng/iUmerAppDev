@@ -27,6 +27,9 @@ Page({
       this.loadPersonnel();
     }
     console.log(this.data.priceType)
+    wx.setNavigationBarTitle({
+      title: '预约'
+    })
   },
   onReady:function(){
     // 页面渲染完成

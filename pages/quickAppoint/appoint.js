@@ -24,6 +24,9 @@ Page({
     this.loadProject();
     this.loadPersonnel();
     this.loadWeekdays();
+    wx.setNavigationBarTitle({
+      title: '预约'
+    })
   },
   onReady:function(){
     // 页面渲染完成

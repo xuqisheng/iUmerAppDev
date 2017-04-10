@@ -8,6 +8,9 @@ Page({
     this.setData({
       resultList: []
     });
+    wx.setNavigationBarTitle({
+      title: '城市'
+    })
   },
   onReady:function(){
     // 页面渲染完成

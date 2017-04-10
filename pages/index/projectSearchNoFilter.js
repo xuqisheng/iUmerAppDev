@@ -16,6 +16,9 @@ Page({
       value: options.value || "",
       'from': options.from
     })
+    wx.setNavigationBarTitle({
+      title: '项目'
+    })
   },
   onReady:function(){
     // 页面渲染完成

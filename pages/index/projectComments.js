@@ -29,6 +29,9 @@ Page({
     });
     this.loadComments(0, ""); 
     this.updateCommentNum();
+    wx.setNavigationBarTitle({
+      title: '评价'
+    })
   },
   onReady:function(){
     console.log("projectDetail onReady");

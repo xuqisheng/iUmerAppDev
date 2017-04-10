@@ -26,6 +26,9 @@ Page({
     if (options.projectId) {
       this.loadProject();
     }
+    wx.setNavigationBarTitle({
+      title: '预约'
+    })
   },
   onReady:function(){
     // 页面渲染完成

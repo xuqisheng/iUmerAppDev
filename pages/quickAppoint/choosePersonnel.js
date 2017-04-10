@@ -17,6 +17,9 @@ Page({
       activityId: options.activityId
     });
     this.loadPersonnels("");
+    wx.setNavigationBarTitle({
+      title: '选择优美师'
+    })
   },
   onReady:function(){
     // 页面渲染完成

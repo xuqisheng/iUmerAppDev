@@ -13,6 +13,9 @@ Page({
       orderNo: options.orderNo
     });
     this.loadOrder();
+    wx.setNavigationBarTitle({
+      title: '评价'
+    })
   },
   onReady:function(){
     // 页面渲染完成

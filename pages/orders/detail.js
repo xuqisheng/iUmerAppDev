@@ -10,6 +10,9 @@ Page({
   },
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
+    wx.setNavigationBarTitle({
+      title: '订单详情'
+    })
     this.setData({
       orderNo: options.orderNo
       // orderNo: 'DD5835963228129030' // 取消中 5

@@ -15,6 +15,9 @@ Page({
     this.setData({
       value: options.value || ""
     })
+    wx.setNavigationBarTitle({
+      title: '优美店'
+    })
   },
   onReady:function(){
     // 页面渲染完成

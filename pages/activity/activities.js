@@ -10,6 +10,9 @@ Page({
   },
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
+    wx.setNavigationBarTitle({
+      title: '营销活动'
+    })
     this.setData({
       shopId: options.shopId
     });

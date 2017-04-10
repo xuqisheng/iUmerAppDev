@@ -7,6 +7,9 @@ Page({
   },
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
+    wx.setNavigationBarTitle({
+      title: '城市'
+    })
     wx.showNavigationBarLoading();
     var that = this;
     console.log("onload");

@@ -32,6 +32,9 @@ Page({
     this.loadProject();
     this.loadComments(); 
     this.updateCommentNum();
+    wx.setNavigationBarTitle({
+      title: '项目详情'
+    })
   },
   onReady:function(){
     console.log("projectDetail onReady");

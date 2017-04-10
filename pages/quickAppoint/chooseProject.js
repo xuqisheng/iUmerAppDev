@@ -17,6 +17,9 @@ Page({
       loadingHidden: true
     });
     this.loadProjects("");
+    wx.setNavigationBarTitle({
+      title: '选择项目'
+    })
   },
   onReady:function(){
     // 页面渲染完成
