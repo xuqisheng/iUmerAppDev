@@ -4,7 +4,8 @@ Page({
     loadingHidden: true,
     currTab: 0,
     loadMoreTimeStamp: 0,
-    refreshTimeStamp: 0
+    refreshTimeStamp: 0,
+    noDataHidden: true
   },
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数    
@@ -43,7 +44,7 @@ Page({
     }
   },
   loadProjects: function(opType) {
-    wx.showNavigationBarLoading();
+    // wx.showNavigationBarLoading();
     var that = this;
     var data = {};
     data["customerId"] = wx.getStorageSync('id');
@@ -67,9 +68,10 @@ Page({
       },
       success: function(res) {
         if (res.data.code == 1) {
-          if (res.data.data.length == 0) {
+          if (res.data.data.length == 0 && !opType) {
             that.setData({
-              loadingHidden: true
+              loadingHidden: true,
+              noDataHidden: false
             });
             return false;
           }
@@ -77,7 +79,8 @@ Page({
           that.setData({
             projectList: projectList,
             timestampFirst: projectList[0].createDate,
-            timestampLast: projectList[projectList.length - 1].createDate
+            timestampLast: projectList[projectList.length - 1].createDate,
+            noDataHidden: true
           });
           if (projectList.length < 10 || res.data.data.length < 10) {
             that.setData({
@@ -119,13 +122,13 @@ Page({
         console.log("loadProjects fail")
       },
       complete: function(res) {
-        wx.hideNavigationBarLoading();
+        // wx.hideNavigationBarLoading();
         console.log("loadProjects complete")
       }
     });
   },
   loadPersonnels: function(opType) {
-    wx.showNavigationBarLoading();
+    //wx.showNavigationBarLoading();
     var that = this;
     var data = {};
     data["customerId"] = wx.getStorageSync('id');
@@ -149,9 +152,10 @@ Page({
       },
       success: function(res) {
         if (res.data.code == 1) {
-          if (res.data.data.length == 0) {
+          if (res.data.data.length == 0 && !opType) {
             that.setData({
-              loadingHidden: true
+              loadingHidden: true,
+              noDataHidden: false
             });
             return false;
           }
@@ -201,7 +205,7 @@ Page({
         console.log("loadPersonnels fail")
       },
       complete: function(res) {
-        wx.hideNavigationBarLoading();
+        //wx.hideNavigationBarLoading();
         console.log("loadPersonnels complete")
       }
     });

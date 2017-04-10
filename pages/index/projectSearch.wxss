@@ -4,6 +4,13 @@ page {
 .container {
 	height: 100%;
 }
+.no-data image {
+	width: 75%;
+	height: calc(750rpx / 742 * 278 * 0.75);
+}
+.no-data text {
+	
+}
 .red {
 	color: #e84057 !important;
 	border: solid 2rpx #e84057 !important;
@@ -91,6 +98,7 @@ page {
 .filter-item-list-sorting .filter-item-list-item {
     display: flex;
     align-items: center;
+	width: calc(100% - 40rpx);
 }
 .filter-item-list-sorting .filter-item-list-item image {
 	width: 30rpx;
@@ -115,6 +123,9 @@ page {
 .filter-item-list-item-end {
 	border-top: solid 2rpx #F7F7F7;
 	background-color: white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 .filter-item-area .filter-item-list-item-end {
     border-bottom: solid 2rpx #F7F7F7;
@@ -136,6 +147,7 @@ page {
 	white-space: nowrap;
 }
 .filter-item-list-item-category text {
+	border-radius: 8rpx;
 	border: solid 2rpx lightgrey;
     color: #686868;
     padding: 10rpx;
@@ -145,7 +157,10 @@ page {
 	background-image: url("https://www.iumer.cn/umer/css/image/wechat/selected@2x.png");
 	background-repeat: no-repeat;
 	background-position: right center;
-    background-size: 80rpx calc(80rpx / 46 * 29);
+    background-size: 60rpx calc(60rpx / 46 * 29);
+}
+.filter-list-item-on-pink {
+	color: #FD8CA3;
 }
 .filter-list-item-category-on {
 	border: solid 2rpx #FD8CA3 !important;

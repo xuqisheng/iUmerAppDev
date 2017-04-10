@@ -4,6 +4,13 @@ page {
 .container {
     height: 100%;
 }
+.no-data image {
+	width: 75%;
+	height: calc(750rpx / 742 * 278 * 0.75);
+}
+.no-data text {
+	
+}
 .red {
     color: red;
 }
@@ -24,26 +31,32 @@ page {
     color: red;
 }
 .order-item {
-    display: flex;
     background-color: white;
     border-bottom: solid 2rpx #F7F7F7;
+    padding: 0 20rpx;
 }
-.order-item:first-child {
+.order-item {
     margin-top: 10rpx;
+}
+.order-item-bd {
+    display: flex;
+    justify-content: space-between;
+    padding: 20rpx 0;
 }
 .order-item-left {
     width: 180rpx;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 .order-item-left image {
-    width: 140rpx;
-    height: 140rpx;
-    padding: 20rpx;
+    width: 120rpx;
+    height: 120rpx;
+    margin-right: 20rpx;
 }
 .order-item-middle {
     flex-grow: 2;
-    padding: 20rpx 0 0 0;
+    padding: 0 0 0 0;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -51,11 +64,19 @@ page {
 .order-item-middle view:not(:first-child) {
     margin-top: 5rpx;
 }
+.order-item-middle-title-and-price {
+    display: flex;
+    justify-content: space-between;
+}
+.order-item-middle-shop-and-status {
+    display: flex;
+    justify-content: space-between;
+}
 .order-item-middle-title {
     font-size: 35rpx;
 }
 .order-item-middle-shop {
-
+    font-size: 30rpx;
 }
 .order-item-middle-reserve-time, .order-item-middle-order-time {
     font-size: 28rpx;
@@ -65,6 +86,7 @@ page {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    align-items: flex-end;
     padding: 0 20rpx 20rpx 0;
 }
 .order-item-right-price {
@@ -72,6 +94,17 @@ page {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+}
+.order-item-ft {
+    padding: 20rpx 0;
+    border-top: solid 2rpx #F7F7F7;
+}
+.order-item-ft view:first-child {
+    margin-bottom: 10rpx;
+}
+.order-item-ft view {
+    display: flex;
+    justify-content: space-between;
 }
 .price text {
 	text-decoration: line-through; 
@@ -81,8 +114,8 @@ page {
 .order-item-right-status {
     color: gray;
     border: solid 2rpx gray;
-    padding: 10rpx 20rpx;
+    padding: 10rpx 15rpx;
     border-radius: 4rpx;
     width: 90rpx;
-    margin: 0 auto;
+    font-size: 28rpx
 }

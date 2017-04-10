@@ -12,7 +12,8 @@ Page({
     mapping: [1, "0", 2, 3, 4],
     loadMoreTimeStamp: 0,
     refreshTimeStamp: 0,
-    clickOrderItemTimeStamp: 0
+    clickOrderItemTimeStamp: 0,
+    noDataHidden: true
   },
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
@@ -51,7 +52,7 @@ Page({
   },
   loadOrders: function(status, opType) {
     console.log(status + " " + opType);
-    wx.showNavigationBarLoading();
+    // wx.showNavigationBarLoading();
     var that = this;
     // console.log("loadComments: " + this)
     var data = {};
@@ -85,7 +86,8 @@ Page({
                 orderList: [],
                 timestampFirst: 0,
                 timestampLast: 0,
-                loadingHidden2: true
+                loadingHidden2: true,
+                noDataHidden: false
               });
               return false;
             }
@@ -102,7 +104,8 @@ Page({
             that.setData({
               orderList: orderList,
               timestampFirst: orderList[0].createDate,
-              timestampLast: orderList[orderList.length - 1].createDate
+              timestampLast: orderList[orderList.length - 1].createDate,
+              noDataHidden: true
             });
             if (orderList.length < 10 || res.data.data.length < 10) {
               that.setData({
@@ -144,7 +147,7 @@ Page({
           console.log("loadOrders fail");
         },
         complete: function(res) {
-          wx.hideNavigationBarLoading();
+          // wx.hideNavigationBarLoading();
           console.log("loadOrders complete");
         }
     });

@@ -9,6 +9,10 @@
         </view>
     </view>
     <swiper class="swiper" current="{{ currTab }}" duration="300" bindchange="switchSwiper" style="height: calc(100% - 108rpx)">
+        <view hidden="{{ noDataHidden }}" class="no-data text-center">
+            <image src="https://www.iumer.cn/umer/css/image/wechat/app/no-project@2x.png"></image>
+            <text>暂时没有项目哦~</text>
+        </view>
         <swiper-item>    
             <scroll-view scroll-y style="width: 100%; height: calc(100%);" bindscrolltolower="loadMore" bindscrolltoupper="refresh">
                 <block wx:for="{{ projectList }}" wx:key="id">
@@ -32,7 +36,7 @@
                             </view>
                             <view class="hot-item-info">
                                 <view class="hot-item-info-distance">
-                                    <image src="https://www.iumer.cn/umer/css/image/wechat/app/pin@3x.png" />{{ item.distance? "距离" + item.distance + "左右": "未定位到项目" }}</view>
+                                    <image src="https://www.iumer.cn/umer/css/image/wechat/app/pin@3x.png" />{{ item.distance? "距离" + item.distance + "左右": "未定位到距离" }}</view>
                                 <view class="hot-item-info-duration"><image src="https://www.iumer.cn/umer/css/image/wechat/app/time@2x.png" />{{ item.duration || "0" }}分钟</view>
                             </view>
                         </view>
@@ -42,6 +46,10 @@
             </scroll-view>
         </swiper-item>  
         <swiper-item>  
+            <view hidden="{{ noDataHidden }}" class="no-data text-center">
+                <image src="https://www.iumer.cn/umer/css/image/wechat/app/no-personnel@2x.png"></image>
+                <text>暂时没有项目哦~</text>
+            </view>
             <scroll-view scroll-y style="width: 100%; height: calc(100%);" bindscrolltolower="loadMore" bindscrolltoupper="refresh">
                 <block wx:for="{{ personnelList }}" wx:key="id">
                     <view class="people-item" data-personnelId="{{ item.id }}" bindtap="appointProject" >
@@ -66,7 +74,7 @@
                             </view>
                             <view class="people-item-info">
                                 <view class="people-item-info-distance">
-                                    <image src="https://www.iumer.cn/umer/css/image/wechat/app/pin@3x.png" />{{ item.distance? "距离" + item.distance + "左右": "未定位到优美师" }}</view>
+                                    <image src="https://www.iumer.cn/umer/css/image/wechat/app/pin@3x.png" />{{ item.distance? "距离" + item.distance + "左右": "未定位到距离" }}</view>
                                 <view class="people-item-info-board-comment">
                                     <view class="people-item-info-board"><image src="https://www.iumer.cn/umer/css/image/wechat/app/order-count@2x.png" /> {{ item.orderCount || 0 }}</view>
                                     <view class="people-item-info-comment"><image src="https://www.iumer.cn/umer/css/image/wechat/app/comments@2x.png" />{{ item.commentCount || 0 }}</view>

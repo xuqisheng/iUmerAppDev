@@ -13,10 +13,13 @@ page {
 	width: 35%;
 	height: calc(750rpx / 106 * 132 * 0.35);
 }
+.container text {
+	margin-bottom: 25rpx;
+}
 .container view {
 	background-color: #FD8CA3;
 	color: white;
-	padding: 25rpx 80rpx;
+	padding: 25rpx 100rpx;
 	border-radius: 5rpx;
 	margin-top: 20rpx;
 }

@@ -62,24 +62,21 @@ button {
 }
 .project-item {
 	background-color: white;
-	display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
     display: flex;
 	justify-content: space-between;
-	-webkit-justify-content: space-between;
 	font-family: SimHei;
 }
 .project-item {
 	margin:0 0 20rpx 0;
 }
 .project-item-left {
-/* 	border: solid 1px blue; */
-	width: 200prx;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 220rpx;
 }
 .project-item-img {
-	padding: 20rpx;
+	/*padding: 20rpx;*/
 }
 .project-item-img image {
 	width: 128rpx;
@@ -88,7 +85,7 @@ button {
 .project-item-right {
 /* 	bORDER: SOLID 1PX GREEN; */
 	width: 100%;
-	padding: 20rpx 20rpx 0 20rpx;
+	padding: 20rpx 20rpx 0 0;
 }
 .project-item-name {
 	color: #414141;

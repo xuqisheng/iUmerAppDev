@@ -18,7 +18,7 @@
                             </view>
                         </view>
                         <view wx:if="{{ item.list.length == 0 }}">
-                            <view catchtap="clickArea" data-areaid="{{ item.code }}" class="filter-item-list-item {{ (areaId == item.code && item.name != '全部')? 'filter-list-item-on' :'' }} {{ (range == '' && areaId == '' && item.name == '全部')? 'filter-list-item-on' :'' }}"><text data-areaid="{{ item.code }}">{{  item.name }}</text></view>
+                            <view catchtap="clickArea" data-areaid="{{ item.code }}" class="filter-item-list-item {{ (areaId == item.code && item.name != '全部')? 'filter-list-item-on-pink' :'' }} {{ (range == '' && areaId == '' && item.name == '全部')? 'filter-list-item-on' :'' }}"><text data-areaid="{{ item.code }}">{{  item.name }}</text></view>
                         </view>
                     </block>
                 </view>
@@ -32,10 +32,10 @@
             </view>
             <view class="filter-item-list filter-item-list-sorting" hidden="{{ showSorting }}">
                 <view class="filter-item-list-items">
-                    <view class="filter-item-list-item {{ sortingId == 1? 'filter-list-item-on' :'' }}" data-sortingid="1" catchtap="clickSorting"><image alt="" src="https://www.iumer.cn/umer/css/image/wechat/sort@3x.png" /><text>智能排序</text></view>
-                    <view class="filter-item-list-item {{ sortingId == 2? 'filter-list-item-on' :'' }}" data-sortingid="2" catchtap="clickSorting"><image alt="" src="https://www.iumer.cn/umer/css/image/wechat/price@3x.png" /><text>价格排序</text></view>
-                    <view class="filter-item-list-item {{ sortingId == 3? 'filter-list-item-on' :'' }}" data-sortingid="3" catchtap="clickSorting"><image alt="" src="https://www.iumer.cn/umer/css/image/wechat/service@3x.png" /><text>服务最多</text></view>
-                    <view class="filter-item-list-item {{ sortingId == 4? 'filter-list-item-on' :'' }}" data-sortingid="4" catchtap="clickSorting"><image alt="" src="https://www.iumer.cn/umer/css/image/wechat/score@3x.png" /><text>评价最高</text></view>
+                    <view class="filter-item-list-item {{ sortingId == 1? 'filter-list-item-on filter-list-item-on-pink' :'' }}" data-sortingid="1" catchtap="clickSorting"><image alt="" src="https://www.iumer.cn/umer/css/image/wechat/sort@3x.png" /><text>智能排序</text></view>
+                    <view class="filter-item-list-item {{ sortingId == 2? 'filter-list-item-on filter-list-item-on-pink' :'' }}" data-sortingid="2" catchtap="clickSorting"><image alt="" src="https://www.iumer.cn/umer/css/image/wechat/price@3x.png" /><text>价格排序</text></view>
+                    <view class="filter-item-list-item {{ sortingId == 3? 'filter-list-item-on filter-list-item-on-pink' :'' }}" data-sortingid="3" catchtap="clickSorting"><image alt="" src="https://www.iumer.cn/umer/css/image/wechat/service@3x.png" /><text>服务最多</text></view>
+                    <view class="filter-item-list-item {{ sortingId == 4? 'filter-list-item-on filter-list-item-on-pink' :'' }}" data-sortingid="4" catchtap="clickSorting"><image alt="" src="https://www.iumer.cn/umer/css/image/wechat/score@3x.png" /><text>评价最高</text></view>
                 </view>
                 <view class="filter-item-list-item-end text-center" catchtap="hideFilter"><image alt="" src="https://www.iumer.cn/umer/css/image/wechat/pull-down@3x.png" /></view>
             </view>
@@ -61,6 +61,10 @@
         </view>
     </view>
     <view id="project-area">
+        <view hidden="{{ noDataHidden }}" class="no-data text-center">
+            <image src="https://www.iumer.cn/umer/css/image/wechat/app/no-project@2x.png"></image>
+            <text>暂时没有项目哦~</text>
+        </view>
         <scroll-view scroll-y style="width: 100%; height: 100%;" bindscrolltolower="loadMore" bindscrolltoupper="refresh">
             <block wx:for="{{ projectList }}" wx:key="id">
                 <view class="hot-item" data-projectId="{{ item.id }}" data-activityid="{{ item.projectActivityId || '' }}" bindtap="clickProjectItem" >
@@ -78,7 +82,7 @@
                         </view>
                         <view class="hot-item-info">
                             <view class="hot-item-info-distance">
-                                <image src="https://www.iumer.cn/umer/css/image/wechat/app/pin@3x.png" />{{ item.distance? "距离" + item.distance + "左右": "未定位到项目" }}</view>
+                                <image src="https://www.iumer.cn/umer/css/image/wechat/app/pin@3x.png" />{{ item.distance? "距离" + item.distance + "左右": "未定位到距离" }}</view>
                             <view class="hot-item-info-duration"><image src="https://www.iumer.cn/umer/css/image/wechat/app/time@2x.png" />{{ item.duration || "0" }}分钟</view>
                         </view>
                     </view>

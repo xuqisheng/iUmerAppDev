@@ -13,7 +13,7 @@
                         <view class="shop-item-right-title">{{ item.shopName || "店铺名称" }}</view> 
                         <view class="shop-item-right-intro">{{ item.description || "店铺介绍" }}</view> 
                         <view class="shop-item-right-info"> 
-                            <view class="shop-item-right-info-distance"><image src="https://www.iumer.cn/umer/css/image/wechat/app/pin@3x.png" />{{ item.distance? "距离" + item.distance + "左右": "未定位到优美店" }}</view>
+                            <view class="shop-item-right-info-distance"><image src="https://www.iumer.cn/umer/css/image/wechat/app/pin@3x.png" />{{ item.distance? "距离" + item.distance + "左右": "未定位到距离" }}</view>
                             <view class="shop-item-right-info-stats"> 
                                 <view>项目<text class="red">{{ item.projectCount || 0 }}</text></view>  
                                 <view>优美师<text class="red">{{ item.personnelCount || 0 }}</text></view> 

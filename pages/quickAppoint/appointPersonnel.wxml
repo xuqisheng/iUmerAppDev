@@ -24,7 +24,7 @@
                     <image src="https://www.iumer.cn/umer/css/image/wechat/app/pin@3x.png" />
                     <text>{{ shopAddress }}</text>
                 </span>
-                <span class="project-item-info-duration"><image src="https://www.iumer.cn/umer/css/image/wechat/history-red@2x.png" />{{ projectDuration }}分钟</span>
+                <span class="project-item-info-duration"><image src="https://www.iumer.cn/umer/css/image/wechat/app/time@2x.png" />{{ projectDuration }}分钟</span>
             </view>
         </view>
     </view>
@@ -69,7 +69,7 @@
             </view>
             <view class="{{ priceDropdownHidden? '': 'arrow-down' }}"></view>
         </view>
-        <view class="selection-cell selection-cell_access" href="javascript:;" bindtap="choosePersonnel" style="color: {{ !personnelId? 'red': 'black' }}; border: {{ !personnelId? 'solid 1px red': 'none' }}; border-bottom: {{ !personnelId? 'solid 1px red': 'solid 1px #F7F7F7;' }};">
+        <view class="selection-cell selection-cell_access" href="javascript:;" bindtap="choosePersonnel" style="color: {{ !personnelId? 'red': 'black' }}; border: {{ !personnelId? 'solid 1px #FD8CA3': 'none' }}; border-bottom: {{ !personnelId? 'solid 1px #FD8CA3': 'solid 1px #F7F7F7;' }};">
             <view class="selection-cell__bd">
             <text>优美师</text>
             </view>
