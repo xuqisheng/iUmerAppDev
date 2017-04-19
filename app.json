@@ -17,6 +17,7 @@
     "pages/login/login",
     "pages/login/loginPwd",
     "pages/login/authorize",
+    "pages/login/forget",
     "pages/orders/orders",
     "pages/orders/pay",
     "pages/orders/detail",

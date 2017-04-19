@@ -26,9 +26,9 @@ Page({
           //发起网络请求
           wx.request({
             url: app.globalData.server_url + 'webService/common/getOpenId',
-            data: {
+            data: app.encode({
               jsCode: '' + res.code
-            },
+            }),
             method: "POST",
             dataType: "json",
             header: {

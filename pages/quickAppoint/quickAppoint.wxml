@@ -36,7 +36,8 @@
                             </view>
                             <view class="hot-item-info">
                                 <view class="hot-item-info-distance">
-                                    <image src="https://www.iumer.cn/umer/css/image/wechat/app/pin@3x.png" />{{ item.distance? "距离" + item.distance + "左右": "未定位到距离" }}</view>
+                                    <image src="https://www.iumer.cn/umer/css/image/wechat/app/pin@3x.png" />{{ item.distance? "距离" + item.distance + "左右": "未定位到距离" }}
+                                </view>
                                 <view class="hot-item-info-duration"><image src="https://www.iumer.cn/umer/css/image/wechat/app/time@2x.png" />{{ item.duration || "0" }}分钟</view>
                             </view>
                         </view>

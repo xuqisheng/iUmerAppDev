@@ -21,12 +21,35 @@ Page({
     console.log("onReady");
   },
   onShow: function(){
-    if (wx.getStorageSync('id')) {
-      this.setData({
-        login: true
-      })
-    }
     var that = this;
+    wx.request({
+        url: app.globalData.server_url + 'webService/common/checkToken', 
+        data: app.encode({
+          token: wx.getStorageSync('X-TOKEN')
+        }),
+        method: "POST",
+        dataType: "json",
+        header: {
+           'Content-Type': 'application/json;charset=UTF-8;'
+       },
+        success: function(res) {
+          if (res.data.code == 1) {
+            that.setData({
+              login: true
+            })
+          } else {
+            that.setData({
+              login: false
+            })
+          } 
+        },
+        fail: function(res) {
+          console.log("checkToken fail")
+        },
+        complete: function(res) {
+          console.log("checkToken complete")
+        }
+    });
     console.log("onShow");
     if (wx.getStorageSync('cityCode')) {
       var city = wx.getStorageSync('cityName');

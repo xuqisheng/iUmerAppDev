@@ -14,6 +14,11 @@ page {
     border-bottom: solid 2rpx #F7F7F7;
     position: relative;
     justify-content:space-between;
+    align-items: center;
+}
+.input-cell input {
+    display: flex;
+    align-items: center;
 }
 .input-cell image {
     width: 36rpx;
@@ -33,7 +38,7 @@ page {
 .input-verifyCode .get-code-active {
     color: white;
     background-color: #FD8CA3;
-    padding: 10rpx;
+    padding: 8rpx;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -41,7 +46,7 @@ page {
 .input-verifyCode .get-code {
     color: white;
     background-color: lightgray;
-    padding: 10rpx;
+    padding: 8rpx;
     display: flex;
     justify-content: center;
     align-items: center;

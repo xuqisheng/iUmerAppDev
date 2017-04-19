@@ -14,7 +14,8 @@ Page({
     this.setData({
       personnelId: options.personnelId,
       priceType: options.priceType,
-      loadingHidden: true
+      loadingHidden: true,
+      'from': options.from
     });
     this.loadProjects("");
     wx.setNavigationBarTitle({
@@ -107,8 +108,9 @@ Page({
     var activityId = e.currentTarget.dataset.activityid;
     var personnelId = this.data.personnelId;
     var priceType = this.data.priceType;
+    var f = this.data.from;
     wx.redirectTo({
-      url: 'appointProject?personnelId=' + personnelId + '&projectId=' + projectId + "&priceType=" + priceType + "&activityId=" + activityId,
+      url: 'appointProject?personnelId=' + personnelId + '&projectId=' + projectId + "&priceType=" + priceType + "&activityId=" + activityId + '&from=' + f,
       success: function(res){
         // success
       },
@@ -147,8 +149,9 @@ Page({
   back: function(){
     var personnelId = this.data.personnelId;
     var priceType = this.data.priceType;
+    var f = this.data.from;
     wx.redirectTo({
-      url: 'appointProject?personnelId=' + personnelId + "&priceType=" + priceType,
+      url: 'appointProject?personnelId=' + personnelId + "&priceType=" + priceType + "&from=" + f,
       success: function(res){
         // success
       },

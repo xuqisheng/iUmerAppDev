@@ -58,6 +58,7 @@ Page({
         success: function(res) {
           if (res.data.code == 1) {
             var data = res.data.data;
+            console.log(data)
             wx.setStorageSync('id', data.id || "");
             wx.setStorageSync("name", data.name || "");
             wx.setStorageSync("phone", data.phone || "");
@@ -100,6 +101,20 @@ Page({
         complete: function(res) {
           console.log("login complete")
         }
+    });
+  },
+  forget: function(e) {
+    wx.redirectTo({
+      url: '../login/forget',
+      success: function(res){
+        // success
+      },
+      fail: function(res) {
+        // fail
+      },
+      complete: function(res) {
+        // complete
+      }
     });
   }
 })

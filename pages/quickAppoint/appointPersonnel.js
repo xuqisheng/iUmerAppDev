@@ -13,6 +13,9 @@ Page({
   },
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
+    console.log(wx.getStorageSync('phone'))
+    console.log(wx.getStorageSync('name'))
+    console.log(this.data)
     this.setData({
       projectId: options.projectId,
       personnelId: options.personnelId,
@@ -101,9 +104,9 @@ Page({
             });
             wx.request({
               url: app.globalData.server_url + 'webService/customer/biz/index/shopDetail', 
-              data: {
+              data: app.encode({
                 id: d.shopId
-              },
+              }),
               method: "POST",
               dataType: "json",
               header: {
@@ -171,9 +174,9 @@ Page({
     wx.showNavigationBarLoading();
     wx.request({
       url: app.globalData.server_url + 'webService/common/reservePeriodList', 
-        data: {
+        data: app.encode({
           
-        },
+        }),
         method: "POST",
         dataType: "json",
         header: {
@@ -313,7 +316,7 @@ Page({
     var that = this;
     console.log(that.data)
     wx.redirectTo({
-      url: 'choosePersonnel?projectId=' + that.data.projectId + "&priceType=" + that.data.priceType + "&activityId=" + (that.data.activityId || ''),
+      url: 'choosePersonnel?projectId=' + that.data.projectId + "&priceType=" + that.data.priceType + "&activityId=" + (that.data.activityId || '') + "&from=" + that.data.from,
       success: function(res){
         // success
       },
@@ -457,10 +460,10 @@ Page({
       });
       return false;
     }
-    var startDateStr = that.data.chosenDate + " " + that.data.chosenHours[0];
-		var startDate = new Date(startDateStr.replace(new RegExp(/-/g),'/'));
-		var endDateStr = that.data.chosenDate + " " + that.data.chosenHours[that.data.chosenHours.length - 1];
-		var endDate = new Date(endDateStr.replace(new RegExp(/-/g),'/'));
+    var startDateStr = that.data.chosenDate + " " + that.data.chosenHours[0] + ':00';
+		//var startDate = new Date(startDateStr.replace(new RegExp(/-/g),'/'));
+		var endDateStr = that.data.chosenDate + " " + that.data.chosenHours[that.data.chosenHours.length - 1] + ':00';
+		//var endDate = new Date(endDateStr.replace(new RegExp(/-/g),'/'));
     
     var timestamp = e.timeStamp;
     if (timestamp - that.data.submitOrderTimeStamp < 500) {
@@ -474,8 +477,8 @@ Page({
             "projectId": that.data.projectId,
             "personnelId": that.data.personnelId,
             "customerId": wx.getStorageSync('id'),
-            "makeStartDate": startDate.getTime(),
-            "makeEndDate": endDate.getTime(),
+            "makeStartDate": startDateStr,
+            "makeEndDate": endDateStr,
             "reserveName" : that.data.reserveName,
             "reservePhone": that.data.reservePhone,
             "priceType": that.data.priceType,

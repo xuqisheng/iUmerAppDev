@@ -454,10 +454,10 @@ Page({
       });
       return false;
     }
-    var startDateStr = that.data.chosenDate + " " + that.data.chosenHours[0];
-		var startDate = new Date(startDateStr.replace(new RegExp(/-/g),'/'));
-		var endDateStr = that.data.chosenDate + " " + that.data.chosenHours[that.data.chosenHours.length - 1];
-		var endDate = new Date(endDateStr.replace(new RegExp(/-/g),'/'));
+    var startDateStr = that.data.chosenDate + " " + that.data.chosenHours[0] + ":00";
+		//var startDate = new Date(startDateStr.replace(new RegExp(/-/g),'/'));
+		var endDateStr = that.data.chosenDate + " " + that.data.chosenHours[that.data.chosenHours.length - 1] + ":00";
+		//var endDate = new Date(endDateStr.replace(new RegExp(/-/g),'/'));
     console.log(that.data.priceType)
     var timestamp = e.timeStamp;
     if (timestamp - that.data.submitOrderTimeStamp < 500) {
@@ -471,8 +471,8 @@ Page({
             "projectId": that.data.projectId,
             "personnelId": that.data.personnelId,
             "customerId": wx.getStorageSync('id'),
-            "makeStartDate": startDate.getTime(),
-            "makeEndDate": endDate.getTime(),
+            "makeStartDate": startDateStr,
+            "makeEndDate": endDateStr,
             "reserveName" : that.data.reserveName,
             "reservePhone": that.data.reservePhone,
             "priceType": that.data.priceType,

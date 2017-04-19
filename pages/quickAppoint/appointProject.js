@@ -235,7 +235,7 @@ Page({
     var that = this;
     console.log(that.data)
     wx.redirectTo({
-      url: 'chooseProject?personnelId=' + that.data.personnelId + "&priceType=" + that.data.priceType,
+      url: 'chooseProject?personnelId=' + that.data.personnelId + "&priceType=" + that.data.priceType + '&from=' + that.data.from,
       success: function(res){
         // success
       },
@@ -390,10 +390,10 @@ Page({
       });
       return false;
     }
-    var startDateStr = that.data.chosenDate + " " + that.data.chosenHours[0];
-		var startDate = new Date(startDateStr.replace(new RegExp(/-/g),'/'));
-		var endDateStr = that.data.chosenDate + " " + that.data.chosenHours[that.data.chosenHours.length - 1];
-		var endDate = new Date(endDateStr.replace(new RegExp(/-/g),'/'));
+    var startDateStr = that.data.chosenDate + " " + that.data.chosenHours[0] + ':00';
+		//var startDate = new Date(startDateStr.replace(new RegExp(/-/g),'/'));
+		var endDateStr = that.data.chosenDate + " " + that.data.chosenHours[that.data.chosenHours.length - 1] + ':00';
+		//var endDate = new Date(endDateStr.replace(new RegExp(/-/g),'/'));
     var timestamp = e.timeStamp;
     if (timestamp - that.data.submitOrderTimeStamp < 500) {
 
@@ -406,8 +406,8 @@ Page({
             "projectId": that.data.projectId,
             "personnelId": that.data.personnelId,
             "customerId": wx.getStorageSync('id'),
-            "makeStartDate": startDate.getTime(),
-            "makeEndDate": endDate.getTime(),
+            "makeStartDate": startDateStr,
+            "makeEndDate": endDateStr,
             "reserveName" : that.data.reserveName,
             "reservePhone": that.data.reservePhone,
             "priceType": that.data.priceType,
