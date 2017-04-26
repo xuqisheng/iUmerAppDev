@@ -19,6 +19,7 @@ Page({
     wx.setNavigationBarTitle({
       title: '优美师'
     })
+    this.searchPersonnel("", "");
   },
   onReady:function(){
     // 页面渲染完成

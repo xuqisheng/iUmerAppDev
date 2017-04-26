@@ -74,6 +74,9 @@ page {
 }
 .order-item-middle-title {
     font-size: 35rpx;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
 }
 .order-item-middle-shop {
     font-size: 30rpx;
@@ -91,9 +94,6 @@ page {
 }
 .order-item-right-price {
     margin-bottom: 10rpx;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
 }
 .order-item-ft {
     padding: 20rpx 0;

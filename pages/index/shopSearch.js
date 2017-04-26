@@ -18,6 +18,7 @@ Page({
     wx.setNavigationBarTitle({
       title: '优美店'
     })
+    this.searchShop("", "");
   },
   onReady:function(){
     // 页面渲染完成

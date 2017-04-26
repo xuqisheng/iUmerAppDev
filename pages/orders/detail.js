@@ -251,8 +251,18 @@ Page({
     });
   },
   hideQRCode: function() {
-    this.setData({
-      showModal: false
+    var that = this;
+    wx.redirectTo({
+      url: '../orders/detail?orderNo=' + that.data.orderNo,
+      success: function(res){
+        // success
+      },
+      fail: function(res) {
+        // fail
+      },
+      complete: function(res) {
+        // complete
+      }
     })
   },
   callPersonnel: function (e){

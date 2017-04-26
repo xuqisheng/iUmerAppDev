@@ -19,6 +19,7 @@ Page({
     wx.setNavigationBarTitle({
       title: '项目'
     })
+    this.searchProject("", "");
   },
   onReady:function(){
     // 页面渲染完成
