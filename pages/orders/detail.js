@@ -630,5 +630,19 @@ Page({
         }
       }
     });
+  },
+  backToIndex: function(){
+    wx.switchTab({
+      url: '../index/orders',
+      success: function(res){
+        // success
+      },
+      fail: function(res) {
+        // fail
+      },
+      complete: function(res) {
+        // complete
+      }
+    })
   }
 })

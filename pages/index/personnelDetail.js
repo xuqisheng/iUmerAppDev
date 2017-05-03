@@ -1,15 +1,17 @@
 // pages/index/personnelDetail.js
 var app = getApp();
 Page({
-  data:{},
+  data:{
+    showModal: false
+  },
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
     wx.setNavigationBarTitle({
       title: '优美师详情'
     })
     this.setData({
-      personnelId: options.personnelId,
-      activityId: options.activityId,
+      personnelId: options.personnelId || '',
+      activityId: options.activityId || '',
       commentTimeStamp: 0
     });
     this.loadPersonnel();
@@ -295,7 +297,70 @@ Page({
     var that = this;
     return {
       title: 'iUmer - 优美东方',
-      path: '/pages/index/personnelDetail?personnelId=' + that.data.personnelId
+      path: '/pages/index/personnelDetail?personnelId=' + that.data.personnelId + '&activityId=' + that.data.activityId
+    }
+  },
+  showLayer: function(){
+    this.setData({
+      showModal: true
+    })
+    var that = this;
+    wx.request({
+      url: app.globalData.server_url + 'webService/common/getShareQR',
+      data: app.encode({
+        path: 'pages/index/personnelDetail?personnelId=' + that.data.personnelId + "&activityId=" + that.data.activityId,
+        width: 200,
+        personnelId: that.data.personnelId
+      }),
+      dataType: "json",
+      header: {
+        'Content-Type': 'application/json;charset=UTF-8;'
+      },
+      method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      // header: {}, // 设置请求的 header
+      success: function(res){
+        // success
+        that.setData({
+          qrImg: 'https://www.iumer.cn' + res.data.data.filePath
+        })
+      },
+      fail: function(res) {
+        // fail
+      },
+      complete: function(res) {
+        // complete
+      }
+    })
+  },
+  hideQRCode: function(e){
+    var area = e.currentTarget.dataset.area;
+    if (area == 'father') {
+      this.setData({
+        showModal: false
+      })
+    }
+  },
+  save: function(e) {
+    console.log(e)
+    var path = e.currentTarget.dataset.src;
+    if (path) {
+      console.log(path)
+      wx.downloadFile({
+        url: path,
+        success: function (res) {
+          console.log(res)
+          var filePath = res.tempFilePath
+          wx.saveFile({
+            tempFilePath: filePath,
+            success: function(res) {
+              console.log(res)
+            }
+          })
+        },
+        fail: function(res) {
+          console.log(res)
+        }
+      })
     }
   }
 })

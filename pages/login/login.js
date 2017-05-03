@@ -137,5 +137,19 @@ Page({
         // complete
       }
     })
+  },
+  forget: function(e) {
+    wx.redirectTo({
+      url: '../login/forget',
+      success: function(res){
+        // success
+      },
+      fail: function(res) {
+        // fail
+      },
+      complete: function(res) {
+        // complete
+      }
+    });
   }
 })

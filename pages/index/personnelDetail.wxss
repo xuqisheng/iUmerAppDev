@@ -4,6 +4,40 @@ page {
 .container {
 	height: 100%;
 }
+.modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 990;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+}
+.qr-code {
+    display: flex;
+    align-items: center;
+}
+.qr-code image {
+    width: 35rpx;
+    height: 35rpx;
+}
+.qr-layer {
+    margin: 0 auto;
+    height: calc(750rpx * 0.8);
+    width: 80%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.qr-img {
+    width: 400rpx;
+    height: 430rpx;
+    margin: 0 auto;
+}
 .personnel-info {
     display: flex;
     padding: 20rpx;
@@ -35,6 +69,7 @@ page {
 }
 .personnel-info-right {
     padding: 0 0 0 20rpx;
+	width: 100%;
 }
 .personnel-info-right .personnel-info-right-title {
     padding: 10rpx 0;
@@ -42,6 +77,16 @@ page {
 .personnel-info-right .personnel-info-right-desc {
     color: gray;
     font-size: 28rpx;
+}
+.personnel-info-right .personnel-info-generate-qr {
+	padding: 10rpx 0;
+	margin-top: 10rpx;
+	float:right;
+}
+.personnel-info-right .personnel-info-generate-qr text {
+	border: solid 2rpx lightgray;
+	border-radius: 8rpx;
+	padding: 10rpx;
 }
 .index-header {
 	display: flex;

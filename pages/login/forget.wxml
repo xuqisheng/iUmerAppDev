@@ -1,13 +1,13 @@
 <view class="container">
     <view id="input-area">
-        <!--<view class="input-phone input-cell">
+        <view class="input-phone input-cell">
             <image src="https://www.iumer.cn/umer/css/image/wechat/app/cell@3x.png"></image>
             <input type="number" maxlength="11" bindinput="checkPhone" placeholder="请输入您的手机号" />
-        </view>-->
+        </view>
         <view class="input-verifyCode input-cell">
             <image src="https://www.iumer.cn/umer/css/image/wechat/app/verify@3x.png"></image>
             <input type="number" maxlength="6" placeholder="请输入您的验证码" bindinput="checkVerifyCode"/>
-            <view class="{{ (!showTimer)? 'get-code-active': 'get-code' }}" bindtap="getCode">{{ showTimer? sec + '秒': '获取验证码' }}</view>
+            <view class="{{ (!showTimer && phoneValid)? 'get-code-active': 'get-code' }}" bindtap="getCode">{{ showTimer? sec + '秒': '获取验证码' }}           </view>
         </view>
         <view class="input-pwd input-cell">
             <image src="https://www.iumer.cn/umer/css/image/wechat/app/pwd@3x.png"></image>
@@ -19,6 +19,6 @@
         </view>
     </view>
     <view id="btn-area">
-        <view class="{{ (codeValid && pwdValid)? 'btn-bind-active': 'btn-bind' }} text-center" bindtap="{{ (codeValid && pwdValid)?'changePwd': '' }}">修改密码</view>
+        <view class="{{ (codeValid && pwdValid && phoneValid)? 'btn-bind-active': 'btn-bind' }} text-center" bindtap="{{ (codeValid && pwdValid && phoneValid)?'changePwd': '' }}">修改密码</view>
     </view>
 </view>

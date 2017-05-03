@@ -27,7 +27,7 @@ page {
     left: 30rpx;
     top: 27rpx;
 }
-.input-cell image {
+.input-cell:not(:first-child) image {
     width: 60rpx;
 	left: 20rpx;
 }

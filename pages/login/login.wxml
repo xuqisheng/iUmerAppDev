@@ -7,6 +7,7 @@
         <view class="input-pwd input-cell">
             <image src="https://www.iumer.cn/umer/css/image/wechat/app/pwd@3x.png"></image>
             <input type="text" password maxlength="16" placeholder="请输入您的密码" bindinput="inputPwd"/>
+            <view class="text-center btn-forget" bindtap="forget">忘记密码?</view>
         </view>
     </view>
     <view id="btn-area">

@@ -87,7 +87,9 @@
             <view class="selection-cell__bd" style="width: 100%;">
                 <view class="date-select">
                     <scroll-view scroll-x style="width: 100%">
-                        <view class="text-center swiper-slide {{ item.dateTime == chosenDate? 'date-select-on': '' }}" data-time="{{ item.dateTime }}" wx:for="{{ weekdays }}" bindtap="loadTimeslots"><text>{{ item.week + "\n" + item.dateTime }}</text></view>
+                        <view class="text-center swiper-slide {{ item.dateTime == chosenDate? 'date-select-on': '' }}" data-time="{{ item.dateTime }}" wx:for="{{ weekdays }}" bindtap="loadTimeslots">
+                            <text>{{ item.week + "\n" + item.dateTime }}</text>
+                        </view>
                     </scroll-view>
                 </view>
             </view>

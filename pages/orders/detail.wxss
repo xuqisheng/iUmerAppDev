@@ -130,9 +130,16 @@ page {
     display: flex;
     width: 100%;
     background-color: white;
+}
+.btn-area-btn-1 {
     position: fixed;
-    bottom: 0;
     left: 0;
+    bottom: 0;
+}
+.btn-area-btn-2 {
+    position: fixed;
+    right: 0;
+    bottom: 0;
 }
 .btn-area-pay {
 	padding: 30rpx 0;
@@ -154,15 +161,12 @@ page {
 	background-color: #FD8CA3;
     margin-right: 2rpx;
 }
-.btn-area-apply-cancel, .btn-area-done {
+.btn-area-apply-cancel {
     padding: 30rpx 0;
-	width: calc(50% - 1rpx);
+	width: 100%;
 	color: white;
 	font-weight: bold;
 	background-color: #FD8CA3;
-}
-.btn-area-apply-cancel {
-    margin-right: 2rpx;
 }
 .btn-area-order-comment, .btn-area-order-again-1 {
     padding: 30rpx 0;
@@ -180,4 +184,26 @@ page {
 	color: white;
 	font-weight: bold;
 	background-color: #FD8CA3;
+}
+.btn-area-back-1 {
+    width: 100%;
+    background-color: #FD8CA3;
+    padding: 30rpx 0;
+    color: white;
+    font-weight: bold;
+    margin-top: 280rpx;
+    position: fixed;
+    left: 0;
+    bottom: 110rpx;
+}
+.btn-area-back-2 {
+    width: 100%;
+    background-color: #FD8CA3;
+    padding: 30rpx 0;
+    color: white;
+    font-weight: bold;
+    margin-top: 280rpx;
+    position: fixed;
+    left: 0;
+    bottom: 0;
 }

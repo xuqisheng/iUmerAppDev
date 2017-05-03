@@ -67,7 +67,7 @@
                                 </view>
                                 <view class="order-item-middle-shop-and-status">
                                     <view class="order-item-middle-shop">{{ item.shopName || "" }}</view>
-                                    <view class="order-item-right-status">进行中</view>
+                                    <view class="order-item-right-status">待付款</view>
                                 </view>
                             </view>
                         </view>
@@ -101,7 +101,7 @@
                                 </view>
                                 <view class="order-item-middle-shop-and-status">
                                     <view class="order-item-middle-shop">{{ item.shopName || "" }}</view>
-                                    <view class="order-item-right-status">进行中</view>
+                                    <view class="order-item-right-status">待评价</view>
                                 </view>
                             </view>
                         </view>
@@ -135,7 +135,7 @@
                                 </view>
                                 <view class="order-item-middle-shop-and-status">
                                     <view class="order-item-middle-shop">{{ item.shopName || "" }}</view>
-                                    <view class="order-item-right-status">进行中</view>
+                                    <view class="order-item-right-status">已完成</view>
                                 </view>
                             </view>
                         </view>
@@ -192,7 +192,7 @@
                                 </view>
                                 <view class="order-item-middle-shop-and-status">
                                     <view class="order-item-middle-shop">{{ item.shopName || "" }}</view>
-                                    <view class="order-item-right-status">进行中</view>
+                                    <view class="order-item-right-status">已取消</view>
                                 </view>
                             </view>
                         </view>

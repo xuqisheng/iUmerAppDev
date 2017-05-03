@@ -28,6 +28,14 @@ Page({
     // 页面关闭
     clearInterval(timer);
   },
+  checkPhone: function(e) {
+    var phone = e.detail.value;
+    var result = phone.match(/^1\d{10}$/);
+    this.setData({
+       phoneValid: !!result,
+       phone: phone
+    });
+  },
   getCode: function() {
     if (this.data.showTimer) {
       return false;

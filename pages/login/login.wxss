@@ -51,10 +51,17 @@ page {
     padding: 30rpx 0;
     color: gray;
 }
+.btn-forget {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: calc(100% + 20rpx);
+    right: 20rpx;
+}
 #btn-area {
 	display: flex;
 	justify-content: center;
-	margin-top: 50rpx;
+	margin-top: 80rpx;
 }
 #btn-area view {
 	background-color: #FD8CA3;

@@ -24,6 +24,7 @@ Page({
     this.loadProject();
     this.loadPersonnel();
     this.loadWeekdays();
+   
     wx.setNavigationBarTitle({
       title: '预约'
     })
@@ -180,8 +181,10 @@ Page({
           if (res.data.code == 1) {
             var d = res.data.data;
             that.setData({
-              weekdays: d
+              weekdays: d,
+              first: d[0].dateTime
             });
+            that.loadTimeslots();
           } else {
             wx.showModal({
               title: '提示',
@@ -214,7 +217,7 @@ Page({
       });
       return false;
     }
-    var date = e.currentTarget.dataset.time;
+    var date = e? e.currentTarget.dataset.time: this.data.first;
     var that = this;
     this.setData({
       chosenDate: date,

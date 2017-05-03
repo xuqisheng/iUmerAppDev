@@ -36,58 +36,70 @@ Page({
             },
             success: function(r) {
               wx.setStorageSync('openId', r.data.data.openid);
-              wx.request({
-                url: app.globalData.server_url + 'webService/customer/sys/user/miniAppLogin',
-                data: app.encode({
-                  openId: '' + r.data.data.openid
-                }),
-                method: "POST",
-                dataType: "json",
-                header: {
-                  'Content-Type': 'application/json;charset=UTF-8;'
+              wx.redirectTo({
+                url: 'login',
+                success: function(res){
+                  // success
                 },
-                success: function(rr) {
-                  if (rr.data.data.phone) {
-                    wx.setStorageSync('phone', rr.data.data.phone);
-                    wx.redirectTo({
-                      url: 'loginPwd',
-                      success: function(res){
-                        // success
-                      },
-                      fail: function() {
-                        // fail
-                      },
-                      complete: function() {
-                        // complete
-                      }
-                    })
-                  } else {
-                    wx.showModal({
-                      title: '提示',
-                      confirmColor: '#FD8CA3',
-                      content: '手机号未绑定',
-                      confirmText: '前往绑定',
-                      success: function(res) {
-                        if (res.confirm) {
-                          wx.redirectTo({
-                            url: 'login',
-                            success: function(res){
-                              // success
-                            },
-                            fail: function() {
-                              // fail
-                            },
-                            complete: function() {
-                              // complete
-                            }
-                          })
-                        }
-                      }
-                    })
-                  }
+                fail: function(res) {
+                  // fail
+                },
+                complete: function(res) {
+                  // complete
                 }
               })
-            }
+            //   wx.request({
+            //     url: app.globalData.server_url + 'webService/customer/sys/user/miniAppLogin',
+            //     data: app.encode({
+            //       openId: '' + r.data.data.openid
+            //     }),
+            //     method: "POST",
+            //     dataType: "json",
+            //     header: {
+            //       'Content-Type': 'application/json;charset=UTF-8;'
+            //     },
+            //     success: function(rr) {
+            //       if (rr.data.data.phone) {
+            //         wx.setStorageSync('phone', rr.data.data.phone);
+            //         wx.redirectTo({
+            //           url: 'loginPwd',
+            //           success: function(res){
+            //             // success
+            //           },
+            //           fail: function() {
+            //             // fail
+            //           },
+            //           complete: function() {
+            //             // complete
+            //           }
+            //         })
+            //       } else {
+            //         wx.showModal({
+            //           title: '提示',
+            //           confirmColor: '#FD8CA3',
+            //           content: '手机号未绑定',
+            //           confirmText: '前往绑定',
+            //           success: function(res) {
+            //             if (res.confirm) {
+            //               wx.redirectTo({
+            //                 url: 'login',
+            //                 success: function(res){
+            //                   // success
+            //                 },
+            //                 fail: function() {
+            //                   // fail
+            //                 },
+            //                 complete: function() {
+            //                   // complete
+            //                 }
+            //               })
+            //             }
+            //           }
+            //         })
+            //       }
+            //     }
+            //   })
+             }
           })
         } else {
           console.log('获取用户登录态失败！' + res.errMsg)

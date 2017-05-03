@@ -1,4 +1,9 @@
 <view class="container">
+<view wx:if="{{ showModal }}" class="modal" data-area='father' catchtap="hideQRCode">
+    <view class="qr-layer" catchtap="hideQRCode" data-area='child'>
+        <image class="qr-img text-center" src="{{ qrImg }}" data-src="{{ qrImg }}"/>
+    </view>
+</view>
 <scroll-view scroll-y="true" style="height: calc(100% - 94rpx);">
     <view id="personnel-info-area">
         <view class="personnel-info">
@@ -18,7 +23,9 @@
                 </view>
             </view>
             <view class="personnel-info-right">
-                <view class="personnel-info-right-title">{{ personnelInfo.name || "匿名用户" }}<text>({{ personnelInfo.shopName }})</text></view>
+                <view class="personnel-info-right-title">{{ personnelInfo.name || "匿名用户" }}
+                    <text>({{ personnelInfo.shopName }})</text>
+                    <text class="personnel-info-generate-qr" bindtap="showLayer"><text>分享二维码</text></text></view>
                 <view class="personnel-info-right-desc">{{ personnelInfo.description || "无简介" }}</view>
             </view>
         </view>
