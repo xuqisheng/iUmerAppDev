@@ -27,6 +27,8 @@ button {
 .people-item-left .people-item-img image {
 	width: 130rpx;
 	height: 130rpx;
+  border: solid 2rpx #E4E4E4;
+  border-radius: 8rpx;
 }
 .people-item-right {
 	width: 100%;
@@ -37,17 +39,18 @@ button {
 	margin-top: 10rpx;
 }
 .people-item-right .star image {
-	width: 32rpx;
-	height: 32rpx;
+	width: 28rpx;
+	height: 28rpx;
 }
 .people-item-right .star view:not(:first-child) image {
 	padding-left: 5rpx;
 }
 .people-item-name {
-	color: #414141;
+	color: #111111;
+  font-size: 108%;
 }
 .people-item-place {
-	color: #414141;
+	color: #393939;
 }
 .people-item-dot-line {
 	margin-right: 40rpx;
@@ -62,9 +65,10 @@ button {
 	justify-content: space-between;
 }
 .people-item-info-distance {
-	color: #686868;
+	color: #777777;
 	display: flex;
 	align-items: center;
+  font-size: 90%;
 }
 .people-item-info-distance image {
 	width: 30rpx;
@@ -78,30 +82,32 @@ button {
 	display: flex;
 }
 .people-item-info-comment {
-	color: #686868;
+	color: #777777;
 	display: flex;
 	align-items: center;
+  font-size: 90%;
 }
 .people-item-info-comment image {
-	width: 40rpx;
-	height: 40rpx;
+	width: 30rpx;
+	height: 30rpx;
 	margin: 10rpx;
 }
 .people-item-info-board {
-	color: #686868;
+	color: #777777;
 	display: flex;
 	align-items: center;
+  font-size: 90%;
 }
 .people-item-info-board image {
-	width: 20px;
-	height: 20px;
-	margin: 5px;
+  width: 30rpx;
+	height: 30rpx;
+	margin: 10rpx;
 }
 .cell-project-price {
 	position: static !important;
 }
 .cell-project-price:after {
-	right: 18px !important;
+	right: 36rpx !important;
 }
 .weui-label {
     margin-bottom: 0;
@@ -126,6 +132,7 @@ button {
 	/* margin-left: 10rpx; */
 	color: gray;
 	text-decoration: line-through;
+  font-size: 80%;
 }
 .dropdown button {
 	border: none;
@@ -139,10 +146,10 @@ button {
 	top:100%;
 	background-color:white;
 	z-index:1000;
-	border: solid 1px #F7F7F7;
+	border: solid 2rpx #F7F7F7;
 }
 .dropdown-menu .divider {
-	border-top: solid 1px #F7F7F7;
+	border-top: solid 2rpx #F7F7F7;
 }
 .price-item-icon-sale {
 	color: red;
@@ -150,11 +157,12 @@ button {
 .price-item-icon-original {
 	margin-left: 10rpx;
 	text-decoration: line-through;
-	font-size: 90%;
+	font-size: 80%;
 }
 .price-item-icon-original {
 	margin-left: 10rpx;
 	text-decoration: line-through;
+  font-size: 80%;  
 }
 .chosen-project span {
     display: flex;
@@ -163,7 +171,9 @@ button {
 .chosen-project image {
 	width: 50rpx;
 	height: 50rpx;
-	margin-left: 10rpx;
+	margin-left: 10rpx;  
+  border: solid 2rpx #E4E4E4;
+  border-radius: 8rpx;
 }
 .selection-area {
 	margin-top: 20rpx;
@@ -189,18 +199,18 @@ button {
 	align-items:center;
 }
 .selection-cell_access::after {
-    content: " ";
-    display: inline-block;
-    height: 12rpx;
-    width: 12rpx;
-    border-width: 4rpx 4rpx 0 0;
-    border-color: #c8c8cd;
-    border-style: solid;
-    transform: matrix(.71,.71,-.71,.71,0,0);
-    position: relative;
-    top: 2rpx;
-    margin-top: -8rpx;
-    right: 4rpx;
+  content: " ";
+  display: inline-block;
+  height: 12rpx;
+  width: 12rpx;
+  border-width: 4rpx 4rpx 0 0;
+  border-color: #c8c8cd;
+  border-style: solid;
+  transform: matrix(.71,.71,-.71,.71,0,0);
+  position: relative;
+  top: 2rpx;
+  margin-top: -8rpx;
+  right: 4rpx;
 }
 .date-select {
 	height: 100rpx;
@@ -218,11 +228,11 @@ button {
     display: inline-block;	
 }
 .timeslots {
-    display: flex;
+  display: flex;
 	flex-wrap: wrap;	
-    justify-content: flex-start;
-   	margin-top: -20rpx;
-   	padding: 0 20rpx 20rpx 20rpx;
+  justify-content: flex-start;
+  margin-top: -20rpx;
+  padding: 0 20rpx 20rpx 20rpx;
 }
 button.timeslot {
 	border-radius: 0;
@@ -253,8 +263,8 @@ button.timeslot::after {
 	background-color: #EEEEEE;
 }
 .timeslot-selected {
-    background-color: #FD8CA3;
-    color: white;
+  background-color: #FD8CA3;
+  color: white;
 }
 .input-area {
 	margin-top: 20rpx;
@@ -274,16 +284,16 @@ button.timeslot::after {
 }
 .btn-area {
 	margin-top: 100rpx;
-    display: flex;
+  display: flex;
 	justify-content: center;
 }
 .btn-item {
-    background-color: #FD8CA3;
-    padding: 30rpx 0;
-    color: white;
-    font-family: SimHei;
-    width: calc(50% - 1rpx);
-    text-align: center;
+  background-color: #FD8CA3;
+  padding: 30rpx 0;
+  color: white;
+  font-family: SimHei;
+  width: calc(50% - 1rpx);
+  text-align: center;
 }
 .btn-cancel {
 	margin-right: 2rpx;

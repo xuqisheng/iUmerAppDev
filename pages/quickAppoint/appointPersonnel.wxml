@@ -18,7 +18,6 @@
                 <text>{{ priceType == 0? projectUnitPrice + '元/次': projectCoursePrice + '元/疗程' }}</text>
             </view>
             <view class="clear"></view>
-            <view class="project-item-dot-line"></view>
             <view class="project-item-info">
                 <span class="project-item-info-distance">
                     <image src="https://www.iumer.cn/umer/css/image/wechat/app/pin@3x.png" />

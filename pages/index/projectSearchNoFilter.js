@@ -69,6 +69,8 @@ Page({
     data["pageSize"] = 10;
     data["projectName"] = value;
     data["cityId"] = wx.getStorageSync('cityCode');
+    data["longitude"] = wx.getStorageSync("longitude");
+    data["latitude"] = wx.getStorageSync("latitude");
     wx.request({
       url: app.globalData.server_url + 'webService/customer/biz/index/searchProjectList', 
       data: app.encode(data),

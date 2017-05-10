@@ -8,7 +8,8 @@ Page({
     loadingHidden: true,
     loadMoreTimeStamp: 0,
     refreshTimeStamp: 0,
-    clickShopItemTimeStamp: 0
+    clickShopItemTimeStamp: 0,
+    noDataHidden: true
   },
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
@@ -67,6 +68,8 @@ Page({
     data["pageSize"] = 10;
     data["shopName"] = value;
     data["cityId"] = wx.getStorageSync('cityCode');
+    data["longitude"] = wx.getStorageSync("longitude");
+    data["latitude"] = wx.getStorageSync("latitude");
     wx.request({
         url: app.globalData.server_url + 'webService/customer/biz/index/searchShopList', 
         data: app.encode(data),
@@ -80,7 +83,8 @@ Page({
             if (res.data.data.length == 0 && !operationType) {
               that.setData({
                 shopList: [],
-                loadingHidden: true
+                loadingHidden: true,
+                noDataHidden: false
               })
               return false;
             }

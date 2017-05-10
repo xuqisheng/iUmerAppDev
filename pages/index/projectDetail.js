@@ -193,7 +193,6 @@ Page({
                 }
 							}, 1000);
 						} 
-
             that.setData({
               item: d,
               projectUnitPrice: d.unitPrice || 0,
@@ -205,7 +204,7 @@ Page({
               projectMatters: d.noticeMatters || "",
               projectApply: d.noticeMatters || "",
               shopAddress: d.shopAddress || "",
-              projectDescription: d.description || "",
+              projectDescription: d.description.replace(/^\n{1,}/, ''),
               ifCollect: d.ifCollect || 0,
             });
             wx.request({

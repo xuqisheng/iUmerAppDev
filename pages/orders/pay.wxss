@@ -13,8 +13,10 @@ page {
     width: 120rpx;
 }
 .project-left image {
-    width: 100rpx;
-    height: 100rpx;
+  width: 100rpx;
+  height: 100rpx;
+  border: solid 2rpx #E4E4E4;
+  border-radius: 8rpx;
 }
 .project-right {
     width: 100%;
@@ -57,9 +59,10 @@ page {
     border-radius: 100%;
 }
 .circle-on {
-    background-image: url("https://www.iumer.cn/umer/css/image/wechat/selected-round@2x.png");
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
+  background-image: url("https://www.iumer.cn/umer/css/image/wechat/app/selected-round@2x.png");
+  background-size: 80rpx;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 #btn-area {
     margin-top: 20rpx;
@@ -68,5 +71,5 @@ page {
     width: 100%;
     background-color: #FD8CA3;
     color: white;
-    padding: 30rpx;
+    padding: 30rpx 0;
 }

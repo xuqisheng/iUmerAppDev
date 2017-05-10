@@ -29,7 +29,7 @@ page {
 	justify-content: space-between;
 	font-family: SimHei;
 	border-top: solid 2rpx #F7F7F7;
-    padding: 0 20rpx;
+  padding: 0 20rpx;
 }
 .hot-item:first-child {
 	margin-top: 10rpx;
@@ -45,24 +45,28 @@ page {
 .hot-item-left .hot-item-img image {
 	width: 130rpx;
 	height: 130rpx;
+  border: solid 2rpx #E4E4E4;
+  border-radius: 8rpx;
 }
 .hot-item-right {
 	width: 100%;
 	padding: 20rpx 0 10rpx 0;
 }
 .hot-item-name {
-	color: #414141;
+	color: #111111;
 	margin-bottom: 10rpx;
+  font-size: 108%;
 }
 .hot-item-place-and-price {
 	display: flex;
 	justify-content: space-between;
 }
 .hot-item-place {
-	color: #414141;
+	color: #393939;
 }
 .hot-item-price {
 	color: orange;
+  font-size: 110%;
 }
 .hot-item-price text {
 	text-decoration: line-through; 
@@ -74,9 +78,10 @@ page {
 	justify-content: space-between;
 }
 .hot-item-info-distance {
-	color: #686868;
+	color: #777777;
 	display: flex;
 	align-items: center;
+  font-size: 90%;
 }
 .hot-item-info-distance image {
 	width: 30rpx;
@@ -84,9 +89,10 @@ page {
 	margin: 10rpx 10rpx 10rpx 0;
 }
 .hot-item-info-duration {
-	color: #686868;
+	color: #777777;
 	display: flex;
 	align-items: center;
+  font-size: 90%;
 }
 .hot-item-info-duration image {
 	width: 30rpx;

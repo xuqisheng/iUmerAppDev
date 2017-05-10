@@ -28,8 +28,8 @@
 				    <image src="https://www.iumer.cn/umer/css/image/wechat/app/pin@3x.png" />{{ item.distance? "距离" + item.distance + "左右": "未定位到距离" }}
                 </view>
                 <view class="people-item-info-board-comment">
-                    <view class="people-item-info-board"><image src="https://www.iumer.cn/umer/css/image/wechat/order-count@2x.png" /> {{ personnelInfo.orderCount || 0 }}</view>
-                    <view class="people-item-info-comment"><image src="https://www.iumer.cn/umer/css/image/wechat/comments@2x.png" />{{ personnelInfo.commentCount || 0 }}</view>
+                    <view class="people-item-info-board"><image src="https://www.iumer.cn/umer/css/image/wechat/app/order-count@2x.png" /> {{ personnelInfo.orderCount || 0 }}</view>
+                    <view class="people-item-info-comment"><image src="https://www.iumer.cn/umer/css/image/wechat/app/comments@2x.png" />{{ personnelInfo.commentCount || 0 }}</view>
                 </view>
             </view>
         </view>

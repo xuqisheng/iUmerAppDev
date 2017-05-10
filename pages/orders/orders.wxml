@@ -12,7 +12,7 @@
     <swiper class="swiper" duration="300" current="{{ currTab }}" bindchange="switchSwiper" style="height: calc(100% - 88rpx);">
         <swiper-item style="height: 100%">
             <view hidden="{{ noDataHidden }}" class="no-data text-center">
-                <image src="https://www.iumer.cn/umer/css/image/wechat/app/no-order@2x.png"></image>
+                <image src="https://www.iumer.cn/umer/css/image/wechat/app/no-project@2x.png"></image>
                 <text>暂时没有订单哦~</text>
             </view>
             <scroll-view scroll-y style="width: 100%; height: 100%;" bindscrolltolower="loadMore" bindscrolltoupper="refresh">
@@ -47,7 +47,7 @@
         </swiper-item>
         <swiper-item>
             <view hidden="{{ noDataHidden }}" class="no-data text-center">
-                <image src="https://www.iumer.cn/umer/css/image/wechat/app/no-order@2x.png"></image>
+                <image src="https://www.iumer.cn/umer/css/image/wechat/app/no-project@2x.png"></image>
                 <text>暂时没有订单哦~</text>
             </view>
             <scroll-view scroll-y style="width: 100%; height: 100%;" bindscrolltolower="loadMore" bindscrolltoupper="refresh">
@@ -81,7 +81,7 @@
         </swiper-item>
         <swiper-item>
             <view hidden="{{ noDataHidden }}" class="no-data text-center">
-                <image src="https://www.iumer.cn/umer/css/image/wechat/app/no-order@2x.png"></image>
+                <image src="https://www.iumer.cn/umer/css/image/wechat/app/no-project@2x.png"></image>
                 <text>暂时没有订单哦~</text>
             </view>
             <scroll-view scroll-y style="width: 100%; height: 100%;" bindscrolltolower="loadMore" bindscrolltoupper="refresh">
@@ -115,7 +115,7 @@
         </swiper-item>
         <swiper-item>
             <view hidden="{{ noDataHidden }}" class="no-data text-center">
-                <image src="https://www.iumer.cn/umer/css/image/wechat/app/no-order@2x.png"></image>
+                <image src="https://www.iumer.cn/umer/css/image/wechat/app/no-project@2x.png"></image>
                 <text>暂时没有订单哦~</text>
             </view>
             <scroll-view scroll-y style="width: 100%; height: 100%;" bindscrolltolower="loadMore" bindscrolltoupper="refresh">
@@ -172,7 +172,7 @@
         </swiper-item>-->
         <swiper-item>
             <view hidden="{{ noDataHidden }}" class="no-data text-center">
-                <image src="https://www.iumer.cn/umer/css/image/wechat/app/no-order@2x.png"></image>
+                <image src="https://www.iumer.cn/umer/css/image/wechat/app/no-project@2x.png"></image>
                 <text>暂时没有订单哦~</text>
             </view>
             <scroll-view scroll-y style="width: 100%; height: 100%;" bindscrolltolower="loadMore" bindscrolltoupper="refresh">

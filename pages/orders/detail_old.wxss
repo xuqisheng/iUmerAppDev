@@ -1,0 +1,221 @@
+page {
+    background-color: #F7F7F7;
+}
+.orange {
+	color: orange;
+}
+.modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 990;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+}
+#order-area {
+}
+.project-detail {
+    display: flex;
+	justify-content: space-between;
+    align-items: center;
+    padding: 20rpx;
+    background-color: white;
+}
+.order-img {
+	width: 200rpx;
+}
+.order-img image {
+	width: 128rpx;
+	height: 128rpx;
+}
+.order-content {
+	width: 100%;
+    display: flex;
+	flex-direction: column;
+}
+.dot-line {
+	background-image: url('https://www.iumer.cn/umer/css/image/wechat/dotted-line@2x.png');
+	width: 100%;
+	height: 2rpx;
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+}
+.order-content-row {
+    display: flex;
+	justify-content: space-between;
+}
+.order-content-first-row {
+	margin-bottom: 10rpx;
+  font-size: 108%;
+  color: #222222;
+}
+.order-content-second-row {
+	margin-top: 10rpx;
+  color: #393939;
+}
+.order-price-sale {
+    color: orange;
+}
+.order-price-original {
+    margin-left: 10rpx;
+    text-decoration: line-through;
+}
+.order-detail-info div {
+	font-size: 90%;
+}
+.order-cell {
+    display: flex;
+    justify-content: space-between;
+    padding: 20rpx;
+    border-top: solid 2rpx #F7F7F7;
+}
+.order-pay {
+    background-color: white;
+}
+.qr-code {
+    display: flex;
+    align-items: center;
+}
+.qr-code image {
+    width: 35rpx;
+    height: 35rpx;
+}
+.qr-layer {
+    margin: 0 auto;
+    height: calc(750rpx * 0.8);
+    width: 80%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.qr-title {
+    font-size: 150%;
+}
+.qr-img {
+    width: 400rpx;
+    height: 400rpx;
+    margin: 0 auto;
+}
+.qr-txt {
+
+}
+.personnel-info {
+    display: flex;
+    align-items: center;
+}
+.personnel-info .order-cell__hd view {
+    margin: 10rpx 0;
+}
+.call-personnel {
+    padding: 0 20rpx 0 40rpx;
+    border-left: solid 2rpx #F7F7F7;
+}
+.call-personnel image{
+    width: 40rpx;
+    height: 53rpx;
+}
+.order-detail {
+    margin-top: 10rpx;
+    background-color: white;
+}
+.order-detail-title {
+    padding: 20rpx;
+}
+.order-detail-info view {
+    margin: 10rpx 0;
+}
+#btn-area {
+    display: flex;
+    width: 100%;
+    background-color: white;
+}
+.btn-area-btn-1 {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+}
+.btn-area-btn-2 {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+}
+.btn-area-pay {
+	padding: 30rpx 0;
+	width: calc(50% - 1rpx);
+	color: white;
+	font-weight: bold;
+	background-color: #FD8CA3;
+    display: flex;
+    justify-content: center;
+}
+.timer {
+    padding: 0 20rpx;
+}
+.btn-area-cancel {
+    padding: 30rpx 0;
+	width: calc(50% - 1rpx);
+	color: white;
+	font-weight: bold;
+	background-color: #FD8CA3;
+    margin-right: 2rpx;
+}
+.btn-area-apply-cancel {
+    padding: 30rpx 0;
+	width: 100%;
+	color: white;
+	font-weight: bold;
+	background-color: #FD8CA3;
+}
+.btn-area-order-comment, .btn-area-order-again-1 {
+    padding: 30rpx 0;
+	width: calc(50% - 1rpx);
+	color: white;
+	font-weight: bold;
+	background-color: #FD8CA3;
+}
+.btn-area-order-comment {
+    margin-right: 2rpx;
+}
+.btn-area-order-again-2 {
+    padding: 30rpx 0;
+	width: 100%;
+	color: white;
+	font-weight: bold;
+	background-color: #FD8CA3;
+}
+.btn-area-back-1 {
+    width: 100%;
+    background-color: #FD8CA3;
+    padding: 30rpx 0;
+    color: white;
+    font-weight: bold;
+    margin-top: 280rpx;
+    position: fixed;
+    left: 0;
+    bottom: 110rpx;
+}
+.btn-area-back-2 {
+    width: 100%;
+    background-color: #FD8CA3;
+    padding: 30rpx 0;
+    color: white;
+    font-weight: bold;
+    margin-top: 280rpx;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+}
+.btn-return {
+	position: fixed;
+	right: 30rpx;
+	bottom: 60rpx;
+	z-index: 9999;
+	width: 150rpx;
+	height: 150rpx;
+	opacity: 0.5;
+}

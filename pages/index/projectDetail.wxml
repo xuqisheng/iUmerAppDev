@@ -23,16 +23,16 @@
                 <view class="description-cell" href="javascript:;">
                     <view class="description-cell__hd"></view>
                     <view class="description-cell__bd">
-                        <text class="price" wx:if="{{ !item.projectActivityId }}">项目价格 {{ projectUnitPrice }}元/次</text>
-                        <text class="price" wx:if="{{ !!item.projectActivityId }}">项目价格 {{ item.activityUnitPrice }}元/次<text>{{ item.unitPrice }}元/次</text></text>
+                        <text class="price-no-activity" wx:if="{{ !item.projectActivityId }}">项目价格<text>{{ projectUnitPrice }}元/次</text></text>
+                        <text class="price" wx:if="{{ !!item.projectActivityId }}">项目价格<text class="price-line-through">{{ item.activityUnitPrice }}元/次</text><text>{{ item.unitPrice }}元/次</text></text>
                     </view>
                     <view class="description-cell__ft"></view>
                 </view>
                 <view class="description-cell" href="javascript:;">
                     <view class="description-cell__hd"></view>
                     <view class="description-cell__bd">
-                        <text class="price" wx:if="{{ !item.projectActivityId }}">项目价格 {{ projectCoursePrice }}元/{{ projectCourseRemark }}次</text>
-                        <text class="price" wx:if="{{ !!item.projectActivityId }}">项目价格 {{ item.activityCoursePrice }}元/{{ projectCourseRemark }}次<text>{{ projectCoursePrice }}元/{{ projectCourseRemark }}次</text></text>
+                        <text class="price-no-activity" wx:if="{{ !item.projectActivityId }}">项目价格<text>{{ projectCoursePrice }}元/{{ projectCourseRemark }}</text></text>
+                        <text class="price" wx:if="{{ !!item.projectActivityId }}">项目价格<text class='price-line-through'>{{ item.activityCoursePrice }}元/{{ projectCourseRemark }}</text><text>{{ projectCoursePrice }}元/{{ projectCourseRemark }}</text></text>
                     </view>
                     <view class="description-cell__ft"></view>
                 </view>
@@ -80,17 +80,31 @@
                 <view class="other-cell" href="javascript:;">
                     <view class="other-cell__hd"></view>
                     <view class="other-cell__bd">
-                        <view>注意事项 <text>{{ projectMatters }}</text></view>
+                        <view>注意事项</view>
                     </view>
                     <view class="other-cell__ft"></view>
                 </view>
                 <view class="other-cell" href="javascript:;">
                     <view class="other-cell__hd"></view>
-                    <view class="other-cell__bd">
-                        <view>适用人群 <text>{{ projectApply }}</text></view>
+                    <view class="other-cell__bd other-info-area-procedure">
+                         <text>{{ projectMatters }}</text>
                     </view>
                     <view class="other-cell__ft"></view>
                 </view>
+                <!--<view class="other-cell" href="javascript:;">
+                    <view class="other-cell__hd"></view>
+                    <view class="other-cell__bd">
+                        <view>适用人群</view>
+                    </view>
+                    <view class="other-cell__ft"></view>
+                </view>
+                <view class="other-cell" href="javascript:;">
+                    <view class="other-cell__hd"></view>
+                    <view class="other-cell__bd other-info-area-procedure">
+                         <text>{{ projectApply }}</text>
+                    </view>
+                    <view class="other-cell__ft"></view>
+                </view>-->
             </view>
             <view id="comments-area">
                 <view class="comments-area-title">用户评价({{ totalCommentNum || 0 }})</view>
@@ -116,7 +130,7 @@
                             <view class="comment-item-bd">{{ item.content || "无内容" }}</view>
                             <view class="comment-item-time">
                                 <view class="comment-item-hd-info-time">
-                                    <image alt="" src="https://www.iumer.cn/umer/css/image/wechat/history@3x.png" />{{ item.commentTime || "" }}
+                                    <image alt="" src="https://www.iumer.cn/umer/css/image/wechat/app/history@3x.png" />{{ item.commentTime || "" }}
                                 </view>
                             </view>
                         </view>

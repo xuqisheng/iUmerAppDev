@@ -10,7 +10,10 @@ Page({
     loadMoreTimeStamp: 0,
     refreshTimeStamp: 0,
     clickProjectItemTimeStamp: 0,
-    noDataHidden: true
+    noDataHidden: true,
+    areaTxt: '全城',
+    sortTxt: '排序',
+    categoryTxt: '分类'
   },
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
@@ -103,23 +106,27 @@ Page({
   clickArea: function(e) {
     var areaId = e.currentTarget.dataset.areaid;
     var range = e.currentTarget.dataset.range;
+    var areaName = e.currentTarget.dataset.areaname;
     this.setData({
       showArea: true,
       areaId: areaId || "",
       range: range || "",
       page: 1,
       showNear: !range,
-      all: areaId == 'all' || ''
+      all: areaId == 'all' || '',
+      areaTxt: areaName || '全城'
     });
     this.loadProjects();
     console.log(this.data)
   },
   clickSorting: function(e) {
     var sortingId = e.currentTarget.dataset.sortingid;
+    var sortingName = e.currentTarget.dataset.sortname;
     this.setData({
       showSorting: true,
       sortingId: sortingId,
-      page: 1
+      page: 1,
+      sortTxt: sortingName
     });
     this.loadProjects();
   },
@@ -166,10 +173,12 @@ Page({
   },
   clickCategory: function(e) {
     var categoryNo = e.currentTarget.dataset.categoryno;
+    var categoryName = e.currentTarget.dataset.categoryname;
     this.setData({
       showCategory: true,
       categoryNo: categoryNo,
-      page: 1
+      page: 1,
+      categoryTxt: categoryName || '分类'
     });
     this.loadProjects();
   },
@@ -177,13 +186,13 @@ Page({
     wx.showNavigationBarLoading();
     var that = this;
     var data = {};
+    data["longitude"] = wx.getStorageSync("longitude");
+    data["latitude"] = wx.getStorageSync("latitude");
     if (that.data.areaId) {
       data["areaId"] = that.data.areaId;
     }
     if (that.data.range) {
       data["range"] = that.data.range;
-      data["longitude"] = wx.getStorageSync("longitude");
-      data["latitude"] = wx.getStorageSync("latitude");
     }
     if (that.data.categoryNo || that.data.groupNo) {
       data["groupNo"] = that.data.categoryNo || that.data.groupNo;

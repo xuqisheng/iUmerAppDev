@@ -56,7 +56,9 @@ Page({
           cityId: wx.getStorageSync("cityCode"),
           projectName: txt,
           pageSize: 3,
-          page: 1
+          page: 1,
+          longitude: wx.getStorageSync("longitude"),
+          latitude: wx.getStorageSync("latitude")
         }),
         method: "POST",
         dataType: "json",
@@ -99,7 +101,9 @@ Page({
         data: app.encode({
           cityId: wx.getStorageSync("cityCode"),
           personnelName: txt,
-          pageSize: 3
+          pageSize: 3,
+          longitude: wx.getStorageSync("longitude"),
+          latitude: wx.getStorageSync("latitude")
         }),
         method: "POST",
         dataType: "json",
@@ -142,7 +146,9 @@ Page({
         data: app.encode({
           cityId: wx.getStorageSync("cityCode"),
           shopName: txt,
-          pageSize: 3
+          pageSize: 3,
+          longitude: wx.getStorageSync("longitude"),
+          latitude: wx.getStorageSync("latitude")
         }),
         method: "POST",
         dataType: "json",

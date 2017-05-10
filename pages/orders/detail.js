@@ -633,7 +633,7 @@ Page({
   },
   backToIndex: function(){
     wx.switchTab({
-      url: '../index/orders',
+      url: '../orders/orders',
       success: function(res){
         // success
       },

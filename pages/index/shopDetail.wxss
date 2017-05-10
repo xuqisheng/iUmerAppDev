@@ -16,15 +16,15 @@ page {
 }
 .swiper-description {
 	width: 100%;
-    position: absolute;
-    bottom: 0;
-   	left: 0;
-    background: rgba(255,255,255,0.5);
-   	padding: 20rpx 0;
-    display: flex;
-    justify-content: space-between;
-    color: #FD8CA3;
-    z-index: 2;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: rgba(255,255,255,0.5);
+  padding: 20rpx 0;
+  display: flex;
+  justify-content: space-between;
+  color: #FD8CA3;
+  z-index: 2;
 }
 .swiper-description-project-title {
 	width: 50%;
@@ -51,8 +51,8 @@ page {
 	align-items: center;
 }
 #shop-desc-area .shop-addr image {
-    width: 30rpx;
-    height: 40rpx;
+  width: 35rpx;
+  height: 40rpx;
 	padding-right: 10rpx;
 }
 #shop-desc-area .call-shop image {
@@ -123,18 +123,20 @@ page {
 	padding: 20rpx 0 10rpx 0;
 }
 .hot-item-name {
-	color: #414141;
+	color: #222222;
 	margin-bottom: 10rpx;
+  font-size: 108%;
 }
 .hot-item-place-and-price {
 	display: flex;
 	justify-content: space-between;
 }
 .hot-item-place {
-	color: #414141;
+	color: #393939;
 }
 .hot-item-price {
 	color: orange;
+  font-size: 110%;
 }
 .hot-item-price text {
 	text-decoration: line-through; 
@@ -146,9 +148,10 @@ page {
 	justify-content: space-between;
 }
 .hot-item-info-distance {
-	color: #686868;
+	color: #777777;
 	display: flex;
 	align-items: center;
+  font-size: 90%;
 }
 .hot-item-info-distance image {
 	width: 30rpx;
@@ -156,9 +159,10 @@ page {
 	margin: 10rpx 10rpx 10rpx 0;
 }
 .hot-item-info-duration {
-	color: #686868;
+	color: #777777;
 	display: flex;
 	align-items: center;
+  font-size: 90%;
 }
 .hot-item-info-duration image {
 	width: 30rpx;
@@ -200,14 +204,15 @@ page {
 	margin-top: 10rpx;
 }
 .people-item-right .star image {
-	width: 32rpx;
-	height: 32rpx;
+	width: 28rpx;
+	height: 28rpx;
 }
 .people-item-right .star view:not(:first-child) image {
 	padding-left: 5rpx;
 }
 .people-item-name {
-	color: #414141;
+	color: #222222;
+  font-size: 108%;
 }
 .people-item-place {
 	color: #414141;
@@ -225,7 +230,7 @@ page {
 	justify-content: space-between;
 }
 .people-item-info-distance {
-	color: #686868;
+	color: #777777;
 	display: flex;
 	align-items: center;
 }
@@ -234,13 +239,24 @@ page {
 	height: 40rpx;
 	margin: 10rpx 10rpx 10rpx 0;
 }
+.people-item-label {
+	color: orange;
+	border: solid 2rpx orange;
+	border-radius: 20rpx;
+	padding: 2rpx 8rpx;
+	font-size: 90%;
+}
+.people-item-label:not(:first-child) {
+	margin-left: 10rpx;
+}
 .people-item-info-board-comment {
 	display: flex;
 }
 .people-item-info-comment {
-	color: #686868;
+	color: #777777;
 	display: flex;
 	align-items: center;
+  font-size: 90%;
 }
 .people-item-info-comment image {
 	width: 40rpx;
@@ -248,9 +264,10 @@ page {
 	margin: 10rpx;
 }
 .people-item-info-board {
-	color: #686868;
+	color: #777777;
 	display: flex;
 	align-items: center;
+  font-size: 90%;
 }
 .people-item-info-board image {
 	width: 20px;

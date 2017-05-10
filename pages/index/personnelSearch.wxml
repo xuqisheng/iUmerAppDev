@@ -4,6 +4,10 @@
         <input placeholder="搜索优美师" type="text" bindinput="inputSearch" /></view>
         <view class="top-menu-search-cancel" bindtap="back">取消</view>
     </view>
+    <view hidden="{{ noDataHidden }}" class="no-data text-center">
+        <image src="https://www.iumer.cn/umer/css/image/wechat/app/no-personnel@2x.png"></image>
+        <text>暂时没有优美师哦~</text>
+    </view>
     <view id="personnel-area">
         <scroll-view scroll-y style="width: 100%; height: 100%;" bindscrolltolower="loadMore" bindscrolltoupper="refresh">
             <block wx:for="{{ personnelList }}" wx:key="id">

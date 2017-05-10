@@ -80,7 +80,9 @@ Page({
         url: app.globalData.server_url + 'webService/customer/biz/reserve/personnelProjectList', 
         data: app.encode({
           personnelId: that.data.personnelId,
-          pageSize: 3
+          pageSize: 3,
+          longitude: wx.getStorageSync('longitude'),
+          latitude: wx.getStorageSync('latitude')
         }),
         method: "POST",
         dataType: "json",
@@ -297,7 +299,7 @@ Page({
     var that = this;
     return {
       title: 'iUmer - 优美东方',
-      path: '/pages/index/personnelDetail?personnelId=' + that.data.personnelId + '&activityId=' + that.data.activityId
+      path: '/pages/index/personnelDetail?personnelId=' + that.data.personnelId
     }
   },
   showLayer: function(){
@@ -308,7 +310,7 @@ Page({
     wx.request({
       url: app.globalData.server_url + 'webService/common/getShareQR',
       data: app.encode({
-        path: 'pages/index/personnelDetail?personnelId=' + that.data.personnelId + "&activityId=" + that.data.activityId,
+        path: 'pages/index/personnelDetail?personnelId=' + that.data.personnelId,
         width: 200,
         personnelId: that.data.personnelId
       }),

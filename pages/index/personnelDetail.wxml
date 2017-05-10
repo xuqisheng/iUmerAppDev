@@ -25,7 +25,7 @@
             <view class="personnel-info-right">
                 <view class="personnel-info-right-title">{{ personnelInfo.name || "匿名用户" }}
                     <text>({{ personnelInfo.shopName }})</text>
-                    <text class="personnel-info-generate-qr" bindtap="showLayer"><text>分享二维码</text></text></view>
+                    <image src="https://www.iumer.cn/umer/css/image/wechat/app/share@2x.png" bindtap="showLayer"></image></view>
                 <view class="personnel-info-right-desc">{{ personnelInfo.description || "无简介" }}</view>
             </view>
         </view>
@@ -83,7 +83,7 @@
                     <view class="comment-item-bd">{{ item.content || "无内容" }}</view>
                     <view class="comment-item-time">
                         <view class="comment-item-hd-info-time">
-                            <image alt="" src="https://www.iumer.cn/umer/css/image/wechat/history@3x.png" />{{ item.commentTime || "" }}
+                            <image alt="" src="https://www.iumer.cn/umer/css/image/wechat/app/history@3x.png" />{{ item.commentTime || "" }}
                         </view>
                     </view>
                 </view>

@@ -124,6 +124,8 @@ Page({
     var data = {};
     data["shopId"] = that.data.shopId;
     data["pageSize"] = 10;
+    data['longitude'] = wx.getStorageSync('longitude');
+    data['latitude'] = wx.getStorageSync('latitude');
     if (opType) {
       data["operationType"] = opType;
       switch(opType) {
@@ -184,6 +186,8 @@ Page({
     var data = {};
     data["shopId"] = that.data.shopId;
     data["pageSize"] = 10;
+    data['longitude'] = wx.getStorageSync('longitude');
+    data['latitude'] = wx.getStorageSync('latitude');
     if (opType) {
       data["operationType"] = opType;
       switch(opType) {
@@ -215,6 +219,7 @@ Page({
             timestampFirst: personnelList[0].createDate,
             timestampLast: personnelList[personnelList.length - 1].createDate
           });
+          console.log(personnelList)
         } else {
           wx.showModal({
             title: '提示',

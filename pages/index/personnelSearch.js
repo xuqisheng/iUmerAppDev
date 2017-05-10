@@ -8,7 +8,8 @@ Page({
     loadingHidden: true,
     clickPersonnelItemTimeStamp: 0,
     loadMoreTimeStamp: 0,
-    refreshTimeStamp: 0
+    refreshTimeStamp: 0,
+    noDataHidden: true
   },
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
@@ -80,6 +81,8 @@ Page({
         case "down": data["timestamp"] = this.data.timestampFirst; break;
       }
     }
+    data["longitude"] = wx.getStorageSync("longitude");
+    data["latitude"] = wx.getStorageSync("latitude");
     data["pageSize"] = 10;
     data["personnelName"] = value;
     data["cityId"] = wx.getStorageSync('cityCode');
@@ -96,7 +99,8 @@ Page({
             if (res.data.data.length == 0 && !operationType) {
               that.setData({
                 personnelList: [],
-                loadingHidden: true
+                loadingHidden: true,
+                noDataHidden: false
               });
               return false;
             }

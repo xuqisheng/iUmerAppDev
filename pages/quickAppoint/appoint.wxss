@@ -34,6 +34,7 @@ button {
 	/*margin-left: 10rpx;*/
 	color: gray;
 	text-decoration: line-through;
+  font-size: 80%;  
 }
 .dropdown button {
 	border: none;
@@ -58,7 +59,7 @@ button {
 .price-item-icon-original {
 	margin-left: 10rpx;
 	text-decoration: line-through;
-	font-size: 90%;
+	font-size: 80%;
 }
 .project-item {
 	background-color: white;
@@ -80,7 +81,9 @@ button {
 }
 .project-item-img image {
 	width: 128rpx;
-    height: 128rpx;
+  height: 128rpx;
+  border: solid 2rpx #E4E4E4;
+  border-radius: 8rpx;
 }
 .project-item-right {
 /* 	bORDER: SOLID 1PX GREEN; */
@@ -88,8 +91,9 @@ button {
 	padding: 20rpx 20rpx 0 0;
 }
 .project-item-name {
-	color: #414141;
+	color: #111111;
 	margin-bottom: 10rpx;
+  font-size: 108%;
 }
 .project-item-place {
 	color: #414141;
@@ -102,6 +106,7 @@ button {
 .project-item-price text {
 	text-decoration: line-through;
 	color: gray;
+  font-size: 80%;
 	/*margin-left: 10rpx;*/
 }
 .project-item-dot-line {
@@ -112,15 +117,16 @@ button {
 	background-repeat: no-repeat;
 }
 .project-item-info-distance {
-	color: #686868;
+	color: #777777;
 	float: left;
-    display: flex;
-    /*align-items: center;*/
+  display: flex;
+  /*align-items: center;*/
 	margin: 10rpx 0;
+  font-size: 90%;
 }
 .project-item-info-distance image {
 	width: 30rpx;
-    height: 40rpx;
+  height: 40rpx;
 	margin: 0 10rpx 0 0;
 }
 .project-item-info-distance text {
@@ -128,9 +134,10 @@ button {
 }
 .project-item-info-duration {
 	float: right;
-	color: #686868;
-    display: flex;
-    align-items: center;
+	color: #777777;
+  display: flex;
+  align-items: center;
+  font-size: 90%;
 }
 .project-item-info-duration image {
 	width: 30rpx;
@@ -138,24 +145,26 @@ button {
 	margin: 10rpx;
 }
 .chosen-personnel span {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 .chosen-personnel image {
 	width: 50rpx;
 	height: 50rpx;
 	margin-left: 10rpx;
+  border: solid 2rpx #E4E4E4;
+  border-radius: 8rpx;
 }
 .selection-area {
 	margin-top: 20rpx;
 	font-family: SimHei;
-    background-color: white;
+  background-color: white;
 }
 .selection-cell {
-    padding: 20rpx;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  padding: 20rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 	position: relative;
 }
 .selection-cell:not(:last-child) {

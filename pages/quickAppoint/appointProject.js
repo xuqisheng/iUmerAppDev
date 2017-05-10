@@ -48,7 +48,9 @@ Page({
     wx.request({
         url: app.globalData.server_url + 'webService/customer/biz/index/personnelDetail', 
         data: app.encode({
-          id: that.data.personnelId
+          id: that.data.personnelId,
+          latitude: wx.getStorageSync('latitude'),
+          longitude: wx.getStorageSync('longitude')
         }),
         method: "POST",
         dataType: "json",

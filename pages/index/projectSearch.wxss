@@ -7,9 +7,10 @@ page {
 .no-data image {
 	width: 75%;
 	height: calc(750rpx / 742 * 278 * 0.75);
+  margin-top: -100rpx;
 }
 .no-data text {
-	
+	margin-top: 45rpx;
 }
 .red {
 	color: #e84057 !important;
@@ -89,11 +90,11 @@ page {
 }
 .filter-item-list-item {
 	padding: 20rpx 20rpx;
-	color: #414141;
+	color: #111111;
 	font-weight: bold;
 	border-bottom: solid 2rpx #F7F7F7;
 	text-align: left;
-	width:25%;
+	width: 25%;
 }
 .filter-item-list-sorting .filter-item-list-item {
     display: flex;
@@ -103,7 +104,7 @@ page {
 .filter-item-list-sorting .filter-item-list-item image {
 	width: 30rpx;
 	height: 30rpx;
-	margin-right: 10rpx;
+	margin-right: 20rpx;
 }
 .filter-item-sublist {
 	position: absolute;
@@ -138,20 +139,22 @@ page {
 	margin: 10rpx;
 }
 .filter-item-list-items-category {
-    display: flex;
+  display: flex;
 	flex-wrap: wrap;	
+  padding: 10rpx 0 10rpx 5rpx;
 }
 .filter-item-list-item-category {
 	width: 22%;
-    padding: 10rpx;
+  padding: 10rpx;
 	white-space: nowrap;
 }
 .filter-item-list-item-category text {
 	border-radius: 8rpx;
 	border: solid 2rpx lightgrey;
-    color: #686868;
-    padding: 10rpx;
-    display: block;
+  color: #393939;
+  padding: 10rpx;
+  display: block;
+  font-size:95%;
 }
 .filter-list-item-on {
 	background-image: url("https://www.iumer.cn/umer/css/image/wechat/selected@2x.png");
@@ -195,38 +198,44 @@ page {
 .hot-item-left .hot-item-img image {
 	width: 130rpx;
 	height: 130rpx;
+  border: solid 2rpx #E4E4E4;
+  border-radius: 8rpx;
 }
 .hot-item-right {
 	width: 100%;
 	padding: 20rpx 0 10rpx 0;
 }
 .hot-item-name {
-	color: #414141;
+	color: #111111;
 	margin-bottom: 10rpx;
+  font-size: 108%;
 }
 .hot-item-place-and-price {
 	display: flex;
 	justify-content: space-between;
 }
 .hot-item-place {
-	color: #414141;
+	color: #393939;
 }
 .hot-item-price {
 	color: orange;
+  font-size: 110%;
 }
 .hot-item-price text {
 	text-decoration: line-through; 
-	color: gray; 
+	color: #777777; 
 	margin-left: 10rpx;
+  font-size: 80%;
 }
 .hot-item-info {
 	display: flex;
 	justify-content: space-between;
 }
 .hot-item-info-distance {
-	color: #686868;
+	color: #777777;
 	display: flex;
 	align-items: center;
+  font-size: 90%;
 }
 .hot-item-info-distance image {
 	width: 30rpx;
@@ -234,9 +243,10 @@ page {
 	margin: 10rpx 10rpx 10rpx 0;
 }
 .hot-item-info-duration {
-	color: #686868;
+	color: #777777;
 	display: flex;
 	align-items: center;
+  font-size: 90%;
 }
 .hot-item-info-duration image {
 	width: 30rpx;

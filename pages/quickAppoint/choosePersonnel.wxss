@@ -46,6 +46,8 @@ page {
 	width: 130rpx;
 	height: 130rpx;
 	margin-bottom: 10rpx;
+  border: solid 2rpx #E4E4E4;
+  border-radius: 8rpx;
 }
 .people-item-right {
 	width: 100%;
@@ -57,17 +59,18 @@ page {
 	display: flex;
 }
 .people-item-right .star image {
-	width: 32rpx;
-	height: 32rpx;
+	width: 28rpx;
+	height: 28rpx;
 }
 .people-item-right .star view:not(:first-child) image {
 	padding-left: 5rpx;
 }
 .people-item-name {
-	color: #414141;
+	color: #111111;
+  font-size: 108%;
 }
 .people-item-place {
-	color: #414141;
+	color: #393939;
 }
 .people-item-info {
 	display: flex;
@@ -77,22 +80,24 @@ page {
 	display: flex;
 }
 .people-item-info-comment {
-	color: #686868;
+	color: #777777;
 	display: flex;
 	align-items: center;
+  font-size: 90%;
 }
 .people-item-info-comment image {
-	width: 40rpx;
-	height: 40rpx;
-	margin: 10rpx;
+  width: 30rpx;
+  height: 30rpx;
+  margin: 10rpx;
 }
 .people-item-info-board {
-	color: #686868;
+	color: #777777;
 	display: flex;
 	align-items: center;
+  font-size: 90%;
 }
 .people-item-info-board image {
-	width: 20px;
-	height: 20px;
-	margin: 5px;
+	width: 30rpx;
+  height: 30rpx;
+  margin: 10rpx;
 }

@@ -42,18 +42,18 @@
     "list": [{
       "pagePath": "pages/index/index",
       "text": "首页",
-      "iconPath": "images/tab1-off@2x.png",
-      "selectedIconPath": "images/tab1-on@2x.png"
+      "iconPath": "images/tab1-off-2@3x.png",
+      "selectedIconPath": "images/tab1-on-2@3x.png"
     }, {
       "pagePath": "pages/orders/orders",
       "text": "订单",
-      "iconPath": "images/tab2-off@3x.png",
-      "selectedIconPath": "images/tab2-on@2x.png"
+      "iconPath": "images/tab2-off-2@3x.png",
+      "selectedIconPath": "images/tab2-on-2@3x.png"
     }, {
       "pagePath": "pages/quickAppoint/quickAppoint",
       "text": "快速预约",
-      "iconPath": "images/tab3-off@2x.png",
-      "selectedIconPath": "images/tab3-on@2x.png"
+      "iconPath": "images/tab3-off-2@3x.png",
+      "selectedIconPath": "images/tab3-on-2@3x.png"
     }]
   }
 }

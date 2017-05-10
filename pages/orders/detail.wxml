@@ -1,116 +1,133 @@
 <view class="container">
-    <view id="order-area">
-<!-- 			    <view class="weui-cell" href="javascript:;"> -->
-<!-- 			        <view class="weui-cell__bd shop-name"> -->
-<!-- 			            <p>悦诗风吟美容院</p> -->
-<!-- 			        </view> -->
-<!-- 			        <view class="weui-cell__ft"></view> -->
-<!-- 			    </view> -->
-        <view class="project-detail">
-            <view class="order-img"><image alt="" src="https://www.iumer.cn/{{ (orderInfo.filePath || 'umer/css/image/default.jpg')}}" /></view>
-            <view class="order-content">
-                <view class="order-content-row order-content-first-row">
-                    <view class="order-content-first-row-title">{{ orderInfo.projectName }}</view>
-                    <!--<view class="order-content-first-row-price">￥{{ orderInfo.priceType == 0? ( orderInfo.unitPrice + '元/次'): (orderInfo.coursePrice + '元/疗程(' + orderInfo.courseRemark + '次)')  }}</view>-->
-                </view>
-                <view class="dot-line"></view>
-                <view class="order-content-row order-content-second-row">
-                    <view class="order-content-second-row-shop">{{ orderInfo.shopName }}</view>
-                    <view class="order-content-second-row-collect" wx:if="{{ !!orderInfo.activityUnitPrice }}">
-                        <text class="order-price-sale">￥{{ orderInfo.priceType == 0? orderInfo.activityUnitPrice + '元/次': orderInfo.activityCoursePrice + '元/疗程' }}</text>
-                        <text class="order-price-original">￥{{ orderInfo.priceType == 0? orderInfo.unitPrice + '元/次': orderInfo.coursePrice + '元/疗程' }}</text>
-                    </view>
-                    <view class="order-content-second-row-collect" wx:if="{{ !orderInfo.activityUnitPrice }}">￥{{ (orderInfo.priceType == 0? orderInfo.unitPrice + '元/次': orderInfo.coursePrice + '元/疗程') }}</view>
-        <!--    			            		<view class="order-content-second-row-count">123</view> -->
-        <!--    			            		<view class="order-content-second-row-comment">待评价</view> -->
-                </view>
-            </view>
-        </view>
-<!-- 			    <view class="weui-cell" href="javascript:;"> -->
-<!-- 			        <view class="weui-cell__bd"> -->
-<!-- 			            <p>优惠券</p> -->
-<!-- 			        </view> -->
-<!-- 			        <view class="weui-cell__ft red">-￥99元</view> -->
-<!-- 			    </view> -->
-        <view class="order-pay">
-            <view class="order-cell">
-                <view class="order-cell__hd">
-                    <p>实付金额</p>
-                </view>
-                <view class="orange">￥{{ orderInfo.orderPrice }}元</view>
-            </view>
-            <view class="order-cell" href="javascript:;">
-                <view class="order-cell__hd">
-                    <p>预约详情</p>
-                </view>
-                <view wx:if="{{ orderInfo.approveStatus == 1 }}" class="order-cell__ft qr-code" bindtap="showQRCode">查看支付码<image src="https://www.iumer.cn/umer/css/image/wechat/orders/qr.png"></image></view>
-            </view>
-            <view class="order-cell personnel-info">
-                <view class="order-cell__hd">
-                    <view>优美师：{{ orderInfo.personnelName }}</view>
-                    <view>优美师电话：{{ orderInfo.personnelPhone }}</view>
-                </view>
-                <view class="order-cell__ft call-personnel" bindtap="callPersonnel" data-phone="{{ orderInfo.personnelPhone }}">
-                    <image src="https://www.iumer.cn/umer/css/image/wechat/app/call@2x.png"></image>
-                </view>
-            </view>
-        </view>
-        <view class="order-detail">
-            <view class="order-detail-title">订单信息</view>
-            <view class="order-cell">
-                <view class="order-cell__bd order-detail-info">
-                    <!--<view>预约人：<span class="reserve-name"></span></view>
-                    <view>预约电话：<span class="reserve-phone"></span></view>-->
-                    <view>支付方式：{{ orderInfo.modeName || "" }}</view>
-                    <view>预约时间：{{ orderInfo.makeTime || "" }}</view>
-                    <view>下单时间：{{ orderInfo.orderTime || "" }}</view>
-                    <view>订单号：{{ orderInfo.orderNo }}</view>
-                </view>
-                <view class="order-cell__ft"></view>
-            </view>
-        </view>
+  <view id="shop-area">
+    <view id="shop-info" class="flex-space-between">
+      <view class="shop-header-and-name">
+        <image src="https://www.iumer.cn/{{ orderInfo.header }}"></image>
+        <text>{{ orderInfo.shopName }}</text>
+      </view>
+      <view class="angle"></view>
     </view>
-    
-    <view id="btn-area">        
-        <!-- 待付款 -->
-        <block wx:if="{{ orderInfo.approveStatus == 0 }}">
-            <view class="btn-area-back-1 text-center" bindtap="backToIndex">返回首页</view>
-            <view class="btn-area-cancel btn-area-btn-1 text-center" bindtap="cancelOrder">取消订单</view>
-            <view class="btn-area-pay btn-area-btn-2 text-center" bindtap="payOrder">付款
-                <view  wx:if="{{ showTimer }}" class="timer">{{ min + "分" + sec + '秒' }}</view>
-            </view>
-        </block>
-        <!-- 进行中 -->
-        <block wx:if="{{ orderInfo.approveStatus == 1 }}">
-            <view class="btn-area-back-1 text-center" bindtap="backToIndex">返回首页</view>
-            <view class="btn-area-apply-cancel btn-area-btn-1 text-center" bindtap="applyCancelOrder">取消订单</view>
-            <!--<view class="btn-area-done text-center" bindtap="orderDone">确认订单完成</view>-->
-        </block>
-        <!-- 待评价 -->
-        <block wx:if="{{ orderInfo.approveStatus == 2 }}">
-            <view class="btn-area-back-1 text-center" bindtap="backToIndex">返回首页</view>
-            <view class="btn-area-order-comment btn-area-btn-1 text-center" bindtap="addComment">评价</view>
-            <view class="btn-area-order-again-1 btn-area-btn-2 text-center" bindtap="orderAgain">再次预约</view>
-        </block>
-        <!-- 已评价 -->
-        <block wx:if="{{ orderInfo.approveStatus == 3 }}">
-            <view class="btn-area-back-1 text-center" bindtap="backToIndex">返回首页</view>
-            <view class="btn-area-order-again-2 btn-area-btn-1 text-center" bindtap="orderAgain">再次预约</view>
-        </block>
-        <!-- 已取消 -->
-        <block wx:if="{{ orderInfo.approveStatus == 4 || orderInfo.approveStatus == 6 }}">
-            <view class="btn-area-back-2 text-center" bindtap="backToIndex">返回首页</view>
-        </block>
-        <!-- 取消中 -->
-        <block wx:if="{{ orderInfo.approveStatus == 5 }}">
-            <view class="btn-area-back-2 text-center" bindtap="backToIndex">返回首页</view>          
-        </block>
-    </view>
-    <view wx:if="{{ showModal }}" class="modal" bindtap="hideQRCode">
-        <view class="qr-layer">
-            <text class="qr-title text-center">扫码确认</text> 
-            <image class="qr-img text-center" src="https://www.iumer.cn{{ qrImg }}"/>
-            <text class="qr-txt text-center">{{ qrTxt }}</text>
+  </view>
+  <view id="project-area">
+    <view id="project-info">
+      <view class="project-info-direct-child">
+        <view class="project-info-left">
+          <image src="https://www.iumer.cn/{{ (orderInfo.filePath || 'umer/css/image/default.jpg')}}"></image>
         </view>
+        <view class="project-info-right">
+          <view class="flex-space-between project-info-right-first">
+            <text class="project-info-right-first-title">{{ orderInfo.projectName }}</text>
+            <text class="project-info-right-first-price"  wx:if="{{ !!orderInfo.activityUnitPrice }}">
+              <text class="order-price-sale">￥{{ orderInfo.priceType == 0? orderInfo.activityUnitPrice: orderInfo.activityCoursePrice }}</text>
+              <text class="order-price-original">￥{{ orderInfo.priceType == 0? orderInfo.unitPrice: orderInfo.coursePrice }}</text>
+            </text>
+            <text class="project-info-right-first-price red" wx:if="{{ !orderInfo.activityUnitPrice }}"> ￥{{ (orderInfo.priceType == 0? orderInfo.unitPrice: orderInfo.coursePrice) }}</text>
+          </view>
+          <view class="flex-space-between project-info-right-second">
+            <text class="project-info-right-second-price">{{ orderInfo.courseRemark }}</text>
+            <text class="project-info-right-second-count">×1</text>
+          </view>
+        </view>
+      </view>
     </view>
+    <view id="price-info">
+      <view class="flex-space-between price-info-price">
+        <text>消费金额</text>
+        <text>￥{{ orderInfo.orderPrice }}</text>
+      </view>
+      <view class="flex-space-between price-info-paid">
+        <text>实付款（在线支付）</text>
+        <text class="red">￥{{ orderInfo.orderPrice }}</text>
+      </view>
+    </view>
+  </view>
+  <view id="order-info-area">
+    <view id="appoint-info">
+      <view class="flex-space-between appoint-info-personnel">
+        <text>预约优美师</text>
+        <text>{{ orderInfo.personnelName }}</text>
+      </view>
+      <view class="flex-space-between appoint-info-phone">
+        <text>联系电话</text>
+        <text class="red">{{ orderInfo.personnelPhone }}</text>
+      </view>
+      <view class="flex-space-between appoint-info-time">
+        <text>预约时间</text>
+        <text>{{ orderInfo.makeTime || "" }}</text>
+      </view>
+    </view>
+  </view>
+  <view id="pay-info-area">
+    <view id="pay-info">
+      <view class="pay-info-title">订单信息</view>
+      <view class="flex-space-between pay-info-order-no">
+        <text>订单号</text>
+        <text>{{ orderInfo.orderNo }}</text>
+      </view>
+      <view class="flex-space-between pay-info-order-status">
+        <text>订单状态</text>
+        <text class="red">{{ orderInfo.approveStatus == 0? "待付款": orderInfo.approveStatus == 1? "进行中": orderInfo.approveStatus == 2? "待评价": orderInfo.approveStatus == 3? "已完成":  (orderInfo.approveStatus == 4 || orderInfo.approveStatus == 6)? "已取消": "未知状态" }}
+        </text>
+      </view>
+      <view class="flex-space-between pay-info-pay-time">
+        <text>交易时间</text>
+        <text>{{ orderInfo.orderTime || "" }}</text>
+      </view>
+      <view class="flex-space-between pay-info-pay-method">
+        <text>支付方式</text>
+        <view>
+          <image src="https://www.iumer.cn/{{ orderInfo.modeIcon }}"></image>
+          <text>{{ orderInfo.modeName || "" }}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <image src="https://www.iumer.cn/umer/css/image/wechat/activity/return@2x.png" class="btn-return text-center" bindtap="backToIndex" />
+  <view id="btn-area" wx:if="{{ orderInfo.approveStatus != 4 && orderInfo.approveStatus != 5 && orderInfo.approveStatus != 6 }}">     
+    <view id="btns">
+      <!-- 待付款 -->
+      <block wx:if="{{ orderInfo.approveStatus == 0 }}">
+          <!--<view class="btn-area-back-1 text-center" bindtap="backToIndex">返回首页</view>-->
+          <view class="btn-area-cancel btn-area-btn text-center" bindtap="cancelOrder">取消订单</view>
+          <view class="btn-area-pay btn-area-btn-2 text-center" bindtap="payOrder">付款
+              <text wx:if="{{ showTimer }}" class="timer">{{ min + "分" + sec + '秒' }}</text>
+          </view>
+      </block>
+      <!-- 进行中 -->
+      <block wx:if="{{ orderInfo.approveStatus == 1 }}">
+          <!--<view class="btn-area-back-1 text-center" bindtap="backToIndex">返回首页</view>-->
+          <view class="btn-area-apply-cancel btn-area-btn text-center" bindtap="applyCancelOrder">取消订单</view>
+          <!--<view class="btn-area-done text-center" bindtap="orderDone">确认订单完成</view>-->
+      </block>
+      <!-- 待评价 -->
+      <block wx:if="{{ orderInfo.approveStatus == 2 }}">
+          <!--<view class="btn-area-back-1 text-center" bindtap="backToIndex">返回首页</view>-->
+          <view class="btn-area-order-comment btn-area-btn text-center" bindtap="addComment">评价</view>
+          <view class="btn-area-order-again-1 btn-area-btn text-center" bindtap="orderAgain">再次预约</view>
+      </block>
+      <!-- 已评价 -->
+      <block wx:if="{{ orderInfo.approveStatus == 3 }}">
+          <!--<view class="btn-area-back-1 text-center" bindtap="backToIndex">返回首页</view>-->
+          <view class="btn-area-order-again-2 btn-area-btn text-center" bindtap="orderAgain">再次预约</view>
+      </block>
+      <!-- 已取消 -->
+      <block wx:if="{{ orderInfo.approveStatus == 4 || orderInfo.approveStatus == 6 }}">
+          <!--<view class="btn-area-back-2 text-center" bindtap="backToIndex">返回首页</view>-->
+      </block>
+      <!-- 取消中 -->
+      <block wx:if="{{ orderInfo.approveStatus == 5 }}">
+          <!--<view class="btn-area-back-2 text-center" bindtap="backToIndex">返回首页</view>          -->
+      </block>
+
+      <view wx:if="{{ orderInfo.approveStatus == 1 }}" class="show-qr" bindtap="showQRCode">我的支付码</view>
+    </view>  
+  </view>
+  <view wx:if="{{ showModal }}" class="modal" bindtap="hideQRCode">
+    <view class="qr-layer">
+      <image class="qr-corner" src="https://www.iumer.cn/umer/css/image/wechat/app/qr.png"></image>
+      <text class="qr-title text-center">扫码确认</text> 
+      <image class="qr-img text-center" src="https://www.iumer.cn{{ qrImg }}"/>
+      <text class="qr-txt text-center">{{ qrTxt }}</text>
+    </view>
+  </view>
 </view>
