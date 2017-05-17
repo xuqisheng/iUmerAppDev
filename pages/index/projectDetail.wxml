@@ -7,10 +7,10 @@
         <view id="project-detail">
             <view id="avatar-area">
                 <swiper style="height: 750rpx;" class="swiper3" indicator-dots autoplay circular>
-                    <view class='swiper-description'>
+                    <!--<view class='swiper-description'>
                         <view class='swiper-description-project-title'>{{ projectTitle }}</view>
                         <view class='swiper-description-project-duration'>{{ projectDuration }}分钟</view>
-                    </view>
+                    </view>-->
                     <view wx:if="{{ !!item.projectActivityId }}" class="activity-counting">{{ timerTxt }}</view>
                     <block wx:for="{{ projectPics }}" wx:key="id">
                         <swiper-item>
@@ -21,42 +21,41 @@
             </view>
             <view id="description-area">
                 <view class="description-cell" href="javascript:;">
-                    <view class="description-cell__hd"></view>
+                    <view class="description-cell__hd bold">{{ projectTitle }}</view>
                     <view class="description-cell__bd">
-                        <text class="price-no-activity" wx:if="{{ !item.projectActivityId }}">项目价格<text>{{ projectUnitPrice }}元/次</text></text>
-                        <text class="price" wx:if="{{ !!item.projectActivityId }}">项目价格<text class="price-line-through">{{ item.activityUnitPrice }}元/次</text><text>{{ item.unitPrice }}元/次</text></text>
+                        <view class="price-no-activity flex-space-between" wx:if="{{ !item.projectActivityId }}">
+                          <text class='red bold'>￥{{ projectUnitPrice }}元</text>
+                          <text>{{ projectDuration }}分钟/次</text>
+                        </view>
+                        <view class="flex-space-between" wx:if="{{ !!item.projectActivityId }}">
+                          <text>
+                            <text class="red bold">￥{{ item.activityUnitPrice }}元</text>
+                            <text class="line-through">{{ item.unitPrice }}元/次</text>
+                          </text>
+                          <text>{{ projectDuration }}分钟/次</text>
+                        </view>
+                
+                        <view class="price-no-activity flex-space-between" wx:if="{{ !item.projectActivityId }}">
+                          <text class='red bold'>￥{{ projectCoursePrice }}元</text>
+                          <text>{{ projectCourseRemark }}/疗程</text>
+                        </view>
+                        <view class="flex-space-between" wx:if="{{ !!item.projectActivityId }}">
+                          <text>
+                            <text class="red bold">￥{{ item.activityCoursePrice }}元</text>
+                            <text class="line-through">{{ item.coursePrice }}元/次</text>
+                          </text>
+                          <text>{{ projectCourseRemark }}/疗程</text>
+                        </view>
                     </view>
                     <view class="description-cell__ft"></view>
                 </view>
-                <view class="description-cell" href="javascript:;">
-                    <view class="description-cell__hd"></view>
-                    <view class="description-cell__bd">
-                        <text class="price-no-activity" wx:if="{{ !item.projectActivityId }}">项目价格<text>{{ projectCoursePrice }}元/{{ projectCourseRemark }}</text></text>
-                        <text class="price" wx:if="{{ !!item.projectActivityId }}">项目价格<text class='price-line-through'>{{ item.activityCoursePrice }}元/{{ projectCourseRemark }}</text><text>{{ projectCoursePrice }}元/{{ projectCourseRemark }}</text></text>
-                    </view>
-                    <view class="description-cell__ft"></view>
+                <view class="description-cell flex-space-between">
+                  <view>{{ s.address }}</view>
+                  <view class="phone" data-phone="{{ s.phone }}" bindtap="call">电话</view>
                 </view>
-            </view>
-            <view id="shop-info-area" bindtap="showShop">
-                <view class="shop-info-area-logo"><image src="https://www.iumer.cn{{ shopHeader }}"></image></view>
-                <view class="shop-info-area-txt"> 
-                    <view class="shop-info-area-txt-title">{{ shopTitle }}</view> 
-                    <view class="shop-info-area-txt-description">{{ shopDescription }}</view>
-                    <view class="shop-info-area-txt-stats">
-                        <view>项目 <text>{{ projectCount }}</text></view>
-                        <view>美容师 <text>{{ personnelCount }}</text></view>
-                    </view> 
-                </view> 
             </view>
             <view id="other-info-area">
-                <view class="other-cell" href="javascript:;">
-                    <view class="other-cell__hd"></view>
-                    <view class="other-cell__bd">
-                        <view>服务地址 <text>{{ shopAddress }}</text></view>
-                    </view>
-                    <view class="other-cell__ft"></view>
-                </view>
-                <view class="other-cell" href="javascript:;">
+                <view class="other-cell no-border-bottom" href="javascript:;">
                     <view class="other-cell__hd"></view>
                     <view class="other-cell__bd">
                         <view>服务步骤</view>
@@ -77,7 +76,7 @@
                     </view>
                     <view class="other-cell__ft"></view>
                 </view>
-                <view class="other-cell" href="javascript:;">
+                <view class="other-cell no-border-bottom" href="javascript:;">
                     <view class="other-cell__hd"></view>
                     <view class="other-cell__bd">
                         <view>注意事项</view>
@@ -105,6 +104,17 @@
                     </view>
                     <view class="other-cell__ft"></view>
                 </view>-->
+            </view>
+            <view id="shop-info-area">
+                <view class="shop-info-area-logo"><image src="https://www.iumer.cn{{ shopHeader }}"></image></view>
+                <view class="shop-info-area-txt"> 
+                    <view class="shop-info-area-txt-title">{{ shopTitle }}</view> 
+                    <view class="shop-info-area-txt-description">{{ shopDescription }}</view>
+                    <view class="shop-info-area-txt-stats">
+                        <view>项目 <text>{{ projectCount }}</text></view>
+                        <view>美容师 <text>{{ personnelCount }}</text></view>
+                    </view> 
+                </view> 
             </view>
             <view id="comments-area">
                 <view class="comments-area-title">用户评价({{ totalCommentNum || 0 }})</view>

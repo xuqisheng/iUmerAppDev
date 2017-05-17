@@ -7,9 +7,10 @@ page {
 .no-data image {
 	width: 75%;
 	height: calc(750rpx / 742 * 278 * 0.75);
+  margin-top: -100rpx;
 }
 .no-data text {
-	
+	margin-top: 45rpx;
 }
 #project {
 	height: 100%;

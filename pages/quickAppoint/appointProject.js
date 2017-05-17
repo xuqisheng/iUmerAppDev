@@ -313,10 +313,9 @@ Page({
       });
     }
   },
-  togglePriceType: function() {
-    var hidden = this.data.priceDropdownHidden;
+  radioChange: function(e) {
     this.setData({
-      priceDropdownHidden: !hidden
+      priceType: e.detail.value
     })
   },
   changePriceType: function(e) {

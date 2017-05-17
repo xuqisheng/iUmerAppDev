@@ -5,6 +5,11 @@ page {
 button {
 	line-height: 50rpx;
 }
+.line-through {
+  text-decoration: line-through;
+  font-size: 80%;
+  margin-left: 10rpx;
+}
 .people-item {
 	background-color: white;
 	display: flex;
@@ -18,90 +23,66 @@ button {
 }
 .people-item-left {
 	width: 150rpx;
+  height: 180rpx;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	flex-direction:column;
-	margin-right: 20rpx;
 }
 .people-item-left .people-item-img image {
 	width: 130rpx;
 	height: 130rpx;
   border: solid 2rpx #E4E4E4;
-  border-radius: 8rpx;
+  border-radius: 50%;
 }
 .people-item-right {
 	width: 100%;
-	padding: 20rpx 0 10rpx 0;
+	padding: 20rpx 0 10rpx 20rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.people-item-right .people-item-name-and-rating {
+  display: flex;
+  align-items: center;
+}
+.people-item-right .people-item-name-and-rating text:first-child {
+  font-size: 110%;
+  font-weight: bold;
+}
+.people-item-right .people-item-right-level {
+  margin-left: 10rpx;
 }
 .people-item-right .star {
 	display: flex;
-	margin-top: 10rpx;
+	margin-top: 5rpx;
+  margin-left: 5rpx;
 }
 .people-item-right .star image {
 	width: 28rpx;
 	height: 28rpx;
 }
-.people-item-right .star view:not(:first-child) image {
+.people-item-right .star view image {
 	padding-left: 5rpx;
 }
-.people-item-name {
-	color: #111111;
-  font-size: 108%;
+.people-item-service-count {
+  margin-top: 5rpx;
+  color: #393939;
+  font-size: 85%;
 }
-.people-item-place {
-	color: #393939;
+.people-item-labels {
+  margin-top: 5rpx;
 }
-.people-item-dot-line {
-	margin-right: 40rpx;
-	background-image: url('https://www.iumer.cn/umer/css/image/wechat/dotted-line@2x.png');
-	width: 100%;
-	height: 2rpx;
-	background-size: 100% 100%;
-	background-repeat: no-repeat;
+.people-item-label {
+  color: darkorange;
+  border: solid 2rpx darkorange;
+  border-radius: 24rpx;
+  background-color: #FBD3AD;
+  padding: 4rpx 8rpx;
+  font-size: 85%;
 }
-.people-item-info {
-	display: flex;
-	justify-content: space-between;
-}
-.people-item-info-distance {
-	color: #777777;
-	display: flex;
-	align-items: center;
-  font-size: 90%;
-}
-.people-item-info-distance image {
-	width: 30rpx;
-	height: 40rpx;
-	margin: 10rpx 10rpx 10rpx 0;
-}
-.project-item-info-distance text {
-	width: 350rpx;
-}
-.people-item-info-board-comment {
-	display: flex;
-}
-.people-item-info-comment {
-	color: #777777;
-	display: flex;
-	align-items: center;
-  font-size: 90%;
-}
-.people-item-info-comment image {
-	width: 30rpx;
-	height: 30rpx;
-	margin: 10rpx;
-}
-.people-item-info-board {
-	color: #777777;
-	display: flex;
-	align-items: center;
-  font-size: 90%;
-}
-.people-item-info-board image {
-  width: 30rpx;
-	height: 30rpx;
-	margin: 10rpx;
+.people-item-label:not(:first-child) {
+  margin-left: 10rpx;
 }
 .cell-project-price {
 	position: static !important;
@@ -194,9 +175,9 @@ button {
     flex: 1;
 }
 .selection-cell__ft {
-    padding-right: 26rpx;
-	display:flex;
-	align-items:center;
+  padding-right: 26rpx;
+	display: flex;
+	align-items: center;
 }
 .selection-cell_access::after {
   content: " ";
@@ -212,6 +193,26 @@ button {
   margin-top: -8rpx;
   right: 4rpx;
 }
+.price-selection {
+  padding: 20rpx;
+	position: relative;
+  border-bottom: solid 2rpx #F7F7F7;
+}
+radio-group {
+  display: flex;
+  align-items: center;
+  font-size: 90%;
+}
+.radio-group-activity {
+  display: flex;
+  align-items: flex-start;
+  font-size: 90%;
+  flex-direction: column;
+  justify-content: center;
+}
+radio-group radio:nth-child(2) {
+  margin-left: 10rpx;
+}
 .date-select {
 	height: 100rpx;
 	overflow: scroll;
@@ -221,10 +222,10 @@ button {
 	justify-content: space-between;
 }
 .date-select-on {
-	border-bottom: solid 4rpx #FD8CA3;
+	border-bottom: solid 4rpx #FF0074;
 }
 .swiper-slide {
-	padding: 0 40rpx 0rpx 40rpx;
+	padding: 0 40rpx 20rpx 40rpx;
     display: inline-block;	
 }
 .timeslots {
@@ -263,7 +264,7 @@ button.timeslot::after {
 	background-color: #EEEEEE;
 }
 .timeslot-selected {
-  background-color: #FD8CA3;
+  background-color: #FF0074;
   color: white;
 }
 .input-area {
@@ -279,6 +280,9 @@ button.timeslot::after {
 .input-cell:not(:last-child) {
 	border-bottom: solid 2rpx #F7F7F7;
 }
+.no-border-bottom {
+  border-bottom: none !important;
+}
 .reserve-label {
 	width: 30%;
 }
@@ -286,10 +290,16 @@ button.timeslot::after {
 	margin-top: 100rpx;
   display: flex;
 	justify-content: center;
+  position: fixed;
+  bottom: 0; 
+  left: 0;
+  right: 0;
+  z-index: 999;
+  background-color: white;
 }
 .btn-item {
-  background-color: #FD8CA3;
-  padding: 30rpx 0;
+  background-color: #FF0074;
+  padding: 25rpx 0;
   color: white;
   font-family: SimHei;
   width: calc(50% - 1rpx);

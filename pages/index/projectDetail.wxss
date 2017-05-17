@@ -4,6 +4,21 @@ page {
 .container {
 	height: 100%;
 }
+.red {
+  color: #FF0074;
+}
+.bold {
+  font-weight: bold;
+}
+.line-through {
+  text-decoration: line-through;
+  font-size: 80%;
+  margin-left: 10rpx;
+}
+.flex-space-between {
+  display: flex;
+  justify-content: space-between;
+}
 .swiper-description {
 	width: 100%;
   position: absolute;
@@ -49,19 +64,12 @@ page {
 .description-cell:not(:last-child) {
 	border-bottom: solid 2rpx #F7F7F7;
 }
-.price-no-activity text {
-  padding-left: 30rpx;
-  color: #686868;
+.description-cell__hd.bold {
+  padding-bottom: 10rpx;
 }
-.price-line-through{
-  padding-left: 30rpx;
-  color: #686868;
-}
-.price text:last-child {
-	text-decoration: line-through; 
-	margin-left: 10rpx;
-  color: #686868;
-  font-size: 80%;
+.phone {
+  border-left: solid 2rpx #E4E4E4;
+  padding: 0 10rpx 0 30rpx;
 }
 #shop-info-area {
 	margin-top: 10rpx;
@@ -103,7 +111,7 @@ page {
   margin-left: 10rpx;
 }
 .shop-info-area-txt-stats text {
-	color: #FD8CA3;
+	color: #FF0074;
 }
 #other-info-area {
 	margin-top: 10rpx;
@@ -114,6 +122,10 @@ page {
 }
 .other-cell:not(:last-child) {
 	border-bottom: solid 2rpx #F7F7F7;
+}
+.no-border-bottom {
+  border-bottom: none !important;
+  padding-bottom: 0;
 }
 .other-cell__bd view {
 	color: #414141;
@@ -213,11 +225,11 @@ page {
 	border-bottom: solid 2rpx #F7F7F7;
 }
 .more-comment {
-	color: #FD8CA3;
+	color: #FF0074;
 	padding-top: 20rpx;
 }
 .btn-area-btn {
-	background-color: #FD8CA3;
+	background-color: #FF0074;
 	color: white;
 	width: 100%;
 	padding: 30rpx 0;

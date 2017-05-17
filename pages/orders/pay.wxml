@@ -1,17 +1,23 @@
 <view class="container">
     <view class="project-area">
         <view class="project-item">
-            <view class="project-left">
+            <!--<view class="project-left">
                 <image src="https://www.iumer.cn{{ orderInfo.filePath || '/umer/css/image/default.jpg' }}"></image>
-            </view>
-            <view class="project-right">
+            </view>-->
+            <!--<view class="project-right">
                 <view class="project-right-title">{{ orderInfo.orderName || '' }}</view>
-                <view class="project-right-shop">{{ orderInfo.shopName || '' }}</view>
-                <view class="project-right-price">￥{{ orderInfo.orderPrice + (orderInfo.priceType == '0'? '元/次': '元/疗程' ) }}</view>
-            </view>
+                <view class="project-right-shop">{{ orderInfo.shopName || '' }}</view>-->
+                <view class="project-right-price flex-space-between">
+                  <text>订单总价</text>
+                  <text>￥{{ orderInfo.orderPrice + (orderInfo.priceType == '0'? '元/次': '元/疗程' ) }}</text>
+                </view>
+            <!--</view>-->
         </view>
     </view>
     <view id="payment-type-area">
+        <view class="payment-type-title">
+          选择支付方式
+        </view>
         <block wx:for="{{ paymentMethods }}" wx:key="value">
             <view class="payment-type-cell" wx:if="{{ item.value != 'alipay' }}">
                 <view class="payment-type-cell-hd"><image src="https://www.iumer.cn{{ item.icon }}"></image>{{ item.label }}</view>

@@ -5,6 +5,14 @@
 .text-center {
 	text-align: center;
 }
+.flex-space-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+page {
+  background-color: #F7F7F7;
+}
 .container{
 	font-size: 30rpx;
 	background-color: #F7F7F7;

@@ -10,78 +10,64 @@
             </view>
         </view>
         <view class="people-item-right">
-            <view class="people-item-name">{{ personnelInfo.name || "" }}</view>
-            <view class="people-item-rate">
-                <view class="star" data-score='{{ personnelInfo.level || 0 }}'>
-                    <block wx:for="{{ [ 0,1,2,3,4 ] }}" wx:for-item="itm" wx:key="*this">
-                        <view wx:if="{{ itm < (personnelInfo.level || 0) }}">
-                            <image src="https://www.iumer.cn/umer/js/raty/img/star-on.png"></image>
-                        </view>
-                        <view wx:if="{{ itm >= (personnelInfo.level || 0) }}">
-                            <image src="https://www.iumer.cn/umer/js/raty/img/star-off.png"></image>
-                        </view>
-                    </block>
-                </view>
+            <view class="people-item-name-and-rating">
+              <text>{{ personnelInfo.name || "" }}</text>
+              <view class="people-item-rate">
+                  <view class="star" data-score='{{ personnelInfo.level || 0 }}'>
+                      <block wx:for="{{ [ 0,1,2,3,4 ] }}" wx:for-item="itm" wx:key="*this">
+                          <view wx:if="{{ itm < (personnelInfo.level || 0) }}">
+                              <image src="https://www.iumer.cn/umer/js/raty/img/star-on.png"></image>
+                          </view>
+                          <view wx:if="{{ itm >= (personnelInfo.level || 0) }}">
+                              <image src="https://www.iumer.cn/umer/js/raty/img/star-off.png"></image>
+                          </view>
+                      </block>
+                  </view>
+              </view>
+              <text class="people-item-right-level">{{ personnelInfo.level + '.0' || '0.0' }}</text>
             </view>
-            <view class="people-item-info">
-                <view class="people-item-info-distance">
-				    <image src="https://www.iumer.cn/umer/css/image/wechat/app/pin@3x.png" />{{ item.distance? "距离" + item.distance + "左右": "未定位到距离" }}
-                </view>
-                <view class="people-item-info-board-comment">
-                    <view class="people-item-info-board"><image src="https://www.iumer.cn/umer/css/image/wechat/app/order-count@2x.png" /> {{ personnelInfo.orderCount || 0 }}</view>
-                    <view class="people-item-info-comment"><image src="https://www.iumer.cn/umer/css/image/wechat/app/comments@2x.png" />{{ personnelInfo.commentCount || 0 }}</view>
-                </view>
+            <text class="people-item-service-count">服务过{{ personnelInfo.orderCount || 0 }}次</text>
+            <view class="people-item-labels">
+              <text class="people-item-label">态度好</text>
+              <text class="people-item-label">服务好</text>
+              <text class="people-item-label">技术好</text>
             </view>
         </view>
     </view>
     <view class="selection-area">
-        <view class="selection-cell {{ priceDropdownHidden? 'selection-cell_access': '' }}" bindtap="togglePriceType">
+    <view class="selection-cell selection-cell_access" href="javascript:;" bindtap="chooseProject">
             <view class="selection-cell__bd">
-                <text>项目价格</text>
-            </view>
-            <view class="selection-cell__ft cell-project-price">
-                <view class="dropdown">
-                    <view class="dropdown-toggle">
-                        <view class="selected-price" data-price-type="0" wx:if="{{ !item.projectActivityId }}">
-                            {{ priceType == 0? (projectUnitPrice || '') + '元/次': (projectCoursePrice || '') + '元/疗程' }}
-                        </view>
-                        <view class="selected-price" data-price-type="0" wx:if="{{ !!item.projectActivityId }}">
-                            {{ priceType == 0? item.activityUnitPrice + '元/次': item.activityCoursePrice + '元/疗程' }}
-                            <text>{{ priceType == 0? projectUnitPrice + '元/次': projectCoursePrice + '元/疗程' }}</text>
-                        </view>
-                    </view>
-                    <view class="dropdown-menu" hidden="{{ priceDropdownHidden }}">
-                        <view style="padding: 20rpx 0 20rpx 20rpx;" data-pricetype="0" bindtap="changePriceType">
-                            <view wx:if="{{ !!item.projectActivityId }}">
-                                次数：<text class="price-item-icon price-item-icon-sale"><text>{{ item.activityUnitPrice }}元/次</text></text>
-                                <text class="price-item-icon price-item-icon-original"><text>{{ projectUnitPrice }}元/次</text></text>
-                            </view>
-                            <view wx:if="{{ !item.projectActivityId }}">
-                                次数：<text class="price-item-icon price-item-icon-unit"><text>{{ projectUnitPrice }}元/次</text></text>
-                            </view>
-                        </view>   
-                        <view class="divider"></view>
-                        <view style="padding: 20rpx 0 20rpx 20rpx;" data-pricetype="1" bindtap="changePriceType">
-                            <view wx:if="{{ !!item.projectActivityId }}">
-                                疗程：<text class="price-item-icon price-item-icon-sale"><text>{{ item.activityCoursePrice }}元/疗程</text></text>
-                                <text class="price-item-icon price-item-icon-original"><text>{{ projectCoursePrice }}元/疗程</text></text>（<text>{{ projectCourseRemark }}次</text>）
-                            </view>
-                            <view wx:if="{{ !item.projectActivityId }}">
-                                疗程：<text class="price-item-icon price-item-icon-course"><text>{{ projectCoursePrice }}</text>元/疗程（<text>{{ projectCourseRemark }}次</text>）</text>
-                            </view>
-                        </view>  
-                    </view>
-                </view>
-            </view>
-            <view class="{{ priceDropdownHidden? '': 'arrow-down' }}"></view>
-        </view>
-        <view style="color: {{ !projectId? 'red': 'black' }}; border: {{ !projectId? 'solid 1px #FD8CA3': 'none' }}; border-bottom: {{ !projectId? 'solid 1px #FD8CA3': 'solid 1px #F7F7F7;' }};" class="selection-cell selection-cell_access" href="javascript:;" bindtap="chooseProject">
-            <view class="selection-cell__bd">
-            <text>项目</text>
+            <text>选择服务</text>
             </view>
             <view class="selection-cell__ft chosen-project">
                 {{ projectId? projectName: "请选择项目" }}<image hidden="{{ !projectHeader }}" src="{{ projectHeader? projectHeader: '' }}"></image>
             </view>
+        </view>
+        <view class="price-selection" wx:if="{{ !item.projectActivityId }}">
+          <view class="flex-space-between">
+              <text>选择服务方式</text>
+              <view>
+                <radio-group class="radio-group" bindchange="radioChange">
+                    <radio color="#FF0074" value="0"/>{{ item.projectUnitPrice || 0 }}元/次
+                    <radio color="#FF0074" value="1"/>{{ item.projectCoursePrice || 0 }}元/疗程({{ item.courseRemark }})  
+                </radio-group>
+              </view>
+          </view>
+        </view>
+        <view class="price-selection" wx:if="{{ !!item.projectActivityId }}">
+          <view class="flex-space-between">
+              <text>选择服务方式</text>
+              <view>
+                <radio-group class="radio-group-activity" bindchange="radioChange">
+                  <view>
+                    <radio color="#FF0074" value="0"/>{{ item.activityUnitPrice || 0 }}元/次 <text class="line-through">{{ item.projectUnitPrice || 0 }}元/次</text>
+                  </view>
+                  <view>
+                    <radio color="#FF0074" value="1"/>{{ item.activityCoursePrice || 0 }}元/疗程  <text class="line-through">{{ item.projectCoursePrice || 0 }}元/疗程</text>({{ item.courseRemark }})
+                  </view>
+                </radio-group>
+               </view> 
+              </view>
         </view>
         <view class="selection-cell">
             <view class="selection-cell__bd">
@@ -119,6 +105,15 @@
                 <view class="input-cell__bd">
                     <input class="reserve-phone" type="digit" maxlength="11" placeholder="请输入手机号" value="{{ reservePhone || '' }}" bindinput="inputReservePhone"/>
                 </view>
+            </view>
+            <view class="input-cell no-border-bottom">
+                
+            </view>
+            <view class="input-cell no-border-bottom">
+                
+            </view>
+            <view class="input-cell no-border-bottom">
+                
             </view>
         </view>	
     </view>

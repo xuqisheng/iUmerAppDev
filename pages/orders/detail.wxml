@@ -1,8 +1,8 @@
 <view class="container">
   <view id="shop-area">
-    <view id="shop-info" class="flex-space-between">
+    <view id="shop-info" class="flex-space-between" bindtap="showShop">
       <view class="shop-header-and-name">
-        <image src="https://www.iumer.cn/{{ orderInfo.header }}"></image>
+        <image src="https://www.iumer.cn/{{ orderInfo.shopHeader || 'umer/css/image/wechat/2.jpg' }}"></image>
         <text>{{ orderInfo.shopName }}</text>
       </view>
       <view class="angle"></view>
@@ -43,6 +43,7 @@
   </view>
   <view id="order-info-area">
     <view id="appoint-info">
+      <view class="appoint-info-title">预约详情</view>
       <view class="flex-space-between appoint-info-personnel">
         <text>预约优美师</text>
         <text>{{ orderInfo.personnelName }}</text>
@@ -102,13 +103,13 @@
       <!-- 待评价 -->
       <block wx:if="{{ orderInfo.approveStatus == 2 }}">
           <!--<view class="btn-area-back-1 text-center" bindtap="backToIndex">返回首页</view>-->
-          <view class="btn-area-order-comment btn-area-btn text-center" bindtap="addComment">评价</view>
-          <view class="btn-area-order-again-1 btn-area-btn text-center" bindtap="orderAgain">再次预约</view>
+          <view class="btn-area-order-comment btn-area-btn btn-back-red text-center" bindtap="addComment">评价</view>
+          <view class="btn-area-order-again-1 btn-area-btn btn-back-red text-center" bindtap="orderAgain">再次预约</view>
       </block>
       <!-- 已评价 -->
       <block wx:if="{{ orderInfo.approveStatus == 3 }}">
           <!--<view class="btn-area-back-1 text-center" bindtap="backToIndex">返回首页</view>-->
-          <view class="btn-area-order-again-2 btn-area-btn text-center" bindtap="orderAgain">再次预约</view>
+          <view class="btn-area-order-again-2 btn-area-btn btn-back-red text-center" bindtap="orderAgain">再次预约</view>
       </block>
       <!-- 已取消 -->
       <block wx:if="{{ orderInfo.approveStatus == 4 || orderInfo.approveStatus == 6 }}">

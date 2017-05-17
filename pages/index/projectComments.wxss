@@ -11,8 +11,8 @@ page {
 	margin-bottom: 10rpx;
 }
 #top-tabs-2 .tab-outer {
-	border: solid 2rpx #FD8CA3;
-    display: flex;
+	border: solid 2rpx #FF0074;
+  display: flex;
 	justify-content: center;
 	padding: 10rpx 0;
 }
@@ -24,7 +24,7 @@ page {
 }
 #top-tabs-2 .tab-inner-on-2 {
 	color: white !important;
-	background-color: #FD8CA3;
+	background-color: #FF0074;
 }
 .swiper2 {
 	height: 100%;

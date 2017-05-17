@@ -1,0 +1,36 @@
+<!--pages/my/my.wxml-->
+<view class="container">
+  <view id="personel-area">
+    <view class="personel-info">
+      <view class="personel-info-left">
+        <image src=""></image>
+      </view>
+      <view class="personel-info-right">
+        <view class="personel-info-right-name bold">111</view>
+        <view class="personel-info-right-exp">
+          <progress percent="20" activeColor="yellow" backgroundColor="#FF0074" stroke-width="12" active/>
+        </view>
+        <view class="personel-info-right-level flex-space-between">
+          <text>LV.6</text>
+          <text>LV.7</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view id="menu-area">
+    <view class="menus">
+      <view class="menu-item">
+        <text class="menu-txt">更换手机号</text>
+      </view>
+      <view class="menu-item" bindtap="showOrders">
+        <text class="menu-txt">我的订单</text>
+      </view>
+      <view class="menu-item">
+        <text class="menu-txt">我的卡号</text>
+      </view>
+    </view>
+  </view>
+  <view id="logout-area">
+    <view>登出</view>
+  </view>
+</view>

@@ -24,8 +24,8 @@
 	padding-bottom: 10rpx;
 }
 .nav-item-img image {
-	width: 100rpx;
-	height: 100rpx;
+	width: 70rpx;
+	height: 70rpx;
 }
 .weui-mask {
 	display: none;
@@ -52,7 +52,7 @@
 	text-align: center;
 }
 .nav-item {
-	padding: 16rpx 20rpx;
+	padding: 50rpx 20rpx;
 }
 .nav-item-txt {
 	font-family: SimHei;
@@ -97,6 +97,9 @@
 .hot-item-right {
 	width: 80%;
 	padding: 10rpx 0 10rpx 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .hot-item-name {
 	color: #111111;
@@ -106,8 +109,20 @@
 	text-overflow: ellipsis;
 	width: 100%;
   font-size: 108%;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
 }
-.hot-item-place-and-price {
+.hot-item-name-recommend {
+  color: white;
+  background-color: #FF0074;
+  padding: 2rpx 4rpx;
+  border: solid 2rpx #E4E4E4;
+  border-radius: 6rpx;
+  font-size: 80%;
+  margin-right: 10rpx;
+}
+.hot-item-place-and-distance {
 	display: flex;
 	justify-content: space-between;
 }
@@ -116,7 +131,7 @@
   font-size: 100%;
 }
 .hot-item-price {
-	color: orange;
+	color: #FF0074;
   font-size: 110%;
 }
 .hot-item-price text {
@@ -199,6 +214,9 @@
 .people-item-right .star view:not(:first-child) image {
 	padding-left: 5rpx;
 }
+.people-item-right .star-txt {
+  margin-left: 10rpx;
+}
 .people-item-name {
 	color: #414141;
 	white-space: nowrap;
@@ -265,6 +283,7 @@
 	width: 450rpx;
 	background-color: white;
 	font-size: 28rpx;
+  border-radius: 24rpx;
 }
 .top-menu-search .search-icon {
 	position: absolute;

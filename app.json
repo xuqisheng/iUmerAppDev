@@ -1,6 +1,6 @@
 {
   "pages":[
-      
+    
     "pages/index/index",
     "pages/index/indexSearch",
     "pages/index/location",
@@ -29,11 +29,12 @@
     "pages/quickAppoint/chooseProject",
     "pages/quickAppoint/appoint",
     "pages/activity/activities",
-    "pages/activity/projects"
+    "pages/activity/projects",
+    "pages/my/my"
   ],
   "window":{
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#FD8CA3",
+    "navigationBarBackgroundColor": "#FF0074",
     "navigationBarTitleText": "优美手艺",
     "navigationBarTextStyle":"white"
   },
@@ -45,15 +46,15 @@
       "iconPath": "images/tab1-off-2@3x.png",
       "selectedIconPath": "images/tab1-on-2@3x.png"
     }, {
-      "pagePath": "pages/orders/orders",
-      "text": "订单",
-      "iconPath": "images/tab2-off-2@3x.png",
-      "selectedIconPath": "images/tab2-on-2@3x.png"
-    }, {
       "pagePath": "pages/quickAppoint/quickAppoint",
       "text": "快速预约",
       "iconPath": "images/tab3-off-2@3x.png",
       "selectedIconPath": "images/tab3-on-2@3x.png"
+    }, {
+      "pagePath": "pages/my/my",
+      "text": "我的",
+      "iconPath": "images/tab2-off-2@3x.png",
+      "selectedIconPath": "images/tab2-on-2@3x.png"
     }]
   }
 }

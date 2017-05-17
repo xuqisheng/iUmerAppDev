@@ -6,7 +6,7 @@ page {
   height: 100%;
 }
 .red {
-  color: red !important;
+  color: #FF0074 !important;
 }
 .flex-space-between {
   display: flex;
@@ -76,16 +76,20 @@ page {
   font-size: 90%;
 }
 #shop-info {
-  padding: 15rpx 30rpx 15rpx 10rpx;
+  padding: 15rpx 20rpx 15rpx 20rpx;
   background-color: white;
 }
 #shop-info .shop-header-and-name {
   display: flex;
   align-items: center;
+  color: #111111;
 }
 #shop-info image {
   width: 40rpx;
   height: 40rpx;
+  margin-right: 10rpx;
+  border: solid 2rpx #E4E4E4;
+  border-radius: 8rpx;
 }
 #shop-info .angle::after {
   content: " ";
@@ -108,7 +112,7 @@ page {
 #project-info {
   background-color: white;
   display: flex;
-  padding: 0 10rpx;
+  padding: 0 20rpx;
 }
 .project-info-direct-child {
   border-bottom: solid 2rpx #f7f7f7;
@@ -118,7 +122,7 @@ page {
 .project-info-left {
   width: 130rpx;
   height: 130rpx;
-  padding: 10rpx;
+  padding: 10rpx 0 10rpx 0;
   display: flex;
   align-items: center;
 }
@@ -133,13 +137,13 @@ page {
   flex-direction: column;
   justify-content: center;
   width: 100%;
-  padding: 10rpx 20rpx 10rpx 10rpx;
+  padding: 10rpx 0 10rpx 10rpx;
 }
 .project-info-right-first-title {
   font-size: 120%;
 }
 .order-price-sale {
-    color: red !important;
+    color: #FF0074 !important;
 }
 .order-price-original {
     margin-left: 10rpx;
@@ -148,7 +152,7 @@ page {
 }
 #price-info {
   background-color: white;
-  padding: 15rpx 30rpx 15rpx 10rpx;
+  padding: 15rpx 20rpx 15rpx 20rpx;
 }
 #order-info-area {
   padding-top: 10rpx;
@@ -156,8 +160,13 @@ page {
 }
 #appoint-info {
   background-color: white;
-  padding: 15rpx 30rpx 15rpx 10rpx;
+  padding: 15rpx 20rpx 15rpx 20rpx;
   /*border-bottom: solid 2rpx #f7f7f7;*/
+}
+.appoint-info-title {
+  padding: 10rpx 0 20rpx 0;
+  color: #111111;
+  border-bottom: solid 2rpx #f7f7f7;
 }
 #pay-info-area {
   padding-top: 10rpx;
@@ -165,18 +174,20 @@ page {
 }
 #pay-info {
   background-color: white;
-  padding: 15rpx 30rpx 15rpx 10rpx;
+  padding: 15rpx 20rpx 15rpx 20rpx;
 }
 #pay-info text {
   color: #777777;
 }
 .pay-info-title {
-  padding: 10rpx 0;
-  color: #777777;
+  padding: 10rpx 0 20rpx 0;
+  color: #111111;
+  border-bottom: solid 2rpx #f7f7f7;
 }
 .pay-info-pay-method image {
   width: 45rpx;
   height: 45rpx;
+  padding-right: 5rpx;
 }
 .pay-info-pay-method view {
   display: flex;
@@ -188,7 +199,7 @@ page {
 }
 #btns {
   background-color: white;
-  padding: 15rpx 30rpx 15rpx 10rpx;
+  padding: 15rpx 0 15rpx 20rpx;
   display: flex;
   justify-content: flex-end;
 }
@@ -197,11 +208,19 @@ page {
   color: #c0c0c0;
   border: solid 2rpx #c0c0c0;
   margin-right: 20rpx;
+  border-radius: 8rpx;
+}
+#btns .btn-back-red {
+  color: white;
+  background-color: #FF0074;
+  border: none !important;
 }
 #btns .show-qr, #btns .btn-area-btn-2 {
-  background-color: #FD8CA3;
+  background-color: #FF0074;
   padding: 12rpx 40rpx;
   color: white;
+  border-radius: 8rpx;
+  margin-right: 20rpx;
 }
 .btn-return {
 	position: fixed;

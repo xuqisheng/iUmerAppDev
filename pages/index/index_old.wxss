@@ -1,90 +1,69 @@
-page {
-    background-color: #F1F1F1;
-}
+/**index.wxss**/
 .container {
-    font-size: 30rpx;
+	font-size: 30rpx;
+}
+.top-menu-area {
+	display: flex;
+	align-items: center;
+}
+.top-menu-search-bar {
+	z-index: 1000;
+}
+.top-menu-alert {
+	display: flex;
+	align-items: center;
+}
+.top-menu-alert image {
+	width: 42rpx;
+	height: 42rpx;
+}
+.index-header {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	padding-bottom: 10rpx;
+}
+.nav-item-img image {
+	width: 70rpx;
+	height: 70rpx;
+}
+.weui-mask {
+	display: none;
 }
 .top-menu-active {
 	padding: 0 20rpx;
 	display: flex;
 	background-color: #F1F1F1;
-	color: black;
+	color: #8e8e8e;
 	justify-content: space-between;
 	align-items: center;
 	height: 96rpx;
 }	
-.top-menu-search {
-	position: relative;
-	width: 600rpx;
+.red {
+	color: #FD8CA3 !important;
+}
+#nav {
+	width: 100%;
+	margin: 0 auto;
+	display: flex;
+	justify-content: center;
 	background-color: white;
+	margin-bottom: 10rpx;
+	text-align: center;
+}
+.nav-item {
+	padding: 16rpx 20rpx;
+}
+.nav-item-txt {
+	font-family: SimHei;
 	font-size: 28rpx;
-  border-radius: 48rpx;
 }
-.top-menu-search .search-icon {
-	position: absolute;
-	left: 16rpx;
-	top: 14rpx;
-	background-image: url('https://www.iumer.cn/umer/css/image/wechat/search@3x.png');
-	background-repeat: no-repeat;
-	background-size: 32rpx 32rpx;
-	width: 32rpx;
-	height: 32rpx;
+#hot-area {
+
 }
-.top-menu-search input {
-	width: 90%;
-	height: 100%;
-	border: none;
-	color: black;
-	margin-left: 60rpx;
-	line-height: normal;
-	padding: 10rpx 0;
-}
-.cancel-search {
-  position: absolute;
-  right: 30rpx;
-  top: 10rpx;
-}
-.top-menu-search-search {
-  background-color: #FF0074;
-  color: white;
-  padding: 10rpx 16rpx;
-  border-radius: 8rpx;
-}
-.search-hint {
-  background-color: white;
-}
-.search-hint-items {
-  display: flex;
-}
-.search-hint-item {
-  border: solid 2rpx #E8E8E8;
-  border-radius: 8rpx;
-  color: #E8E8E8;
-  padding: 8rpx 10rpx;
-  margin: 10rpx 10rpx;
-}
-.search-hint-title {
-  border-top: solid 2rpx #F7F7F7;
-  border-bottom: solid 2rpx #F7F7F7;
-  padding: 20rpx;
-}
-#project-area, #personnel-area, #shop-area {
-    background-color: white;
-    padding: 20rpx;
-}
-#personnel-area, #shop-area {
-    margin-top: 10rpx;
-}
-.more {
-    text-align: center;
-    border-top: solid 2rpx #F7F7F7;
-    padding-top: 20rpx;
-}
-.result-title {
-    display: flex;
-	justify-content: flex-start;
-	align-items: center;
-	padding-bottom: 10rpx;
+#hot {
+	background-color: white;
+	padding: 20rpx 20rpx 0 20rpx;
 }
 .hot-item {
 	background-color: white;
@@ -102,7 +81,8 @@ page {
 	justify-content: center;
 	align-items: center;
 	flex-direction:column;
-    margin-right: 20rpx;
+	margin-right: 20rpx;
+  min-height: 150rpx;
 }
 .hot-item-left .hot-item-img {
 	display: flex;
@@ -115,17 +95,25 @@ page {
   border-radius: 8rpx;
 }
 .hot-item-right {
-	width: 100%;
-	padding: 20rpx 0;
+	width: 80%;
+	padding: 10rpx 0 10rpx 0;
 }
 .hot-item-name {
-	color: #222222;
-	margin-bottom: 10rpx;
+	color: #111111;
+	margin-bottom: 0;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	width: 100%;
   font-size: 108%;
 }
 .hot-item-place-and-price {
 	display: flex;
 	justify-content: space-between;
+}
+.hot-item-place {
+	color: #393939;
+  font-size: 100%;
 }
 .hot-item-price {
 	color: orange;
@@ -135,9 +123,7 @@ page {
 	text-decoration: line-through; 
 	color: gray; 
 	margin-left: 10rpx;
-}
-.hot-item-place {
-	color: #393939;
+  font-size: 80%;
 }
 .hot-item-info {
 	display: flex;
@@ -152,7 +138,7 @@ page {
 .hot-item-info-distance image {
 	width: 30rpx;
 	height: 40rpx;
-    margin: 10rpx 10rpx 10rpx 0;
+	margin: 0rpx 10rpx 0rpx 0;
 }
 .hot-item-info-duration {
 	color: #777777;
@@ -163,7 +149,12 @@ page {
 .hot-item-info-duration image {
 	width: 30rpx;
 	height: 30rpx;
-	margin: 10rpx;
+	margin: 0 10rpx;
+}
+#people {
+	background-color: white;
+	padding: 20rpx 20rpx 0 20rpx;
+	margin-top: 10rpx;
 }
 .people-item {
 	background-color: white;
@@ -195,7 +186,7 @@ page {
 }
 .people-item-right {
 	width: 100%;
-	padding: 20rpx 0;
+	padding: 10rpx 0 10rpx 0;
 }
 .people-item-right .star {
 	display: flex;
@@ -209,11 +200,15 @@ page {
 	padding-left: 5rpx;
 }
 .people-item-name {
-	color: #222222;
+	color: #414141;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	width: 100%;
   font-size: 108%;
 }
 .people-item-place {
-	color: #393939;
+	color: #414141;
 }
 .people-item-dot-line {
 	margin-right: 40rpx;
@@ -236,93 +231,57 @@ page {
 .people-item-info-distance image {
 	width: 30rpx;
 	height: 40rpx;
-	margin: 10rpx 10rpx 10rpx 0;
+	margin: 0 10rpx 0 0;
 }
 .people-item-info-board-comment {
 	display: flex;
-  font-size: 90%;
 }
 .people-item-info-comment {
-	color: #777777;
+	color: #686868;
 	display: flex;
 	align-items: center;
 }
 .people-item-info-comment image {
 	width: 30rpx;
 	height: 30rpx;
-	margin: 10rpx;
+	margin: 0 10rpx;
 }
 .people-item-info-board {
-	color: #777777;
+	color: #686868;
 	display: flex;
 	align-items: center;
 }
 .people-item-info-board image {
 	width: 30rpx;
 	height: 30rpx;
-	margin: 10rpx;
+	margin: 0 10rpx;
 }
-.shop-item {
+.top-menu-area image {
+	height: 14rpx;
+	width: 24rpx;
+}
+.top-menu-search {
+	position: relative;
+	width: 450rpx;
 	background-color: white;
-    display: flex;
-	justify-content: space-between;
-	font-family: SimHei;
-	border-top: solid 2rpx #F7F7F7;
+	font-size: 28rpx;
 }
-.shop-item-left {
-	width: 150rpx;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction:column;
-	margin-right: 20rpx;
+.top-menu-search .search-icon {
+	position: absolute;
+	left: 16rpx;
+	top: 12rpx;
+	background-image: url('https://www.iumer.cn/umer/css/image/wechat/search@3x.png');
+	background-repeat: no-repeat;
+	background-size: 32rpx 32rpx;
+	width: 32rpx;
+	height: 32rpx;
 }
-.shop-item-left image {
-	width: 130rpx;
-	height: 130rpx;
-  border: solid 2rpx #E4E4E4;
-  border-radius: 8rpx;
-}
-.shop-item-right {
-/* 	border: solid 1px green; */
-	width: 100%;
-	padding: 20rpx 0;
-}
-.shop-item-right-title {
-	color: #222222;
-	margin-bottom: 10rpx;
-  font-size: 108%;
-}
-.shop-item-right-intro {
-	color: #393939;
-    overflow: hidden;
-    white-space: nowrap;
-	text-overflow: ellipsis;
-	width: 575rpx;
-}
-.shop-item-right-info-distance {
-	color: #777777;
-    display: flex;
-    align-items: center;
-    float: left;
-    font-size: 90%;
-}
-.shop-item-right-info-distance image {
-	width: 30rpx;
-    height: 40rpx;
-    margin: 10rpx 10rpx 10rpx 0;
-}
-.shop-item-right-info-stats {
-	float: right;
-	color: #777777;
-    display: flex;
-    align-items: center;
-    margin: 10rpx;
-    font-size: 90%;
-}
-.shop-item-right-info-stats view:nth-child(2) {
-  margin-left: 10rpx;
-}
-.red {
-    color: #FD8CA3;
+.top-menu-search .placeholder {
+	width: 90%;
+	height: 100%;
+	border: none;
+	margin-left: 60rpx;
+	line-height: normal;
+	padding: 10rpx 0;
+	color: gray;
 }

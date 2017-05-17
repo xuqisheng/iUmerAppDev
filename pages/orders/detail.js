@@ -644,5 +644,11 @@ Page({
         // complete
       }
     })
+  },
+  showShop: function(e) {
+    var that = this;
+    wx.navigateTo({
+      url: '../index/shopDetail?shopId=' + (that.data.orderInfo.shopId || ''),
+    })
   }
 })

@@ -66,34 +66,28 @@
             <text>暂时没有项目哦~</text>
         </view>
         <scroll-view scroll-y style="width: 100%; height: 100%;" bindscrolltolower="loadMore" bindscrolltoupper="refresh">
-          <block wx:for="{{ projectList }}" wx:key="id">
-            <view class="hot-item" data-projectId="{{ item.id }}" data-activityid="{{ item.projectActivityId || '' }}" bindtap="clickProjectItem" >
-              <view class="hot-item-left">
-                <view class="hot-item-img">
-                  <image class="lazy" src="https://www.iumer.cn{{ item.filePath || '/umer/css/image/default.jpg' }}" />
+            <block wx:for="{{ projectList }}" wx:key="id">
+                <view class="hot-item" data-projectId="{{ item.id }}" data-activityid="{{ item.projectActivityId || '' }}" bindtap="clickProjectItem" >
+                    <view class="hot-item-left">
+                        <view class="hot-item-img">
+                            <image class="lazy" src="https://www.iumer.cn{{ item.filePath || '/umer/css/image/default.jpg' }}" />
+                        </view>
+                    </view>
+                    <view class="hot-item-right">
+                        <view class="hot-item-name">{{ item.projectName || "" }}</view>
+                        <view class="hot-item-place-and-price">
+                            <view class="hot-item-place">{{ item.shopName || "" }}</view>
+                            <view class="hot-item-price" wx:if="{{ !!item.projectActivityId }}">￥{{ item.activityUnitPrice || "0" }}元<text>￥{{ item.unitPrice || "0" }}元</text></view>
+							<view class="hot-item-price" wx:if="{{ !item.projectActivityId }}">￥{{ item.unitPrice || "0" }}元</view>
+                        </view>
+                        <view class="hot-item-info">
+                            <view class="hot-item-info-distance">
+                                <image src="https://www.iumer.cn/umer/css/image/wechat/app/pin@3x.png" />{{ item.distance? "距离" + item.distance + "左右": "未定位到距离" }}</view>
+                            <view class="hot-item-info-duration"><image src="https://www.iumer.cn/umer/css/image/wechat/app/time@2x.png" />{{ item.duration || "0" }}分钟</view>
+                        </view>
+                    </view>
                 </view>
-              </view>
-              <view class="hot-item-right">
-                <view class="hot-item-name">
-                  <text class="hot-item-name-recommend">推荐</text>
-                  {{ item.projectName || "" }}
-                </view>
-                <view class="hot-item-place-and-distance">
-                  <view class="hot-item-place">{{ item.shopName || "" }}</view>
-                  <view class="hot-item-info-distance">{{ item.distance? item.distance: "未定位到距离" }}</view>
-                </view>
-                <view class="hot-item-info">
-                  <view class="hot-item-info-duration">
-                  <text>{{ item.duration || "0" }}分钟</text> 
-                  |
-                  <text></text>
-                  </view> 
-                  <view class="hot-item-price" wx:if="{{ !!item.projectActivityId }}">￥{{ item.activityUnitPrice || "0" }}元<text>￥{{ item.unitPrice || "0" }}元</text></view>
-                  <view class="hot-item-price" wx:if="{{ !item.projectActivityId }}">￥{{ item.unitPrice || "0" }}元</view>
-                </view>
-              </view>
-            </view>
-          </block>
+            </block>
             <view class="load-more text-center" hidden="{{ loadingHidden }}">加载中</view>
         </scroll-view>
     </view>

@@ -37,7 +37,7 @@ page {
 	background-color: white;
 }
 .filter-item-active {
-	color: #FF0074;
+	color: #FD8CA3;
 	border-top: solid 2rpx #CFCFCF;
 	border-right: solid 2rpx #CFCFCF;
 	border-bottom: solid 2rpx #CFCFCF;
@@ -50,7 +50,7 @@ page {
 	position: relative;
 }
 .filter-text-active {
-	color: #FF0074;
+	color: #FD8CA3;
 }
 .filter-item-triangle {
 	position: absolute; 
@@ -67,7 +67,7 @@ page {
 	bottom:0; 
 	width: 0; 
 	height: 0; 
-	border-bottom: 24rpx solid #FF0074; 
+	border-bottom: 24rpx solid #FD8CA3; 
 	border-left: 24rpx solid transparent;
 }
 .filter-item-list {
@@ -163,11 +163,11 @@ page {
     background-size: 60rpx calc(60rpx / 46 * 29);
 }
 .filter-list-item-on-pink {
-	color: #FF0074;
+	color: #FD8CA3;
 }
 .filter-list-item-category-on {
-	border: solid 2rpx #FF0074 !important;
-	color: #FF0074 !important;
+	border: solid 2rpx #FD8CA3 !important;
+	color: #FD8CA3 !important;
 }
 #project-area {
 	height: calc(100% - 84rpx);
@@ -178,7 +178,7 @@ page {
 	justify-content: space-between;
 	font-family: SimHei;
 	border-top: solid 2rpx #F7F7F7;
-  padding: 0 10rpx;
+	padding: 0 20rpx;
 }
 .hot-item:first-child {
 	margin-top: 10rpx;
@@ -190,7 +190,6 @@ page {
 	align-items: center;
 	flex-direction:column;
 	margin-right: 20rpx;
-  min-height: 150rpx;
 }
 .hot-item-left .hot-item-img {
 	display: flex;
@@ -203,48 +202,28 @@ page {
   border-radius: 8rpx;
 }
 .hot-item-right {
-	width: 80%;
-	padding: 10rpx 0 10rpx 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+	width: 100%;
+	padding: 20rpx 0 10rpx 0;
 }
 .hot-item-name {
 	color: #111111;
-	margin-bottom: 0;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	width: 100%;
+	margin-bottom: 10rpx;
   font-size: 108%;
-  display: flex;
-  align-items: center;
-  font-weight: bold;
 }
-.hot-item-name-recommend {
-  color: white;
-  background-color: #FF0074;
-  padding: 2rpx 4rpx;
-  border: solid 2rpx #E4E4E4;
-  border-radius: 6rpx;
-  font-size: 80%;
-  margin-right: 10rpx;
-}
-.hot-item-place-and-distance {
+.hot-item-place-and-price {
 	display: flex;
 	justify-content: space-between;
 }
 .hot-item-place {
 	color: #393939;
-  font-size: 100%;
 }
 .hot-item-price {
-	color: #FF0074;
+	color: orange;
   font-size: 110%;
 }
 .hot-item-price text {
 	text-decoration: line-through; 
-	color: gray; 
+	color: #777777; 
 	margin-left: 10rpx;
   font-size: 80%;
 }
@@ -261,7 +240,7 @@ page {
 .hot-item-info-distance image {
 	width: 30rpx;
 	height: 40rpx;
-	margin: 0rpx 10rpx 0rpx 0;
+	margin: 10rpx 10rpx 10rpx 0;
 }
 .hot-item-info-duration {
 	color: #777777;
@@ -272,5 +251,5 @@ page {
 .hot-item-info-duration image {
 	width: 30rpx;
 	height: 30rpx;
-	margin: 0 10rpx;
+	margin: 10rpx;
 }

@@ -5,11 +5,11 @@ page {
     background-color: #F7F7F7;
 }
 .project-item {
-    display: flex;
+    /*display: flex;*/
     background-color: white;
     padding: 20rpx;
 }
-.project-left {
+/*.project-left {
     width: 120rpx;
 }
 .project-left image {
@@ -29,6 +29,20 @@ page {
     display: flex;
     justify-content: flex-end;
     color: orange;
+}*/
+.project-right-price {
+  align-items: center;
+}
+.project-right-price text:first-child {
+  color: black;
+}
+.project-right-price text:last-child {
+  color: #FF0074;
+  font-size: 120%;
+}
+.payment-type-title {
+  padding: 20rpx;
+  color: #A19FA0;
 }
 .payment-type-cell {
     padding: 20rpx;
@@ -69,7 +83,7 @@ page {
 }
 .btn-pay {
     width: 100%;
-    background-color: #FD8CA3;
+    background-color: #FF0074;
     color: white;
     padding: 30rpx 0;
 }

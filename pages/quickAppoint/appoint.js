@@ -24,7 +24,7 @@ Page({
     this.loadProject();
     this.loadPersonnel();
     this.loadWeekdays();
-   
+    this.loadPaymentMethods();
     wx.setNavigationBarTitle({
       title: '预约'
     })
@@ -446,6 +446,20 @@ Page({
       });
       return false;
     }
+    if (!that.data.selected) {
+      wx.showModal({
+        title: '提示',
+        showCancel: false,
+        confirmColor: '#FD8CA3',
+        content: '请选择付款方式',
+        success: function (res) {
+          if (res.confirm) {
+
+          }
+        }
+      })
+      return false;
+    }
     if (!that.data.reservePhone) {
       wx.showModal({
         title: '提示',
@@ -500,16 +514,121 @@ Page({
                 content: '订单提交成功',
                 success: function(res) {
                   if (res.confirm) {
-                    wx.navigateTo({
-                      url: '../orders/pay?orderNo=' + d.data,
-                      success: function(res){
-                        // success
+                    wx.request({
+                      url: app.globalData.server_url + 'webService/customer/biz/pay/wechatSubmitPay',
+                      data: app.encode({
+                        "orderNo": d.data,
+                        "paymentMode": that.data.selected,
+                        "customerId": wx.getStorageSync('id'),
+                        "openId": wx.getStorageSync('openId')
+                      }),
+                      method: "POST",
+                      dataType: "json",
+                      header: {
+                        'Content-Type': 'application/json;charset=UTF-8;'
                       },
-                      fail: function() {
-                        // fail
+                      success: function (res) {
+                        var res = (typeof (res.data) == "object") ? res.data : JSON.parse(res.data);
+                        if (res.code == 1) {
+                          if (that.data.selected == "offline") {
+                            wx.redirectTo({
+                              url: '../orders/detail?orderNo=' + d.data,
+                              success: function (res) {
+                                // success
+                              },
+                              fail: function () {
+                                // fail
+                              },
+                              complete: function () {
+                                // complete
+                              }
+                            })
+                          } else if (that.data.selected == "yetbuy") {
+                            wx.redirectTo({
+                              url: '../orders/detail?orderNo=' + d.data,
+                              success: function (res) {
+                                // success
+                              },
+                              fail: function () {
+                                // fail
+                              },
+                              complete: function () {
+                                // complete
+                              }
+                            })
+                          } else if (that.data.selected == "alipay") {
+
+                          } else if (that.data.selected == "wechat") {
+                            wx.requestPayment({
+                              'timeStamp': res.data.timeStamp,
+                              'nonceStr': res.data.nonceStr,
+                              'package': res.data.packAge,
+                              'signType': 'MD5',
+                              'paySign': res.data.sign,
+                              'success': function (res) {
+                                wx.redirectTo({
+                                  url: '../orders/detail?paySign=1&orderNo=' + d.data,
+                                  success: function (res) {
+                                    // success
+                                  },
+                                  fail: function () {
+                                    // fail
+                                  },
+                                  complete: function () {
+                                    // complete
+                                  }
+                                })
+                              },
+                              'fail': function (res) {
+
+                              }
+                            });
+                          } else if (that.data.selected == "miniapp") {
+                            wx.requestPayment({
+                              'timeStamp': res.data.timeStamp,
+                              'nonceStr': res.data.nonceStr,
+                              'package': res.data.packAge,
+                              'signType': 'MD5',
+                              'paySign': res.data.sign,
+                              'success': function (res) {
+                                wx.redirectTo({
+                                  url: '../orders/detail?paySign=1&orderNo=' + d.data,
+                                  success: function (res) {
+                                    // success
+                                  },
+                                  fail: function () {
+                                    // fail
+                                  },
+                                  complete: function () {
+                                    // complete
+                                  }
+                                })
+                              },
+                              'fail': function (res) {
+
+                              }
+                            });
+                          }
+                        } else {
+                          wx.showModal({
+                            title: '提示',
+                            showCancel: false,
+                            confirmColor: '#FD8CA3',
+                            content: res.desc,
+                            success: function (res) {
+                              if (res.confirm) {
+
+                              }
+                            }
+                          })
+                        }
                       },
-                      complete: function() {
-                        // complete
+                      fail: function (res) {
+                        console.log("pay - loadPaymentMethods fail")
+                      },
+                      complete: function (res) {
+                        console.log("pay - loadPaymentMethods complete")
+                        wx.hideNavigationBarLoading();
                       }
                     }); 
                   }
@@ -600,5 +719,58 @@ Page({
         }
       })
     }
+  },
+  loadPaymentMethods: function () {
+    var that = this;
+    wx.showNavigationBarLoading();
+    wx.request({
+      url: app.globalData.server_url + 'webService/common/payMode',
+      data: app.encode({
+        type: 3
+      }),
+      method: "POST",
+      dataType: "json",
+      header: {
+        'Content-Type': 'application/json;charset=UTF-8;'
+      },
+      success: function (res) {
+        if (res.data.code == 1) {
+          that.setData({
+            paymentMethods: res.data.data
+          });
+        } else {
+          wx.showModal({
+            title: '提示',
+            showCancel: false,
+            confirmColor: '#FD8CA3',
+            content: res.data.desc,
+            success: function (res) {
+              if (res.confirm) {
+
+              }
+            }
+          })
+        }
+      },
+      fail: function (res) {
+        console.log("pay - loadPaymentMethods fail")
+      },
+      complete: function (res) {
+        console.log("pay - loadPaymentMethods complete")
+        wx.hideNavigationBarLoading();
+      }
+    });
+  },
+  choosePayment: function (e) {
+    var paymentType = e.currentTarget.dataset.type;
+    this.setData({
+      selected: paymentType
+    });
+  },
+  pay: function () {
+    var that = this;
+    
+    wx.showNavigationBarLoading();
+    
   }
 })

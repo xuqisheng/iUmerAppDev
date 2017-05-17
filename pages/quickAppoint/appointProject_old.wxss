@@ -5,11 +5,109 @@ page {
 button {
 	line-height: 50rpx;
 }
+.people-item {
+	background-color: white;
+	display: flex;
+	justify-content: space-between;
+	font-family: SimHei;
+	border-top: solid 2rpx #F7F7F7;
+    padding: 0 20rpx;
+}
+.people-item:first-child {
+	margin-top: 10rpx;
+}
+.people-item-left {
+	width: 150rpx;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction:column;
+	margin-right: 20rpx;
+}
+.people-item-left .people-item-img image {
+	width: 130rpx;
+	height: 130rpx;
+  border: solid 2rpx #E4E4E4;
+  border-radius: 8rpx;
+}
+.people-item-right {
+	width: 100%;
+	padding: 20rpx 0 10rpx 0;
+}
+.people-item-right .star {
+	display: flex;
+	margin-top: 10rpx;
+}
+.people-item-right .star image {
+	width: 28rpx;
+	height: 28rpx;
+}
+.people-item-right .star view:not(:first-child) image {
+	padding-left: 5rpx;
+}
+.people-item-name {
+	color: #111111;
+  font-size: 108%;
+}
+.people-item-place {
+	color: #393939;
+}
+.people-item-dot-line {
+	margin-right: 40rpx;
+	background-image: url('https://www.iumer.cn/umer/css/image/wechat/dotted-line@2x.png');
+	width: 100%;
+	height: 2rpx;
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+}
+.people-item-info {
+	display: flex;
+	justify-content: space-between;
+}
+.people-item-info-distance {
+	color: #777777;
+	display: flex;
+	align-items: center;
+  font-size: 90%;
+}
+.people-item-info-distance image {
+	width: 30rpx;
+	height: 40rpx;
+	margin: 10rpx 10rpx 10rpx 0;
+}
+.project-item-info-distance text {
+	width: 350rpx;
+}
+.people-item-info-board-comment {
+	display: flex;
+}
+.people-item-info-comment {
+	color: #777777;
+	display: flex;
+	align-items: center;
+  font-size: 90%;
+}
+.people-item-info-comment image {
+	width: 30rpx;
+	height: 30rpx;
+	margin: 10rpx;
+}
+.people-item-info-board {
+	color: #777777;
+	display: flex;
+	align-items: center;
+  font-size: 90%;
+}
+.people-item-info-board image {
+  width: 30rpx;
+	height: 30rpx;
+	margin: 10rpx;
+}
 .cell-project-price {
 	position: static !important;
 }
 .cell-project-price:after {
-	right: 18px !important;
+	right: 36rpx !important;
 }
 .weui-label {
     margin-bottom: 0;
@@ -31,7 +129,7 @@ button {
 	color: red;
 }
 .selected-price text {
-	/*margin-left10rpx;*/
+	/* margin-left: 10rpx; */
 	color: gray;
 	text-decoration: line-through;
   font-size: 80%;
@@ -48,10 +146,10 @@ button {
 	top:100%;
 	background-color:white;
 	z-index:1000;
-	border: solid 1px #F7F7F7;
+	border: solid 2rpx #F7F7F7;
 }
 .dropdown-menu .divider {
-	border-top: solid 1px #F7F7F7;
+	border-top: solid 2rpx #F7F7F7;
 }
 .price-item-icon-sale {
 	color: red;
@@ -61,99 +159,19 @@ button {
 	text-decoration: line-through;
 	font-size: 80%;
 }
-.project-item {
-	background-color: white;
-    display: flex;
-	justify-content: space-between;
-	font-family: SimHei;
-}
-.project-item {
-	margin:0 0 20rpx 0;
-}
-.project-item-left {
-/* 	border: solid 1px blue; */
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: 220rpx;
-  min-height: 180rpx;
-}
-.project-item-img {
-	/*padding: 20rpx;*/
-}
-.project-item-img image {
-	width: 128rpx;
-  height: 128rpx;
-  border: solid 2rpx #E4E4E4;
-  border-radius: 8rpx;
-}
-.project-item-right {
-/* 	bORDER: SOLID 1PX GREEN; */
-	width: 100%;
-	padding: 20rpx 20rpx 0 0;
-}
-.project-item-name {
-	color: #111111;
-	margin-bottom: 10rpx;
-  font-size: 108%;
-}
-.project-item-place {
-	color: #393939;
-	float: left;
-}
-.project-item-price {
-	float: right;
-	color: red;
-}
-.project-item-price text {
+.price-item-icon-original {
+	margin-left: 10rpx;
 	text-decoration: line-through;
-	color: gray;
-  font-size: 80%;
-	/*margin-left: 10rpx;*/
+  font-size: 80%;  
 }
-.project-item-dot-line {
-	background-image: url('https://www.iumer.cn/umer/css/image/wechat/dotted-line@2x.png');
-	width: 100%;
-	height: 2rpx;
-	background-size: 100% 100%;
-	background-repeat: no-repeat;
-}
-.project-item-info-distance {
-	color: #777777;
-	float: left;
-    display: flex;
-    /*align-items: center;*/
-	margin: 10rpx 0;
-  font-size: 90%;
-}
-.project-item-info-distance image {
-	width: 30rpx;
-    height: 40rpx;
-	margin: 0 10rpx 0 0;
-}
-.project-item-info-distance text {
-	width: 350rpx;
-}
-.project-item-info-duration {
-	float: right;
-	color: #777777;
-  display: flex;
-  align-items: center;
-  font-size: 90%;
-}
-.project-item-info-duration image {
-	width: 30rpx;
-	height: 30rpx;
-	margin: 10rpx;
-}
-.chosen-personnel span {
+.chosen-project span {
     display: flex;
     align-items: center;
 }
-.chosen-personnel image {
+.chosen-project image {
 	width: 50rpx;
 	height: 50rpx;
-	margin-left: 10rpx;
+	margin-left: 10rpx;  
   border: solid 2rpx #E4E4E4;
   border-radius: 8rpx;
 }
@@ -181,18 +199,18 @@ button {
 	align-items:center;
 }
 .selection-cell_access::after {
-    content: " ";
-    display: inline-block;
-    height: 12rpx;
-    width: 12rpx;
-    border-width: 4rpx 4rpx 0 0;
-    border-color: #c8c8cd;
-    border-style: solid;
-    transform: matrix(.71,.71,-.71,.71,0,0);
-    position: relative;
-    top: 2rpx;
-    margin-top: -8rpx;
-    right: 4rpx;
+  content: " ";
+  display: inline-block;
+  height: 12rpx;
+  width: 12rpx;
+  border-width: 4rpx 4rpx 0 0;
+  border-color: #c8c8cd;
+  border-style: solid;
+  transform: matrix(.71,.71,-.71,.71,0,0);
+  position: relative;
+  top: 2rpx;
+  margin-top: -8rpx;
+  right: 4rpx;
 }
 .date-select {
 	height: 100rpx;
@@ -210,11 +228,11 @@ button {
     display: inline-block;	
 }
 .timeslots {
-    display: flex;
+  display: flex;
 	flex-wrap: wrap;	
-    justify-content: flex-start;
-   	margin-top: -20rpx;
-   	padding: 0 20rpx 20rpx 20rpx;
+  justify-content: flex-start;
+  margin-top: -20rpx;
+  padding: 0 20rpx 20rpx 20rpx;
 }
 button.timeslot {
 	border-radius: 0;
@@ -245,8 +263,8 @@ button.timeslot::after {
 	background-color: #EEEEEE;
 }
 .timeslot-selected {
-    background-color: #FD8CA3;
-    color: white;
+  background-color: #FD8CA3;
+  color: white;
 }
 .input-area {
 	margin-top: 20rpx;
@@ -279,12 +297,12 @@ button.timeslot::after {
   background-color: white;
 }
 .btn-item {
-    background-color: #FD8CA3;
-    padding: 25rpx 0;
-    color: white;
-    font-family: SimHei;
-    width: calc(50% - 1rpx);
-    text-align: center;
+  background-color: #FD8CA3;
+  padding: 25rpx 0;
+  color: white;
+  font-family: SimHei;
+  width: calc(50% - 1rpx);
+  text-align: center;
 }
 .btn-cancel {
 	margin-right: 2rpx;

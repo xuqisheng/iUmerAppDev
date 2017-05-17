@@ -7,9 +7,10 @@ page {
 .no-data image {
 	width: 75%;
 	height: calc(750rpx / 742 * 278 * 0.75);
+  margin-top: -100rpx;
 }
 .no-data text {
-	
+	margin-top: 45rpx;
 }
 #top-tabs-2 {
 	padding: 10rpx;
@@ -17,19 +18,21 @@ page {
 }
 #top-tabs-2 .tab-outer {
 	border: solid 2rpx #FD8CA3;
-    display: flex;
+  display: flex;
 	justify-content: center;
 	padding: 10rpx;
+  border-radius: 8rpx;
 }
 #top-tabs-2 .tab-inner {
 	color: black;
 	width: 50%;
-    text-align: center;
-    padding: 10rpx;
+  text-align: center;
+  padding: 10rpx;
 }
 #top-tabs-2 .tab-inner-on-2 {
 	color: white !important;
 	background-color: #FD8CA3;
+  border-radius: 8rpx;
 }
 .hot-item {
 	background-color: white;
@@ -37,7 +40,7 @@ page {
 	justify-content: space-between;
 	font-family: SimHei;
 	border-top: solid 2rpx #F7F7F7;
-    padding: 0 20rpx;
+  padding: 0 20rpx;
 }
 .hot-item:first-child {
 	margin-top: 10rpx;

@@ -259,17 +259,26 @@ button.timeslot::after {
 .input-cell:not(:last-child) {
 	border-bottom: solid 2rpx #F7F7F7;
 }
+.no-border-bottom {
+  border-bottom: none !important;
+}
 .reserve-label {
 	width: 30%;
 }
 .btn-area {
 	margin-top: 100rpx;
-    display: flex;
+  display: flex;
 	justify-content: center;
+  position: fixed;
+  bottom: 0; 
+  left: 0;
+  right: 0;
+  z-index: 999;
+  background-color: white;
 }
 .btn-item {
     background-color: #FD8CA3;
-    padding: 30rpx 0;
+    padding: 25rpx 0;
     color: white;
     font-family: SimHei;
     width: calc(50% - 1rpx);
@@ -277,4 +286,39 @@ button.timeslot::after {
 }
 .btn-cancel {
 	margin-right: 2rpx;
+}
+
+.payment-type-cell {
+    padding: 20rpx;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: solid 2rpx #F7F7F7;
+}
+.payment-type-cell-hd {
+    display: flex;
+    align-items: center;
+}
+.payment-type-cell-hd image {
+    width: 40rpx;
+    height: 40rpx;
+    padding-right: 10rpx;
+}
+.payment-type-cell-ft {
+    width: 65%;
+    display: flex;
+    justify-content: flex-end;
+}
+.payment-type-cell-ft-circle {
+    width: 55rpx;
+    height: 55rpx;
+    border: solid 2rpx #F7F7F7;
+    border-radius: 100%;
+}
+.circle-on {
+  background-image: url("https://www.iumer.cn/umer/css/image/wechat/app/selected-round@2x.png");
+  background-size: 80rpx;
+  background-repeat: no-repeat;
+  background-position: center;
 }

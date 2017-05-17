@@ -113,6 +113,15 @@
                     <input class="reserve-phone" type="digit" maxlength="11" placeholder="请输入手机号" value="{{ reservePhone || '' }}" bindinput="inputReservePhone"/>
                 </view>
             </view>
+            <view class="input-cell no-border-bottom">
+                
+            </view>
+            <view class="input-cell no-border-bottom">
+                
+            </view>
+            <view class="input-cell no-border-bottom">
+                
+            </view>
         </view>	
     </view>
     <view class="btn-area">

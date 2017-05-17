@@ -221,6 +221,7 @@ Page({
                 // console.log(res.data)
                 var d2 = res2.data.data;
                 that.setData({
+                  s: d2,
                   shopHeader: d2.header || "/umer/css/image/default.jpg",
                   shopTitle: d2.shopName || "",
                   shopDescription: d2.description || "",

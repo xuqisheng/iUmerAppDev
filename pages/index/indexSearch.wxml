@@ -1,89 +1,96 @@
 <view class="container">
     <view class="top-menu-active">
-        <view class="top-menu-search"><view class="search-icon"></view>
-        <input placeholder="搜索优美师/项目/店铺等" type="text" bindinput="indexSearch" /></view>
-        <view class="top-menu-search-cancel" bindtap="back">取消</view>
+        <view class="top-menu-search">
+          <view class="search-icon"></view>
+          <input placeholder="搜索优美师/项目" type="text" bindinput="inputKeywords" value="{{ searchKeywords }}"/>
+          <view class="cancel-search" bindtap="clearSearch">X</view>
+          </view>
+        <view class="top-menu-search-search" bindtap="search">搜索</view>
     </view>
-    <view id="project-area">
-        <view class="result-title">项目</view>
-        <block wx:for="{{ projectList }}" wx:key="id">
-            <view class="hot-item" data-projectId="{{ item.id }}" data-activityid="{{ item.projectActivityId || '' }}" bindtap="clickProjectItem" >
-                <view class="hot-item-left">
-                    <view class="hot-item-img">
-                        <image class="lazy" src="https://www.iumer.cn{{ item.filePath || '/umer/css/image/default.jpg' }}" />
-                    </view>
-                </view>
-                <view class="hot-item-right">
-                    <view class="hot-item-name">{{ item.projectName || "" }}</view>
-                    <view class="hot-item-place-and-price">
-                        <view class="hot-item-place">{{ item.shopName || "" }}</view>
-                        <view class="hot-item-price" wx:if="{{ !!item.projectActivityId }}">￥{{ item.activityUnitPrice || "0" }}元<text>￥{{ item.unitPrice || "0" }}元</text></view>
-                        <view class="hot-item-price" wx:if="{{ !item.projectActivityId }}">￥{{ item.unitPrice || "0" }}元</view>
-                    </view>
-                    <view class="hot-item-info">
-                        <view class="hot-item-info-distance">
-                            <image src="https://www.iumer.cn/umer/css/image/wechat/app/pin@3x.png" />{{ item.distance? "距离" + item.distance + "左右": "未定位到距离" }}</view>
-                        <view class="hot-item-info-duration"><image src="https://www.iumer.cn/umer/css/image/wechat/app/time@2x.png" />{{ item.duration || "0" }}分钟</view>
-                    </view>
-                </view>
-            </view>
-        </block>
-        <view class="more" bindtap="moreProjects">查看更多</view>
+    <view class="search-hint" hidden="{{ hideHint }}">
+      <view class="search-hint-history"> 
+        <view class="search-hint-title">
+          <text>历史搜索</text>
+        </view>
+        <view class="search-hint-items">
+          <block wx:for="{{ searchHistory }}" wx:key="*this">
+            <view class="search-hint-item" data-keyword="{{ item }}" bindtap="searchHint">{{ item }}</view>
+          </block>
+        </view>
+      </view>
+      <view class="search-hint-hot">
+        <view class="search-hint-title">
+          <text>热门搜索</text>
+        </view>
+        <view class="search-hint-items">
+          <block wx:for="{{ searchHot }}" wx:key="*this">
+            <view class="search-hint-item" data-keyword="{{ item }}" bindtap="searchHint">{{ item }}</view>
+          </block>
+        </view>
+      </view>
     </view>
-    <view id="personnel-area">
-        <view class="result-title">优美师</view>
-        <block wx:for="{{ personnelList }}" wx:key="id">
-            <view class="people-item" data-personnelId="{{ item.id }}" bindtap="clickPersonnelItem" >
-                <view class="people-item-left">
-                    <view class="people-item-img">
-                        <image src="https://www.iumer.cn{{ item.header || '/umer/css/image/default.jpg' }}" />
-                    </view>
-                </view>
-                <view class="people-item-right">
-                    <view class="people-item-name">{{ item.name || "" }}({{ item.shopName || "" }})</view>
-                    <view class="people-item-rate">
-                        <view class="star" data-score='{{ item.level || 0 }}'>
-                            <block wx:for="{{ [ 0,1,2,3,4 ] }}" wx:for-item="itm" wx:key="*this">
-                                <view wx:if="{{ index < item.level}}">
-                                    <image src="https://www.iumer.cn/umer/js/raty/img/star-on.png"></image>
-                                </view>
-                                <view wx:if="{{ index >= item.level}}">
-                                    <image src="https://www.iumer.cn/umer/js/raty/img/star-off.png"></image>
-                                </view>
-                            </block>
-                        </view>
-                    </view>
-                    <view class="people-item-info">
-                        <view class="people-item-info-distance">
-                            <image src="https://www.iumer.cn/umer/css/image/wechat/app/pin@3x.png" />{{ item.distance? "距离" + item.distance + "左右": "未定位到距离" }}</view>
-                        <view class="people-item-info-board-comment">
-                            <view class="people-item-info-board"><image src="https://www.iumer.cn/umer/css/image/wechat/app/order-count@2x.png" /> {{ item.orderCount || 0 }}</view>
-                            <view class="people-item-info-comment"><image src="https://www.iumer.cn/umer/css/image/wechat/app/comments@2x.png" />{{ item.commentCount || 0 }}</view>
-                        </view>
-                    </view>
-                </view>
-            </view>
-        </block>
-        <view class="more" bindtap="morePersonnels">查看更多</view>
-    </view>
-    <view id="shop-area">
-        <view class="result-title">优美店</view>
-        <block wx:for="{{ shopList }}" wx:key="id">
-            <view class="shop-item" data-shopId="{{ item.id }}" bindtap="clickShopItem" >
-                <view class="shop-item-left"><image src="https://www.iumer.cn{{ item.header || '/umer/css/image/default.jpg' }}" /></view>
-                <view class="shop-item-right"> 
-                    <view class="shop-item-right-title">{{ item.shopName || "店铺名称" }}</view> 
-                    <view class="shop-item-right-intro">{{ item.description || "店铺介绍" }}</view> 
-                    <view class="shop-item-right-info"> 
-                        <view class="shop-item-right-info-distance"><image src="https://www.iumer.cn/umer/css/image/wechat/app/pin@3x.png" />{{ item.distance? "距离" + item.distance + "左右": "未定位到距离" }}</view>
-                        <view class="shop-item-right-info-stats"> 
-                            <view>项目<text class="red">{{ item.projectCount || 0 }}</text></view>  
-                            <view>优美师<text class="red">{{ item.personnelCount || 0 }}</text></view> 
-                        </view> 
-                    </view> 
-                </view> 
-            </view>
-        </block>
-        <view class="more" bindtap="moreShops">查看更多</view>
-    </view>
+    <view hidden="{{ !hideHint }}">
+      <view id="project-area">
+          <view class="result-title">项目</view>
+          <block wx:for="{{ projectList }}" wx:key="id">
+              <view class="hot-item" data-projectId="{{ item.id }}" data-activityid="{{ item.projectActivityId || '' }}" bindtap="clickProjectItem" >
+                  <view class="hot-item-left">
+                      <view class="hot-item-img">
+                          <image class="lazy" src="https://www.iumer.cn{{ item.filePath || '/umer/css/image/default.jpg' }}" />
+                      </view>
+                  </view>
+                  <view class="hot-item-right">
+                      <view class="hot-item-name">{{ item.projectName || "" }}</view>
+                      <view class="hot-item-place-and-price">
+                          <view class="hot-item-place">{{ item.shopName || "" }}</view>
+                          <view class="hot-item-price" wx:if="{{ !!item.projectActivityId }}">￥{{ item.activityUnitPrice || "0" }}元<text>￥{{ item.unitPrice || "0" }}元</text></view>
+                          <view class="hot-item-price" wx:if="{{ !item.projectActivityId }}">￥{{ item.unitPrice || "0" }}元</view>
+                      </view>
+                      <view class="hot-item-info">
+                          <view class="hot-item-info-distance">
+                              <image src="https://www.iumer.cn/umer/css/image/wechat/app/pin@3x.png" />{{ item.distance? "距离" + item.distance + "左右": "未定位到距离" }}</view>
+                          <view class="hot-item-info-duration"><image src="https://www.iumer.cn/umer/css/image/wechat/app/time@2x.png" />{{ item.duration || "0" }}分钟</view>
+                      </view>
+                  </view>
+              </view>
+          </block>
+          <view class="more" bindtap="moreProjects">查看更多</view>
+      </view>
+      <view id="personnel-area">
+          <view class="result-title">优美师</view>
+          <block wx:for="{{ personnelList }}" wx:key="id">
+              <view class="people-item" data-personnelId="{{ item.id }}" bindtap="clickPersonnelItem" >
+                  <view class="people-item-left">
+                      <view class="people-item-img">
+                          <image src="https://www.iumer.cn{{ item.header || '/umer/css/image/default.jpg' }}" />
+                      </view>
+                  </view>
+                  <view class="people-item-right">
+                      <view class="people-item-name">{{ item.name || "" }}({{ item.shopName || "" }})</view>
+                      <view class="people-item-rate">
+                          <view class="star" data-score='{{ item.level || 0 }}'>
+                              <block wx:for="{{ [ 0,1,2,3,4 ] }}" wx:for-item="itm" wx:key="*this">
+                                  <view wx:if="{{ index < item.level}}">
+                                      <image src="https://www.iumer.cn/umer/js/raty/img/star-on.png"></image>
+                                  </view>
+                                  <view wx:if="{{ index >= item.level}}">
+                                      <image src="https://www.iumer.cn/umer/js/raty/img/star-off.png"></image>
+                                  </view>
+                              </block>
+                          </view>
+                      </view>
+                      <view class="people-item-info">
+                          <view class="people-item-info-distance">
+                              <image src="https://www.iumer.cn/umer/css/image/wechat/app/pin@3x.png" />{{ item.distance? "距离" + item.distance + "左右": "未定位到距离" }}</view>
+                          <view class="people-item-info-board-comment">
+                              <view class="people-item-info-board"><image src="https://www.iumer.cn/umer/css/image/wechat/app/order-count@2x.png" /> {{ item.orderCount || 0 }}</view>
+                              <view class="people-item-info-comment"><image src="https://www.iumer.cn/umer/css/image/wechat/app/comments@2x.png" />{{ item.commentCount || 0 }}</view>
+                          </view>
+                      </view>
+                  </view>
+              </view>
+          </block>
+          <view class="more" bindtap="morePersonnels">查看更多</view>
+      </view>
+  </view>
 </view>
