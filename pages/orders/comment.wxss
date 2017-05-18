@@ -1,6 +1,13 @@
-#comment-bd {
+.container {
+  padding: 20rpx;
+}
+.line-through {
+  text-decoration: line-through;
+}
+#project-comment-bd {
     padding: 10rpx 0;
     background-color: white;
+    border-radius: 16rpx;
 }
 .comment-project-area {
     padding: 20rpx;
@@ -15,7 +22,7 @@
   width: 100rpx;
   height: 100rpx;
   border: solid 2rpx #E4E4E4;
-  border-radius: 8rpx;
+  border-radius: 50%;
 }
 .project-right {
     font-weight: bold;
@@ -32,28 +39,84 @@
 .project-right-price {
     color: orange;
 }
-#comment-txt-area {
+.project-txt-area {
+    padding: 20rpx 0;
+    width: 100%;
+}
+.project-txt-area textarea {
+    padding: 10rpx;
+    border: solid 2rpx #F7F7F7;
+    border-radius: 16rpx;
+    width: auto;
+}
+#project-rate-area {
     border-top: solid 2rpx #F7F7F7;
+    border-bottom: solid 2rpx #F7F7F7;
     padding: 20rpx;
 }
-#comment-txt-area textarea {
-    padding: 10rpx 0;
-}
-#comment-rate-area {
-    border-top: solid 2rpx #F7F7F7;
-    padding: 20rpx;
-}
-#comment-rate-area .rating {
+.rating {
     display: flex;
     align-items: center;
 }
-#comment-rate-area .rate-txt {
+.rate-txt {
     padding-right: 40rpx;
 }
-#comment-rate-area .rate-stars image {
+.rate-stars image {
     height: 40rpx;
     width: 40rpx;
     padding: 0 15rpx;
+}
+#project-anonymous-area {
+  padding: 20rpx;
+  color: #777777;
+}
+checkbox-group {
+  display: flex;
+  align-items: center;
+}
+
+#personnel-comment-bd {
+  padding: 10rpx 0;
+  background-color: white;
+  border-radius: 16rpx;
+  margin-top: 20rpx;
+}
+.comment-personnel-area {
+  padding: 20rpx;
+}
+#personnel-rate-area {
+  padding: 20rpx;
+  border-top: solid 2rpx #F7F7F7;
+}
+#personnel-rate-area .rating {
+  padding: 10rpx 0;
+}
+#personnel-label-area {
+  padding: 20rpx;
+}
+.personnel-label-title {
+  text-align: center;
+  margin-bottom: 20rpx;
+}
+.personnel-labels {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.personnel-label {
+  border: solid 2rpx lightgray;
+  border-radius: 24rpx;
+  padding: 4rpx 10rpx;
+  margin: 10rpx;
+  color: lightgray;
+}
+.personnel-label-on {
+  border: solid 2rpx darkorange;
+  border-radius: 24rpx;
+  padding: 4rpx 10rpx;
+  margin: 10rpx;
+  color: darkorange;
+  background-color: #FFD0B4;
 }
 #comment-btn-area {
     position: fixed;

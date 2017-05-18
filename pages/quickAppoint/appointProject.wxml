@@ -48,8 +48,8 @@
               <text>选择服务方式</text>
               <view>
                 <radio-group class="radio-group" bindchange="radioChange">
-                    <radio color="#FF0074" value="0"/>{{ item.projectUnitPrice || 0 }}元/次
-                    <radio color="#FF0074" value="1"/>{{ item.projectCoursePrice || 0 }}元/疗程({{ item.courseRemark }})  
+                    <radio color="#FF0074" value="0" checked="{{ priceType == '0' }}" />{{ item.unitPrice || 0 }}元/次
+                    <radio color="#FF0074" value="1" checked="{{ priceType == '1' }}" />{{ item.coursePrice || 0 }}元/疗程({{ item.courseRemark }})  
                 </radio-group>
               </view>
           </view>
@@ -60,10 +60,10 @@
               <view>
                 <radio-group class="radio-group-activity" bindchange="radioChange">
                   <view>
-                    <radio color="#FF0074" value="0"/>{{ item.activityUnitPrice || 0 }}元/次 <text class="line-through">{{ item.projectUnitPrice || 0 }}元/次</text>
+                    <radio color="#FF0074" value="0" checked="{{ priceType == '0' }}" />{{ item.activityUnitPrice || 0 }}元/次 <text class="line-through">{{ item.unitPrice || 0 }}元/次</text>
                   </view>
                   <view>
-                    <radio color="#FF0074" value="1"/>{{ item.activityCoursePrice || 0 }}元/疗程  <text class="line-through">{{ item.projectCoursePrice || 0 }}元/疗程</text>({{ item.courseRemark }})
+                    <radio color="#FF0074" value="1" checked="{{ priceType == '1' }}" />{{ item.activityCoursePrice || 0 }}元/疗程  <text class="line-through">{{ item.coursePrice || 0 }}元/疗程</text>({{ item.courseRemark }})
                   </view>
                 </radio-group>
                </view> 
@@ -106,19 +106,31 @@
                     <input class="reserve-phone" type="digit" maxlength="11" placeholder="请输入手机号" value="{{ reservePhone || '' }}" bindinput="inputReservePhone"/>
                 </view>
             </view>
-            <view class="input-cell no-border-bottom">
-                
-            </view>
-            <view class="input-cell no-border-bottom">
-                
-            </view>
-            <view class="input-cell no-border-bottom">
-                
-            </view>
         </view>	
     </view>
-    <view class="btn-area">
-        <view class="btn-item btn-cancel" bindtap="cancelOrder">取消预约</view>
+    <view id="payment-type-area">
+      <view class="payment-type-title payment-type-cell">选择支付方式</view>
+        <block wx:for="{{ paymentMethods }}" wx:key="value">
+            <view class="payment-type-cell" wx:if="{{ item.value != 'alipay' }}">
+                <view class="payment-type-cell-hd"><image src="https://www.iumer.cn{{ item.icon }}"></image>{{ item.label }}</view>
+                <view class="payment-type-cell-ft" data-type="{{ item.value }}" bindtap="choosePayment">
+                    <view class="payment-type-cell-ft-circle {{ selected == item.value? 'circle-on': '' }}" bindtap="choosePayment"></view>
+                </view>           
+            </view>
+        </block>
+        <view class="input-cell no-border-bottom">
+                
+        </view>
+        <view class="input-cell no-border-bottom">
+                
+        </view>
+        <view class="input-cell no-border-bottom">
+                
+        </view>
+    </view>
+    <view class="btn-area flex-space-between">
+        <!--<view class="btn-item btn-cancel" bindtap="cancelOrder">取消预约</view>-->
+        <view class="btn-price">￥{{ item.projectActivityId? (priceType == '0'? item.activityUnitPrice: priceType == '1'? item.activityCoursePrice:'0' ): (priceType == '0'? item.unitPrice: (priceType == '1')? item.coursePrice: '0')}}元</view>
         <view class="btn-item btn-confirm" bindtap="submitOrder">确认预约</view>
     </view>
 </view>

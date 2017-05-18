@@ -1,0 +1,69 @@
+#comment-bd {
+    padding: 10rpx 0;
+    background-color: white;
+}
+.comment-project-area {
+    padding: 20rpx;
+}
+.project-item {
+    display: flex;
+}
+.project-left {
+    width: 120rpx;
+}
+.project-left image {
+  width: 100rpx;
+  height: 100rpx;
+  border: solid 2rpx #E4E4E4;
+  border-radius: 8rpx;
+}
+.project-right {
+    font-weight: bold;
+    width: 100%;
+    padding-left: 20rpx;
+}
+.project-right-title {
+    margin-bottom: 5rpx;
+}
+.project-right-shop-and-price {
+    display: flex;
+    justify-content: space-between;
+}
+.project-right-price {
+    color: orange;
+}
+#comment-txt-area {
+    border-top: solid 2rpx #F7F7F7;
+    padding: 20rpx;
+}
+#comment-txt-area textarea {
+    padding: 10rpx 0;
+}
+#comment-rate-area {
+    border-top: solid 2rpx #F7F7F7;
+    padding: 20rpx;
+}
+#comment-rate-area .rating {
+    display: flex;
+    align-items: center;
+}
+#comment-rate-area .rate-txt {
+    padding-right: 40rpx;
+}
+#comment-rate-area .rate-stars image {
+    height: 40rpx;
+    width: 40rpx;
+    padding: 0 15rpx;
+}
+#comment-btn-area {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+#comment-btn-area .btn-submit {
+    color: white;
+    width: 100%;
+    padding: 30rpx 0;
+    background-color: #FF0074;
+}

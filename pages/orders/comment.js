@@ -1,13 +1,15 @@
 // pages/orders/comment.js
 var app = getApp();
 Page({
-  data:{
+  data: {
     levelProfession: 0,
+    levelProfession2: 0,
     levelService: 0,
     levelCommunication: 0,
-    txt: ""
+    txt: "",
+    chosenLabels: {}
   },
-  onLoad:function(options){
+  onLoad: function (options) {
     // 页面初始化 options为页面跳转所带来的参数
     this.setData({
       orderNo: options.orderNo
@@ -17,109 +19,115 @@ Page({
       title: '评价'
     })
   },
-  onReady:function(){
+  onReady: function () {
     // 页面渲染完成
   },
-  onShow:function(){
+  onShow: function () {
     // 页面显示
   },
-  onHide:function(){
+  onHide: function () {
     // 页面隐藏
   },
-  onUnload:function(){
+  onUnload: function () {
     // 页面关闭
   },
-  loadOrder: function() {
+  loadOrder: function () {
     wx.showNavigationBarLoading();
     var that = this;
     var orderNo = this.data.orderNo;
     wx.request({
-        url: app.globalData.server_url + 'webService/customer/biz/order/orderDetail', 
-        data: app.encode({
-          orderNo: orderNo,
-          customerId: wx.getStorageSync('id')
-        }),
-        method: "POST",
-        dataType: "json",
-        header: {
-           'Content-Type': 'application/json;charset=UTF-8;',
-           'X-Token': wx.getStorageSync('X-TOKEN'),
-           'X-Type': 3
-        },
-        success: function(res) {
-          if (res.data.code == 1) {
-            that.setData({
-              orderInfo: res.data.data,
-              projectId: res.data.data.projectId,
-              personnelId: res.data.data.personnelId
-            });
-          } else if (res.data.code == -4) {
-            wx.navigateTo({
-              url: '../login/authorize',
-              success: function(res){
-                // success
-              },
-              fail: function() {
-                // fail
-              },
-              complete: function() {
-                // complete
+      url: app.globalData.server_url + 'webService/customer/biz/order/orderDetail',
+      data: app.encode({
+        orderNo: orderNo,
+        customerId: wx.getStorageSync('id')
+      }),
+      method: "POST",
+      dataType: "json",
+      header: {
+        'Content-Type': 'application/json;charset=UTF-8;',
+        'X-Token': wx.getStorageSync('X-TOKEN'),
+        'X-Type': 3
+      },
+      success: function (res) {
+        if (res.data.code == 1) {
+          that.setData({
+            orderInfo: res.data.data,
+            projectId: res.data.data.projectId,
+            personnelId: res.data.data.personnelId
+          });
+        } else if (res.data.code == -4) {
+          wx.navigateTo({
+            url: '../login/authorize',
+            success: function (res) {
+              // success
+            },
+            fail: function () {
+              // fail
+            },
+            complete: function () {
+              // complete
+            }
+          })
+        } else {
+          wx.showModal({
+            title: '提示',
+            content: res.data.desc,
+            confirmColor: '#FD8CA3',
+            showCancel: false,
+            success: function (res) {
+              if (res.confirm) {
+
               }
-            })
-          } else {
-            wx.showModal({
-              title: '提示',
-              content: res.data.desc,
-              confirmColor: '#FD8CA3',
-              showCancel: false,
-              success: function(res) {
-                if (res.confirm) {
-                  
-                }
-              }
-            });
-          } 
-        },
-        fail: function(res) {
-          console.log("orderDetail - loadOrder fail")
-        },
-        complete: function(res) {
-          console.log("orderDetail - loadOrder complete")
-          wx.hideNavigationBarLoading();
+            }
+          });
         }
+      },
+      fail: function (res) {
+        console.log("orderDetail - loadOrder fail")
+      },
+      complete: function (res) {
+        console.log("orderDetail - loadOrder complete")
+        wx.hideNavigationBarLoading();
+      }
     });
   },
-  txtInput: function(e) {
+  txtInput: function (e) {
     this.setData({
       txt: e.detail.value
     });
   },
-  chooseLevelProfession: function(e) {
+  chooseLevelProfession: function (e) {
     var level = e.currentTarget.dataset.level;
     this.setData({
       levelProfession: level + 1
     });
   },
-  chooseLevelService: function(e) {
+  chooseLevelProfession2: function (e) {
+    var level = e.currentTarget.dataset.level;
+    this.setData({
+      levelProfession2: level + 1
+    });
+  },
+  chooseLevelService: function (e) {
     var level = e.currentTarget.dataset.level;
     this.setData({
       levelService: level + 1
     });
   },
-  chooseLevelCommunication: function(e) {
+  chooseLevelCommunication: function (e) {
     var level = e.currentTarget.dataset.level;
     this.setData({
       levelCommunication: level + 1
     });
   },
-  submitOrder: function(){
+  submitOrder: function () {
     var that = this;
     if (!this.data.txt) {
       wx.showModal({
         title: '提示',
         showCancel: false,
         content: '请输入评价！',
-        success: function(res) {
+        success: function (res) {
 
         }
       });
@@ -130,7 +138,7 @@ Page({
         title: '提示',
         showCancel: false,
         content: '请选择专业评分！',
-        success: function(res) {
+        success: function (res) {
 
         }
       });
@@ -141,7 +149,7 @@ Page({
         title: '提示',
         showCancel: false,
         content: '请选择服务评分！',
-        success: function(res) {
+        success: function (res) {
 
         }
       });
@@ -152,7 +160,7 @@ Page({
         title: '提示',
         showCancel: false,
         content: '请选择沟通评分！',
-        success: function(res) {
+        success: function (res) {
 
         }
       });
@@ -160,78 +168,90 @@ Page({
     }
     wx.showNavigationBarLoading();
     wx.request({
-      url: app.globalData.server_url + 'webService/customer/biz/order/orderComment', 
-        data: app.encode({
-          "customerId": wx.getStorageSync('id'),
-		    	"personnelId": that.data.personnelId,
-		    	"projectId": that.data.projectId,
-		    	"content": that.data.txt,
-		    	"domainLevel": that.data.levelProfession,
-		    	"serveLevel": that.data.levelService,
-		    	"communicationLevel": that.data.levelCommunication,
-		    	"orderNo": that.data.orderNo
-        }),
-        method: "POST",
-        dataType: "json",
-        header: {
-          'Content-Type': 'application/json;charset=UTF-8;',
-          'X-Token': wx.getStorageSync('X-TOKEN'),
-          'X-Type': 3
-        },
-        success: function(res) {
-          // console.log(res.data)
-          var d = res.data;
-          if (d.code == 1) {
-           wx.showModal({
-              title: '提示',
-              showCancel: false,
-              content: '评价提交成功！',
-              success: function(res) {
-                wx.switchTab({
-                  url: 'orders',
-                  success: function(res){
-                    // success
-                  },
-                  fail: function() {
-                    // fail
-                  },
-                  complete: function() {
-                    // complete
-                  }
-                })
-              }
-            });
-          } else if (d.code == -4) {
-            wx.navigateTo({
-              url: '../login/authorize',
-              success: function(res){
-                // success
-              },
-              fail: function() {
-                // fail
-              },
-              complete: function() {
-                // complete
-              }
-            }); 
-          } else {
-            wx.showModal({
-              title: '提示',
-              showCancel: false,
-              content: d.desc,
-              success: function(res1) {
-                
-              }
-            });
-          }
-        },
-        fail: function(res) {
-          console.log("submitOrder fail");
-        },
-        complete: function(res) {
-          console.log("submitOrder complete");
-          wx.hideNavigationBarLoading();
+      url: app.globalData.server_url + 'webService/customer/biz/order/orderComment',
+      data: app.encode({
+        "customerId": wx.getStorageSync('id'),
+        "personnelId": that.data.personnelId,
+        "projectId": that.data.projectId,
+        "content": that.data.txt,
+        "domainLevel": that.data.levelProfession,
+        "serveLevel": that.data.levelService,
+        "communicationLevel": that.data.levelCommunication,
+        "orderNo": that.data.orderNo
+      }),
+      method: "POST",
+      dataType: "json",
+      header: {
+        'Content-Type': 'application/json;charset=UTF-8;',
+        'X-Token': wx.getStorageSync('X-TOKEN'),
+        'X-Type': 3
+      },
+      success: function (res) {
+        // console.log(res.data)
+        var d = res.data;
+        if (d.code == 1) {
+          wx.showModal({
+            title: '提示',
+            showCancel: false,
+            content: '评价提交成功！',
+            success: function (res) {
+              wx.switchTab({
+                url: 'orders',
+                success: function (res) {
+                  // success
+                },
+                fail: function () {
+                  // fail
+                },
+                complete: function () {
+                  // complete
+                }
+              })
+            }
+          });
+        } else if (d.code == -4) {
+          wx.navigateTo({
+            url: '../login/authorize',
+            success: function (res) {
+              // success
+            },
+            fail: function () {
+              // fail
+            },
+            complete: function () {
+              // complete
+            }
+          });
+        } else {
+          wx.showModal({
+            title: '提示',
+            showCancel: false,
+            content: d.desc,
+            success: function (res1) {
+
+            }
+          });
         }
+      },
+      fail: function (res) {
+        console.log("submitOrder fail");
+      },
+      complete: function (res) {
+        console.log("submitOrder complete");
+        wx.hideNavigationBarLoading();
+      }
     });
+  },
+  toggleLabel: function(e) {
+    var labelId = e.currentTarget.dataset.labelid;
+    var chosen = this.data.chosenLabels;
+    if (chosen[labelId]) {
+      chosen[labelId] = false;
+    } else {
+      chosen[labelId] = true;
+    }
+    this.setData({
+      chosenLabels: chosen
+    })
   }
 })

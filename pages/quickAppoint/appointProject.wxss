@@ -1,6 +1,6 @@
 /* pages/quickAppoint/appointPersonnel.wxss */
 page {
-	overflow: hidden;
+	overflow: scroll;
 }
 button {
 	line-height: 50rpx;
@@ -286,25 +286,61 @@ button.timeslot::after {
 .reserve-label {
 	width: 30%;
 }
+#payment-type-area {
+  margin-top: 20rpx;
+}
+.payment-type-cell {
+    padding: 20rpx;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: solid 2rpx #F7F7F7;
+}
+.payment-type-cell-hd {
+    display: flex;
+    align-items: center;
+}
+.payment-type-cell-hd image {
+    width: 40rpx;
+    height: 40rpx;
+    padding-right: 10rpx;
+}
+.payment-type-cell-ft {
+    width: 65%;
+    display: flex;
+    justify-content: flex-end;
+}
+.payment-type-cell-ft-circle {
+    width: 55rpx;
+    height: 55rpx;
+    border: solid 2rpx #F7F7F7;
+    border-radius: 100%;
+}
+.circle-on {
+  background-image: url("https://www.iumer.cn/umer/css/image/wechat/app/selected-round@2x.png");
+  background-size: 80rpx;
+  background-repeat: no-repeat;
+  background-position: center;
+}
 .btn-area {
 	margin-top: 100rpx;
-  display: flex;
-	justify-content: center;
   position: fixed;
   bottom: 0; 
   left: 0;
   right: 0;
   z-index: 999;
-  background-color: white;
+  background-color: #666666;
 }
-.btn-item {
+.btn-price {
+  color: white;
+  padding: 0 20rpx;
+}
+.btn-confirm {
   background-color: #FF0074;
-  padding: 25rpx 0;
+  padding: 25rpx 50rpx;
   color: white;
   font-family: SimHei;
-  width: calc(50% - 1rpx);
   text-align: center;
-}
-.btn-cancel {
-	margin-right: 2rpx;
+  float: right;
 }

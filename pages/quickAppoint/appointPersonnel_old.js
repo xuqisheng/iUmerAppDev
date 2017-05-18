@@ -1,4 +1,4 @@
-// pages/quickAppoint/appointProject.js
+// pages/quickAppoint/appointPersonnel.js
 var app = getApp();
 Page({
   data:{
@@ -6,27 +6,30 @@ Page({
     durationNum: 0,
     selectedTime: "",
     priceDropdownHidden: true,
-    priceType: '',
+    priceType: 0,
     reservePhone: wx.getStorageSync('phone'),
     reserveName: wx.getStorageSync('name'),
     submitOrderTimeStamp: 0
   },
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
+    console.log(wx.getStorageSync('phone'))
+    console.log(wx.getStorageSync('name'))
+    console.log(this.data)
     this.setData({
-      personnelId: options.personnelId,
       projectId: options.projectId,
-      priceType: options.priceType || '',
-      'from': options.from || '',
+      personnelId: options.personnelId,
+      priceType: options.priceType || 0,
+      'from': options.from || "",
       activityId: options.activityId,
-      referrer: options.referrer
+      referrer: options.referer
     });
-    this.loadPersonnel();
+    this.loadProject();
     this.loadWeekdays();
-    this.loadPaymentMethods();
-    if (options.projectId) {
-      this.loadProject();
+    if (options.personnelId) {
+      this.loadPersonnel();
     }
+    console.log(this.data.priceType)
     wx.setNavigationBarTitle({
       title: '预约'
     })
@@ -43,15 +46,29 @@ Page({
   onUnload:function(){
     // 页面关闭
   },
-  loadPersonnel: function() {
+  back: function(){
+    wx.redirectTo({
+      url: "../index/projectDetail?projectId=" + this.data.projectId, // 回退前 delta(默认为1) 页面
+      success: function(res){
+        // success
+      },
+      fail: function() {
+        // fail
+      },
+      complete: function() {
+        // complete
+      }
+    });
+  },
+  loadProject: function(){
     var that = this;
     wx.showNavigationBarLoading();
     wx.request({
-        url: app.globalData.server_url + 'webService/customer/biz/index/personnelDetail', 
+        url: app.globalData.server_url + 'webService/customer/biz/index/projectDetails', 
         data: app.encode({
-          id: that.data.personnelId,
-          latitude: wx.getStorageSync('latitude'),
-          longitude: wx.getStorageSync('longitude')
+          id: that.data.projectId,
+          customerId: wx.getStorageSync('id'),
+          projectActivityId: that.data.activityId
         }),
         method: "POST",
         dataType: "json",
@@ -60,17 +77,95 @@ Page({
         },
         success: function(res) {
           if (res.data.code == 1) {
+            var d = res.data.data;
+            if (!d.picList || d.picList.length == 0) {
+              var filePath = ("/umer/css/image/default.jpg"); 
+              that.setData({
+                projectPics: [{ id: 0, filePath: filePath }]
+              });
+            } else {
+              that.setData({
+                projectPics: d.picList
+              });
+            }
             that.setData({
-              personnelInfo: res.data.data          
+              item: d,
+              projectFilePath: d.header || "css/image/default.jpg",
+              projectUnitPrice: d.unitPrice || 0,
+              projectCoursePrice: d.coursePrice || 0,
+              projectCourseRemark: d.courseRemark || 0,
+              projectTitle: d.projectName || "",
+              projectDuration: d.duration || 0,
+              shopAddress: d.shopAddress || "",
+              projectDescription: d.description || "",
+              ifCollect: d.ifCollect || 0,
+              shopTitle: d.shopName || "",
+              durationNum: d.durationNum || 0
             });
-          }
+            wx.request({
+              url: app.globalData.server_url + 'webService/customer/biz/index/shopDetail', 
+              data: app.encode({
+                id: d.shopId
+              }),
+              method: "POST",
+              dataType: "json",
+              header: {
+                'Content-Type': 'application/json;charset=UTF-8;'
+              },
+              success: function(res2) {
+                if (res2.data.code == 1) {
+                  var d2 = res2.data.data;
+                  that.setData({
+                    shopHeader: (d2.header + "big.jpg") || "/umer/css/image/default.jpg",
+                    shopTitle: d2.shopName || "",
+                    shopDescription: d2.description || "",
+                    projectCount: d2.projectCount || 0,
+                    personnelCount: d2.personnelCount || 0
+                  });
+                } else {
+                  wx.showModal({
+                    title: '提示',
+                    content: res2.data.desc,
+                    confirmColor: '#FD8CA3',
+                    showCancel: false,
+                    success: function(res) {
+                      if (res.confirm) {
+                        
+                      }
+                    }
+                  });
+                } 
+              },
+              fail: function(res) {
+                console.log("loadProject fail");
+              },
+              complete: function(res) {
+                console.log("loadProject complete");
+                that.setData({
+                  loadingHidden: true
+                });
+              }
+            });
+          } else {
+            wx.showModal({
+              title: '提示',
+              content: res.data.desc,
+              confirmColor: '#FD8CA3',
+              showCancel: false,
+              success: function(res) {
+                if (res.confirm) {
+                  
+                }
+              }
+            });
+          } 
         },
         fail: function(res) {
-          console.log("loadPersonnel fail")
+          console.log("loadProject fail");
         },
         complete: function(res) {
+          console.log("loadProject complete");
           wx.hideNavigationBarLoading();
-          console.log("loadPersonnel complete")
         }
     });
   },
@@ -94,7 +189,9 @@ Page({
               weekdays: d,
               first: d[0].dateTime
             });
-            that.loadTimeslots();
+            if (that.data.personnelId) {
+              that.loadTimeslots();
+            }
           } else {
             wx.showModal({
               title: '提示',
@@ -176,42 +273,25 @@ Page({
         }
     });
   },
-  loadProject: function(){
+  loadPersonnel: function(){
     var that = this;
     wx.showNavigationBarLoading();
     wx.request({
-        url: app.globalData.server_url + 'webService/customer/biz/index/projectDetails', 
+      url: app.globalData.server_url + 'webService/customer/biz/index/personnelDetail', 
         data: app.encode({
-          id: that.data.projectId,
-          customerId: wx.getStorageSync('id'),
-          projectActivityId: that.data.activityId
+          id: that.data.personnelId
         }),
         method: "POST",
         dataType: "json",
         header: {
-           'Content-Type': 'application/json;charset=UTF-8;'
+          'Content-Type': 'application/json;charset=UTF-8;'
         },
         success: function(res) {
           if (res.data.code == 1) {
             var d = res.data.data;
-            if (!d.picList || d.picList.length == 0) {
-              var filePath = ("/umer/css/image/default.jpg"); 
-              that.setData({
-                projectPics: [{ id: 0, filePath: filePath }]
-              });
-            } else {
-              that.setData({
-                projectPics: d.picList
-              });
-            }
             that.setData({
-              item: d,
-              projectName: d.projectName || "",
-              projectHeader: 'https://www.iumer.cn/' + that.data.projectPics[0].filePath || "https://www.iumer.cn/umer/css/image/default.jpg",
-              projectUnitPrice: d.unitPrice || 0,
-              projectCoursePrice: d.coursePrice || 0,
-              projectCourseRemark: d.courseRemark || "",
-              durationNum: d.durationNum || 0
+              personnelHeader: d.header? ("https://www.iumer.cn" + d.header): "https://www.iumer.cn/umer/css/image/default.jpg",
+              personnelName: d.name || ""
             });
           } else {
             wx.showModal({
@@ -228,19 +308,19 @@ Page({
           } 
         },
         fail: function(res) {
-          console.log("loadProject fail");
+          console.log("loadPersonnel fail");
         },
         complete: function(res) {
-          console.log("loadProject complete");
+          console.log("loadPersonnel complete");
           wx.hideNavigationBarLoading();
         }
     });
   },
-  chooseProject: function(){
+  choosePersonnel: function(){
     var that = this;
     console.log(that.data)
     wx.redirectTo({
-      url: 'chooseProject?personnelId=' + that.data.personnelId + "&priceType=" + that.data.priceType + '&from=' + that.data.from,
+      url: 'choosePersonnel?projectId=' + that.data.projectId + "&priceType=" + that.data.priceType + "&activityId=" + (that.data.activityId || '') + "&from=" + that.data.from,
       success: function(res){
         // success
       },
@@ -253,17 +333,6 @@ Page({
     })
   },
   chooseTime: function(e) {
-    if (!this.data.projectId) {
-      wx.showModal({
-        title: '提示',
-        showCancel: false,
-        content: '请选择项目！',
-        success: function(res) {
-
-        }
-      });
-      return false;
-    }
     var timeIdx = e.currentTarget.dataset.index;
     var durationNum = this.data.durationNum;
     var selectedIndex = {};
@@ -314,9 +383,10 @@ Page({
       });
     }
   },
-  radioChange: function(e) {
+  togglePriceType: function() {
+    var hidden = this.data.priceDropdownHidden;
     this.setData({
-      priceType: e.detail.value
+      priceDropdownHidden: !hidden
     })
   },
   changePriceType: function(e) {
@@ -629,9 +699,9 @@ Page({
   },
   cancelOrder: function() {
     var that = this;
-    if (that.data.from == "personnelDetail") {
+    if (that.data.from == "projectDetail") {
       wx.redirectTo({
-        url: '../index/personnelDetail?personnelId=' + that.data.personnelId,
+        url: '../index/projectDetail?projectId=' + that.data.projectId,
         success: function(res){
           // success
         },
@@ -656,52 +726,5 @@ Page({
         }
       })
     }
-  },
-  loadPaymentMethods: function () {
-    var that = this;
-    wx.showNavigationBarLoading();
-    wx.request({
-      url: app.globalData.server_url + 'webService/common/payMode',
-      data: app.encode({
-        type: 3
-      }),
-      method: "POST",
-      dataType: "json",
-      header: {
-        'Content-Type': 'application/json;charset=UTF-8;'
-      },
-      success: function (res) {
-        if (res.data.code == 1) {
-          that.setData({
-            paymentMethods: res.data.data
-          });
-        } else {
-          wx.showModal({
-            title: '提示',
-            showCancel: false,
-            confirmColor: '#FD8CA3',
-            content: res.data.desc,
-            success: function (res) {
-              if (res.confirm) {
-
-              }
-            }
-          })
-        }
-      },
-      fail: function (res) {
-        console.log("pay - loadPaymentMethods fail")
-      },
-      complete: function (res) {
-        console.log("pay - loadPaymentMethods complete")
-        wx.hideNavigationBarLoading();
-      }
-    });
-  },
-  choosePayment: function (e) {
-    var paymentType = e.currentTarget.dataset.type;
-    this.setData({
-      selected: paymentType
-    });
   }
 })
