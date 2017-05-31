@@ -4,14 +4,17 @@
   <view class="weui-mask"></view>
 	<view class="top-menu-active">
 		<view class="top-menu-area" bindtap="changeLocation">
-			<text class="cityName" style="margin-right: 10rpx;">{{ cityName || '城市' }}</text>
+			<view class="cityName" style="margin-right: 10rpx; display: flex; align-items: center;">
+        <image src="https://www.iumer.cn/umer/css/image/wechat/app/location.png" style="margin-right: 10rpx; height: 40rpx; width: 30rpx;"></image>
+        <text style="color: #8E8E8E;">{{ cityName || '城市' }}</text>
+      </view>
 			<image src="https://www.iumer.cn/umer/css/image/wechat/app/arrow@2x.png"></image>
 		</view>
 		<view class="top-menu-search" bindtap="indexSearch">
 			<view class="search-icon"></view>
 			<view class="placeholder" bindinput="indexSearch">搜索优美师/项目/店铺等</view>
 		</view>
-		<view class="top-menu-alert" bindtap="logout"><image wx:if="{{ login }}" src="https://www.iumer.cn/umer/css/image/wechat/app/logout@2x.png"></image><text wx:if="{{ login }}" >登出</text></view>
+		<!--<view class="top-menu-alert" bindtap="logout"><image wx:if="{{ login }}" src="https://www.iumer.cn/umer/css/image/wechat/app/logout@2x.png"></image><text wx:if="{{ login }}" >登出</text></view>-->
 	</view>
 	<view id="nav">
 		<view class="nav-item" bindtap="jumpToSearchProject" data-navid="0" data-groupno="10">
@@ -36,8 +39,12 @@
 		</view>
 	</view>
 	<view id="hot">
-		<view class="index-header" style="{{ hotProjects.length == 0? 'padding-bottom: 20rpx;':'' }}">
-			热门项目
+		<view class="index-header flex-space-between" style="{{ hotProjects.length == 0? 'padding-bottom: 20rpx;':'' }}">
+			<text>热门项目</text>
+      <view class="more">
+        <text>更多</text>
+        <image src="https://www.iumer.cn/umer/css/image/wechat/app/more.png" style="width: 30rpx; height: 30rpx;"></image>
+      </view>
 		</view>
 		<view id="hot-area">
 			<block wx:for="{{ hotProjects }}" wx:key="id">
@@ -71,8 +78,12 @@
 		</view>
 	</view>
 	<view id="people">
-		<view class="index-header" style="{{ hotPersonnel.length == 0? 'padding-bottom: 20rpx;':'' }}">
-			优美师
+		<view class="index-header flex-space-between" style="{{ hotPersonnel.length == 0? 'padding-bottom: 20rpx;':'' }}">
+			<text>优美师</text>
+      <view class="more">
+        <text>更多</text>
+        <image src="https://www.iumer.cn/umer/css/image/wechat/app/more.png" style="width: 30rpx; height: 30rpx;"></image>
+      </view>
 		</view>
 		<view id="people-area">
 			<block wx:for="{{ hotPersonnel }}" wx:key="id">
@@ -88,7 +99,7 @@
 							<view class="star" data-score='{{ item.level || 0 }}'>
 								<block wx:for="{{ [ 0,1,2,3,4 ] }}" wx:for-item="itm" wx:key="*this">
 									<view wx:if="{{ itm < (item.level || 0) }}">
-										<image src="https://www.iumer.cn/umer/js/raty/img/star-on.png"></image>
+										<image src="https://www.iumer.cn/umer/css/image/wechat/app/star-on.png"></image>
 									</view>
 									<view wx:if="{{ itm >= (item.level || 0) }}">
 										<image src="https://www.iumer.cn/umer/js/raty/img/star-off.png"></image>

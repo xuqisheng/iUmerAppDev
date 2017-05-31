@@ -1,0 +1,19 @@
+#records-area {
+  background-color: white;
+}
+.record-title {
+  margin-bottom: 10rpx;
+  font-weight: bold;
+}
+.record-date{
+  color: #777777;
+}
+.record-amount {
+  font-weight: bold;
+}
+.record {
+  padding: 20rpx;
+}
+.record {
+  border-bottom: solid 2rpx #777777;
+}

@@ -250,7 +250,7 @@ Page({
       return false;
     }
     var that = this;
-    wx.redirectTo({
+    wx.navigateTo({
       url: '../quickAppoint/appointProject?from=personnelDetail&personnelId=' + that.data.personnelId,
       success: function(res){
         // success
@@ -282,7 +282,7 @@ Page({
     var that = this;
     var projectId = e.currentTarget.dataset.projectid;
     var activityId = e.currentTarget.dataset.activityid;
-    wx.redirectTo({
+    wx.navigateTo({
       url: '../quickAppoint/appoint?from=personnelDetail&personnelId=' + that.data.personnelId + "&projectId=" + projectId + "&activityId=" + (activityId || ''),
       success: function(res){
         // success

@@ -12,7 +12,7 @@
                             <view class="filter-item-list-item" catchtap="showNearF" data-areaid="{{ item.name }}"><text>{{  item.name }}</text>
                                 <view class="filter-item-sublist">
                                     <block wx:for="{{ item.list }}" wx:for-item="itm" wx:key="code">
-                                        <view class="filter-item-sublist-item {{ range == itm.code? 'filter-list-item-on' :'' }}" hidden="{{ showNear }}" data-range="{{ itm.code }}" data-areaname="{{ itm.name }}" catchtap="clickArea"><text>{{ itm.name }}</text></view>
+                                        <view class="filter-item-sublist-item {{ range == itm.code? 'filter-list-item-on filter-list-item-on-pink' :'' }}" hidden="{{ showNear }}" data-range="{{ itm.code }}" data-areaname="{{ itm.name }}" catchtap="clickArea"><text>{{ itm.name }}</text></view>
                                     </block>
                                 </view>
                             </view>

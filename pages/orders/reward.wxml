@@ -1,0 +1,47 @@
+<view class="container">
+  <view id="personnel-info-area">
+    <view class="title personnel-info-title text-center">
+      我的专属优美师
+    </view>
+    <view class="flex-space-between">
+      <view class="personnel-info">
+        <view class="personnel-info-left">
+          <image src="https://www.iumer.cn/umer/css/image/default.jpg"></image>
+          <view class="personnel-info-left-level text-center">Lv.8</view>
+        </view>
+        <view class="personnel-info-right">
+          <view class="personnel-info-right-name">小小（木渎店）</view>
+          <view class="personnel-info-right-count">服务过23次</view>
+        </view>
+      </view>
+      <view class="personnel-stat text-center">
+        <view class="personnel-stat-count">23次</view>
+        <view class="personnel-stat-txt">收到的打赏</view>
+      </view>
+    </view>
+  </view>
+  <view id="reward-area">
+    <view class="title reward-title text-center">
+      小小支持，伴她同行
+    </view>
+    <view class="reward-amount flex-space-between">
+      <view class="reward-item text-center">
+        <view class="reward-item-price">1元</view>
+        <view class="reward-item-txt">辛苦了</view>
+      </view>
+      <view class="reward-item text-center">
+        <view class="reward-item-price">2元</view>
+        <view class="reward-item-txt">注意休息哦</view>
+      </view>
+      <view class="reward-item text-center">
+        <view class="reward-item-price">5元</view>
+        <view class="reward-item-txt">买护手霜</view>
+      </view>
+    </view>
+    <view class="reward-input">
+      <input type="number" placeholder="我要自己输入金额"/>
+    </view>
+    <view class="reward-btn text-center">立即打赏</view>
+    <view class="reward-info text-center">目前打赏金额只支持微信支付</view>
+  </view>
+</view>

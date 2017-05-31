@@ -28,45 +28,31 @@
         </view>
     </view>
     <view class="selection-area">
-        <view class="selection-cell {{ priceDropdownHidden? 'selection-cell_access': '' }}" bindtap="togglePriceType">
-            <view class="selection-cell__bd">
-                <text>项目价格</text>
-            </view>
-            <view class="selection-cell__ft cell-project-price">
-                <view class="dropdown">
-                    <view class="dropdown-toggle">
-                        <view class="selected-price" data-price-type="0" wx:if="{{ !item.projectActivityId }}">
-                            {{ priceType == 0? projectUnitPrice + '元/次': projectCoursePrice + '元/疗程' }}
-                        </view>
-                        <view class="selected-price" data-price-type="0" wx:if="{{ !!item.projectActivityId }}">
-                            {{ priceType == 0? item.activityUnitPrice + '元/次': item.activityCoursePrice + '元/疗程' }}
-                            <text>{{ priceType == 0? projectUnitPrice + '元/次': projectCoursePrice + '元/疗程' }}</text>
-                        </view>
-                    </view>
-                    <view class="dropdown-menu" hidden="{{ priceDropdownHidden }}">
-                        <view style="padding: 20rpx 0 20rpx 20rpx;" data-pricetype="0" bindtap="changePriceType">
-                            <view wx:if="{{ !!item.projectActivityId }}">
-                                次数：<text class="price-item-icon price-item-icon-sale"><text>{{ item.activityUnitPrice }}元/次</text></text>
-                                <text class="price-item-icon price-item-icon-original"><text>{{ projectUnitPrice }}元/次</text></text>
-                            </view>
-                            <view wx:if="{{ !item.projectActivityId }}">
-                                次数：<text class="price-item-icon price-item-icon-unit"><text>{{ projectUnitPrice }}元/次</text></text>
-                            </view>
-                        </view>   
-                        <view class="divider"></view>
-                        <view style="padding: 20rpx 0 20rpx 20rpx;" data-pricetype="1" bindtap="changePriceType">
-                            <view wx:if="{{ !!item.projectActivityId }}">
-                                疗程：<text class="price-item-icon price-item-icon-sale"><text>{{ item.activityCoursePrice }}元/疗程</text></text>
-                                <text class="price-item-icon price-item-icon-original"><text>{{ projectCoursePrice }}元/疗程</text></text>（<text>{{ projectCourseRemark }}次</text>）
-                            </view>
-                            <view wx:if="{{ !item.projectActivityId }}">
-                                疗程：<text class="price-item-icon price-item-icon-course"><text>{{ projectCoursePrice }}</text>元/疗程（<text>{{ projectCourseRemark }}次</text>）</text>
-                            </view>
-                        </view>
-                    </view>
-                </view>
-            </view>
-            <view class="{{ priceDropdownHidden? '': 'arrow-down' }}"></view>
+        <view class="price-selection" wx:if="{{ !item.projectActivityId }}">
+          <view class="flex-space-between">
+              <text>选择服务方式</text>
+              <view>
+                <radio-group class="radio-group" bindchange="radioChange">
+                    <radio color="#FF0074" value="0" checked="{{ priceType == '0' }}" />{{ item.unitPrice || 0 }}元/次
+                    <radio color="#FF0074" value="1" checked="{{ priceType == '1' }}" />{{ item.coursePrice || 0 }}元/疗程({{ item.courseRemark }})  
+                </radio-group>
+              </view>
+          </view>
+        </view>
+        <view class="price-selection" wx:if="{{ !!item.projectActivityId }}">
+          <view class="flex-space-between">
+              <text>选择服务方式</text>
+              <view>
+                <radio-group class="radio-group-activity" bindchange="radioChange">
+                  <view>
+                    <radio color="#FF0074" value="0" checked="{{ priceType == '0' }}" />{{ item.activityUnitPrice || 0 }}元/次 <text class="line-through">{{ item.unitPrice || 0 }}元/次</text>
+                  </view>
+                  <view>
+                    <radio color="#FF0074" value="1" checked="{{ priceType == '1' }}" />{{ item.activityCoursePrice || 0 }}元/疗程  <text class="line-through">{{ item.coursePrice || 0 }}元/疗程</text>({{ item.courseRemark }})
+                  </view>
+                </radio-group>
+               </view> 
+              </view>
         </view>
         <view class="selection-cell" href="javascript:;">
             <view class="selection-cell__bd">

@@ -25,7 +25,7 @@ Page({
     // 页面关闭
   },
   back: function(){
-    wx.redirectTo({
+    wx.navigateTo({
       url: 'location',
       success: function(res) {
         // success

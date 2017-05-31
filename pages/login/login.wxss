@@ -28,7 +28,7 @@ page {
 }
 .input-phone .get-code-active {
     color: white;
-    background-color: #FD8CA3;
+    background-color: #FF0074;
     padding: 10rpx;
     display: flex;
     justify-content: center;
@@ -64,9 +64,9 @@ page {
 	margin-top: 80rpx;
 }
 #btn-area view {
-	background-color: #FD8CA3;
+	background-color: #FF0074;
 	color: white;
-	padding: 30rpx 100rpx;
+	padding: 30rpx 120rpx;
 	margin: 20rpx;
 	border-radius: 5rpx;
 }

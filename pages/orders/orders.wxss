@@ -160,6 +160,8 @@ page {
 }
 .order-item-btns {
   padding: 20rpx 0;
+  display: flex;
+  justify-content: flex-end;
 }
 .order-item-btn-view {
   border: solid 2rpx gray;
@@ -168,16 +170,22 @@ page {
   padding: 10rpx 30rpx;
 }
 .order-item-btn-comment {
-  border: none;
+  border: solid 2rpx orange;
   border-radius: 8rpx;
-  color: white;
-  background-color: #FD8CA3;
+  color: orange;
   padding: 10rpx 30rpx;
+}
+.order-item-btn-reward {
+  border: solid 2rpx orange;
+  border-radius: 8rpx;
+  color: orange;
+  padding: 10rpx 30rpx;
+  margin-right: 10rpx;
 }
 .order-item-btn-pay {
   border: none;
   border-radius: 8rpx;
   color: white;
-  background-color: #FD8CA3;
+  background-color: #FF0074;
   padding: 10rpx 30rpx;
 }

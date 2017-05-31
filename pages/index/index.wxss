@@ -19,9 +19,12 @@
 }
 .index-header {
 	display: flex;
-	justify-content: flex-start;
 	align-items: center;
 	padding-bottom: 10rpx;
+}
+.more {
+  display: flex;
+  align-items: center;
 }
 .nav-item-img image {
 	width: 70rpx;
@@ -55,8 +58,9 @@
 	padding: 50rpx 20rpx;
 }
 .nav-item-txt {
-	font-family: SimHei;
+	font-family: "-apple-system";
 	font-size: 28rpx;
+  color: #646464;
 }
 #hot-area {
 
@@ -69,7 +73,7 @@
 	background-color: white;
 	display: flex;
 	justify-content: space-between;
-	font-family: SimHei;
+	font-family: "-apple-system" ;
 	border-top: solid 2rpx #F7F7F7;
 }
 .hot-item:first-child {
@@ -102,7 +106,7 @@
   justify-content: center;
 }
 .hot-item-name {
-	color: #111111;
+	color: #343434;
 	margin-bottom: 0;
 	white-space: nowrap;
 	overflow: hidden;
@@ -115,7 +119,7 @@
 }
 .hot-item-name-recommend {
   color: white;
-  background-color: #FF0074;
+  background-color: #FF0175;
   padding: 2rpx 4rpx;
   border: solid 2rpx #E4E4E4;
   border-radius: 6rpx;
@@ -127,16 +131,16 @@
 	justify-content: space-between;
 }
 .hot-item-place {
-	color: #393939;
+	color: #2E2E2E;
   font-size: 100%;
 }
 .hot-item-price {
-	color: #FF0074;
+	color: #FF0175;
   font-size: 110%;
 }
 .hot-item-price text {
 	text-decoration: line-through; 
-	color: gray; 
+	color: #606060; 
 	margin-left: 10rpx;
   font-size: 80%;
 }
@@ -145,7 +149,7 @@
 	justify-content: space-between;
 }
 .hot-item-info-distance {
-	color: #777777;
+	color: #2E2E2E;
 	display: flex;
 	align-items: center;
   font-size: 90%;
@@ -175,7 +179,7 @@
 	background-color: white;
 	display: flex;
 	justify-content: space-between;
-	font-family: SimHei;
+	font-family: "-apple-system" ;
 	border-top: solid 2rpx #F7F7F7;
 }
 .people-item:first-child {
@@ -218,7 +222,7 @@
   margin-left: 10rpx;
 }
 .people-item-name {
-	color: #414141;
+	color: #343434;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -280,7 +284,7 @@
 }
 .top-menu-search {
 	position: relative;
-	width: 450rpx;
+	width: 75%;
 	background-color: white;
 	font-size: 28rpx;
   border-radius: 24rpx;
@@ -302,5 +306,5 @@
 	margin-left: 60rpx;
 	line-height: normal;
 	padding: 10rpx 0;
-	color: gray;
+	color: #2e2e2e;
 }

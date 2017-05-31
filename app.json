@@ -6,22 +6,29 @@
     "pages/index/location",
     "pages/index/locationSearch",
     "pages/index/projectDetail",
+    "pages/index/projectDetailMap",
     "pages/index/projectComments",
     "pages/index/personnelDetail",
     "pages/index/shopDetail",
     "pages/index/projectSearch",
+    "pages/index/projectSearchAll",
     "pages/index/projectSearchNoFilter",
     "pages/index/personnelSearch",
+    "pages/index/personnelSearchAll",
     "pages/index/shopSearch",
+    
     "pages/login/register",
     "pages/login/login",
     "pages/login/loginPwd",
     "pages/login/authorize",
     "pages/login/forget",
+    
     "pages/orders/orders",
     "pages/orders/pay",
     "pages/orders/detail",
     "pages/orders/comment",
+    "pages/orders/reward",
+    
     "pages/quickAppoint/quickAppoint",
     "pages/quickAppoint/appointPersonnel",
     "pages/quickAppoint/choosePersonnel",
@@ -30,11 +37,14 @@
     "pages/quickAppoint/appoint",
     "pages/activity/activities",
     "pages/activity/projects",
-    "pages/my/my"
+    
+    "pages/my/my",
+    "pages/my/cards",
+    "pages/my/records"
   ],
   "window":{
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#FF0074",
+    "navigationBarBackgroundColor": "#FF0175",
     "navigationBarTitleText": "优美手艺",
     "navigationBarTextStyle":"white"
   },

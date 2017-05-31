@@ -1,0 +1,105 @@
+/* pages/my/cards.wxss */
+.red {
+  color: #FC6090;
+}
+.blue {
+  color: #738FFD;
+}
+.large {
+  font-size: 105%;
+}
+.small {
+  font-size: 90%;
+}
+.bold {
+  font-weight: bold;
+}
+#card-area {
+  padding: 20rpx;
+}
+.card {
+  background-color: white;
+  border-radius: 8rpx;
+}
+.card:not(:first-child) {
+  margin-top: 20rpx;
+}
+.card-hd {
+  display: flex;
+  position: relative;
+  border-radius: 8rpx;
+}
+.times-card-hd {
+  background-color: #FC6090;
+}
+.yearly-card-hd {
+  background-color: #FEA726;
+}
+.prepaid-card-hd {
+  background-color: #738FFD;
+}
+.expired-card-hd {
+  background-color: #C2C2C2;
+}
+.card-hd-img {
+  height: 130rpx;
+  width: 130rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.card-hd-img image {
+  height: 100rpx;
+  width: 100rpx;
+  border-radius: 50%;
+}
+.card-hd-shop {
+  display: flex;
+  align-items: center;
+  color: white;
+}
+.card-hd-label {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+  border-top: 100rpx solid yellow;
+  border-left: 100rpx solid transparent; 
+}
+.card-hd-label>text {
+  position: absolute;
+  left: -65rpx;
+  top: -65rpx;
+  width: 100rpx;
+  transform: rotate(45deg);
+}
+.card-hd-label-prepaid {
+  font-size: 80%;
+}
+.card-hd-label-prepaid>text {
+  position: absolute;
+  left: -72rpx;
+  top: -70rpx;
+  width: 100rpx;
+  transform: rotate(45deg);
+}
+.card-bd {
+  padding: 20rpx;
+}
+.card-bd-name {
+  margin-bottom: 15rpx;
+}
+.card-bd-line:not(:first-child) {
+  margin-bottom: 15rpx;
+  color: #777777;
+}
+.expired-card-bd {
+  position: relative;
+}
+.expired-card-bd image {
+  position: absolute;
+  width: 160rpx;
+  height: 130rpx;
+  right: 30rpx;
+}

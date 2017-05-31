@@ -16,7 +16,7 @@ page {
 .container{
 	font-size: 30rpx;
 	background-color: #F7F7F7;
-	font-family: SimHei;
+	font-family: "-apple-system";
 }
 #top-menu {
   display: flex;
@@ -58,4 +58,6 @@ page {
 	justify-content: center;
 	align-items: center;
 	height: 100%;
+  float: left;
+  width: 100%;
 }

@@ -15,10 +15,6 @@ page {
   font-size: 80%;
   margin-left: 10rpx;
 }
-.flex-space-between {
-  display: flex;
-  justify-content: space-between;
-}
 .swiper-description {
 	width: 100%;
   position: absolute;

@@ -1,0 +1,94 @@
+.container {
+  padding: 0 30rpx;
+}
+.title {
+  padding-bottom: 40rpx;
+}
+#personnel-info-area{
+  background-color: white;
+  border: solid 2rpx #E6E6E6;
+  border-radius: 8rpx;
+  padding: 30rpx;
+}
+.personnel-info {
+  display: flex;
+}
+.personnel-info-left {
+  width: 150rpx;
+  height: 150rpx;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.personnel-info-left image {
+  width: 130rpx;
+  height: 130rpx;
+  border-radius: 50%;
+}
+.personnel-info-left-level {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  color: white;
+  background-color: orange;
+  width: 130rpx;
+  padding: 5rpx 0;
+  border-radius: 20rpx;
+}
+.personnel-info-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.personnel-info-right-name {
+  padding-bottom: 20rpx;
+  font-weight: bold;
+  font-size: 105%;
+}
+.personnel-stat {
+  padding-left: 50rpx;
+  border-left: solid 2rpx #E1E1E1;
+}
+.personnel-stat-count {
+  color: #FF0074;
+  padding-bottom: 20rpx;
+}
+#reward-area{
+  background-color: white;
+  border: solid 2rpx #E6E6E6;
+  border-radius: 8rpx;
+  padding: 30rpx;
+  margin-top: 20rpx;
+}
+.reward-item {
+  border: solid 2rpx #E1E1E1;
+  padding: 60rpx 20rpx;
+  width: 23%;
+  font-size: 85%;
+  box-shadow: 5rpx 5rpx 5rpx #E1E1E1;
+}
+.reward-item-price {
+  color: #FF0074;
+  font-size: 150%;
+}
+.reward-input {
+  width: 100%;
+  border: solid 2rpx #E1E1E1;
+  box-shadow: 5rpx 5rpx 5rpx #E1E1E1;
+  margin-top: 20rpx;
+  text-align: center;
+}
+.reward-input input{
+  padding: 20rpx;
+}
+.reward-btn {
+  color: white;
+  background-color: #FF0074;
+  padding: 30rpx 0;
+  margin-top: 20rpx;
+}
+.reward-info {
+  font-size: 85%;
+  color: #777777;
+  margin-top: 20rpx;
+}

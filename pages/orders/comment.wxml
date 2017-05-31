@@ -1,4 +1,5 @@
 <view class="container">
+  <scroll-view scroll-y style="height: calc(100% - 90rpx);">
     <view id="project-comment-bd">
         <view class="comment-project-area">
             <view class="project-item">
@@ -98,9 +99,9 @@
         </view>
       </view>
     </view>
-
+  </scroll-view>
     
-    <!--<view id="comment-btn-area">
+    <view id="comment-btn-area">
       <view class="btn-submit text-center" bindtap="submitOrder">发表评价</view>
-    </view>-->
+    </view>
 </view>

@@ -148,7 +148,7 @@ Page({
     }
   },
   changeLocation: function(){
-    wx.redirectTo({
+    wx.navigateTo({
       url: 'location',
       success: function(res){
         // success
@@ -291,7 +291,7 @@ Page({
     });
   },
   indexSearch: function(e) {
-    wx.redirectTo({
+    wx.navigateTo({
       url: 'indexSearch',
       success: function(res){
         // success
@@ -379,8 +379,8 @@ Page({
     })
   },
   jumpToSearchPersonnel: function() {
-    wx.redirectTo({
-      url: 'personnelSearch?from=index',
+    wx.navigateTo({
+      url: 'personnelSearchAll?from=index',
       success: function(res){
         // success
       },
@@ -393,8 +393,8 @@ Page({
     })
   },
   jumpToSearchProjectNoFilter: function() {
-    wx.redirectTo({
-      url: 'projectSearchNoFilter?from=index',
+    wx.navigateTo({
+      url: 'projectSearchAll?from=index',
       success: function(res){
         // success
       },

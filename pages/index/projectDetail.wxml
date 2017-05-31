@@ -50,8 +50,8 @@
                     <view class="description-cell__ft"></view>
                 </view>
                 <view class="description-cell flex-space-between">
-                  <view>{{ s.address }}</view>
-                  <view class="phone" data-phone="{{ s.phone }}" bindtap="call">电话</view>
+                  <view style="align-items: center; display: flex;" bindtap="showMap"><image src="https://www.iumer.cn/umer/css/image/wechat/app/addr.png" style="width: 30rpx; height: 40rpx;"></image>{{ s.address }}</view>
+                  <view class="phone" data-phone="{{ s.phone }}" bindtap="call"><image src="https://www.iumer.cn/umer/css/image/wechat/app/call@2x.png" style="width: 60rpx; height: 60rpx;"></image></view>
                 </view>
             </view>
             <view id="other-info-area">
@@ -130,7 +130,7 @@
                             <view class="star" data-score='{{ item.starLevel || 0 }}'>
 								<block wx:for="{{ [ 0,1,2,3,4 ] }}" wx:for-item="itm" wx:key="*this">
 									<view wx:if="{{ itm < (item.starLevel || 0) }}">
-										<image src="https://www.iumer.cn/umer/js/raty/img/star-on.png"></image>
+										<image src="https://www.iumer.cn/umer/css/image/wechat/app/star-on.png"></image>
 									</view>
 									<view wx:if="{{ itm >= (item.starLevel || 0) }}">
 										<image src="https://www.iumer.cn/umer/js/raty/img/star-off.png"></image>

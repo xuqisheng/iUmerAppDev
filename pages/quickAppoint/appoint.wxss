@@ -5,6 +5,11 @@ page {
 button {
 	line-height: 50rpx;
 }
+.line-through {
+  text-decoration: line-through;
+  font-size: 80%;
+  margin-left: 10rpx;
+}
 .cell-project-price {
 	position: static !important;
 }
@@ -261,6 +266,26 @@ button.timeslot::after {
 }
 .no-border-bottom {
   border-bottom: none !important;
+}
+.price-selection {
+  padding: 20rpx;
+	position: relative;
+  border-bottom: solid 2rpx #F7F7F7;
+}
+radio-group {
+  display: flex;
+  align-items: center;
+  font-size: 90%;
+}
+.radio-group-activity {
+  display: flex;
+  align-items: flex-start;
+  font-size: 90%;
+  flex-direction: column;
+  justify-content: center;
+}
+radio-group radio:nth-child(2) {
+  margin-left: 10rpx;
 }
 .reserve-label {
 	width: 30%;

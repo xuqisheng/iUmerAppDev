@@ -303,7 +303,7 @@ Page({
     })
   },
   morePersonnels: function () {
-    wx.redirectTo({
+    wx.navigateTo({
       url: 'personnelSearch',
       success: function (res) {
         // success
@@ -317,7 +317,7 @@ Page({
     })
   },
   moreShops: function () {
-    wx.redirectTo({
+    wx.navigateTo({
       url: 'shopSearch',
       success: function (res) {
         // success

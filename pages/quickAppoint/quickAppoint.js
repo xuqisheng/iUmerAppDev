@@ -59,6 +59,8 @@ Page({
       case "down": data["timestamp"] = this.data.timestampFirst; break;
       }
     }
+    data["longitude"] = wx.getStorageSync("longitude");
+    data["latitude"] = wx.getStorageSync("latitude");
     wx.request({
       url: app.globalData.server_url + 'webService/customer/biz/order/reserveProjectRecord', 
       data: app.encode(data),
@@ -143,6 +145,8 @@ Page({
       case "down": data["timestamp"] = this.data.timestampFirst; break;
       }
     }
+    data["longitude"] = wx.getStorageSync("longitude");
+    data["latitude"] = wx.getStorageSync("latitude");
     wx.request({
       url: app.globalData.server_url + 'webService/customer/biz/order/reservePersonnelRecord', 
       data: app.encode(data),
@@ -261,7 +265,7 @@ Page({
       return false;
     }
     var projectId = e.currentTarget.dataset.projectid;
-    wx.redirectTo({
+    wx.navigateTo({
       url: '../quickAppoint/appointPersonnel?projectId=' + projectId,
       success: function(res){
         // success
@@ -291,7 +295,7 @@ Page({
       return false;
     }
     var personnelId = e.currentTarget.dataset.personnelid;
-    wx.redirectTo({
+    wx.navigateTo({
       url: '../quickAppoint/appointProject?personnelId=' + personnelId,
       success: function(res){
         // success

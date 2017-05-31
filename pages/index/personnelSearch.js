@@ -49,7 +49,7 @@ Page({
         }
       })
     } else {
-      wx.redirectTo({
+      wx.navigateTo({
         url: 'indexSearch',
         success: function(res){
           // success

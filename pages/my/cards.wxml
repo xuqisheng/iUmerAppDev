@@ -1,0 +1,87 @@
+<view class="container">
+  <view id="card-area">
+    <view class="cards">
+      <view class="card">
+        <view class="card-hd times-card-hd">
+          <view class="card-hd-img">
+            <image src="https://www.iumer.cn/umer/css/image/default.jpg"></image>
+          </view>
+          <view class="card-hd-shop">金公主-美容养生会馆</view>
+          <view class="card-hd-label small"><text>次卡</text></view>
+        </view>
+        <view class="card-bd times-card-bd">
+          <view class="card-bd-name large bold">法国水嫩祛斑保湿美白针</view>
+          <view class="card-bd-line card-bd-first flex-space-between">
+            <text>剩余次数</text>
+            <text>总次数: 100次</text>
+          </view>
+          <view class="card-bd-line card-bd-second flex-space-between">
+            <text class="red large">45次</text>
+            <text class="small">有效期至2017-09-23</text>
+          </view>
+        </view>
+      </view>
+       <view class="card">
+        <view class="card-hd yearly-card-hd">
+          <view class="card-hd-img">
+            <image src="https://www.iumer.cn/umer/css/image/default.jpg"></image>
+          </view>
+          <view class="card-hd-shop">金公主-美容养生会馆</view>
+          <view class="card-hd-label small"><text>年卡</text></view>
+        </view>
+        <view class="card-bd yearly-card-bd">
+          <view class="card-bd-name large bold">法国水嫩祛斑保湿美白针</view>
+          <view class="card-bd-line card-bd-first flex-space-between">
+            <text></text>
+            <text></text>
+          </view>
+          <view class="card-bd-line card-bd-second flex-space-between">
+            <text class="red large"></text>
+            <text class="small">有效期至2017-09-23</text>
+          </view>
+        </view>
+      </view>
+      <view class="card">
+        <view class="card-hd prepaid-card-hd">
+          <view class="card-hd-img">
+            <image src="https://www.iumer.cn/umer/css/image/default.jpg"></image>
+          </view>
+          <view class="card-hd-shop">金公主-美容养生会馆</view>
+          <view class="card-hd-label card-hd-label-prepaid small"><text>储值卡</text></view>
+        </view>
+        <view class="card-bd prepaid-card-bd">
+          <view class="card-bd-name large bold">法国水嫩祛斑保湿美白针</view>
+          <view class="card-bd-line card-bd-first flex-space-between">
+            <text>剩余金额</text>
+            <text>总金额: 10000元</text>
+          </view>
+          <view class="card-bd-line card-bd-second flex-space-between">
+            <text class="blue large">5600.00元</text>
+            <text class="small">有效期至2017-09-23</text>
+          </view>
+        </view>
+      </view>
+      <view class="card">
+        <view class="card-hd times-card-hd expired-card-hd">
+          <view class="card-hd-img">
+            <image src="https://www.iumer.cn/umer/css/image/default.jpg"></image>
+          </view>
+          <view class="card-hd-shop">金公主-美容养生会馆</view>
+          <view class="card-hd-label small"><text>次卡</text></view>
+        </view>
+        <view class="card-bd times-card-bd expired-card-bd">
+          <image src="https://www.iumer.cn/umer/css/image/wechat/app/expired@3x.png"></image>
+          <view class="card-bd-name large bold">法国水嫩祛斑保湿美白针</view>
+          <view class="card-bd-line card-bd-first flex-space-between">
+            <text>剩余次数</text>
+            <text>总次数: 100次</text>
+          </view>
+          <view class="card-bd-line card-bd-second flex-space-between">
+            <text class="red large">0次</text>
+            <text class="small">有效期至2017-09-23</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

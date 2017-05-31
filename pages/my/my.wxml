@@ -3,16 +3,16 @@
   <view id="personel-area">
     <view class="personel-info">
       <view class="personel-info-left">
-        <image src=""></image>
+        <image src="https://www.iumer.cn/{{ customerInfo.header || 'umer/css/image/default.jpg' }}"></image>
       </view>
       <view class="personel-info-right">
-        <view class="personel-info-right-name bold">111</view>
+        <view class="personel-info-right-name bold">{{ customerInfo.name || '未设定用户名'}}</view>
         <view class="personel-info-right-exp">
-          <progress percent="20" activeColor="yellow" backgroundColor="#FF0074" stroke-width="12" active/>
+          <progress percent="0" activeColor="yellow" backgroundColor="#FF0074" stroke-width="12" active/>
         </view>
         <view class="personel-info-right-level flex-space-between">
-          <text>LV.6</text>
-          <text>LV.7</text>
+          <text>LV.0</text>
+          <text>LV.1</text>
         </view>
       </view>
     </view>
@@ -20,17 +20,23 @@
   <view id="menu-area">
     <view class="menus">
       <view class="menu-item">
+        <image class="menu-img" src="https://www.iumer.cn/umer/css/image/wechat/app/mobile@2x.png"></image>
         <text class="menu-txt">更换手机号</text>
       </view>
       <view class="menu-item" bindtap="showOrders">
+        <image class="menu-img" src="https://www.iumer.cn/umer/css/image/wechat/app/orders@2x.png"></image>
         <text class="menu-txt">我的订单</text>
       </view>
-      <view class="menu-item">
-        <text class="menu-txt">我的卡号</text>
+      <view class="menu-item" bindtap="showCards">       
+        <image class="menu-img" src="https://www.iumer.cn/umer/css/image/wechat/app/cards@2x.png"></image>
+        <text class="menu-txt">我的卡包</text>
       </view>
     </view>
   </view>
-  <view id="logout-area">
-    <view>登出</view>
+  <view id="logout-area" bindtap="logout">
+    <view style="display: flex; align-items: center;">
+      <image src="https://www.iumer.cn/umer/css/image/wechat/app/logout@3x.png"></image>
+      <text>登出</text>
+    </view>
   </view>
 </view>

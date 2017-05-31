@@ -1,0 +1,32 @@
+<view class="container">
+  <view id="records-area">
+    <view class="record flex-space-between">
+      <view class="record-title-and-date">
+        <view class="record-title">充值</view>
+        <view class="record-date">2017-09-13</view>
+      </view>
+      <view class="record-amount">+1200.00</view>
+    </view>
+    <view class="record flex-space-between">
+      <view class="record-title-and-date">
+        <view class="record-title">充值</view>
+        <view class="record-date">2017-09-13</view>
+      </view>
+      <view class="record-amount">+1200.00</view>
+    </view>
+    <view class="record flex-space-between">
+      <view class="record-title-and-date">
+        <view class="record-title">充值</view>
+        <view class="record-date">2017-09-13</view>
+      </view>
+      <view class="record-amount">+1200.00</view>
+    </view>
+    <view class="record flex-space-between">
+      <view class="record-title-and-date">
+        <view class="record-title">充值</view>
+        <view class="record-date">2017-09-13</view>
+      </view>
+      <view class="record-amount">+1200.00</view>
+    </view>
+  </view>
+</view>

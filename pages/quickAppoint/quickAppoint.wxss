@@ -17,7 +17,7 @@ page {
 	background-color: white;
 }
 #top-tabs-2 .tab-outer {
-	border: solid 2rpx #FD8CA3;
+	border: solid 2rpx #FF0074;
   display: flex;
 	justify-content: center;
 	padding: 10rpx;
@@ -31,16 +31,15 @@ page {
 }
 #top-tabs-2 .tab-inner-on-2 {
 	color: white !important;
-	background-color: #FD8CA3;
+	background-color: #FF0074;
   border-radius: 8rpx;
 }
 .hot-item {
 	background-color: white;
 	display: flex;
 	justify-content: space-between;
-	font-family: SimHei;
 	border-top: solid 2rpx #F7F7F7;
-  padding: 0 20rpx;
+  padding: 0 10rpx;
 }
 .hot-item:first-child {
 	margin-top: 10rpx;
@@ -52,6 +51,7 @@ page {
 	align-items: center;
 	flex-direction:column;
 	margin-right: 20rpx;
+  min-height: 150rpx;
 }
 .hot-item-left .hot-item-img {
 	display: flex;
@@ -64,29 +64,49 @@ page {
   border-radius: 8rpx;
 }
 .hot-item-right {
-	width: 100%;
-	padding: 20rpx 0 10rpx 0;
+	width: 80%;
+	padding: 10rpx 0 10rpx 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .hot-item-name {
 	color: #111111;
-	margin-bottom: 10rpx;
+	margin-bottom: 0;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	width: 100%;
   font-size: 108%;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
 }
-.hot-item-place-and-price {
+.hot-item-name-recommend {
+  color: white;
+  background-color: #FF0074;
+  padding: 2rpx 4rpx;
+  border: solid 2rpx #E4E4E4;
+  border-radius: 6rpx;
+  font-size: 80%;
+  margin-right: 10rpx;
+}
+.hot-item-place-and-distance {
 	display: flex;
 	justify-content: space-between;
 }
 .hot-item-place {
 	color: #393939;
+  font-size: 100%;
 }
 .hot-item-price {
-	color: orange;
+	color: #FF0074;
   font-size: 110%;
 }
-.hot-item-price text{
+.hot-item-price text {
+	text-decoration: line-through; 
+	color: gray; 
 	margin-left: 10rpx;
-	color: #777777;
-	text-decoration: line-through;
   font-size: 80%;
 }
 .hot-item-info {
@@ -102,7 +122,7 @@ page {
 .hot-item-info-distance image {
 	width: 30rpx;
 	height: 40rpx;
-	margin: 10rpx 10rpx 10rpx 0;
+	margin: 0rpx 10rpx 0rpx 0;
 }
 .hot-item-info-duration {
 	color: #777777;
@@ -113,15 +133,14 @@ page {
 .hot-item-info-duration image {
 	width: 30rpx;
 	height: 30rpx;
-	margin: 10rpx;
+	margin: 0 10rpx;
 }
 .people-item {
 	background-color: white;
 	display: flex;
 	justify-content: space-between;
-	font-family: SimHei;
 	border-top: solid 2rpx #F7F7F7;
-  padding: 0 20rpx;
+  padding: 0 10rpx;
 }
 .people-item:first-child {
 	margin-top: 10rpx;
@@ -146,7 +165,7 @@ page {
 }
 .people-item-right {
 	width: 100%;
-	padding: 20rpx 0 10rpx 0;
+	padding: 10rpx 0 10rpx 0;
 }
 .people-item-right .star {
 	display: flex;
@@ -159,12 +178,19 @@ page {
 .people-item-right .star view:not(:first-child) image {
 	padding-left: 5rpx;
 }
+.people-item-right .star-txt {
+  margin-left: 10rpx;
+}
 .people-item-name {
-	color: #111111;
+	color: #414141;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	width: 100%;
   font-size: 108%;
 }
 .people-item-place {
-	color: #393939;
+	color: #414141;
 }
 .people-item-dot-line {
 	margin-right: 40rpx;
@@ -187,30 +213,28 @@ page {
 .people-item-info-distance image {
 	width: 30rpx;
 	height: 40rpx;
-	margin: 10rpx 10rpx 10rpx 0;
+	margin: 0 10rpx 0 0;
 }
 .people-item-info-board-comment {
 	display: flex;
 }
 .people-item-info-comment {
-	color: #777777;
+	color: #686868;
 	display: flex;
 	align-items: center;
-  font-size: 90%;
 }
 .people-item-info-comment image {
 	width: 30rpx;
 	height: 30rpx;
-	margin: 10rpx;
+	margin: 0 10rpx;
 }
 .people-item-info-board {
-	color: #777777;
+	color: #686868;
 	display: flex;
 	align-items: center;
-  font-size: 90%;
 }
 .people-item-info-board image {
 	width: 30rpx;
 	height: 30rpx;
-	margin: 10rpx;
+	margin: 0 10rpx;
 }

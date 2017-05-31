@@ -279,7 +279,7 @@ Page({
       return false;
     }
     var that = this;
-    wx.redirectTo({
+    wx.navigateTo({
       url: '../quickAppoint/appointPersonnel?from=projectDetail&projectId=' + that.data.projectId + "&activityId=" + (that.data.activityId || ''),
       success: function(res){
         // success
@@ -343,6 +343,16 @@ Page({
     }
     this.setData({
       showShopTimeStamp: timestamp
+    })
+  },
+  call: function(e) {
+    wx.makePhoneCall({
+      phoneNumber: e.currentTarget.dataset.phone,
+    })
+  },
+  showMap: function(e){
+    wx.navigateTo({
+      url: '../index/projectDetailMap?lat=' + e.currentTarget.dataset.lat + "&long=" + e.currentTarget.dataset.long,
     })
   }
 })

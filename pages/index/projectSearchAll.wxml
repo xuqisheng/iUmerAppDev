@@ -1,0 +1,103 @@
+<view class="container">
+    <view class="filter filter-project">
+        <view class="filter-item filter-item-area" bindtap="showAreaF">
+            <view class="filter-item-inner">
+                <view class="{{ !showArea? 'filter-item-triangle-active': 'filter-item-triangle' }}"></view>
+                <text class="text-center {{ !showArea? 'filter-text-active':'' }}">{{ areaTxt }}</text>
+            </view>
+            <view class="filter-item-list filter-item-list-area" hidden="{{ showArea }}">
+                <view class="filter-item-list-items">
+                    <block wx:for="{{ areaList }}" wx:key="name">
+                        <view wx:if="{{ item.list.length > 0 && item.name == '附近' }}">
+                            <view class="filter-item-list-item" catchtap="showNearF" data-areaid="{{ item.name }}"><text>{{  item.name }}</text>
+                                <view class="filter-item-sublist">
+                                    <block wx:for="{{ item.list }}" wx:for-item="itm" wx:key="code">
+                                        <view class="filter-item-sublist-item {{ range == itm.code? 'filter-list-item-on filter-list-item-on-pink' :'' }}" hidden="{{ showNear }}" data-range="{{ itm.code }}" data-areaname="{{ itm.name }}" catchtap="clickArea"><text>{{ itm.name }}</text></view>
+                                    </block>
+                                </view>
+                            </view>
+                        </view>
+                        <view wx:if="{{ item.list.length == 0 }}">
+                            <view catchtap="clickArea" data-areaid="{{ item.code }}" data-areaname="{{ item.name }}"class="filter-item-list-item {{ (areaId == item.code && item.name != '全部')? 'filter-list-item-on-pink' :'' }} {{ (range == '' && areaId == '' && item.name == '全部')? 'filter-list-item-on' :'' }}"><text data-areaid="{{ item.code }}">{{  item.name }}</text></view>
+                        </view>
+                    </block>
+                </view>
+                <view class="filter-item-list-item-end text-center" catchtap="hideFilter"><image alt="" src="https://www.iumer.cn/umer/css/image/wechat/pull-down@3x.png" /></view>
+            </view>
+        </view>
+        <view class="filter-item" bindtap="showSortingF">
+            <view class="filter-item-inner">
+                <view class="{{ !showSorting? 'filter-item-triangle-active': 'filter-item-triangle' }}"></view>
+                <text class="text-center {{ !showSorting? 'filter-text-active':'' }}">{{ sortTxt }}</text>
+            </view>
+            <view class="filter-item-list filter-item-list-sorting" hidden="{{ showSorting }}">
+                <view class="filter-item-list-items">
+                    <view class="filter-item-list-item {{ sortingId == 1? 'filter-list-item-on filter-list-item-on-pink' :'' }}" data-sortingid="1" catchtap="clickSorting" data-sortname="智能排序"><image alt="" src="https://www.iumer.cn/umer/css/image/wechat/sort@3x.png" /><text>智能排序</text></view>
+                    <view class="filter-item-list-item {{ sortingId == 2? 'filter-list-item-on filter-list-item-on-pink' :'' }}" data-sortingid="2" catchtap="clickSorting" data-sortname="价格排序"><image alt="" src="https://www.iumer.cn/umer/css/image/wechat/price@3x.png" /><text>价格排序</text></view>
+                    <view class="filter-item-list-item {{ sortingId == 3? 'filter-list-item-on filter-list-item-on-pink' :'' }}" data-sortingid="3" catchtap="clickSorting" data-sortname="服务最多"><image alt="" src="https://www.iumer.cn/umer/css/image/wechat/service@3x.png" /><text>服务最多</text></view>
+                    <view class="filter-item-list-item {{ sortingId == 4? 'filter-list-item-on filter-list-item-on-pink' :'' }}" data-sortingid="4" catchtap="clickSorting" data-sortname="评价最高"><image alt="" src="https://www.iumer.cn/umer/css/image/wechat/score@3x.png" /><text>评价最高</text></view>
+                </view>
+                <view class="filter-item-list-item-end text-center" catchtap="hideFilter"><image alt="" src="https://www.iumer.cn/umer/css/image/wechat/pull-down@3x.png" /></view>
+            </view>
+        </view>
+        <view class="filter-item" bindtap="showCategoryF">
+            <view class="filter-item-inner">
+                <view class="{{ !showCategory? 'filter-item-triangle-active': 'filter-item-triangle' }}"></view>
+                <text class="text-center {{ !showCategory? 'filter-text-active':'' }}">{{ categoryTxt }}</text>
+            </view>
+            <view class="filter-item-list filter-item-list-category" hidden="{{ showCategory }}">
+                <view class="filter-item-list-items-category">
+                    <view class="filter-item-list-item-category"><text catchtap="clickCategory" data-categoryno="10" class="{{ !categoryNo || categoryNo == 10? 'filter-list-item-category-on' :'' }}" data-categoryname='面部美容'>面部美容</text></view>
+                    <view class="filter-item-list-item-category"><text catchtap="clickCategory" data-categoryno="20" class="{{ categoryNo == 20? 'filter-list-item-category-on' :'' }}" data-categoryname='经络美容'>经络美容</text></view>
+                    <view class="filter-item-list-item-category"><text catchtap="clickCategory" data-categoryno="30" class="{{ categoryNo == 30? 'filter-list-item-category-on' :'' }}" data-categoryname='身体护理'>身体护理</text></view>
+                    
+                    <block wx:for="{{ categoryList }}" wx:key="no">
+                        <block wx:if="{{ categoryList[type]['no'] == item.no }}" >
+                            <block wx:for="{{ item.list }}" wx:for-item="itm" wx:key="no">
+                                <view class="filter-item-list-item-category"><text class="{{ categoryNo == itm.no? 'filter-list-item-category-on' :'' }}" catchtap="clickCategory" data-categoryno="{{ itm.no }}" data-categoryname="{{ itm.name }}">{{ itm.name }}</text></view>
+                            </block>
+                        </block>
+                    </block>
+                </view>
+                <view class="filter-item-list-item-end text-center" catchtap="hideFilter"><image src="https://www.iumer.cn/umer/css/image/wechat/pull-down@3x.png" /></view>
+            </view>
+        </view>
+    </view>
+    <view id="project-area">
+        <view hidden="{{ noDataHidden }}" class="no-data text-center">
+            <image src="https://www.iumer.cn/umer/css/image/wechat/app/no-project@2x.png"></image>
+            <text>暂时没有项目哦~</text>
+        </view>
+        <scroll-view scroll-y style="width: 100%; height: 100%;" bindscrolltolower="loadMore" bindscrolltoupper="refresh">
+          <block wx:for="{{ projectList }}" wx:key="id">
+            <view class="hot-item" data-projectId="{{ item.id }}" data-activityid="{{ item.projectActivityId || '' }}" bindtap="clickProjectItem" >
+              <view class="hot-item-left">
+                <view class="hot-item-img">
+                  <image class="lazy" src="https://www.iumer.cn{{ item.filePath || '/umer/css/image/default.jpg' }}" />
+                </view>
+              </view>
+              <view class="hot-item-right">
+                <view class="hot-item-name">
+                  <text class="hot-item-name-recommend">推荐</text>
+                  {{ item.projectName || "" }}
+                </view>
+                <view class="hot-item-place-and-distance">
+                  <view class="hot-item-place">{{ item.shopName || "" }}</view>
+                  <view class="hot-item-info-distance">{{ item.distance? item.distance: "未定位到距离" }}</view>
+                </view>
+                <view class="hot-item-info">
+                  <view class="hot-item-info-duration">
+                  <text>{{ item.duration || "0" }}分钟</text> 
+                  |
+                  <text></text>
+                  </view> 
+                  <view class="hot-item-price" wx:if="{{ !!item.projectActivityId }}">￥{{ item.activityUnitPrice || "0" }}元<text>￥{{ item.unitPrice || "0" }}元</text></view>
+                  <view class="hot-item-price" wx:if="{{ !item.projectActivityId }}">￥{{ item.unitPrice || "0" }}元</view>
+                </view>
+              </view>
+            </view>
+          </block>
+            <view class="load-more text-center" hidden="{{ loadingHidden }}">加载中</view>
+        </scroll-view>
+    </view>
+</view>

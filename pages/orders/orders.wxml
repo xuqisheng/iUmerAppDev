@@ -130,9 +130,9 @@
                         </view>
                         <view class="order-item-ft">
                         </view>
-                        <view class="order-item-btns flex-space-between">
+                        <view class="order-item-btns">
                             <text></text>
-                
+                            <view wx:if="{{ item.approveStatus == 2 || item.approveStatus == 3 }}" class="order-item-btn-reward" data-orderno="{{ item.orderNo }}" data-src="child" catchtap="reward">打赏优美师</view>
                             <view wx:if="{{ item.approveStatus == 3 || item.approveStatus == 4 || approveStatus == 6 }}" class="order-item-btn-view" data-orderno="{{ item.orderNo }}" data-src="child" catchtap="viewDetail">查看详情</view>
                              <view wx:if="{{ item.approveStatus == 2 }}" class="order-item-btn-comment" data-orderno="{{ item.orderNo }}" data-src="child" catchtap="commentOrder">评价</view>
                         </view>

@@ -40,13 +40,14 @@
                </view> 
               </view>
         </view>
-        <view class="selection-cell selection-cell_access" href="javascript:;" bindtap="choosePersonnel" style="color: {{ !personnelId? 'red': 'black' }}; border: {{ !personnelId? 'solid 1px #FD8CA3': 'none' }}; border-bottom: {{ !personnelId? 'solid 1px #FD8CA3': 'solid 1px #F7F7F7;' }};">
+        <view class="selection-cell selection-cell_access" href="javascript:;" bindtap="choosePersonnel">
             <view class="selection-cell__bd">
             <text>优美师</text>
             </view>
             <view class="selection-cell__ft chosen-personnel">
             {{ personnelId? personnelName : "请选择优美师" }}<image hidden="{{ !personnelHeader }}" src="{{ personnelHeader? personnelHeader : '' }}"></image>
             </view>
+            <image src="https://www.iumer.cn/umer/css/image/wechat/app/border.png" style="width: 100%; height: 11rpx; position: absolute; bottom: -4rpx;"></image>
         </view>
         <view class="selection-cell">
             <view class="selection-cell__bd">
