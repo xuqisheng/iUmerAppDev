@@ -1,19 +1,17 @@
-// pages/index/projectSearch.js
+// pages/index/PersonnelSearch.js
 var app = getApp();
 Page({
   data: {
     showArea: true,
     showNear: true,
     showSorting: true,
-    showCategory: true,
     page: 1,
     loadMoreTimeStamp: 0,
     refreshTimeStamp: 0,
-    clickProjectItemTimeStamp: 0,
+    clickPersonnelItemTimeStamp: 0,
     noDataHidden: true,
     areaTxt: '全城',
-    sortTxt: '排序',
-    categoryTxt: '分类'
+    sortTxt: '排序'
   },
   onLoad: function (options) {
     // 页面初始化 options为页面跳转所带来的参数
@@ -22,10 +20,9 @@ Page({
       groupNo: options.groupNo
     });
     this.loadAreaList();
-    this.loadCategoryList();
-    this.loadProjects();
+    this.loadPersonnels();
     wx.setNavigationBarTitle({
-      title: '项目'
+      title: '优美师'
     })
   },
   onReady: function () {
@@ -43,22 +40,19 @@ Page({
   showAreaF: function () {
     this.setData({
       showArea: !this.data.showArea,
-      showSorting: true,
-      showCategory: true
+      showSorting: true
     });
   },
   showSortingF: function () {
     this.setData({
       showArea: true,
-      showSorting: !this.data.showSorting,
-      showCategory: true
+      showSorting: !this.data.showSorting
     });
   },
   showCategoryF: function () {
     this.setData({
       showArea: true,
-      showSorting: true,
-      showCategory: !this.data.showCategory
+      showSorting: true
     })
   },
   loadAreaList: function () {
@@ -98,8 +92,7 @@ Page({
   hideFilter: function () {
     this.setData({
       showArea: true,
-      showSorting: true,
-      showCategory: true
+      showSorting: true
     })
     console.log(this.data.showArea)
   },
@@ -116,7 +109,7 @@ Page({
       all: areaId == 'all' || '',
       areaTxt: areaName || '全城'
     });
-    this.loadProjects();
+    this.loadPersonnels();
     console.log(this.data)
   },
   clickSorting: function (e) {
@@ -128,61 +121,9 @@ Page({
       page: 1,
       sortTxt: sortingName
     });
-    this.loadProjects();
+    this.loadPersonnels();
   },
-  loadCategoryList: function () {
-    var that = this;
-    wx.showNavigationBarLoading();
-    wx.request({
-      url: app.globalData.server_url + 'webService/common/projectTypeTree',
-      data: app.encode({
-        groupNo: that.data.groupNo
-      }),
-      method: "POST",
-      dataType: "json",
-      header: {
-        'Content-Type': 'application/json;charset=UTF-8;'
-      },
-      success: function (res) {
-        if (res.data.code == 1) {
-          that.setData({
-            categoryList: res.data.data
-          });
-        } else {
-          wx.showModal({
-            title: '提示',
-            content: res.data.desc,
-            confirmColor: '#FD8CA3',
-            showCancel: false,
-            success: function (res) {
-              if (res.confirm) {
-
-              }
-            }
-          });
-        }
-      },
-      fail: function (res) {
-        console.log("loadCategoryList fail")
-      },
-      complete: function (res) {
-        console.log("loadCategoryList complete");
-        wx.hideNavigationBarLoading();
-      }
-    });
-  },
-  clickCategory: function (e) {
-    var categoryNo = e.currentTarget.dataset.categoryno;
-    var categoryName = e.currentTarget.dataset.categoryname;
-    this.setData({
-      showCategory: true,
-      categoryNo: categoryNo,
-      page: 1,
-      categoryTxt: categoryName || '分类'
-    });
-    this.loadProjects();
-  },
-  loadProjects: function () {
+  loadPersonnels: function () {
     wx.showNavigationBarLoading();
     var that = this;
     var data = {};
@@ -193,9 +134,6 @@ Page({
     }
     if (that.data.range) {
       data["range"] = that.data.range;
-    }
-    if (that.data.categoryNo || that.data.groupNo) {
-      data["groupNo"] = that.data.categoryNo || that.data.groupNo;
     }
     data["page"] = that.data.page;
     data["pageSize"] = 10;
@@ -209,7 +147,7 @@ Page({
       }
     }
     wx.request({
-      url: app.globalData.server_url + 'webService/customer/biz/index/searchProjectList',
+      url: app.globalData.server_url + 'webService/customer/biz/index/searchPersonnelList',
       data: app.encode(data),
       method: "POST",
       dataType: "json",
@@ -220,7 +158,7 @@ Page({
         if (res.data.code == 1) {
           if (res.data.data.length == 0 && that.data.page == 1) {
             that.setData({
-              projectList: [],
+              personnelList: [],
               loadingHidden: true,
               noDataHidden: false
             });
@@ -234,12 +172,12 @@ Page({
             });
             return false;
           }
-          var projectList = that.data.page == 1 ? res.data.data : that.data.projectList.concat(res.data.data);
+          var personnelList = that.data.page == 1 ? res.data.data : that.data.personnelList.concat(res.data.data);
           that.setData({
-            projectList: projectList,
+            personnelList: personnelList,
             noDataHidden: true
           });
-          if (projectList.length < 10 || res.data.data.length < 10) {
+          if (personnelList.length < 10 || res.data.data.length < 10) {
             that.setData({
               loadingHidden: true
             });
@@ -263,10 +201,10 @@ Page({
         }
       },
       fail: function (res) {
-        console.log("loadProjects fail")
+        console.log("loadPersonnels fail")
       },
       complete: function (res) {
-        console.log("loadProjects complete")
+        console.log("loadPersonnels complete")
         wx.hideNavigationBarLoading();
       }
     });
@@ -277,7 +215,7 @@ Page({
 
     } else {
       this.data.page++;
-      this.loadProjects();
+      this.loadPersonnels();
     }
     this.setData({
       loadMoreTimeStamp: timestamp
@@ -289,21 +227,21 @@ Page({
 
     } else {
       this.data.page = 1;
-      this.loadProjects();
+      this.loadPersonnels();
     }
     this.setData({
       refreshTimeStamp: timeStamp
     })
   },
-  clickProjectItem: function (e) {
-    var projectId = e.currentTarget.dataset.projectid;
+  clickPersonnelItem: function (e) {
+    var personnelId = e.currentTarget.dataset.personnelid;
     var activityId = e.currentTarget.dataset.activityid;
     var timestamp = e.timeStamp;
-    if (timestamp - this.data.clickProjectItemTimeStamp < 500) {
+    if (timestamp - this.data.clickPersonnelItemTimeStamp < 500) {
 
     } else {
       wx.navigateTo({
-        url: 'projectDetail?projectId=' + projectId + "&activityId=" + activityId,
+        url: 'personnelDetail?personnelId=' + personnelId,
         success: function (res) {
           // success
         },
@@ -316,7 +254,7 @@ Page({
       })
     }
     this.setData({
-      clickProjectItemTimeStamp: timestamp
+      clickPersonnelItemTimeStamp: timestamp
     })
   }
 })

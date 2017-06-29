@@ -169,107 +169,109 @@ page {
 	border: solid 2rpx #FF0074 !important;
 	color: #FF0074 !important;
 }
-#project-area {
+#personnel-area {
 	height: calc(100% - 84rpx);
 }
-.hot-item {
+.people-item {
 	background-color: white;
 	display: flex;
 	justify-content: space-between;
-	font-family: SimHei;
+	font-family: "-apple-system" ;
 	border-top: solid 2rpx #F7F7F7;
-  padding: 0 10rpx;
+  padding: 10rpx;
 }
-.hot-item:first-child {
+.people-item:first-child {
 	margin-top: 10rpx;
 }
-.hot-item-left {
+.people-item-left {
 	width: 150rpx;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	flex-direction:column;
 	margin-right: 20rpx;
-  min-height: 150rpx;
 }
-.hot-item-left .hot-item-img {
+.people-item-left .people-item-img {
 	display: flex;
 	align-items: center;
 }
-.hot-item-left .hot-item-img image {
+.people-item-left .people-item-img image {
 	width: 130rpx;
 	height: 130rpx;
   border: solid 2rpx #E4E4E4;
   border-radius: 8rpx;
 }
-.hot-item-right {
-	width: 80%;
+.people-item-right {
+	width: 100%;
 	padding: 10rpx 0 10rpx 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 }
-.hot-item-name {
-	color: #111111;
-	margin-bottom: 0;
+.people-item-right .star {
+	display: flex;
+	margin-top: 10rpx;
+}
+.people-item-right .star image {
+	width: 28rpx;
+	height: 28rpx;
+}
+.people-item-right .star view:not(:first-child) image {
+	padding-left: 5rpx;
+}
+.people-item-right .star-txt {
+  margin-left: 10rpx;
+}
+.people-item-name {
+	color: #343434;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	width: 100%;
   font-size: 108%;
-  display: flex;
-  align-items: center;
-  font-weight: bold;
 }
-.hot-item-name-recommend {
-  color: white;
-  background-color: #FF0074;
-  padding: 2rpx 4rpx;
-  border: solid 2rpx #E4E4E4;
-  border-radius: 6rpx;
-  font-size: 80%;
-  margin-right: 10rpx;
+.people-item-place {
+	color: #414141;
 }
-.hot-item-place-and-distance {
+.people-item-dot-line {
+	margin-right: 40rpx;
+	background-image: url('https://www.iumer.cn/umer/css/image/wechat/dotted-line@2x.png');
+	width: 100%;
+	height: 2rpx;
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+}
+.people-item-info {
 	display: flex;
 	justify-content: space-between;
 }
-.hot-item-place {
-	color: #393939;
-  font-size: 100%;
-}
-.hot-item-price {
-	color: #FF0074;
-  font-size: 110%;
-}
-.hot-item-price text {
-	text-decoration: line-through; 
-	color: gray; 
-	margin-left: 10rpx;
-  font-size: 80%;
-}
-.hot-item-info {
-	display: flex;
-	justify-content: space-between;
-}
-.hot-item-info-distance {
+.people-item-info-distance {
 	color: #777777;
 	display: flex;
 	align-items: center;
   font-size: 90%;
 }
-.hot-item-info-distance image {
+.people-item-info-distance image {
 	width: 30rpx;
 	height: 40rpx;
-	margin: 0rpx 10rpx 0rpx 0;
+	margin: 0 10rpx 0 0;
 }
-.hot-item-info-duration {
-	color: #777777;
+.people-item-info-board-comment {
+	display: flex;
+}
+.people-item-info-comment {
+	color: #686868;
 	display: flex;
 	align-items: center;
-  font-size: 90%;
 }
-.hot-item-info-duration image {
+.people-item-info-comment image {
+	width: 30rpx;
+	height: 30rpx;
+	margin: 0 10rpx;
+}
+.people-item-info-board {
+	color: #686868;
+	display: flex;
+	align-items: center;
+}
+.people-item-info-board image {
 	width: 30rpx;
 	height: 30rpx;
 	margin: 0 10rpx;

@@ -31,7 +31,7 @@ Page({
         dataType: "json",
         header: {
            'Content-Type': 'application/json;charset=UTF-8;'
-       },
+        },
         success: function(res) {
           if (res.data.code == 1) {
             that.setData({
@@ -77,7 +77,7 @@ Page({
             wx.setStorageSync('latitude', latitude);
             wx.setStorageSync('longitude', longitude);
             var letterIndex = [];
-            var url = "https://www.iumer.cn/umer/webService/common/baiduCoordinate";
+            var url = app.globalData.server_url + "webService/common/baiduCoordinate";
             wx.request({
               url: url, //仅为示例，并非真实的接口地址
               data: app.encode({
@@ -436,5 +436,15 @@ Page({
       title: 'iUmer - 优美东方',
       path: '/pages/index/index'
     }
+  },
+  moreProjects: function(){
+    wx.navigateTo({
+      url: '../index/projectSearchAll',
+    })
+  },
+  morePersonnels: function () {
+    wx.navigateTo({
+      url: '../index/personnelSearchAll',
+    })
   }
 })

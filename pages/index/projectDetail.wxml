@@ -50,7 +50,7 @@
                     <view class="description-cell__ft"></view>
                 </view>
                 <view class="description-cell flex-space-between">
-                  <view style="align-items: center; display: flex;" bindtap="showMap"><image src="https://www.iumer.cn/umer/css/image/wechat/app/addr.png" style="width: 30rpx; height: 40rpx;"></image>{{ s.address }}</view>
+                  <view style="align-items: center; display: flex;" data-long="{{ item.longitude }}" data-lat="{{ item.latitude }}" bindtap="showMap"><image src="https://www.iumer.cn/umer/css/image/wechat/app/addr.png" style="width: 30rpx; height: 40rpx;"></image>{{ s.address }}</view>
                   <view class="phone" data-phone="{{ s.phone }}" bindtap="call"><image src="https://www.iumer.cn/umer/css/image/wechat/app/call@2x.png" style="width: 60rpx; height: 60rpx;"></image></view>
                 </view>
             </view>

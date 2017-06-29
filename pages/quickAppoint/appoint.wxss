@@ -206,10 +206,10 @@ button {
 	justify-content: space-between;
 }
 .date-select-on {
-	border-bottom: solid 4rpx #FD8CA3;
+	border-bottom: solid 4rpx #FF0175;
 }
 .swiper-slide {
-	padding: 0 40rpx 0rpx 40rpx;
+	padding: 0 40rpx 10rpx 40rpx;
     display: inline-block;	
 }
 .timeslots {
@@ -248,7 +248,7 @@ button.timeslot::after {
 	background-color: #EEEEEE;
 }
 .timeslot-selected {
-    background-color: #FD8CA3;
+    background-color: #FF0175;
     color: white;
 }
 .input-area {
@@ -302,7 +302,7 @@ radio-group radio:nth-child(2) {
   background-color: white;
 }
 .btn-item {
-    background-color: #FD8CA3;
+    background-color: #FF0175;
     padding: 25rpx 0;
     color: white;
     font-family: SimHei;

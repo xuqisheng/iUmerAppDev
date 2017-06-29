@@ -47,7 +47,7 @@
             <view class="selection-cell__ft chosen-personnel">
             {{ personnelId? personnelName : "请选择优美师" }}<image hidden="{{ !personnelHeader }}" src="{{ personnelHeader? personnelHeader : '' }}"></image>
             </view>
-            <image src="https://www.iumer.cn/umer/css/image/wechat/app/border.png" style="width: 100%; height: 11rpx; position: absolute; bottom: -4rpx;"></image>
+            <image src="https://www.iumer.cn/umer/css/image/wechat/app/border.png" style="width: 100%; height: 11rpx; position: absolute; bottom: -4rpx; left: 0;"></image>
         </view>
         <view class="selection-cell">
             <view class="selection-cell__bd">
@@ -91,9 +91,9 @@
     <view id="payment-type-area">
       <view class="payment-type-title payment-type-cell">选择支付方式</view>
         <block wx:for="{{ paymentMethods }}" wx:key="value">
-            <view class="payment-type-cell" wx:if="{{ item.value != 'alipay' }}">
+            <view class="payment-type-cell" wx:if="{{ item.value != 'alipay' }}" data-type="{{ item.value }}" bindtap="choosePayment">
                 <view class="payment-type-cell-hd"><image src="https://www.iumer.cn{{ item.icon }}"></image>{{ item.label }}</view>
-                <view class="payment-type-cell-ft" data-type="{{ item.value }}" bindtap="choosePayment">
+                <view class="payment-type-cell-ft">
                     <view class="payment-type-cell-ft-circle {{ selected == item.value? 'circle-on': '' }}" bindtap="choosePayment"></view>
                 </view>           
             </view>

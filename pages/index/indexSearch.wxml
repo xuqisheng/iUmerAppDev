@@ -2,15 +2,15 @@
     <view class="top-menu-active">
         <view class="top-menu-search">
           <view class="search-icon"></view>
-          <input placeholder="搜索优美师/项目" type="text" bindinput="inputKeywords" value="{{ searchKeywords }}"/>
-          <view class="cancel-search" bindtap="clearSearch">X</view>
+          <input placeholder="搜索优美师/项目" type="text" bindinput="inputKeywords" />
           </view>
         <view class="top-menu-search-search" bindtap="search">搜索</view>
     </view>
     <view class="search-hint" hidden="{{ hideHint }}">
       <view class="search-hint-history"> 
-        <view class="search-hint-title">
+        <view class="search-hint-title flex-space-between">
           <text>历史搜索</text>
+          <text bindtap="clearSearch">清除记录</text>
         </view>
         <view class="search-hint-items">
           <block wx:for="{{ searchHistory }}" wx:key="*this">

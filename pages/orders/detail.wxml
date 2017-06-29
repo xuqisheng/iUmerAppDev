@@ -1,11 +1,11 @@
 <view class="container">
   <view id="shop-area">
-    <view id="shop-info" class="flex-space-between" bindtap="showShop">
+    <view id="shop-info" class="flex-space-between">
       <view class="shop-header-and-name">
         <image src="https://www.iumer.cn/{{ orderInfo.shopHeader || 'umer/css/image/wechat/2.jpg' }}"></image>
         <text>{{ orderInfo.shopName }}</text>
       </view>
-      <view class="angle"></view>
+      <!--<view class="angle"></view>-->
     </view>
   </view>
   <view id="project-area">
@@ -83,7 +83,7 @@
       </view>
     </view>
   </view>
-  <image src="https://www.iumer.cn/umer/css/image/wechat/activity/return@2x.png" class="btn-return text-center" bindtap="backToIndex" />
+  <!--<image src="https://www.iumer.cn/umer/css/image/wechat/activity/return@2x.png" class="btn-return text-center" bindtap="backToIndex" />-->
   <view id="btn-area" wx:if="{{ orderInfo.approveStatus != 4 && orderInfo.approveStatus != 5 && orderInfo.approveStatus != 6 }}">     
     <view id="btns">
       <!-- 待付款 -->

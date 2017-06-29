@@ -352,8 +352,8 @@ Page({
         success: function (res) {
           console.log(res)
           var filePath = res.tempFilePath
-          wx.saveFile({
-            tempFilePath: filePath,
+          wx.saveImageToPhotosAlbum({
+            filePath: filePath,
             success: function(res) {
               console.log(res)
             }

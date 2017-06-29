@@ -148,7 +148,7 @@ button {
 	border-bottom: solid 4rpx #FF0074;
 }
 .swiper-slide {
-	padding: 0 40rpx 20rpx 40rpx;
+	padding: 0 40rpx 10rpx 40rpx;
     display: inline-block;	
 }
 .timeslots {

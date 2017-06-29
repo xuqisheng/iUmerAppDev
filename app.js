@@ -28,7 +28,7 @@ App({
   globalData:{
     userInfo:null,
     server_url_local: "http://localhost:8080/umer/",
-    server_url: "https://www.iumer.cn/umer/"
+    server_url: "https://www.iumer.top/umer/"
   },
   encode: function(data) {
     if (!data) {

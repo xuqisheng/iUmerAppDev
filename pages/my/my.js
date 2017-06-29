@@ -146,7 +146,7 @@ Page({
   showCards: function() {
     wx.showModal({
       title: '提示',
-      content: '功能还未开放...',
+      content: '功能尚未开放...',
       confirmColor: '#ff0175',
       showCancel: false
     })
@@ -155,6 +155,7 @@ Page({
       url: '../my/cards',
     })
   },
+
   logout: function () {
     var that = this;
     wx.showModal({
@@ -177,10 +178,21 @@ Page({
             login: false
           });
           wx.switchTab({
-            url: 'index',
+            url: '../index/index',
           })
         }
       }
     });
+  },
+
+  changePhone: function () {
+    wx.showModal({
+      title: '提示',
+      content: '功能尚未开放...',
+      confirmColor: '#ff0175',
+      showCancel: false
+    })
+    return;
+    
   }
 })

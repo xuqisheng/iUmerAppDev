@@ -7,7 +7,10 @@ Page({
     levelService: 0,
     levelCommunication: 0,
     txt: "",
-    chosenLabels: {}
+    chosenLabels: {},
+    labels: ['用料足', '手法好', '态度好', '商家服务好'],
+    anonymous: false,
+    picList: []
   },
   onLoad: function (options) {
     // 页面初始化 options为页面跳转所带来的参数
@@ -72,7 +75,7 @@ Page({
           wx.showModal({
             title: '提示',
             content: res.data.desc,
-            confirmColor: '#FD8CA3',
+            confirmColor: '#FF0175',
             showCancel: false,
             success: function (res) {
               if (res.confirm) {
@@ -120,24 +123,43 @@ Page({
       levelCommunication: level + 1
     });
   },
+  checkboxChange: function(e) {
+    this.setData({
+      anonymous: e.detail.value[0] == "1"
+    })
+  },
   submitOrder: function () {
     var that = this;
-    if (!this.data.txt) {
+    if (this.data.levelProfession == 0) {
       wx.showModal({
         title: '提示',
         showCancel: false,
-        content: '请输入评价！',
+        content: '请选择项目评分！',
+        confirmColor: '#FF0175',
         success: function (res) {
 
         }
       });
       return false;
     }
-    if (this.data.levelProfession == 0) {
+    if (!this.data.txt) {
+      wx.showModal({
+        title: '提示',
+        showCancel: false,
+        content: '请输入评价！',
+        confirmColor: '#FF0175',
+        success: function (res) {
+
+        }
+      });
+      return false;
+    }
+    if (this.data.levelProfession2 == 0) {
       wx.showModal({
         title: '提示',
         showCancel: false,
         content: '请选择专业评分！',
+        confirmColor: '#FF0175',
         success: function (res) {
 
         }
@@ -148,6 +170,7 @@ Page({
       wx.showModal({
         title: '提示',
         showCancel: false,
+        confirmColor: '#FF0175',
         content: '请选择服务评分！',
         success: function (res) {
 
@@ -159,6 +182,7 @@ Page({
       wx.showModal({
         title: '提示',
         showCancel: false,
+        confirmColor: '#FF0175',
         content: '请选择沟通评分！',
         success: function (res) {
 
@@ -166,6 +190,16 @@ Page({
       });
       return false;
     }
+    var chosenLabelsKeys = Object.keys(that.data.chosenLabels);
+    var labels = "";
+    for (var i = 0; i < chosenLabelsKeys.length; i++) {
+      var key = chosenLabelsKeys[i];
+      if (that.data.chosenLabels[key]) {
+        labels += that.data.labels[key] + ",";
+      }
+    }
+    labels = labels.substring(0, labels.length - 1);
+    
     wx.showNavigationBarLoading();
     wx.request({
       url: app.globalData.server_url + 'webService/customer/biz/order/orderComment',
@@ -174,10 +208,13 @@ Page({
         "personnelId": that.data.personnelId,
         "projectId": that.data.projectId,
         "content": that.data.txt,
-        "domainLevel": that.data.levelProfession,
+        "projectLevel": that.data.levelProfession,
+        "domainLevel": that.data.levelProfession2,
         "serveLevel": that.data.levelService,
         "communicationLevel": that.data.levelCommunication,
-        "orderNo": that.data.orderNo
+        "orderNo": that.data.orderNo,
+        "anonymity": that.data.anonymous? '0': '1',
+        "label": labels
       }),
       method: "POST",
       dataType: "json",
@@ -193,6 +230,7 @@ Page({
           wx.showModal({
             title: '提示',
             showCancel: false,
+            confirmColor: '#FF0175',
             content: '评价提交成功！',
             success: function (res) {
               wx.switchTab({
@@ -227,6 +265,7 @@ Page({
             title: '提示',
             showCancel: false,
             content: d.desc,
+            confirmColor: '#FF0175',
             success: function (res1) {
 
             }
@@ -245,13 +284,32 @@ Page({
   toggleLabel: function(e) {
     var labelId = e.currentTarget.dataset.labelid;
     var chosen = this.data.chosenLabels;
-    if (chosen[labelId]) {
-      chosen[labelId] = false;
-    } else {
-      chosen[labelId] = true;
-    }
+    chosen[labelId] = !chosen[labelId];
     this.setData({
       chosenLabels: chosen
     })
+  },
+  chooseImage: function(){
+    var that = this;
+    wx.chooseImage({
+      count: 4 - that.data.picList.length,
+      sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+      sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+      success: function(res) {
+        var tempFilePaths = res.tempFilePaths;
+        that.setData({
+          picList: that.data.picList.concat(tempFilePaths)
+        })
+      },
+      fail: function(res) {},
+      complete: function(res) {},
+    })
+  },
+  removeImage: function(e) {
+    var imageIdx = e.currentTarget.dataset.imageid;
+    this.data.picList.splice(imageIdx, 1);
+    this.setData({
+      picList: this.data.picList
+    });
   }
 })

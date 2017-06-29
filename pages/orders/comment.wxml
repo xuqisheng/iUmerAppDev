@@ -13,7 +13,7 @@
         </view>
         <view id="project-rate-area">
           <view class="rating rate-profession">
-            <view class="rate-txt">专业评分</view>
+            <view class="rate-txt">项目评分</view>
             <view class="rate-stars" wx:for="{{ [0,1,2,3,4] }}" wx:key="*this">
               <view wx:if="{{ item < (levelProfession || 0) }}">
                 <image src="https://www.iumer.cn/umer/js/raty/img/star-on.png" bindtap="chooseLevelProfession"  data-level="{{ item }}"></image>
@@ -26,13 +26,24 @@
           <view class="project-txt-area">
             <textarea placeholder="评价一下此次服务吧" bindinput="txtInput" />
           </view>
-          <view class="project-pic-area">
-            <view></view>
+          <view class="project-pic-area flex">
+            <view class="project-pic-add-image" wx:if="{{ picList.length < 4 }}" bindtap="chooseImage">
+              <image src="https://www.iumer.top/umer/css/image/wechat/app/add-image.png" style="width: 60rpx; height: 60rpx; display: block;"></image>
+              <text>添加图片</text>
+            </view>
+            <view class="project-pic-pics flex">
+              <block wx:for="{{ picList }}" wx:key="*this">
+                <view class="project-pic-pic">
+                  <image src="{{ item }}" style="width: 120rpx; height: 120rpx;"></image>
+                  <image data-imageid="{{ index }}" bindtap="removeImage" class="project-pic-remove" src="https://www.iumer.cn/umer/css/image/wechat/app/delete.png" style="width: 50rpx; height: 50rpx;"></image>
+                </view>
+              </block>
+            </view>
           </view>
         </view>
         <view id="project-anonymous-area" class="flex-space-between">
             <checkbox-group bindchange="checkboxChange">
-              <checkbox value="1" color="#ff0074" />匿名
+              <checkbox value="1" color="#FF0175" />匿名
             </checkbox-group>
             <text>您写的评价会以匿名的方式展现</text>
           </view>
@@ -89,13 +100,10 @@
           <text class="line-through">\t\t\t   </text>对她的印象<text class="line-through"></text>
         </view>
         <view class="personnel-labels">
-          <view class="{{ chosenLabels[1]? 'personnel-label-on': 'personnel-label'}}" data-labelid="1" bindtap="toggleLabel">用料足</view>
-          <view class="{{ chosenLabels[2]? 'personnel-label-on': 'personnel-label'}}" data-labelid="2" bindtap="toggleLabel">手法好</view>
-          <view class="{{ chosenLabels[3]? 'personnel-label-on': 'personnel-label'}}" data-labelid="3" bindtap="toggleLabel">态度好</view>
-          <view class="{{ chosenLabels[4]? 'personnel-label-on': 'personnel-label'}}" data-labelid="4" bindtap="toggleLabel">商家服务好</view>
-          <view class="{{ chosenLabels[5]? 'personnel-label-on': 'personnel-label'}}" data-labelid="5" bindtap="toggleLabel">手法好</view>
-          <view class="{{ chosenLabels[6]? 'personnel-label-on': 'personnel-label'}}" data-labelid="6" bindtap="toggleLabel">态度好</view>
-          <view class="{{ chosenLabels[7]? 'personnel-label-on': 'personnel-label'}}" data-labelid="7" bindtap="toggleLabel">商家服务好</view>
+          <view class="{{ chosenLabels[0]? 'personnel-label-on': 'personnel-label'}}" data-labelid="0" bindtap="toggleLabel">用料足</view>
+          <view class="{{ chosenLabels[1]? 'personnel-label-on': 'personnel-label'}}" data-labelid="1" bindtap="toggleLabel">手法好</view>
+          <view class="{{ chosenLabels[2]? 'personnel-label-on': 'personnel-label'}}" data-labelid="2" bindtap="toggleLabel">态度好</view>
+          <view class="{{ chosenLabels[3]? 'personnel-label-on': 'personnel-label'}}" data-labelid="3" bindtap="toggleLabel">商家服务好</view>
         </view>
       </view>
     </view>

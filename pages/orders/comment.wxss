@@ -53,6 +53,29 @@ page {
     border-radius: 16rpx;
     width: auto;
 }
+.project-pic-add-image {
+  width: 120rpx;
+  height: 120rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: dashed 2rpx #E4E4E4;
+  color: #E1E1E1;
+  font-size: 26rpx;
+  margin-right: 20rpx;
+}
+.project-pic-pic {
+  position: relative;
+}
+.project-pic-pic:not(:first-child) image { 
+  margin-left: 20rpx;
+}
+.project-pic-remove {
+  position: absolute;
+  right: -20rpx;
+  top: -20rpx;
+}
 #project-rate-area {
     border-top: solid 2rpx #F7F7F7;
     border-bottom: solid 2rpx #F7F7F7;

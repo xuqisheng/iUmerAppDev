@@ -49,12 +49,28 @@ Page({
     this.setData({
       searchKeywords: keywords
     })
+    if (!keywords) {
+      this.setData({
+        hideHint: false
+      })
+    }
   },
   clearSearch: function(e) {
-    this.setData({
-      searchKeywords: "",
-      hideHint: false
-    })
+    var that = this;
+    wx.showModal({
+      title: '提示',
+      content: '确定清空搜索记录吗？',
+      confirmColor: '#FF0175',
+      success: function (res) {
+        if (res.confirm) {
+          that.setData({
+            searchHistory: [],
+            hideHint: false
+          })
+          wx.removeStorageSync('searchHistory');
+        }
+      }
+    });
   },
   searchHint: function(e) {
     var txt = e.currentTarget.dataset.keyword;
@@ -68,7 +84,17 @@ Page({
     var txt = this.data.searchKeywords;
     var history = wx.getStorageSync('searchHistory') || '';
     if (txt) {
-      wx.setStorageSync('searchHistory', history + ';' + txt);
+      var exist = false;
+      var keywords = wx.getStorageSync('searchHistory').substring(1).split(";");
+      for (var i = 0; i < keywords.length; i++) {
+        if (keywords[i] == txt) {
+          exist = true;
+          break;
+        }
+      }
+      if (!exist) {
+        wx.setStorageSync('searchHistory', history + ';' + txt);
+      }
     }
     this.setData({
       hideHint: true,
@@ -106,7 +132,7 @@ Page({
           wx.showModal({
             title: '提示',
             content: res.data.desc,
-            confirmColor: '#FD8CA3',
+            confirmColor: '#FF0175',
             showCancel: false,
             success: function (res) {
               if (res.confirm) {
@@ -134,6 +160,7 @@ Page({
         cityId: wx.getStorageSync("cityCode"),
         personnelName: txt,
         pageSize: 3,
+        page: 1,
         longitude: wx.getStorageSync("longitude"),
         latitude: wx.getStorageSync("latitude")
       }),
@@ -151,7 +178,7 @@ Page({
           wx.showModal({
             title: '提示',
             content: res.data.desc,
-            confirmColor: '#FD8CA3',
+            confirmColor: '#FF0175',
             showCancel: false,
             success: function (res) {
               if (res.confirm) {
@@ -162,10 +189,10 @@ Page({
         }
       },
       fail: function (res) {
-        console.log("indexSearch - searchPersonnel fail")
+        console.log("indexSearch - searchProject fail")
       },
       complete: function (res) {
-        console.log("indexSearch - searchPersonnel complete")
+        console.log("indexSearch - searchProject complete")
         wx.hideNavigationBarLoading();
       }
     });
@@ -196,7 +223,7 @@ Page({
           wx.showModal({
             title: '提示',
             content: res.data.desc,
-            confirmColor: '#FD8CA3',
+            confirmColor: '#FF0175',
             showCancel: false,
             success: function (res) {
               if (res.confirm) {

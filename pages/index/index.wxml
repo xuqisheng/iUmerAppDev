@@ -41,7 +41,7 @@
 	<view id="hot">
 		<view class="index-header flex-space-between" style="{{ hotProjects.length == 0? 'padding-bottom: 20rpx;':'' }}">
 			<text>热门项目</text>
-      <view class="more">
+      <view class="more" bindtap="moreProjects">
         <text>更多</text>
         <image src="https://www.iumer.cn/umer/css/image/wechat/app/more.png" style="width: 30rpx; height: 30rpx;"></image>
       </view>
@@ -67,7 +67,7 @@
               <view class="hot-item-info-duration">
 							<text>{{ item.duration || "0" }}分钟</text> 
               |
-              <text></text>
+              <text>{{ (item.orderCount || 0) + '人预' }}</text>
               </view> 
               <view class="hot-item-price" wx:if="{{ !!item.projectActivityId }}">￥{{ item.activityUnitPrice || "0" }}元<text>￥{{ item.unitPrice || "0" }}元</text></view>
 							<view class="hot-item-price" wx:if="{{ !item.projectActivityId }}">￥{{ item.unitPrice || "0" }}元</view>
@@ -80,7 +80,7 @@
 	<view id="people">
 		<view class="index-header flex-space-between" style="{{ hotPersonnel.length == 0? 'padding-bottom: 20rpx;':'' }}">
 			<text>优美师</text>
-      <view class="more">
+      <view class="more" bindtap="morePersonnels">
         <text>更多</text>
         <image src="https://www.iumer.cn/umer/css/image/wechat/app/more.png" style="width: 30rpx; height: 30rpx;"></image>
       </view>
@@ -109,7 +109,7 @@
 							</view>
 						</view>
 						<view class="people-item-info">
-							<view class="people-item-info-distance">{{ "人预" }}</view>
+							<view class="people-item-info-distance">{{ (item.orderCount || 0) + "人预" }}</view>
 							<view class="people-item-info-board-comment">
 								<view class="people-item-info-board">{{ '服务过' + (item.orderCount || 0) + '次' }}</view>
 							</view>

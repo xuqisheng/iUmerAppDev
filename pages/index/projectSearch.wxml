@@ -75,7 +75,7 @@
               </view>
               <view class="hot-item-right">
                 <view class="hot-item-name">
-                  <text class="hot-item-name-recommend">推荐</text>
+                  <text wx:if="{{ item.ifHot == 1 }}" class="hot-item-name-recommend">推荐</text>
                   {{ item.projectName || "" }}
                 </view>
                 <view class="hot-item-place-and-distance">
@@ -86,7 +86,7 @@
                   <view class="hot-item-info-duration">
                   <text>{{ item.duration || "0" }}分钟</text> 
                   |
-                  <text></text>
+                  <text>{{ (item.orderCount || 0) + '人预' }}</text>
                   </view> 
                   <view class="hot-item-price" wx:if="{{ !!item.projectActivityId }}">￥{{ item.activityUnitPrice || "0" }}元<text>￥{{ item.unitPrice || "0" }}元</text></view>
                   <view class="hot-item-price" wx:if="{{ !item.projectActivityId }}">￥{{ item.unitPrice || "0" }}元</view>

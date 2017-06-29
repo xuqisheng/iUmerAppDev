@@ -19,7 +19,7 @@
   </view>
   <view id="menu-area">
     <view class="menus">
-      <view class="menu-item">
+      <view class="menu-item" bindtap="changePhone">
         <image class="menu-img" src="https://www.iumer.cn/umer/css/image/wechat/app/mobile@2x.png"></image>
         <text class="menu-txt">更换手机号</text>
       </view>

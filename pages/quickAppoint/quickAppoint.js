@@ -47,7 +47,7 @@ Page({
     }
   },
   loadProjects: function(opType) {
-    // wx.showNavigationBarLoading();
+    wx.showNavigationBarLoading();
     var that = this;
     var data = {};
     data["customerId"] = wx.getStorageSync('id');
@@ -127,13 +127,13 @@ Page({
         console.log("loadProjects fail")
       },
       complete: function(res) {
-        // wx.hideNavigationBarLoading();
+        wx.hideNavigationBarLoading();
         console.log("loadProjects complete")
       }
     });
   },
   loadPersonnels: function(opType) {
-    //wx.showNavigationBarLoading();
+    wx.showNavigationBarLoading();
     var that = this;
     var data = {};
     data["customerId"] = wx.getStorageSync('id');
@@ -212,7 +212,7 @@ Page({
         console.log("loadPersonnels fail")
       },
       complete: function(res) {
-        //wx.hideNavigationBarLoading();
+        wx.hideNavigationBarLoading();
         console.log("loadPersonnels complete")
       }
     });

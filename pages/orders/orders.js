@@ -273,5 +273,13 @@ Page({
     this.setData({
       clickOrderItemTimeStamp: timestamp
     })
+  },
+  reward: function(){
+    wx.showModal({
+      title: '提示',
+      content: '功能尚未开放...',
+      confirmColor: '#FF0175',
+      showCancel: false
+    })
   }
 })

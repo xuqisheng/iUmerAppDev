@@ -58,7 +58,6 @@
 	padding: 50rpx 20rpx;
 }
 .nav-item-txt {
-	font-family: "-apple-system";
 	font-size: 28rpx;
   color: #646464;
 }
@@ -73,7 +72,6 @@
 	background-color: white;
 	display: flex;
 	justify-content: space-between;
-	font-family: "-apple-system" ;
 	border-top: solid 2rpx #F7F7F7;
 }
 .hot-item:first-child {
